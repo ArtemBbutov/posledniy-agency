@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </div>
         <figure className="room-card" aria-label="Фирменный образ агентства — живая комната Telegram-канала">
-          <img className="room-image" src="/hero-room-v2.png" alt="Комната с деревянной дверью и живыми рисунками на стенах" />
+          <img className="room-image" src="/hero-room-v3.png" alt="Продюсерская комната с планом запуска и бумажным самолётом" />
           <figcaption><span>КАНАЛ / 00</span><span>АВТОР В ЭФИРЕ</span></figcaption>
         </figure>
       </section>

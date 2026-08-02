@@ -19,10 +19,20 @@
 
 @keyframes quiet-rise{from{opacity:.15;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes quiet-draw{from{opacity:.35;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes hero-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes room-enter{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
+
+.hero .eyebrow{animation:hero-rise .7s .08s both cubic-bezier(.22,.7,.25,1)}
+.hero-title h1 span{animation:hero-rise .78s .16s both cubic-bezier(.22,.7,.25,1)}
+.hero-title h1 em{animation:hero-rise .82s .25s both cubic-bezier(.22,.7,.25,1)}
+.hero-bottom{animation:hero-rise .72s .38s both cubic-bezier(.22,.7,.25,1)}
+.room-card{animation:room-enter 1s .12s both cubic-bezier(.22,.7,.25,1)}
 
 @supports (animation-timeline:view()){
   .intro-copy,.section-heading,.services-intro,.principles>h2,.contact-grid{animation:quiet-rise both cubic-bezier(.22,.7,.25,1);animation-timeline:view();animation-range:entry 0% entry 32%}
   .direction-grid,.service-stack,.principle-grid{animation:quiet-draw both ease-out;animation-timeline:view();animation-range:entry 0% entry 30%}
+  .direction-grid article h3,.service-stack article h3,.principle-grid article h3{animation:quiet-rise both cubic-bezier(.22,.7,.25,1);animation-timeline:view();animation-range:entry 5% entry 28%}
+  section>.label{animation:quiet-rise both ease-out;animation-timeline:view();animation-range:entry 0% entry 22%}
 }
 
 @media(max-width:800px){
@@ -35,5 +45,5 @@
 }
 
 @media(prefers-reduced-motion:reduce){
-  .intro-copy,.section-heading,.services-intro,.principles>h2,.contact-grid,.direction-grid,.service-stack,.principle-grid{animation:none!important}
+  .hero .eyebrow,.hero-title h1 span,.hero-title h1 em,.hero-bottom,.room-card,.intro-copy,.section-heading,.services-intro,.principles>h2,.contact-grid,.direction-grid,.service-stack,.principle-grid,.direction-grid article h3,.service-stack article h3,.principle-grid article h3,section>.label{animation:none!important}
 }

@@ -11,6 +11,8 @@ html = html
   .replaceAll('href="/assets/', 'href="assets/')
   .replaceAll('href="/hero-room-v2.png"', 'href="public/hero-room-v2.png"')
   .replaceAll('src="/hero-room-v2.png"', 'src="public/hero-room-v2.png"')
+  .replaceAll('href="/hero-room-v3.png"', 'href="public/hero-room-v3.png"')
+  .replaceAll('src="/hero-room-v3.png"', 'src="public/hero-room-v3.png"')
   .replaceAll('href="https://posledniy-agency.s-eanwagner02532.chatgpt.site/favicon.svg"', 'href="public/favicon.svg"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/og-telegram.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/og-telegram.png"');
 
