@@ -30,13 +30,10 @@ export default function Home() {
             <a className="button light" href="#contact">Обсудить канал <span>↗</span></a>
           </div>
         </div>
-        <div className="room-card" aria-label="Фирменный образ агентства — комната идей">
-          <div className="room-top"><span>КАНАЛ / 00</span><span>АВТОР В ЭФИРЕ</span></div>
-          <div className="wall left-wall"><i className="scribble s1">★</i><i className="scribble s2">идея →</i><i className="scribble s3">☺</i><i className="scribble s4">×</i></div>
-          <div className="wall right-wall"><div className="door"><span>ВХОД<br/>В КАНАЛ</span><i/></div><i className="scribble s5">не посты.<br/>система.</i></div>
-          <div className="floor"><div className="chair"><i/><i/><i/><i/></div></div>
-          <p className="room-quote">Канал должен говорить<br/>голосом автора.</p>
-        </div>
+        <figure className="room-card" aria-label="Фирменный образ агентства — живая комната Telegram-канала">
+          <img className="room-image" src="/hero-room-v2.png" alt="Комната с деревянной дверью и живыми рисунками на стенах" />
+          <figcaption><span>КАНАЛ / 00</span><span>АВТОР В ЭФИРЕ</span></figcaption>
+        </figure>
       </section>
 
       <section className="intro">
