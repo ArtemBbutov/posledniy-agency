@@ -8,9 +8,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin",
 export const metadata: Metadata = {
   metadataBase: new URL("https://posledniy-agency.s-eanwagner02532.chatgpt.site"),
   title: "Агентство насилия — продюсерское агентство",
-  description: "Продюсируем людей, идеи и форматы, которым тесно в готовых шаблонах.",
-  openGraph: { title: "Агентство насилия", description: "Продюсерское агентство Артёма Бутова и Артёма Федонко.", images: ["/og.png"] },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
+  description: "Продюсируем Telegram-каналы и запуски для экспертов и авторов.",
+  openGraph: { title: "Агентство насилия", description: "Telegram-каналы, контент, рост аудитории и запуски под ключ.", images: ["/og-telegram.png"] },
+  twitter: { card: "summary_large_image", images: ["/og-telegram.png"] },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
