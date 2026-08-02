@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Продюсируем людей, идеи и проекты, которые невозможно не заметить.">
+  <title>Последний — продюсерское агентство</title>
+  <link rel="icon" href="public/favicon.svg">
+  <link rel="stylesheet" href="app/globals.css">
+</head>
+<body>
+<main>
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="Последний — на главную">ПОСЛЕДНИЙ<span>©26</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Основная навигация">
+      <a href="#about">о нас</a><a href="#services">что делаем</a><a href="#contact">контакт</a>
+    </nav>
+    <button class="menu" id="menu" aria-expanded="false" aria-label="Открыть меню">меню</button>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="eyebrow"><span>Москва / весь мир</span><span>Продюсерское агентство</span></div>
+    <h1><span>АГЕНТСТВО</span><span class="outline">НАСИЛИЯ</span></h1>
+    <div class="hero-bottom">
+      <p>Мы не ждём подходящего момента.<br>Мы его продюсируем.</p>
+      <a class="round-link" href="#contact" aria-label="Обсудить проект"><span>обсудить<br>проект ↘</span></a>
+    </div>
+    <div class="ticker" aria-hidden="true"><span>ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ → ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ →</span></div>
+  </section>
+
+  <section class="statement" id="about">
+    <p class="section-label">[ МАНИФЕСТ ]</p>
+    <h2>Хорошие идеи редко<br>выживают сами.</h2>
+    <div class="statement-copy">
+      <p>Поэтому мы вмешиваемся. «Последний» — продюсерское агентство, которое превращает амбицию в систему, а систему — в заметный проект.</p>
+      <p>Работаем с авторами, артистами, брендами и всеми, кому тесно в готовых форматах.</p>
+    </div>
+    <div class="stamp">не причиняем<br>физического вреда<br><b>только творческий</b></div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="services-head"><p class="section-label">[ ЧТО ДЕЛАЕМ ]</p><span>От первого сообщения<br>до последнего титра</span></div>
+    <div class="service-list">
+      <article class="service"><span>01</span><h3>Стратегия</h3><p>Находим точку, в которой идея перестаёт быть просто идеей и становится событием.</p><b>↗</b></article>
+      <article class="service"><span>02</span><h3>Продюсирование</h3><p>Собираем людей, сроки, ресурсы и доводим замысел до выхода в свет.</p><b>↗</b></article>
+      <article class="service"><span>03</span><h3>Контент</h3><p>Создаём форматы, которые хочется досмотреть, переслать и обсуждать.</p><b>↗</b></article>
+      <article class="service"><span>04</span><h3>Запуск</h3><p>Упаковываем, шумим и выводим проект к его аудитории без пустых обещаний.</p><b>↗</b></article>
+    </div>
+  </section>
+
+  <section class="process">
+    <p class="section-label">[ ПРИНЦИП ]</p>
+    <div class="big-word">ПОСЛЕДНИЙ</div>
+    <div class="process-grid">
+      <h2>Мы остаёмся,<br>пока не готово.</h2>
+      <div><p>Не продаём часы. Не производим презентации ради презентаций. Входим в проект, разбираемся, берём ответственность и доводим до результата.</p><span>Стратегия / производство / запуск</span></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p class="section-label">[ СВЯЗЬ ]</p>
+    <h2>ЕСТЬ ИДЕЯ?<br><a href="mailto:hello@posledniy.agency">ДАВАЙТЕ ДАВИТЬ.</a></h2>
+    <div class="footer-row">
+      <a href="mailto:hello@posledniy.agency">hello@posledniy.agency</a>
+      <div><a href="#">telegram ↗</a><a href="#">instagram ↗</a></div>
+      <span>© 2026 ПОСЛЕДНИЙ</span>
+    </div>
+  </footer>
+</main>
+<script>
+  const button = document.querySelector('#menu');
+  const links = document.querySelector('#navlinks');
+  button.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    button.textContent = open ? 'закрыть' : 'меню';
+    button.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', () => {
+    links.classList.remove('open');
+    button.textContent = 'меню';
+    button.setAttribute('aria-expanded', 'false');
+  });
+</script>
+</body>
+</html>

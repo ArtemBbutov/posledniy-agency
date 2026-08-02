@@ -1,4 +1,10 @@
-# vinext-starter
+# Последний — продюсерское агентство
+
+Сайт: **https://artembbutov.github.io/posledniy-agency/**
+
+Продюсируем людей, идеи и проекты, которые невозможно не заметить.
+
+## Разработка
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
