@@ -1,85 +1,9 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Продюсируем людей, идеи и проекты, которые невозможно не заметить.">
-  <title>Последний — продюсерское агентство</title>
-  <link rel="icon" href="public/favicon.svg">
-  <link rel="stylesheet" href="app/globals.css">
-</head>
-<body>
-<main>
-  <header class="nav">
-    <a class="logo" href="#top" aria-label="Последний — на главную">ПОСЛЕДНИЙ<span>©26</span></a>
-    <nav class="navlinks" id="navlinks" aria-label="Основная навигация">
-      <a href="#about">о нас</a><a href="#services">что делаем</a><a href="#contact">контакт</a>
-    </nav>
-    <button class="menu" id="menu" aria-expanded="false" aria-label="Открыть меню">меню</button>
-  </header>
-
-  <section class="hero" id="top">
-    <div class="eyebrow"><span>Москва / весь мир</span><span>Продюсерское агентство</span></div>
-    <h1><span>АГЕНТСТВО</span><span class="outline">НАСИЛИЯ</span></h1>
-    <div class="hero-bottom">
-      <p>Мы не ждём подходящего момента.<br>Мы его продюсируем.</p>
-      <a class="round-link" href="#contact" aria-label="Обсудить проект"><span>обсудить<br>проект ↘</span></a>
-    </div>
-    <div class="ticker" aria-hidden="true"><span>ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ → ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ →</span></div>
-  </section>
-
-  <section class="statement" id="about">
-    <p class="section-label">[ МАНИФЕСТ ]</p>
-    <h2>Хорошие идеи редко<br>выживают сами.</h2>
-    <div class="statement-copy">
-      <p>Поэтому мы вмешиваемся. «Последний» — продюсерское агентство, которое превращает амбицию в систему, а систему — в заметный проект.</p>
-      <p>Работаем с авторами, артистами, брендами и всеми, кому тесно в готовых форматах.</p>
-    </div>
-    <div class="stamp">не причиняем<br>физического вреда<br><b>только творческий</b></div>
-  </section>
-
-  <section class="services" id="services">
-    <div class="services-head"><p class="section-label">[ ЧТО ДЕЛАЕМ ]</p><span>От первого сообщения<br>до последнего титра</span></div>
-    <div class="service-list">
-      <article class="service"><span>01</span><h3>Стратегия</h3><p>Находим точку, в которой идея перестаёт быть просто идеей и становится событием.</p><b>↗</b></article>
-      <article class="service"><span>02</span><h3>Продюсирование</h3><p>Собираем людей, сроки, ресурсы и доводим замысел до выхода в свет.</p><b>↗</b></article>
-      <article class="service"><span>03</span><h3>Контент</h3><p>Создаём форматы, которые хочется досмотреть, переслать и обсуждать.</p><b>↗</b></article>
-      <article class="service"><span>04</span><h3>Запуск</h3><p>Упаковываем, шумим и выводим проект к его аудитории без пустых обещаний.</p><b>↗</b></article>
-    </div>
-  </section>
-
-  <section class="process">
-    <p class="section-label">[ ПРИНЦИП ]</p>
-    <div class="big-word">ПОСЛЕДНИЙ</div>
-    <div class="process-grid">
-      <h2>Мы остаёмся,<br>пока не готово.</h2>
-      <div><p>Не продаём часы. Не производим презентации ради презентаций. Входим в проект, разбираемся, берём ответственность и доводим до результата.</p><span>Стратегия / производство / запуск</span></div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <p class="section-label">[ СВЯЗЬ ]</p>
-    <h2>ЕСТЬ ИДЕЯ?<br><a href="mailto:hello@posledniy.agency">ДАВАЙТЕ ДАВИТЬ.</a></h2>
-    <div class="footer-row">
-      <a href="mailto:hello@posledniy.agency">hello@posledniy.agency</a>
-      <div><a href="#">telegram ↗</a><a href="#">instagram ↗</a></div>
-      <span>© 2026 ПОСЛЕДНИЙ</span>
-    </div>
-  </footer>
-</main>
-<script>
-  const button = document.querySelector('#menu');
-  const links = document.querySelector('#navlinks');
-  button.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    button.textContent = open ? 'закрыть' : 'меню';
-    button.setAttribute('aria-expanded', String(open));
-  });
-  links.addEventListener('click', () => {
-    links.classList.remove('open');
-    button.textContent = 'меню';
-    button.setAttribute('aria-expanded', 'false');
-  });
-</script>
-</body>
-</html>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Продюсируем людей, идеи и проекты, которые невозможно не заметить."><meta property="og:title" content="Агентство насилия"><meta property="og:description" content="Продюсерское агентство. Придумываем, собираем и запускаем проекты."><meta property="og:image" content="https://artembbutov.github.io/posledniy-agency/public/og.png"><meta name="twitter:card" content="summary_large_image"><title>Агентство насилия — продюсерское агентство</title><link rel="icon" href="public/favicon.svg"><link rel="stylesheet" href="app/globals.css"></head><body><main>
+<header class="nav"><a class="wordmark" href="#top">АН / 26</a><nav aria-label="Основная навигация"><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#team">Команда</a></nav><a class="nav-contact" href="#contact">Обсудить проект</a></header>
+<section class="hero" id="top"><div class="hero-copy"><p class="kicker">Продюсерское агентство / Москва</p><h1>Агентство<br><em>насилия</em></h1><p class="lead">Придумываем, собираем и запускаем проекты, которые невозможно не заметить.</p><a class="primary" href="#contact">Начать проект <span>↗</span></a></div><div class="room" aria-label="Схематичная комната — фирменный образ агентства"><div class="ceiling-line"></div><div class="floor-line"></div><div class="door"><span>вход<br>в проект</span><i></i></div><div class="room-note note-one">идея должна<br>выдержать давление</div><div class="room-note note-two">не декор.<br>система.</div><span class="doodle d1">☆</span><span class="doodle d2">◡</span><span class="doodle d3">идея →</span><span class="doodle d4">×</span><div class="room-label">КОМНАТА / 00</div><div class="chair"><i></i><i></i><i></i><i></i></div></div><div class="hero-index"><span>Идея</span><span>Стратегия</span><span>Производство</span><span>Запуск</span></div></section>
+<section class="manifesto"><p class="section-no">01 / Подход</p><h2>Хорошая идея —<br>это только начало.</h2><div class="manifesto-text"><p>Мы не наблюдаем со стороны. Входим в проект, задаём неудобные вопросы, собираем нужных людей и остаёмся до результата.</p><p>Работаем с авторами, артистами и брендами, которым тесно в готовых форматах.</p></div><p class="margin-note">Насилие — над шаблонами.<br>Не над людьми.</p></section>
+<section class="services" id="services"><div class="section-head"><p class="section-no">02 / Что делаем</p><p>Полный цикл или отдельный этап.<br>Без лишних звеньев.</p></div><div class="service-list"><article><span>01</span><h3>Продюсирование</h3><p>Берём идею под ответственность: собираем команду, бюджет, график и доводим проект до релиза.</p><b>↗</b></article><article><span>02</span><h3>Разработка форматов</h3><p>Придумываем механику, драматургию и визуальный язык, которые работают именно на вашу аудиторию.</p><b>↗</b></article><article><span>03</span><h3>Производство контента</h3><p>Организуем съёмки и постпродакшн — от одного ролика до полноценного сезона.</p><b>↗</b></article><article><span>04</span><h3>Запуск и продвижение</h3><p>Упаковываем проект, планируем выход и помогаем ему встретиться с нужными людьми.</p><b>↗</b></article></div></section>
+<section class="process" id="process"><p class="section-no">03 / Как работаем</p><h2>От разговора<br>до выхода в свет.</h2><ol><li><span>01</span><b>Разбираемся</b><p>Слушаем задачу, изучаем контекст и формулируем, что на самом деле нужно сделать.</p></li><li><span>02</span><b>Собираем</b><p>Создаём концепцию, команду и прозрачный план производства.</p></li><li><span>03</span><b>Делаем</b><p>Ведём процесс, решаем проблемы и держим качество на каждом этапе.</p></li><li><span>04</span><b>Запускаем</b><p>Готовим выход и передаём проект его аудитории.</p></li></ol></section>
+<section class="team" id="team"><div class="section-head"><p class="section-no">04 / Кто мы</p><p>Два продюсера.<br>Одна ответственность.</p></div><div class="team-grid"><article><div class="portrait"><span>АБ</span><i>сооснователь / продюсер</i></div><h3>Артём Бутов</h3><p>Стратегия, идеи и креативное продюсирование.</p></article><article><div class="portrait second"><span>АФ</span><i>сооснователь / продюсер</i></div><h3>Артём Федонко</h3><p>Производство, команды и управление проектами.</p></article></div></section>
+<section class="contact" id="contact"><p class="section-no">05 / Контакты</p><h2>Есть что<br>продюсировать?</h2><p class="contact-lead">Опишите идею в нескольких предложениях. Мы прочитаем и вернёмся с вопросами.</p><div class="contact-list"><a href="mailto:hello@posledniy.agency"><span>Почта</span><b>hello@posledniy.agency</b><i>↗</i></a><div><span>Telegram</span><b>Контакт добавим после запуска</b><i>—</i></div></div><div class="footer"><span>Агентство насилия © 2026</span><span>Бутов × Федонко</span><a href="#top">Наверх ↑</a></div></section>
+</main></body></html>

@@ -13,8 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Последний — продюсерское агентство",
+  metadataBase: new URL("https://posledniy-agency.s-eanwagner02532.chatgpt.site"),
+  title: "Агентство насилия — продюсерское агентство",
   description: "Продюсируем людей, идеи и проекты, которые невозможно не заметить.",
+  openGraph: {
+    title: "Агентство насилия",
+    description: "Продюсерское агентство. Придумываем, собираем и запускаем проекты.",
+    images: ["/og.png"],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

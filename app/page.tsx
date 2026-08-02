@@ -1,82 +1,83 @@
-"use client";
-
-import { useState } from "react";
-
 const services = [
-  ["01", "Стратегия", "Находим точку, в которой идея перестаёт быть просто идеей и становится событием."],
-  ["02", "Продюсирование", "Собираем людей, сроки, ресурсы и доводим замысел до выхода в свет."],
-  ["03", "Контент", "Создаём форматы, которые хочется досмотреть, переслать и обсуждать."],
-  ["04", "Запуск", "Упаковываем, шумим и выводим проект к его аудитории без пустых обещаний."],
+  ["01", "Продюсирование", "Берём идею под ответственность: собираем команду, бюджет, график и доводим проект до релиза."],
+  ["02", "Разработка форматов", "Придумываем механику, драматургию и визуальный язык, которые работают именно на вашу аудиторию."],
+  ["03", "Производство контента", "Организуем съёмки и постпродакшн — от одного ролика до полноценного сезона."],
+  ["04", "Запуск и продвижение", "Упаковываем проект, планируем выход и помогаем ему встретиться с нужными людьми."],
 ];
 
 export default function Home() {
-  const [menu, setMenu] = useState(false);
-
   return (
     <main>
       <header className="nav">
-        <a className="logo" href="#top" aria-label="Последний — на главную">
-          ПОСЛЕДНИЙ<span>©26</span>
-        </a>
-        <nav className={menu ? "navlinks open" : "navlinks"} aria-label="Основная навигация">
-          <a href="#about" onClick={() => setMenu(false)}>о нас</a>
-          <a href="#services" onClick={() => setMenu(false)}>что делаем</a>
-          <a href="#contact" onClick={() => setMenu(false)}>контакт</a>
+        <a className="wordmark" href="#top">АН / 26</a>
+        <nav aria-label="Основная навигация">
+          <a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#team">Команда</a>
         </nav>
-        <button className="menu" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-label="Открыть меню">
-          {menu ? "закрыть" : "меню"}
-        </button>
+        <a className="nav-contact" href="#contact">Обсудить проект</a>
       </header>
 
       <section className="hero" id="top">
-        <div className="eyebrow"><span>Москва / весь мир</span><span>Продюсерское агентство</span></div>
-        <h1><span>АГЕНТСТВО</span><span className="outline">НАСИЛИЯ</span></h1>
-        <div className="hero-bottom">
-          <p>Мы не ждём подходящего момента.<br />Мы его продюсируем.</p>
-          <a className="round-link" href="#contact" aria-label="Обсудить проект"><span>обсудить<br />проект ↘</span></a>
+        <div className="hero-copy">
+          <p className="kicker">Продюсерское агентство / Москва</p>
+          <h1>Агентство<br/><em>насилия</em></h1>
+          <p className="lead">Придумываем, собираем и запускаем проекты, которые невозможно не заметить.</p>
+          <a className="primary" href="#contact">Начать проект <span>↗</span></a>
         </div>
-        <div className="ticker" aria-hidden="true"><span>ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ → ИДЕЯ → ДАВЛЕНИЕ → ФОРМА → РЕЗУЛЬТАТ →</span></div>
+        <div className="room" aria-label="Схематичная комната — фирменный образ агентства">
+          <div className="ceiling-line"/><div className="floor-line"/>
+          <div className="door"><span>вход<br/>в проект</span><i/></div>
+          <div className="room-note note-one">идея должна<br/>выдержать давление</div>
+          <div className="room-note note-two">не декор.<br/>система.</div>
+          <span className="doodle d1">☆</span><span className="doodle d2">◡</span><span className="doodle d3">идея →</span><span className="doodle d4">×</span>
+          <div className="room-label">КОМНАТА / 00</div>
+          <div className="chair"><i/><i/><i/><i/></div>
+        </div>
+        <div className="hero-index"><span>Идея</span><span>Стратегия</span><span>Производство</span><span>Запуск</span></div>
       </section>
 
-      <section className="statement" id="about">
-        <p className="section-label">[ МАНИФЕСТ ]</p>
-        <h2>Хорошие идеи редко<br />выживают сами.</h2>
-        <div className="statement-copy">
-          <p>Поэтому мы вмешиваемся. «Последний» — продюсерское агентство, которое превращает амбицию в систему, а систему — в заметный проект.</p>
-          <p>Работаем с авторами, артистами, брендами и всеми, кому тесно в готовых форматах.</p>
-        </div>
-        <div className="stamp">не причиняем<br />физического вреда<br /><b>только творческий</b></div>
+      <section className="manifesto">
+        <p className="section-no">01 / Подход</p>
+        <h2>Хорошая идея —<br/>это только начало.</h2>
+        <div className="manifesto-text"><p>Мы не наблюдаем со стороны. Входим в проект, задаём неудобные вопросы, собираем нужных людей и остаёмся до результата.</p><p>Работаем с авторами, артистами и брендами, которым тесно в готовых форматах.</p></div>
+        <p className="margin-note">Насилие — над шаблонами.<br/>Не над людьми.</p>
       </section>
 
       <section className="services" id="services">
-        <div className="services-head"><p className="section-label">[ ЧТО ДЕЛАЕМ ]</p><span>От первого сообщения<br />до последнего титра</span></div>
+        <div className="section-head"><p className="section-no">02 / Что делаем</p><p>Полный цикл или отдельный этап.<br/>Без лишних звеньев.</p></div>
         <div className="service-list">
-          {services.map(([n, title, text]) => (
-            <article className="service" key={n}>
-              <span>{n}</span><h3>{title}</h3><p>{text}</p><b>↗</b>
-            </article>
-          ))}
+          {services.map(([n,title,text]) => <article key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p><b>↗</b></article>)}
         </div>
       </section>
 
-      <section className="process">
-        <p className="section-label">[ ПРИНЦИП ]</p>
-        <div className="big-word">ПОСЛЕДНИЙ</div>
-        <div className="process-grid">
-          <h2>Мы остаёмся,<br />пока не готово.</h2>
-          <div><p>Не продаём часы. Не производим презентации ради презентаций. Входим в проект, разбираемся, берём ответственность и доводим до результата.</p><span>Стратегия / производство / запуск</span></div>
+      <section className="process" id="process">
+        <p className="section-no">03 / Как работаем</p>
+        <h2>От разговора<br/>до выхода в свет.</h2>
+        <ol>
+          <li><span>01</span><b>Разбираемся</b><p>Слушаем задачу, изучаем контекст и формулируем, что на самом деле нужно сделать.</p></li>
+          <li><span>02</span><b>Собираем</b><p>Создаём концепцию, команду и прозрачный план производства.</p></li>
+          <li><span>03</span><b>Делаем</b><p>Ведём процесс, решаем проблемы и держим качество на каждом этапе.</p></li>
+          <li><span>04</span><b>Запускаем</b><p>Готовим выход и передаём проект его аудитории.</p></li>
+        </ol>
+      </section>
+
+      <section className="team" id="team">
+        <div className="section-head"><p className="section-no">04 / Кто мы</p><p>Два продюсера.<br/>Одна ответственность.</p></div>
+        <div className="team-grid">
+          <article><div className="portrait"><span>АБ</span><i>сооснователь / продюсер</i></div><h3>Артём Бутов</h3><p>Стратегия, идеи и креативное продюсирование.</p></article>
+          <article><div className="portrait second"><span>АФ</span><i>сооснователь / продюсер</i></div><h3>Артём Федонко</h3><p>Производство, команды и управление проектами.</p></article>
         </div>
       </section>
 
-      <footer id="contact">
-        <p className="section-label">[ СВЯЗЬ ]</p>
-        <h2>ЕСТЬ ИДЕЯ?<br /><a href="mailto:hello@posledniy.agency">ДАВАЙТЕ ДАВИТЬ.</a></h2>
-        <div className="footer-row">
-          <a href="mailto:hello@posledniy.agency">hello@posledniy.agency</a>
-          <div><a href="#">telegram ↗</a><a href="#">instagram ↗</a></div>
-          <span>© 2026 ПОСЛЕДНИЙ</span>
+      <section className="contact" id="contact">
+        <p className="section-no">05 / Контакты</p>
+        <h2>Есть что<br/>продюсировать?</h2>
+        <p className="contact-lead">Опишите идею в нескольких предложениях. Мы прочитаем и вернёмся с вопросами.</p>
+        <div className="contact-list">
+          <a href="mailto:hello@posledniy.agency"><span>Почта</span><b>hello@posledniy.agency</b><i>↗</i></a>
+          <div><span>Telegram</span><b>Контакт добавим после запуска</b><i>—</i></div>
         </div>
-      </footer>
+        <div className="footer"><span>Агентство насилия © 2026</span><span>Бутов × Федонко</span><a href="#top">Наверх ↑</a></div>
+      </section>
     </main>
   );
 }
