@@ -17,7 +17,7 @@ export default function Home() {
     <main id="top">
       <header className="nav">
         <a className="wordmark" href="#top"><b>АН</b><span>продюсерское<br/>агентство</span></a>
-        <nav aria-label="Основная навигация"><a href="#directions">Направления</a><a href="#services">Услуги</a><a href="#team">Команда</a></nav>
+        <nav aria-label="Основная навигация"><a href="#directions">Направления</a><a href="#services">Услуги</a><a href="#contact">Контакты</a></nav>
         <a className="nav-contact" href="#contact">Обсудить проект <span>↗</span></a>
       </header>
 
@@ -63,16 +63,8 @@ export default function Home() {
         <div className="principle-grid"><article><span>01</span><h3>Сначала автор</h3><p>Достаём настоящую интонацию и экспертизу. Не превращаем человека в безликий «полезный блог».</p></article><article><span>02</span><h3>Потом система</h3><p>У канала появляются рубрики, ритм, редакционный процесс и понятные точки роста.</p></article><article><span>03</span><h3>После — запуск</h3><p>Продажи становятся продолжением контента и отношений с аудиторией, а не внезапной рекламной атакой.</p></article></div>
       </section>
 
-      <section className="team" id="team">
-        <div className="team-head"><p className="label">05 / Команда</p><h2>Два Артёма.<br/>Одна ответственность.</h2></div>
-        <div className="team-grid">
-          <article><div className="person-mark"><span>АБ</span><i>стратегия / контент</i></div><div><p>Сооснователь, продюсер</p><h3>Артём<br/>Бутов</h3><p>Отвечает за позиционирование, голос автора и контент, который удерживает внимание.</p></div></article>
-          <article><div className="person-mark alt"><span>АФ</span><i>запуск / управление</i></div><div><p>Сооснователь, продюсер</p><h3>Артём<br/>Федонко</h3><p>Отвечает за продукт, команду, воронку запуска и движение проекта к продажам.</p></div></article>
-        </div>
-      </section>
-
       <section className="contact" id="contact">
-        <p className="label">06 / Контакт</p><div className="contact-grid"><h2>Есть канал?<br/><em>Запускаем.</em></h2><div><p>Расскажите о себе, своём канале и продукте, который хотите запустить. Если канала ещё нет — это тоже нормальная точка старта.</p><a className="button dark" href="mailto:hello@posledniy.agency">hello@posledniy.agency <span>↗</span></a></div></div>
+        <p className="label">05 / Контакт</p><div className="contact-grid"><h2>Есть канал?<br/><em>Запускаем.</em></h2><div><p>Расскажите о себе, своём канале и продукте, который хотите запустить. Если канала ещё нет — это тоже нормальная точка старта.</p><a className="button dark" href="mailto:hello@posledniy.agency">hello@posledniy.agency <span>↗</span></a></div></div>
         <footer><span>Агентство насилия © 2026</span><span>Бутов × Федонко</span><a href="#top">Наверх ↑</a></footer>
       </section>
     </main>
