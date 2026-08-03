@@ -494,126 +494,199 @@
   .authentic-backrooms .br-hero-bottom { animation: none; }
 }
 
-/* The final CTA is a deep passage, not a card or a square door. */
+/* The final CTA is the whole room: no card and no tiny link target. */
 .authentic-backrooms .exit-level {
-  min-height: 112svh;
-  padding: 12vh 4vw 24px;
+  min-height: 108svh;
+  padding: 11vh 3vw 24px;
   justify-content: flex-start;
-  perspective: 1100px;
 }
 
 .authentic-backrooms .exit-light {
   position: absolute;
-  top: 9vh;
+  top: 8vh;
   left: 50%;
   z-index: 6;
   margin: 0;
+  padding: 9px 22px;
+  font-size: 12px;
   transform: translateX(-50%) perspective(220px) rotateX(-8deg);
-  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  clip-path: polygon(7% 0, 93% 0, 100% 100%, 0 100%);
   box-shadow: 0 0 45px rgba(158,174,137,.18), 0 15px 70px rgba(158,174,137,.1);
 }
 
 .authentic-backrooms .exit-door {
-  width: min(1120px, 94vw);
-  min-height: 82vh;
+  position: relative;
+  width: min(1380px, 96vw);
+  min-height: 79vh;
   margin: auto;
-  padding: 0;
+  padding: 13vh 6vw 6vh;
   display: grid;
-  place-items: center;
-  overflow: visible;
+  grid-template-columns: minmax(0,1.35fr) minmax(260px,.65fr);
+  gap: 6vw;
+  align-items: stretch;
   isolation: isolate;
   color: #d4d0af;
   background: transparent;
   border: 0;
   box-shadow: none;
+  cursor: pointer;
+  transition: color .35s ease;
 }
 
 .authentic-backrooms .exit-door::before {
   content: "";
   position: absolute;
-  inset: 2% 23% 0;
+  inset: 0;
   z-index: -1;
-  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
   background:
-    radial-gradient(ellipse at 50% 18%, rgba(160,165,135,.14), transparent 38%),
-    linear-gradient(90deg, #070706, #15150f 48%, #050504);
-  border: 1px solid rgba(172,172,139,.2);
-  box-shadow:
-    inset 0 0 130px rgba(0,0,0,.95),
-    0 0 0 18px rgba(14,14,10,.72),
-    0 0 95px 30px rgba(0,0,0,.72);
+    radial-gradient(ellipse 34% 54% at 79% 48%, rgba(185,190,158,.09), transparent 66%),
+    radial-gradient(ellipse 70% 85% at 31% 52%, rgba(3,3,2,.76), transparent 72%),
+    linear-gradient(90deg, rgba(2,2,1,.7), rgba(2,2,1,.14) 72%, transparent);
+  border: 0;
+  box-shadow: none;
+  filter: saturate(.75);
+  transition: background .45s ease, filter .45s ease;
 }
 
 .authentic-backrooms .exit-door::after {
   content: "";
   position: absolute;
-  left: 17%;
-  right: 17%;
-  bottom: -11%;
-  height: 43%;
-  z-index: -2;
-  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
-  background: linear-gradient(180deg, rgba(177,181,151,.16), rgba(129,132,108,.04) 58%, transparent);
-  filter: blur(8px);
-  transform: perspective(420px) rotateX(58deg);
-  transform-origin: top;
+  right: 2%;
+  bottom: 5%;
+  z-index: -1;
+  width: 45%;
+  height: 46%;
+  background:
+    linear-gradient(154deg, transparent 49.7%, rgba(190,194,161,.16) 50%, transparent 50.3%),
+    linear-gradient(26deg, transparent 49.7%, rgba(190,194,161,.11) 50%, transparent 50.3%);
+  opacity: .55;
+  transform-origin: 72% 52%;
+  transition: opacity .4s ease, transform .55s cubic-bezier(.2,.75,.2,1);
 }
 
 .authentic-backrooms .exit-copy {
-  width: min(680px, 74%);
+  width: 100%;
+  max-width: none;
   height: auto;
-  min-height: 530px;
-  padding: 7vh 0 4vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  min-height: 58vh;
+  padding: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
   text-shadow: 0 4px 28px #000;
 }
 
 .authentic-backrooms .exit-copy > p {
-  color: #888772;
+  color: #8d8c75;
   letter-spacing: .18em;
 }
 
 .authentic-backrooms .exit-copy h2 {
-  margin: 8vh 0 4vh;
-  font-size: clamp(52px, 7.4vw, 108px);
-  line-height: .82;
+  margin: auto 0 4vh;
+  font-size: clamp(58px, 7.2vw, 118px);
+  line-height: .84;
+  max-width: 900px;
 }
 
-.authentic-backrooms .exit-copy > span {
-  max-width: 470px;
+.authentic-backrooms .exit-copy h2 span { display: block; }
+
+.authentic-backrooms .exit-copy > .exit-lead {
+  max-width: 610px;
   color: #aaa68b;
+  font-size: clamp(14px, 1.25vw, 18px);
+  line-height: 1.5;
 }
 
-.authentic-backrooms .exit-copy a {
-  width: auto;
-  margin-top: 7vh;
-  padding: 13px 2px;
-  border: 0;
-  border-bottom: 1px solid rgba(211,209,174,.55);
-  font-size: clamp(11px, 1.15vw, 15px);
-  letter-spacing: .04em;
-  transition: color .25s ease, border-color .25s ease, letter-spacing .25s ease;
+.authentic-backrooms .exit-action {
+  width: min(640px, 100%);
+  margin-top: 5vh;
+  padding: 19px 0 17px;
+  border-top: 1px solid rgba(211,209,174,.58);
+  border-bottom: 1px solid rgba(211,209,174,.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: border-color .3s ease, padding-left .35s ease;
 }
 
-.authentic-backrooms .exit-copy a:hover,
-.authentic-backrooms .exit-copy a:focus-visible {
-  color: #f0edcc;
-  border-color: #f0edcc;
-  letter-spacing: .075em;
-  outline: none;
+.authentic-backrooms .exit-action > span { display: grid; gap: 6px; }
+.authentic-backrooms .exit-action strong {
+  color: #dedbb9;
+  font-size: clamp(20px, 2vw, 31px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+.authentic-backrooms .exit-action small {
+  color: #85836e;
+  font: 9px var(--font-geist-mono), monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.authentic-backrooms .exit-action b {
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 400;
+  transition: transform .35s cubic-bezier(.2,.75,.2,1), text-shadow .35s ease;
 }
 
-.authentic-backrooms .exit-door > i { display: none; }
+.authentic-backrooms .exit-signal {
+  position: relative;
+  place-self: center;
+  width: min(31vw, 430px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, rgba(200,205,173,.15), rgba(166,171,143,.035) 40%, transparent 68%);
+  filter: drop-shadow(0 0 38px rgba(190,195,162,.08));
+  transition: transform .55s cubic-bezier(.2,.75,.2,1), filter .4s ease, background .4s ease;
+}
 
-@media (max-width: 700px) {
-  .authentic-backrooms .exit-door { width: 100%; min-height: 76vh; }
-  .authentic-backrooms .exit-door::before { inset: 4% 7% 0; }
-  .authentic-backrooms .exit-door::after { left: 4%; right: 4%; }
-  .authentic-backrooms .exit-copy { width: 78%; min-height: 480px; }
-  .authentic-backrooms .exit-copy h2 { font-size: clamp(48px, 15vw, 76px); }
-  .authentic-backrooms .exit-copy a { font-size: 10px; }
+.authentic-backrooms .exit-signal span {
+  font-size: clamp(90px, 11vw, 180px);
+  line-height: 1;
+  color: rgba(215,216,183,.72);
+  text-shadow: 0 0 30px rgba(200,204,169,.16), 0 8px 45px #000;
+  transition: transform .55s cubic-bezier(.2,.75,.2,1), color .35s ease, text-shadow .35s ease;
+}
+
+.authentic-backrooms .exit-signal i {
+  position: absolute;
+  bottom: 13%;
+  color: #777660;
+  font: 8px var(--font-geist-mono), monospace;
+  font-style: normal;
+  letter-spacing: .13em;
+}
+
+.authentic-backrooms .exit-door:hover::after,
+.authentic-backrooms .exit-door:focus-visible::after { opacity: .95; transform: scale(1.08); }
+.authentic-backrooms .exit-door:hover .exit-signal,
+.authentic-backrooms .exit-door:focus-visible .exit-signal {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 58px rgba(206,211,177,.22));
+  background: radial-gradient(circle, rgba(218,222,188,.23), rgba(174,180,149,.055) 43%, transparent 70%);
+}
+.authentic-backrooms .exit-door:hover .exit-signal span,
+.authentic-backrooms .exit-door:focus-visible .exit-signal span {
+  color: #efedcb;
+  transform: translate(10px,-10px);
+  text-shadow: 0 0 18px rgba(225,228,194,.35), 0 0 60px rgba(202,207,172,.18);
+}
+.authentic-backrooms .exit-door:hover .exit-action,
+.authentic-backrooms .exit-door:focus-visible .exit-action { border-color: #e1debb; padding-left: 12px; }
+.authentic-backrooms .exit-door:hover .exit-action b,
+.authentic-backrooms .exit-door:focus-visible .exit-action b { transform: translate(7px,-7px); text-shadow: 0 0 18px rgba(225,228,194,.4); }
+.authentic-backrooms .exit-door:focus-visible { outline: 1px solid rgba(231,229,196,.62); outline-offset: -5px; }
+
+@media (max-width: 780px) {
+  .authentic-backrooms .exit-level { padding-left: 16px; padding-right: 16px; }
+  .authentic-backrooms .exit-light { font-size: 9px; white-space: nowrap; }
+  .authentic-backrooms .exit-door { width: 100%; min-height: 82vh; padding: 14vh 3vw 7vh; grid-template-columns: 1fr; gap: 2vh; }
+  .authentic-backrooms .exit-copy { min-height: 58vh; }
+  .authentic-backrooms .exit-copy h2 { font-size: clamp(48px, 15vw, 78px); }
+  .authentic-backrooms .exit-signal { position: absolute; right: -10%; top: 14%; width: 55vw; opacity: .2; }
+  .authentic-backrooms .exit-signal i { display: none; }
+  .authentic-backrooms .exit-action { margin-top: 4vh; }
 }
 
 /* Soften only the frosted UI surfaces; architecture stays sharp. */

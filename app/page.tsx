@@ -93,8 +93,16 @@ export default function Home() {
     </section>
 
     <section className="br-level exit-level" id="exit">
-      <div className="exit-light">ВЫХОД</div>
-      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 07 / СВЯЗЬ</p><h2>Готовы зайти<br/>в проект?</h2><span>Напишите нам о канале, продукте или идее. Ответим лично и поймём, сможем ли быть полезны.</span><a href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить проект в Telegram ↗</a></div><i/></div>
+      <div className="exit-light">ВЫХОД В TELEGRAM</div>
+      <a className="exit-door" href="https://t.me/but0vv" target="_blank" rel="noreferrer" aria-label="Написать Артёму Бутову в Telegram и обсудить проект">
+        <div className="exit-copy">
+          <p>ЭТАЖ 07 / ПРЯМАЯ СВЯЗЬ</p>
+          <h2><span>Есть канал.</span><span>Или только идея?</span></h2>
+          <span className="exit-lead">Расскажите о задаче в Telegram. Разберём вводные, предложим точку входа и честно скажем, подходим ли друг другу.</span>
+          <div className="exit-action"><span><strong>Написать в Telegram</strong><small>@but0vv · обсудить проект</small></span><b aria-hidden="true">↗</b></div>
+        </div>
+        <div className="exit-signal" aria-hidden="true"><span>↗</span><i>НАЖМИТЕ В ЛЮБОЙ ТОЧКЕ</i></div>
+      </a>
       <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
     </section>
   </main>;
