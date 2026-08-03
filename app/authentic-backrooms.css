@@ -52,8 +52,38 @@
 .authentic-backrooms .br-status { top: 82px; color: #bbb99c; }
 .authentic-backrooms .live-dot:before { background: #9ea68e; box-shadow: 0 0 12px #d2d8b9; }
 .authentic-backrooms .br-hero-copy { top: 18%; bottom: 7%; width: min(760px, 55vw); }
-.authentic-backrooms .br-hero h1 { color: #d8d4b5; text-shadow: 0 2px 24px rgba(0,0,0,.8); }
-.authentic-backrooms .br-hero h1 em { color: #9e9c7b; }
+.authentic-backrooms .br-hero h1 {
+  color: #d8d4b5;
+  text-shadow: 0 2px 24px rgba(0,0,0,.8);
+  filter: drop-shadow(0 1px 0 rgba(235,232,201,.08));
+}
+.authentic-backrooms .br-hero h1 span,
+.authentic-backrooms .br-hero h1 em {
+  color: transparent;
+  background-image:
+    radial-gradient(circle at 8% 23%, rgba(17,17,12,.72) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 19% 71%, rgba(17,17,12,.52) 0 1.4px, transparent 2.2px),
+    radial-gradient(circle at 34% 38%, rgba(17,17,12,.62) 0 .8px, transparent 1.7px),
+    radial-gradient(circle at 48% 82%, rgba(17,17,12,.48) 0 1.1px, transparent 2px),
+    radial-gradient(circle at 61% 18%, rgba(17,17,12,.56) 0 1px, transparent 1.9px),
+    radial-gradient(circle at 76% 59%, rgba(17,17,12,.58) 0 1.3px, transparent 2.2px),
+    radial-gradient(circle at 91% 34%, rgba(17,17,12,.66) 0 .9px, transparent 1.8px),
+    repeating-linear-gradient(96deg, transparent 0 23px, rgba(26,25,18,.08) 24px, transparent 25px 49px),
+    linear-gradient(102deg, #cfccb0 0%, #dedabd 46%, #c5c2a6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.authentic-backrooms .br-hero h1 em {
+  background-image:
+    radial-gradient(circle at 13% 66%, rgba(15,15,10,.68) 0 1.2px, transparent 2.1px),
+    radial-gradient(circle at 29% 21%, rgba(15,15,10,.58) 0 .9px, transparent 1.8px),
+    radial-gradient(circle at 46% 79%, rgba(15,15,10,.5) 0 1.3px, transparent 2.2px),
+    radial-gradient(circle at 67% 37%, rgba(15,15,10,.62) 0 1px, transparent 1.9px),
+    radial-gradient(circle at 86% 72%, rgba(15,15,10,.56) 0 1.1px, transparent 2px),
+    repeating-linear-gradient(88deg, transparent 0 28px, rgba(22,21,15,.09) 29px, transparent 30px 57px),
+    linear-gradient(100deg, #919071 0%, #aaa887 52%, #929172 100%);
+}
 .authentic-backrooms .br-hero-bottom p { color: #b3b096; }
 .authentic-backrooms .br-hero-bottom a { background: rgba(7,7,5,.34); border-color: rgba(207,207,170,.28); backdrop-filter: blur(8px); }
 .authentic-backrooms .fluorescent { display: none; }
