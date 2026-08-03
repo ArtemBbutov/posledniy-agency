@@ -13,7 +13,7 @@ const route = [
 ];
 
 export default function Home() {
-  return <main id="top" className="backrooms-site">
+  return <main id="top" className="backrooms-site authentic-backrooms">
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>СЕКТОР TELEGRAM</span></a>
       <nav aria-label="Навигация по этажам"><a href="#floor-01">01</a><a href="#floor-02">02</a><a href="#floor-03">03</a><a href="#exit">ВЫХОД</a></nav>
@@ -21,7 +21,7 @@ export default function Home() {
     </header>
 
     <section className="br-hero br-level" aria-labelledby="hero-title">
-      <img className="br-hero-image" src="/hero-backrooms.png" alt="Бесконечный офисный этаж с продюсерским столом" />
+      <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
       <div className="br-status"><span>ЭТАЖ 00</span><span className="live-dot">СВЕТ СТАБИЛЕН</span></div>
       <div className="br-hero-copy">

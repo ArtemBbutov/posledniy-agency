@@ -1,4 +1,4 @@
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 
 const source = process.argv[2] ?? "http://127.0.0.1:4174/";
 const response = await fetch(source);
@@ -15,6 +15,8 @@ html = html
   .replaceAll('src="/hero-room-v3.png"', 'src="public/hero-room-v3.png"')
   .replaceAll('href="/hero-backrooms.png"', 'href="public/hero-backrooms.png"')
   .replaceAll('src="/hero-backrooms.png"', 'src="public/hero-backrooms.png"')
+  .replaceAll('href="/hero-backrooms-v2.png"', 'href="public/hero-backrooms-v2.png"')
+  .replaceAll('src="/hero-backrooms-v2.png"', 'src="public/hero-backrooms-v2.png"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/hero-backrooms.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/hero-backrooms.png"')
   .replaceAll('href="https://posledniy-agency.s-eanwagner02532.chatgpt.site/favicon.svg"', 'href="public/favicon.svg"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/og-telegram.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/og-telegram.png"');
@@ -22,4 +24,12 @@ html = html
 await rm("assets", { recursive: true, force: true });
 await mkdir("assets", { recursive: true });
 await cp("dist/client/assets", "assets", { recursive: true });
+for (const file of await readdir("assets")) {
+  if (!file.endsWith(".css")) continue;
+  const path = `assets/${file}`;
+  const css = (await readFile(path, "utf8"))
+    .replaceAll("url(/hero-backrooms-v2.png)", "url(../public/hero-backrooms-v2.png)")
+    .replaceAll("url(/backrooms-lower-level.png)", "url(../public/backrooms-lower-level.png)");
+  await writeFile(path, css, "utf8");
+}
 await writeFile("index.html", html, "utf8");

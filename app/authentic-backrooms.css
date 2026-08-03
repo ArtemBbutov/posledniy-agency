@@ -1,0 +1,176 @@
+:root {
+  --abyss: #080806;
+  --wall-dim: #716c42;
+  --wall-lit: #aaa263;
+  --tube: #d6dabd;
+  --paper: #d3cfad;
+}
+
+.authentic-backrooms {
+  background: var(--abyss);
+  color: var(--paper);
+}
+
+.authentic-backrooms .br-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 58px;
+  z-index: 50;
+  padding: 0 24px;
+  background: rgba(7, 7, 5, .82);
+  border-color: rgba(206, 207, 170, .16);
+  backdrop-filter: blur(12px);
+}
+
+.authentic-backrooms .br-logo b { color: #bec19e; }
+.authentic-backrooms .br-call { border-color: rgba(211, 211, 174, .32); }
+.authentic-backrooms .br-call:hover { background: #c9c9a6; color: #11110d; }
+
+.authentic-backrooms .br-level {
+  min-height: 100svh;
+  isolation: isolate;
+  background-color: #10100c;
+}
+
+.authentic-backrooms .br-hero {
+  height: 100svh;
+  min-height: 660px;
+}
+
+.authentic-backrooms .br-hero-image {
+  filter: brightness(.68) saturate(.56) contrast(1.14);
+  object-position: center center;
+  transform: scale(1.015);
+}
+
+.authentic-backrooms .br-hero-shade {
+  background:
+    linear-gradient(90deg, rgba(4,4,3,.94) 0%, rgba(4,4,3,.56) 40%, rgba(4,4,3,.04) 70%),
+    linear-gradient(0deg, rgba(3,3,2,.82) 0%, transparent 45%, rgba(2,2,1,.28) 100%);
+}
+
+.authentic-backrooms .br-status { top: 82px; color: #bbb99c; }
+.authentic-backrooms .live-dot:before { background: #9ea68e; box-shadow: 0 0 12px #d2d8b9; }
+.authentic-backrooms .br-hero-copy { top: 18%; bottom: 7%; width: min(760px, 55vw); }
+.authentic-backrooms .br-hero h1 { color: #d8d4b5; text-shadow: 0 2px 24px rgba(0,0,0,.8); }
+.authentic-backrooms .br-hero h1 em { color: #9e9c7b; }
+.authentic-backrooms .br-hero-bottom p { color: #b3b096; }
+.authentic-backrooms .br-hero-bottom a { background: rgba(7,7,5,.34); border-color: rgba(207,207,170,.28); backdrop-filter: blur(8px); }
+.authentic-backrooms .fluorescent { display: none; }
+
+/* Every content floor is a real photographed space, not a flat colored block. */
+.authentic-backrooms .br-room,
+.authentic-backrooms .door-level,
+.authentic-backrooms .corridor-level,
+.authentic-backrooms .utility-level,
+.authentic-backrooms .exit-level {
+  color: #d2cfaf;
+  background-image:
+    linear-gradient(90deg, rgba(5,5,4,.88), rgba(5,5,4,.18) 52%, rgba(5,5,4,.68)),
+    linear-gradient(0deg, rgba(3,3,2,.88), transparent 50%, rgba(3,3,2,.3)),
+    url('/hero-backrooms-v2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.authentic-backrooms .door-level,
+.authentic-backrooms .utility-level {
+  background-image:
+    linear-gradient(90deg, rgba(3,3,3,.8), rgba(3,3,3,.16) 48%, rgba(3,3,3,.72)),
+    linear-gradient(0deg, rgba(2,2,2,.9), transparent 58%, rgba(2,2,2,.28)),
+    url('/backrooms-lower-level.png');
+}
+
+.authentic-backrooms .br-room { padding-top: 16vh; grid-template-columns: 80px minmax(320px, 700px) 1fr; }
+.authentic-backrooms .ceiling-grid,
+.authentic-backrooms .carpet-plane,
+.authentic-backrooms .hall-ceiling,
+.authentic-backrooms .corridor-frame,
+.authentic-backrooms .corridor-lights,
+.authentic-backrooms .pipe { display: none; }
+
+.authentic-backrooms .level-marker {
+  border-color: rgba(211,209,172,.22);
+  color: rgba(211,209,172,.66);
+}
+
+.authentic-backrooms .wall-message,
+.authentic-backrooms .route-panel {
+  color: #d6d2b0;
+  background: rgba(14,14,10,.76);
+  border: 1px solid rgba(211,209,172,.25);
+  box-shadow: 0 24px 90px rgba(0,0,0,.52);
+  backdrop-filter: blur(12px);
+}
+
+.authentic-backrooms .wall-message { border-left: 4px solid #a9aa8b; }
+.authentic-backrooms .wall-message > p:last-child,
+.authentic-backrooms .route-heading > p:last-child,
+.authentic-backrooms .route-panel li p { color: #aaa78d; }
+
+.authentic-backrooms .observation-window {
+  justify-self: end;
+  width: min(360px, 100%);
+  min-height: 430px;
+  color: #aaa88e;
+  background: rgba(2,2,2,.88);
+  border: 7px solid #25251d;
+  box-shadow: inset 0 0 100px #000, 0 25px 70px rgba(0,0,0,.6);
+}
+
+.authentic-backrooms .door-level { padding-top: 15vh; }
+.authentic-backrooms .hall-heading { color: #d3cfad; }
+.authentic-backrooms .service-door {
+  min-height: 500px;
+  color: #cbc6a1;
+  background: linear-gradient(90deg, #252017, #3a3020 48%, #211c15);
+  border-color: #17140f;
+  box-shadow: inset 0 0 0 2px #544830, inset 0 -60px 100px rgba(0,0,0,.45), 10px 22px 42px rgba(0,0,0,.5);
+  filter: brightness(.78);
+}
+.authentic-backrooms .service-door:hover { filter: brightness(.98); }
+.authentic-backrooms .door-panel { background: rgba(5,5,4,.28); border-color: #16130f; box-shadow: inset 0 0 0 4px #423823; }
+.authentic-backrooms .door-panel p { color: #928e76; }
+.authentic-backrooms .door-plate { color: #b8b494; border-color: #6e694f; background: #171712; }
+.authentic-backrooms .door-knob { background: #777251; box-shadow: 0 0 0 4px #16140f; }
+.authentic-backrooms .hall-note { color: #9b987e; }
+
+.authentic-backrooms .corridor-level { padding: 14vh 13vw; }
+.authentic-backrooms .route-panel { width: min(940px, 100%); }
+.authentic-backrooms .route-panel ol { border-color: #55533f; }
+.authentic-backrooms .route-panel li { border-color: #484735; }
+
+.authentic-backrooms .utility-level:before {
+  background: linear-gradient(90deg, rgba(0,0,0,.7), transparent 45%, rgba(0,0,0,.5));
+}
+.authentic-backrooms .utility-sign { background: rgba(5,5,4,.62); border-left: 3px solid #8e8e73; padding: 28px 34px; backdrop-filter: blur(8px); }
+.authentic-backrooms .utility-grid { border-color: rgba(199,198,160,.25); background: rgba(5,5,4,.72); backdrop-filter: blur(10px); }
+.authentic-backrooms .utility-grid article { border-color: rgba(199,198,160,.18); }
+.authentic-backrooms .utility-grid p { color: #918e77; }
+
+.authentic-backrooms .exit-level {
+  background-image:
+    radial-gradient(circle at 50% 55%, transparent 0, rgba(0,0,0,.2) 28%, rgba(0,0,0,.92) 80%),
+    url('/backrooms-lower-level.png');
+}
+.authentic-backrooms .exit-light { background: #20251c; color: #b9c3a6; border-color: #11140f; box-shadow: 0 0 24px rgba(158,174,137,.12); }
+.authentic-backrooms .exit-door { color: #d0cbaa; background: linear-gradient(90deg,#211c15,#33291d 48%,#1c1812); border-color: #11100c; box-shadow: inset 0 0 0 3px #4a3e29, 0 25px 100px #000; }
+.authentic-backrooms .exit-copy > span { color: #99957c; }
+
+@media (max-width: 850px) {
+  .authentic-backrooms .br-nav { position: absolute; }
+  .authentic-backrooms .br-hero-copy { width: auto; top: 17%; }
+  .authentic-backrooms .br-room { grid-template-columns: 1fr; }
+  .authentic-backrooms .br-room,
+  .authentic-backrooms .door-level,
+  .authentic-backrooms .corridor-level,
+  .authentic-backrooms .utility-level,
+  .authentic-backrooms .exit-level { background-attachment: scroll; }
+}
+
+@media (max-width: 520px) {
+  .authentic-backrooms .br-hero-image { object-position: 58% center; }
+  .authentic-backrooms .br-hero-shade { background: linear-gradient(0deg,rgba(3,3,2,.93),rgba(3,3,2,.2) 78%,rgba(3,3,2,.55)); }
+  .authentic-backrooms .observation-window { display: none; }
+}
