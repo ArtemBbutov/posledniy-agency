@@ -807,3 +807,206 @@
 @media (prefers-reduced-motion: reduce) {
   .authentic-backrooms .route-lighting i { animation: none!important; }
 }
+
+/* Commercial floors: proof, first month and engagement formats. */
+.authentic-backrooms .proof-level,
+.authentic-backrooms .price-level {
+  min-height: 105svh;
+  padding: 14vh 6vw 10vh;
+  color: #cfccaa;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.authentic-backrooms .proof-level {
+  background-image:
+    linear-gradient(90deg, rgba(3,3,2,.84), rgba(3,3,2,.3) 55%, rgba(3,3,2,.68)),
+    linear-gradient(0deg, rgba(2,2,1,.9), transparent 58%, rgba(2,2,1,.22)),
+    url('/hero-backrooms-v2.png');
+}
+
+.authentic-backrooms .price-level {
+  background-image:
+    linear-gradient(90deg, rgba(2,2,2,.78), rgba(2,2,2,.2) 52%, rgba(2,2,2,.7)),
+    linear-gradient(0deg, rgba(1,1,1,.88), transparent 55%, rgba(1,1,1,.2)),
+    url('/backrooms-lower-level.png');
+}
+
+.authentic-backrooms .proof-heading,
+.authentic-backrooms .price-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+  column-gap: 7vw;
+  align-items: end;
+  text-shadow: 0 3px 28px #000;
+}
+
+.authentic-backrooms .proof-heading .br-label,
+.authentic-backrooms .price-heading .br-label { grid-column: 1 / -1; }
+
+.authentic-backrooms .proof-heading h2,
+.authentic-backrooms .price-heading h2 {
+  margin: 7vh 0 0;
+  font-size: clamp(58px, 8vw, 126px);
+  line-height: .82;
+  letter-spacing: -.07em;
+  text-transform: uppercase;
+}
+
+.authentic-backrooms .proof-heading > p:last-child,
+.authentic-backrooms .price-heading > p:last-child {
+  max-width: 470px;
+  margin: 0 0 5px;
+  color: #a09d83;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.authentic-backrooms .proof-grid {
+  margin-top: 11vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+}
+
+.authentic-backrooms .proof-grid article {
+  padding: 22px 0 0;
+  border-top: 1px solid rgba(210,208,174,.38);
+  text-shadow: 0 3px 20px #000;
+}
+
+.authentic-backrooms .proof-grid article > span,
+.authentic-backrooms .price-list article > span {
+  color: #88866f;
+  font: 9px var(--font-geist-mono), monospace;
+  letter-spacing: .08em;
+}
+
+.authentic-backrooms .proof-grid h3 {
+  max-width: 560px;
+  margin: 7vh 0 24px;
+  font-size: clamp(38px, 4vw, 68px);
+  line-height: .9;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.authentic-backrooms .proof-grid p {
+  max-width: 560px;
+  color: #9a977f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.authentic-backrooms .proof-grid ul {
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid rgba(210,208,174,.15);
+}
+
+.authentic-backrooms .proof-grid li {
+  padding: 11px 0;
+  border-top: 1px solid rgba(210,208,174,.15);
+  color: #bbb89a;
+  font: 10px var(--font-geist-mono), monospace;
+  text-transform: uppercase;
+}
+
+.authentic-backrooms .proof-note,
+.authentic-backrooms .month-note {
+  margin: 7vh 0 0;
+  color: #77755f;
+  font: 9px var(--font-geist-mono), monospace;
+  letter-spacing: .05em;
+  text-align: center;
+}
+
+.authentic-backrooms .month-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 5vh;
+}
+
+.authentic-backrooms .month-grid article { min-height: 285px; }
+.authentic-backrooms .month-grid h3 { font-size: clamp(23px, 2.2vw, 34px); }
+
+.authentic-backrooms .price-list {
+  margin-top: 10vh;
+  border-bottom: 1px solid rgba(210,208,174,.24);
+}
+
+.authentic-backrooms .price-list article {
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) minmax(210px, .45fr);
+  gap: 3vw;
+  align-items: center;
+  border-top: 1px solid rgba(210,208,174,.28);
+  text-shadow: 0 3px 18px #000;
+  transition: padding-left .3s ease, border-color .3s ease;
+}
+
+.authentic-backrooms .price-list article:hover {
+  padding-left: 14px;
+  border-color: rgba(236,233,197,.68);
+}
+
+.authentic-backrooms .price-list h3 {
+  margin: 0 0 8px;
+  font-size: clamp(25px, 2.5vw, 42px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+}
+
+.authentic-backrooms .price-list p {
+  max-width: 620px;
+  margin: 0;
+  color: #918e77;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.authentic-backrooms .price-list strong {
+  color: #d8d4b2;
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-weight: 400;
+  text-align: right;
+}
+
+.authentic-backrooms .price-cta {
+  width: min(570px, 100%);
+  margin: 8vh 0 0 auto;
+  padding: 17px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(218,215,180,.55);
+  color: #d8d4b2;
+  font-size: clamp(17px, 1.8vw, 28px);
+  transition: letter-spacing .3s ease, border-color .3s ease;
+}
+
+.authentic-backrooms .price-cta:hover {
+  letter-spacing: .02em;
+  border-color: #f0edcb;
+}
+
+@media (max-width: 900px) {
+  .authentic-backrooms .proof-level,
+  .authentic-backrooms .price-level { padding: 14vh 18px 11vh; background-attachment: scroll; }
+  .authentic-backrooms .proof-heading,
+  .authentic-backrooms .price-heading { grid-template-columns: 1fr; gap: 32px; }
+  .authentic-backrooms .proof-heading > p:last-child,
+  .authentic-backrooms .price-heading > p:last-child { margin-top: 0; }
+  .authentic-backrooms .month-grid { grid-template-columns: 1fr 1fr; }
+  .authentic-backrooms .price-list article { grid-template-columns: 100px 1fr; }
+  .authentic-backrooms .price-list strong { grid-column: 2; text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .authentic-backrooms .proof-grid { grid-template-columns: 1fr; gap: 11vh; }
+  .authentic-backrooms .month-grid { grid-template-columns: 1fr; }
+  .authentic-backrooms .price-list article { grid-template-columns: 1fr; gap: 18px; }
+  .authentic-backrooms .price-list strong { grid-column: 1; }
+}

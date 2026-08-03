@@ -66,15 +66,35 @@ export default function Home() {
       </div>
     </section>
 
+    <section className="br-level proof-level" id="cases">
+      <header className="proof-heading"><p className="br-label">ЭТАЖ 04 / ПРАКТИКА КОМАНДЫ</p><h2>Без выдуманных<br/>цифр.</h2><p>Первые проекты агентства оформляем в публичные кейсы. Пока показываем то, за что отвечаем лично, и рабочие материалы — на созвоне.</p></header>
+      <div className="proof-grid">
+        <article><span>АРТЁМ БУТОВ / СТРАТЕГИЯ И КОНТЕНТ</span><h3>Голос, который узнают.</h3><p>Позиционирование автора, архитектура канала, рубрики, редакционный ритм и тексты, которые не звучат как корпоративный блог.</p><ul><li>Стратегия канала</li><li>Редакционная система</li><li>Контент и упаковка</li></ul></article>
+        <article><span>АРТЁМ ФЕДОНКО / ПРОДУКТ И ЗАПУСК</span><h3>Система, которая продаёт.</h3><p>Продукт, команда, прогрев, воронка и управление запуском — от первой гипотезы до разбора результатов.</p><ul><li>Продукт и оффер</li><li>Воронка запуска</li><li>Команда и аналитика</li></ul></article>
+      </div>
+      <p className="proof-note">Как только появляется подтверждённый результат — добавляем сюда цифры. Не раньше.</p>
+    </section>
+
     <section className="br-level utility-level">
       <div className="pipe p1"/><div className="pipe p2"/><div className="pipe p3"/>
-      <div className="utility-sign"><p className="br-label">ЭТАЖ 04 / ТЕХНИЧЕСКИЙ</p><h2>Что держит<br/>систему.</h2></div>
-      <div className="utility-grid"><article><span>01</span><h3>Автор</h3><p>Сохраняем настоящую интонацию. Канал не превращается в безликий полезный блог.</p></article><article><span>02</span><h3>Ритм</h3><p>У контента появляются рубрики, темп, редакционный процесс и измеримые точки роста.</p></article><article><span>03</span><h3>Продажа</h3><p>Запуск становится продолжением отношений с аудиторией, а не внезапным вторжением.</p></article></div>
+      <div className="utility-sign"><p className="br-label">ЭТАЖ 05 / ПЕРВЫЕ 30 ДНЕЙ</p><h2>Что будет<br/>через месяц.</h2></div>
+      <div className="utility-grid month-grid"><article><span>01</span><h3>Позиция</h3><p>Аудит, аудитория, роль автора, обещание канала и понятная причина подписаться.</p></article><article><span>02</span><h3>Редакция</h3><p>Голос, рубрики, контент-план и первые 12–16 материалов для стабильного выхода.</p></article><article><span>03</span><h3>Рост</h3><p>План продвижения, список площадок, первые тесты и метрики, по которым принимаем решения.</p></article><article><span>04</span><h3>Запуск</h3><p>Карта продукта, оффер, прогрев и календарь запуска — если проект готов к продажам.</p></article></div>
+      <p className="month-note">Точный состав первого месяца фиксируем после диагностики: он зависит от состояния канала и продукта.</p>
+    </section>
+
+    <section className="br-level price-level" id="formats">
+      <header className="price-heading"><p className="br-label">ЭТАЖ 06 / ФОРМАТЫ И СТОИМОСТЬ</p><h2>Выберите<br/>глубину.</h2><p>Начинаем с задачи, а не с пакета услуг. Ниже — ориентиры, чтобы понимать порядок работы и бюджета до первого сообщения.</p></header>
+      <div className="price-list">
+        <article><span>01 / РАЗОВО</span><div><h3>Стратегия и упаковка</h3><p>Диагностика, позиционирование, структура канала, рубрики и план запуска редакции.</p></div><strong>от 60 000 ₽</strong></article>
+        <article><span>02 / ЕЖЕМЕСЯЧНО</span><div><h3>Продюсирование канала</h3><p>Стратегия, редакция, контент, рост, аналитика и управление процессом.</p></div><strong>от 120 000 ₽ / мес.</strong></article>
+        <article><span>03 / ПРОЕКТНО</span><div><h3>Запуск продукта</h3><p>Продукт, оффер, прогрев, воронка, продажи и разбор результатов.</p></div><strong>смета после диагностики</strong></article>
+      </div>
+      <a className="price-cta" href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить подходящий формат <span>↗</span></a>
     </section>
 
     <section className="br-level exit-level" id="exit">
       <div className="exit-light">ВЫХОД</div>
-      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 05 / СВЯЗЬ</p><h2>Готовы зайти<br/>в проект?</h2><span>Напишите нам о канале, продукте или идее. Ответим лично и поймём, сможем ли быть полезны.</span><a href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить проект в Telegram ↗</a></div><i/></div>
+      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 07 / СВЯЗЬ</p><h2>Готовы зайти<br/>в проект?</h2><span>Напишите нам о канале, продукте или идее. Ответим лично и поймём, сможем ли быть полезны.</span><a href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить проект в Telegram ↗</a></div><i/></div>
       <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
     </section>
   </main>;
