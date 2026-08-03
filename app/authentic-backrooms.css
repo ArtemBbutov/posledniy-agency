@@ -572,6 +572,7 @@
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   text-shadow: 0 3px 28px #000;
+  margin: 0;
 }
 
 .authentic-backrooms .hall-heading h2 {
@@ -581,7 +582,7 @@
 
 .authentic-backrooms .route-choices {
   width: min(1420px, 100%);
-  margin: auto auto 3vh;
+  margin: clamp(38px, 6vh, 70px) auto 3vh;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(20px, 3vw, 54px);
