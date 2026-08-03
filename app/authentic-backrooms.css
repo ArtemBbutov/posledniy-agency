@@ -174,3 +174,83 @@
   .authentic-backrooms .br-hero-shade { background: linear-gradient(0deg,rgba(3,3,2,.93),rgba(3,3,2,.2) 78%,rgba(3,3,2,.55)); }
   .authentic-backrooms .observation-window { display: none; }
 }
+
+/* v3: expose the actual rooms across the whole page. */
+.authentic-backrooms .br-room,
+.authentic-backrooms .corridor-level {
+  background-image:
+    linear-gradient(90deg, rgba(3,3,2,.64) 0%, rgba(3,3,2,.08) 52%, rgba(3,3,2,.46) 100%),
+    linear-gradient(0deg, rgba(2,2,1,.68) 0%, transparent 48%, rgba(2,2,1,.14) 100%),
+    url('/hero-backrooms-v2.png');
+}
+
+.authentic-backrooms .door-level,
+.authentic-backrooms .utility-level {
+  background-image:
+    linear-gradient(90deg, rgba(2,2,2,.54), rgba(2,2,2,.04) 46%, rgba(2,2,2,.4)),
+    linear-gradient(0deg, rgba(1,1,1,.7), transparent 55%, rgba(1,1,1,.1)),
+    url('/backrooms-lower-level.png');
+}
+
+.authentic-backrooms .br-room { background-position: center 46%; }
+.authentic-backrooms .door-level { background-position: center 52%; }
+.authentic-backrooms .corridor-level { background-position: 58% center; }
+.authentic-backrooms .utility-level { background-position: 42% center; }
+
+.authentic-backrooms .wall-message,
+.authentic-backrooms .route-panel {
+  background: rgba(8,8,6,.42);
+  border-color: rgba(220,218,181,.32);
+  box-shadow: 0 24px 90px rgba(0,0,0,.3);
+  backdrop-filter: blur(5px);
+}
+
+.authentic-backrooms .wall-message {
+  max-width: 650px;
+  padding: 34px;
+}
+
+.authentic-backrooms .observation-window {
+  background: rgba(2,2,2,.56);
+  backdrop-filter: blur(4px);
+}
+
+.authentic-backrooms .hall-heading {
+  width: min(1080px, 92%);
+  padding: 22px 26px;
+  background: rgba(5,5,4,.42);
+  border-left: 3px solid rgba(202,202,167,.62);
+  backdrop-filter: blur(5px);
+}
+
+.authentic-backrooms .door-row {
+  width: min(1320px, 96%);
+  margin-inline: auto;
+}
+
+.authentic-backrooms .service-door {
+  background: linear-gradient(90deg, rgba(26,22,17,.94), rgba(53,44,30,.93) 48%, rgba(23,20,15,.95));
+}
+
+.authentic-backrooms .route-panel {
+  border-width: 1px 0;
+  padding: 34px 0;
+  width: min(900px, 88%);
+}
+
+.authentic-backrooms .utility-sign {
+  background: rgba(5,5,4,.36);
+  backdrop-filter: blur(4px);
+}
+
+.authentic-backrooms .utility-grid {
+  background: rgba(5,5,4,.45);
+  backdrop-filter: blur(5px);
+}
+
+.authentic-backrooms .exit-level {
+  background-image:
+    radial-gradient(circle at 50% 55%, transparent 0, rgba(0,0,0,.08) 32%, rgba(0,0,0,.72) 86%),
+    url('/backrooms-lower-level.png');
+  background-position: center;
+}
