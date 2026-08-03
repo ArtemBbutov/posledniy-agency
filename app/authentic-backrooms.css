@@ -1212,3 +1212,281 @@
   .authentic-backrooms .price-list article { grid-template-columns: 1fr; gap: 18px; }
   .authentic-backrooms .price-list strong { grid-column: 1; }
 }
+
+/* Mobile is its own vertical descent, not a squeezed desktop page. */
+@media (max-width: 600px) {
+  .authentic-backrooms {
+    padding-bottom: calc(74px + env(safe-area-inset-bottom));
+  }
+
+  .authentic-backrooms .br-nav {
+    position: fixed;
+    inset: auto 10px calc(10px + env(safe-area-inset-bottom));
+    width: auto;
+    height: 58px;
+    padding: 0 8px 0 14px;
+    grid-template-columns: 1fr auto;
+    border: 1px solid rgba(211,211,174,.22);
+    border-radius: 15px;
+    background: rgba(7,7,5,.86);
+    -webkit-backdrop-filter: blur(18px) saturate(.8);
+    backdrop-filter: blur(18px) saturate(.8);
+    box-shadow: 0 16px 48px rgba(0,0,0,.5), inset 0 1px rgba(235,235,202,.07);
+  }
+  .authentic-backrooms .br-logo { gap: 0; }
+  .authentic-backrooms .br-logo b { font-size: 27px; }
+  .authentic-backrooms .br-logo span,
+  .authentic-backrooms .br-nav nav { display: none; }
+  .authentic-backrooms .br-call {
+    min-height: 42px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 10px;
+    color: #171712;
+    background: #c9c9a6;
+    font-size: 0;
+  }
+  .authentic-backrooms .br-call::before {
+    content: "НАПИСАТЬ";
+    font: 9px var(--font-geist-mono), monospace;
+    letter-spacing: .09em;
+  }
+  .authentic-backrooms .br-call span { font-size: 14px; }
+
+  .authentic-backrooms .br-hero {
+    min-height: 100svh;
+    height: 100svh;
+  }
+  .authentic-backrooms .br-hero-image {
+    object-position: 61% center;
+    transform-origin: 64% 42%;
+  }
+  .authentic-backrooms .br-hero-shade {
+    background:
+      linear-gradient(180deg, rgba(3,3,2,.38), rgba(3,3,2,.04) 28%, rgba(3,3,2,.45) 63%, rgba(2,2,1,.95)),
+      linear-gradient(90deg, rgba(3,3,2,.84), rgba(3,3,2,.08) 82%);
+  }
+  .authentic-backrooms .br-status {
+    top: 22px;
+    left: 16px;
+    right: 16px;
+    font-size: 8px;
+  }
+  .authentic-backrooms .br-hero-copy {
+    top: 13%;
+    bottom: 5%;
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+  .authentic-backrooms .br-hero-copy > p {
+    width: 72%;
+    font-size: 8px;
+    line-height: 1.45;
+  }
+  .authentic-backrooms .br-hero h1 {
+    margin: auto 0 6vh;
+    font-size: clamp(58px, 20vw, 86px);
+    line-height: .78;
+  }
+  .authentic-backrooms .br-hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .authentic-backrooms .br-hero-bottom p {
+    max-width: 92%;
+    font-size: 17px;
+    line-height: 1.22;
+  }
+  .authentic-backrooms .br-hero-actions { width: 100%; }
+  .authentic-backrooms .what-we-do {
+    min-height: 58px;
+    padding: 0 16px;
+    border-radius: 13px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.28), inset 0 1px rgba(255,255,224,.3);
+  }
+  .authentic-backrooms .what-we-do span { font-size: 14px; }
+  .authentic-backrooms .what-we-do i { font-size: 8px; }
+
+  .authentic-backrooms .br-room,
+  .authentic-backrooms .door-level,
+  .authentic-backrooms .corridor-level,
+  .authentic-backrooms .utility-level,
+  .authentic-backrooms .proof-level,
+  .authentic-backrooms .price-level {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .authentic-backrooms .br-room { padding-top: 19vh; gap: 28px; }
+  .authentic-backrooms .wall-message {
+    padding: 24px 20px 28px;
+    border-left: 2px solid rgba(211,210,175,.45);
+    background: linear-gradient(110deg, rgba(7,7,5,.78), rgba(7,7,5,.3));
+  }
+  .authentic-backrooms .wall-message h2,
+  .authentic-backrooms .hall-heading h2,
+  .authentic-backrooms .route-heading h2,
+  .authentic-backrooms .utility-sign h2,
+  .authentic-backrooms .proof-heading h2,
+  .authentic-backrooms .price-heading h2 {
+    font-size: clamp(46px, 14vw, 66px);
+    line-height: .86;
+  }
+  .authentic-backrooms .wall-message > p:last-child { font-size: 15px; line-height: 1.5; }
+  .authentic-backrooms .observation-window {
+    min-height: 0;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(5,5,4,.58);
+  }
+  .authentic-backrooms .observation-window span {
+    min-height: 72px;
+    padding: 12px 8px;
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid rgba(210,208,173,.14);
+    font-size: 9px;
+  }
+
+  .authentic-backrooms .door-level {
+    min-height: 100svh;
+    padding-top: 15vh;
+    overflow: hidden;
+    background-position: center;
+  }
+  .authentic-backrooms .hall-heading { padding-right: 8vw; }
+  .authentic-backrooms .route-choices {
+    width: auto;
+    margin: 9vh -16px 2vh;
+    padding: 0 16px 28px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+  .authentic-backrooms .route-choices::-webkit-scrollbar { display: none; }
+  .authentic-backrooms .service-route {
+    flex: 0 0 82vw;
+    min-height: 330px;
+    padding: 18px;
+    scroll-snap-align: center;
+    border: 1px solid rgba(211,210,175,.28);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(7,7,5,.76), rgba(7,7,5,.32));
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.32), inset 0 1px rgba(230,230,196,.06);
+  }
+  .authentic-backrooms .service-route h3 { font-size: clamp(43px, 13vw, 60px); }
+  .authentic-backrooms .service-route p { max-width: 88%; font-size: 13px; }
+  .authentic-backrooms .hall-note { text-align: left; padding-right: 18vw; line-height: 1.45; }
+  .authentic-backrooms .route-lighting { opacity: .35; }
+
+  .authentic-backrooms .corridor-level { padding-top: 14vh; padding-bottom: 13vh; }
+  .authentic-backrooms .route-panel { width: 100%; padding: 22px 18px 18px; }
+  .authentic-backrooms .route-heading { gap: 24px; }
+  .authentic-backrooms .route-heading h2 { margin: 5vh 0 1vh; }
+  .authentic-backrooms .route-panel ol { margin-top: 6vh; }
+  .authentic-backrooms .route-panel li {
+    grid-template-columns: 38px 1fr 18px;
+    gap: 4px;
+    padding: 18px 0;
+  }
+  .authentic-backrooms .route-panel h3 { font-size: 25px; }
+  .authentic-backrooms .route-panel li p { line-height: 1.35; }
+
+  .authentic-backrooms .proof-level,
+  .authentic-backrooms .price-level { padding-top: 14vh; }
+  .authentic-backrooms .proof-heading,
+  .authentic-backrooms .price-heading { gap: 26px; }
+  .authentic-backrooms .proof-grid {
+    margin: 9vh -16px 0;
+    padding: 0 16px 30px;
+    display: flex;
+    gap: 13px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .authentic-backrooms .proof-grid::-webkit-scrollbar { display: none; }
+  .authentic-backrooms .proof-grid article {
+    flex: 0 0 86vw;
+    min-height: 520px;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: center;
+    border: 1px solid rgba(210,208,173,.22);
+    border-radius: 14px;
+    background: rgba(5,5,4,.52);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .authentic-backrooms .proof-grid h3 { margin: auto 0 24px; font-size: 12vw; }
+  .authentic-backrooms .proof-grid ul { margin-top: 28px; }
+  .authentic-backrooms .proof-note { text-align: left; line-height: 1.5; }
+
+  .authentic-backrooms .utility-level { padding-top: 15vh; }
+  .authentic-backrooms .utility-sign { margin: 0; padding: 22px 18px; }
+  .authentic-backrooms .utility-grid.month-grid {
+    margin: 7vh -16px 0;
+    padding: 0 16px 26px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .authentic-backrooms .month-grid::-webkit-scrollbar { display: none; }
+  .authentic-backrooms .month-grid article {
+    flex: 0 0 79vw;
+    min-height: 320px;
+    padding: 20px;
+    scroll-snap-align: center;
+    border: 1px solid rgba(210,208,173,.18);
+    border-radius: 14px;
+    background: rgba(5,5,4,.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .authentic-backrooms .month-grid h3 { font-size: 37px; }
+  .authentic-backrooms .month-note { text-align: left; line-height: 1.5; }
+
+  .authentic-backrooms .price-list { margin-top: 7vh; }
+  .authentic-backrooms .price-list article { padding: 24px 0; }
+  .authentic-backrooms .price-list h3 { font-size: 32px; }
+  .authentic-backrooms .price-list strong { font-size: 21px; }
+  .authentic-backrooms .price-cta {
+    min-height: 62px;
+    margin-top: 6vh;
+    padding: 17px 14px;
+    align-items: center;
+    border: 1px solid rgba(220,219,185,.26);
+    border-radius: 13px;
+    background: rgba(6,6,4,.42);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+  }
+
+  .authentic-backrooms .exit-level { padding-bottom: calc(98px + env(safe-area-inset-bottom)); }
+  .authentic-backrooms .exit-door { padding-left: 2vw; padding-right: 2vw; }
+  .authentic-backrooms .exit-copy h2 { font-size: clamp(47px, 14vw, 72px); }
+  .authentic-backrooms .exit-action { min-height: 72px; }
+  .authentic-backrooms .exit-action strong { font-size: 22px; }
+  .authentic-backrooms .exit-level footer { gap: 14px; font-size: 8px; }
+}
