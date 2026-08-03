@@ -31,7 +31,7 @@ function playSequence() {
         song.currentTime = 0;
         activeAudio = null;
         stopTimer = null;
-      }, 5000);
+      }, 6000);
     }).catch(() => undefined);
   };
 
