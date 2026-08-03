@@ -1,69 +1,78 @@
-const directions = [
-  { n: "01", title: "Канал с нуля", text: "Находим позиционирование, оформляем канал и выстраиваем контент так, чтобы случайный читатель понимал, зачем оставаться.", tag: "эксперт → медиа" },
-  { n: "02", title: "Перезапуск канала", text: "Разбираем текущий контент, меняем подачу и собираем систему, которая возвращает внимание и рост.", tag: "хаос → система" },
-  { n: "03", title: "Запуск продукта", text: "Проектируем прогрев, предложение и продажи через Telegram — без набора разрозненных постов в последний момент.", tag: "контент → продажи" },
-  { n: "04", title: "Продюсирование", text: "Берём канал и запуски под управление: стратегия, редакция, аналитика, команда и движение к следующей точке роста.", tag: "автор → бизнес" },
+const doors = [
+  { n: "01", title: "Канал с нуля", tag: "эксперт → медиа", text: "Позиционирование, оформление и контент-система, из которой не хочется выходить." },
+  { n: "02", title: "Перезапуск", tag: "хаос → система", text: "Разбираем старый этаж, меняем маршрут и возвращаем каналу внимание аудитории." },
+  { n: "03", title: "Запуск продукта", tag: "контент → продажи", text: "Прогрев, предложение и продажи через Telegram без внезапной рекламной атаки." },
+  { n: "04", title: "Продюсирование", tag: "автор → бизнес", text: "Берём канал, редакцию, аналитику, команду и запуски под единое управление." },
 ];
 
-const services = [
-  ["Стратегия", "Позиционирование автора, аудитория, продукт и план роста"],
-  ["Редакция", "Рубрики, контент-план, тексты, визуал и голос канала"],
-  ["Рост", "Дистрибуция, посевы, коллаборации и аналитика аудитории"],
-  ["Запуск", "Прогрев, оффер, воронка, продажи и разбор результатов"],
+const route = [
+  ["01", "Стратегия", "Автор, аудитория, позиционирование и точка назначения"],
+  ["02", "Редакция", "Голос канала, рубрики, тексты и визуальная система"],
+  ["03", "Рост", "Посевы, коллаборации, аналитика и новая аудитория"],
+  ["04", "Запуск", "Прогрев, оффер, воронка, продажи и следующий цикл"],
 ];
 
 export default function Home() {
-  return (
-    <main id="top">
-      <header className="nav">
-        <a className="wordmark" href="#top"><b>А#</b><span>Telegram / запуски<br/>уровень 00</span></a>
-        <nav aria-label="Основная навигация"><a href="#directions">Направления</a><a href="#services">Услуги</a><a href="#contact">Контакты</a></nav>
-        <a className="nav-contact" href="#contact">Обсудить проект <span>↗</span></a>
-      </header>
+  return <main id="top" className="backrooms-site">
+    <header className="br-nav">
+      <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>СЕКТОР TELEGRAM</span></a>
+      <nav aria-label="Навигация по этажам"><a href="#floor-01">01</a><a href="#floor-02">02</a><a href="#floor-03">03</a><a href="#exit">ВЫХОД</a></nav>
+      <a className="br-call" href="#exit">Войти в проект <span>↗</span></a>
+    </header>
 
-      <section className="hero">
-        <div className="hero-title">
-          <p className="eyebrow">Артём Бутов × Артём Федонко / 2026</p>
-          <h1><span>Агенство</span><em>Нас#лия</em></h1>
-          <div className="hero-bottom">
-            <p>Строим Telegram-каналы, вокруг которых растут аудитория, доверие и запуски.</p>
-            <a className="button light" href="#contact">Обсудить канал <span>↗</span></a>
-          </div>
-        </div>
-        <figure className="room-card" aria-label="Нулевой этаж Агенства Нас#лия">
-          <img className="room-image" src="/hero-backrooms.png" alt="Лиминальный офисный этаж с продюсерским столом и планом запуска" />
-          <figcaption><span>ЭТАЖ / 00</span><span>ВХОД ОБНАРУЖЕН</span></figcaption>
-        </figure>
-      </section>
+    <section className="br-hero br-level" aria-labelledby="hero-title">
+      <img className="br-hero-image" src="/hero-backrooms.png" alt="Бесконечный офисный этаж с продюсерским столом" />
+      <div className="br-hero-shade" />
+      <div className="br-status"><span>ЭТАЖ 00</span><span className="live-dot">СВЕТ СТАБИЛЕН</span></div>
+      <div className="br-hero-copy">
+        <p>Telegram-каналы и запуски / Бутов × Федонко</p>
+        <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
+        <div className="br-hero-bottom"><p>Строим каналы, вокруг которых растут аудитория, доверие и продажи.</p><a href="#floor-01">Спуститься ниже <span>↓</span></a></div>
+      </div>
+      <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
+    </section>
 
-      <section className="intro floor-section floor-one">
-        <p className="label">ЭТАЖ 01 / Кто мы</p>
-        <div className="intro-copy"><h2>Не просто<br/>пишем посты.</h2><p>Мы превращаем экспертизу и личность автора в понятное медиа. Канал становится местом, где аудитория знакомится, остаётся, доверяет — и покупает во время запуска.</p></div>
-        <div className="ticker" aria-label="Виды работ"><span>ПОЗИЦИОНИРОВАНИЕ</span><i>✳</i><span>КОНТЕНТ</span><i>✳</i><span>РОСТ</span><i>✳</i><span>ЗАПУСК</span></div>
-      </section>
+    <section className="br-level br-room floor-01" id="floor-01">
+      <div className="ceiling-grid"><i/><i/><i/></div><div className="carpet-plane"/>
+      <aside className="level-marker"><b>01</b><span>КОМНАТА ЗНАКОМСТВА</span></aside>
+      <div className="wall-message">
+        <p className="br-label">КТО МЫ / СЕКТОР 01-А</p>
+        <h2>Не просто<br/>пишем посты.</h2>
+        <p>Превращаем экспертизу и личность автора в самостоятельное медиа. Здесь аудитория знакомится, остаётся, доверяет — и покупает во время запуска.</p>
+      </div>
+      <div className="observation-window"><span>ПОЗИЦИОНИРОВАНИЕ</span><span>КОНТЕНТ</span><span>РОСТ</span><span>ЗАПУСК</span></div>
+    </section>
 
-      <section className="directions floor-section floor-two" id="directions">
-        <div className="section-heading"><p className="label">ЭТАЖ 02 / С чем работаем</p><h2>Канал как<br/><em>точка роста.</em></h2><p>Подключаемся на нужном этапе: создаём с нуля, перезапускаем или берём всё продюсирование на себя.</p></div>
-        <div className="direction-grid">
-          {directions.map((item) => <article key={item.n}><div className="card-top"><span>{item.n}</span><i>{item.tag}</i></div><h3>{item.title}</h3><p>{item.text}</p><b>↗</b></article>)}
-        </div>
-      </section>
+    <section className="br-level door-level" id="floor-02">
+      <div className="hall-ceiling"><i/><i/><i/><i/></div>
+      <header className="hall-heading"><p className="br-label">ЭТАЖ 02 / ВЫБЕРИТЕ ДВЕРЬ</p><h2>С какой точки<br/>вы входите?</h2></header>
+      <div className="door-row">
+        {doors.map((door)=><article className="service-door" key={door.n}>
+          <div className="door-plate"><span>{door.n}</span><i>{door.tag}</i></div><div className="door-panel"><h3>{door.title}</h3><p>{door.text}</p></div><b className="door-knob"/>
+        </article>)}
+      </div>
+      <p className="hall-note">Все двери ведут в одну систему. Отличается только точка входа.</p>
+    </section>
 
-      <section className="services floor-section floor-three" id="services">
-        <div className="services-intro"><p className="label">ЭТАЖ 03 / Полный цикл</p><h2>От первого поста<br/>до запуска.</h2><p>Можно зайти с отдельной задачей или передать нам канал целиком. На каждом этапе понятно, что делаем, за какие цифры смотрим и к какому результату идём.</p></div>
-        <div className="service-stack">{services.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-      </section>
+    <section className="br-level corridor-level" id="floor-03">
+      <div className="corridor-frame frame-a"/><div className="corridor-frame frame-b"/><div className="corridor-frame frame-c"/>
+      <div className="corridor-lights"><i/><i/><i/><i/><i/></div>
+      <div className="route-panel">
+        <div className="route-heading"><p className="br-label">ЭТАЖ 03 / МАРШРУТ ПРОЕКТА</p><h2>От первого поста<br/>до запуска.</h2><p>Можно зайти с одной задачей или пройти маршрут целиком. На каждом участке понятно, что происходит и куда мы идём.</p></div>
+        <ol>{route.map(([n,title,text])=><li key={n}><span>{n}</span><div><h3>{title}</h3><p>{text}</p></div><i>→</i></li>)}</ol>
+      </div>
+    </section>
 
-      <section className="principles floor-section floor-four">
-        <p className="label">ЭТАЖ 04 / Как работаем</p>
-        <h2>Канал — это<br/>не лента постов.</h2>
-        <div className="principle-grid"><article><span>01</span><h3>Сначала автор</h3><p>Достаём настоящую интонацию и экспертизу. Не превращаем человека в безликий «полезный блог».</p></article><article><span>02</span><h3>Потом система</h3><p>У канала появляются рубрики, ритм, редакционный процесс и понятные точки роста.</p></article><article><span>03</span><h3>После — запуск</h3><p>Продажи становятся продолжением контента и отношений с аудиторией, а не внезапной рекламной атакой.</p></article></div>
-      </section>
+    <section className="br-level utility-level">
+      <div className="pipe p1"/><div className="pipe p2"/><div className="pipe p3"/>
+      <div className="utility-sign"><p className="br-label">ЭТАЖ 04 / ТЕХНИЧЕСКИЙ</p><h2>Что держит<br/>систему.</h2></div>
+      <div className="utility-grid"><article><span>01</span><h3>Автор</h3><p>Сохраняем настоящую интонацию. Канал не превращается в безликий полезный блог.</p></article><article><span>02</span><h3>Ритм</h3><p>У контента появляются рубрики, темп, редакционный процесс и измеримые точки роста.</p></article><article><span>03</span><h3>Продажа</h3><p>Запуск становится продолжением отношений с аудиторией, а не внезапным вторжением.</p></article></div>
+    </section>
 
-      <section className="contact floor-section floor-exit" id="contact">
-        <p className="label">ВЫХОД / 05</p><div className="contact-grid"><h2>Есть канал?<br/><em>Заходите.</em></h2><div><p>Расскажите о себе, своём канале и продукте, который хотите запустить. Если канала ещё нет — это тоже нормальная точка старта.</p><a className="button dark" href="mailto:hello@posledniy.agency">hello@posledniy.agency <span>↗</span></a></div></div>
-        <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
-      </section>
-    </main>
-  );
+    <section className="br-level exit-level" id="exit">
+      <div className="exit-light">ВЫХОД</div>
+      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 05 / СВЯЗЬ</p><h2>Есть канал?<br/>Заходите.</h2><span>Расскажите о себе, канале и продукте. Если канала ещё нет — это тоже нормальная точка старта.</span><a href="mailto:hello@posledniy.agency">hello@posledniy.agency ↗</a></div><i/></div>
+      <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
+    </section>
+  </main>;
 }
