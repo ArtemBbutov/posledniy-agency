@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Продюсируем Telegram-каналы и запуски для экспертов и авторов.",
   openGraph: { title: "Агенство Нас#лия", description: "Telegram-каналы, контент, рост аудитории и запуски под ключ.", images: ["/hero-backrooms.png"] },
   twitter: { card: "summary_large_image", images: ["/hero-backrooms.png"] },
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  icons: { icon: "/favicon-ahash.svg", shortcut: "/favicon-ahash.svg" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
