@@ -551,6 +551,7 @@
 /* Floor 02: real branching corridors with typographic wayfinding. */
 .authentic-backrooms .door-level {
   min-height: 112svh;
+  scroll-margin-top: 58px;
   padding: 14vh 4vw 9vh;
   display: flex;
   flex-direction: column;

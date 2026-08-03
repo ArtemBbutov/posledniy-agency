@@ -42,6 +42,9 @@ function playSequence() {
 export function BackroomsAction() {
   const enterServices = () => {
     playSequence();
+    window.setTimeout(() => {
+      document.querySelector("#floor-02")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
   };
 
   return <button className="what-we-do" type="button" onClick={enterServices} aria-label="Узнать, чем занимается агентство">
