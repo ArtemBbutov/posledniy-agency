@@ -19,7 +19,7 @@ export default function Home() {
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>СЕКТОР TELEGRAM</span></a>
       <nav aria-label="Навигация по этажам"><a href="#floor-01">01</a><a href="#floor-02">02</a><a href="#floor-03">03</a><a href="#exit">ВЫХОД</a></nav>
-      <a className="br-call" href="#exit">Войти в проект <span>↗</span></a>
+      <a className="br-call" href="#exit">Войти в проект <span>↗︎</span></a>
     </header>
 
     <section className="br-hero br-level" aria-labelledby="hero-title">
@@ -51,7 +51,7 @@ export default function Home() {
       <div className="route-lighting" aria-hidden="true">{doors.map((door)=><i key={door.n}/>)}</div>
       <div className="route-choices">
         {doors.map((door)=><article className="service-route" key={door.n} tabIndex={0} aria-label={`${door.n}. ${door.title}. ${door.text}`}>
-          <div className="route-index"><span>{door.n}</span><i>{door.tag}</i></div><h3>{door.title}</h3><p>{door.text}</p><b aria-hidden="true">↗</b>
+          <div className="route-index"><span>{door.n}</span><i>{door.tag}</i></div><h3>{door.title}</h3><p>{door.text}</p><b aria-hidden="true">↗︎</b>
         </article>)}
       </div>
       <p className="hall-note">Все маршруты ведут в одну систему. Отличается только точка входа.</p>
@@ -89,7 +89,7 @@ export default function Home() {
         <article><span>02 / ЕЖЕМЕСЯЧНО</span><div><h3>Продюсирование канала</h3><p>Стратегия, редакция, контент, рост, аналитика и управление процессом.</p></div><strong>от 120 000 ₽ / мес.</strong></article>
         <article><span>03 / ПРОЕКТНО</span><div><h3>Запуск продукта</h3><p>Продукт, оффер, прогрев, воронка, продажи и разбор результатов.</p></div><strong>смета после диагностики</strong></article>
       </div>
-      <a className="price-cta" href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить подходящий формат <span>↗</span></a>
+      <a className="price-cta" href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить подходящий формат <span>↗︎</span></a>
     </section>
 
     <section className="br-level exit-level" id="exit">
@@ -99,9 +99,9 @@ export default function Home() {
           <p>ЭТАЖ 07 / ПРЯМАЯ СВЯЗЬ</p>
           <h2><span>Есть канал.</span><span>Или только идея?</span></h2>
           <span className="exit-lead">Расскажите о задаче в Telegram. Разберём вводные, предложим точку входа и честно скажем, подходим ли друг другу.</span>
-          <div className="exit-action"><span><strong>Написать в Telegram</strong><small>@but0vv · обсудить проект</small></span><b aria-hidden="true">↗</b></div>
+          <div className="exit-action"><span><strong>Написать в Telegram</strong><small>@but0vv · обсудить проект</small></span><b aria-hidden="true">↗︎</b></div>
         </div>
-        <div className="exit-signal" aria-hidden="true"><span>↗</span><i>НАЖМИТЕ В ЛЮБОЙ ТОЧКЕ</i></div>
+        <div className="exit-signal" aria-hidden="true"><span>↗︎</span><i>НАЖМИТЕ В ЛЮБОЙ ТОЧКЕ</i></div>
       </a>
       <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
     </section>

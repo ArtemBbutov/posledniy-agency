@@ -1213,6 +1213,16 @@
   .authentic-backrooms .price-list strong { grid-column: 1; }
 }
 
+/* Keep diagonal arrows typographic on mobile instead of letting the OS replace them with emoji. */
+.authentic-backrooms .br-call span,
+.authentic-backrooms .service-route > b,
+.authentic-backrooms .price-cta > span,
+.authentic-backrooms .exit-action b,
+.authentic-backrooms .exit-signal > span {
+  font-family: var(--font-geist-mono), "Courier New", monospace;
+  font-variant-emoji: text;
+}
+
 /* Mobile is its own vertical descent, not a squeezed desktop page. */
 @media (max-width: 600px) {
   .authentic-backrooms {
