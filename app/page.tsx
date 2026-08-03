@@ -48,9 +48,9 @@ export default function Home() {
     <section className="br-level door-level" id="floor-02">
       <div className="hall-ceiling"><i/><i/><i/><i/></div>
       <header className="hall-heading"><p className="br-label">ЭТАЖ 02 / ВЫБЕРИТЕ ДВЕРЬ</p><h2>С какой точки<br/>вы входите?</h2></header>
-      <div className="door-row">
-        {doors.map((door)=><article className="service-door" key={door.n}>
-          <div className="door-plate"><span>{door.n}</span><i>{door.tag}</i></div><div className="door-panel"><h3>{door.title}</h3><p>{door.text}</p></div><b className="door-knob"/>
+      <div className="route-choices">
+        {doors.map((door)=><article className="service-route" key={door.n}>
+          <div className="route-index"><span>{door.n}</span><i>{door.tag}</i></div><h3>{door.title}</h3><p>{door.text}</p><b aria-hidden="true">↗</b>
         </article>)}
       </div>
       <p className="hall-note">Все двери ведут в одну систему. Отличается только точка входа.</p>

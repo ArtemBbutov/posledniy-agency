@@ -39,7 +39,8 @@ for (const file of await readdir("assets")) {
   const path = `assets/${file}`;
   const css = (await readFile(path, "utf8"))
     .replaceAll("url(/hero-backrooms-v2.png)", "url(../public/hero-backrooms-v2.png)")
-    .replaceAll("url(/backrooms-lower-level.png)", "url(../public/backrooms-lower-level.png)");
+    .replaceAll("url(/backrooms-lower-level.png)", "url(../public/backrooms-lower-level.png)")
+    .replaceAll("url(/backrooms-junction.png)", "url(../public/backrooms-junction.png)");
   await writeFile(path, css, "utf8");
 }
 await writeFile("index.html", html, "utf8");

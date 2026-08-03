@@ -547,3 +547,132 @@
   .authentic-backrooms .utility-sign,
   .authentic-backrooms .utility-grid { border-radius: 14px; }
 }
+
+/* Floor 02: real branching corridors with typographic wayfinding. */
+.authentic-backrooms .door-level {
+  min-height: 112svh;
+  padding: 14vh 4vw 9vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    linear-gradient(90deg, rgba(2,2,2,.6), rgba(2,2,2,.04) 45%, rgba(2,2,2,.48)),
+    linear-gradient(0deg, rgba(1,1,1,.82), transparent 48%, rgba(1,1,1,.2)),
+    url('/backrooms-junction.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.authentic-backrooms .hall-heading {
+  width: min(1150px, 100%);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  text-shadow: 0 3px 28px #000;
+}
+
+.authentic-backrooms .hall-heading h2 {
+  max-width: 780px;
+  font-size: clamp(56px, 7vw, 108px);
+}
+
+.authentic-backrooms .route-choices {
+  width: min(1420px, 100%);
+  margin: auto auto 3vh;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 54px);
+  align-items: end;
+}
+
+.authentic-backrooms .service-route {
+  min-width: 0;
+  min-height: 245px;
+  padding: 18px 0 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #cfccaa;
+  border-top: 1px solid rgba(211,210,175,.42);
+  text-shadow: 0 3px 20px #000;
+  transition: transform .3s ease, border-color .3s ease, color .3s ease;
+}
+
+.authentic-backrooms .service-route:nth-child(2),
+.authentic-backrooms .service-route:nth-child(4) { transform: translateY(4vh); }
+
+.authentic-backrooms .service-route:hover {
+  color: #efedce;
+  border-color: #efedce;
+  transform: translateY(-5px);
+}
+
+.authentic-backrooms .service-route:nth-child(2):hover,
+.authentic-backrooms .service-route:nth-child(4):hover { transform: translateY(calc(4vh - 5px)); }
+
+.authentic-backrooms .route-index {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: #8f8d75;
+  font: 9px var(--font-geist-mono), monospace;
+  letter-spacing: .08em;
+}
+
+.authentic-backrooms .route-index i {
+  overflow: hidden;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.authentic-backrooms .service-route h3 {
+  max-width: 100%;
+  margin: auto 0 18px;
+  font-size: clamp(27px, 2.7vw, 48px);
+  line-height: .9;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.authentic-backrooms .service-route p {
+  max-width: 270px;
+  margin: 0;
+  color: #98957d;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.authentic-backrooms .service-route > b {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font: 18px var(--font-geist-mono), monospace;
+  font-weight: 400;
+  opacity: .55;
+}
+
+.authentic-backrooms .hall-note {
+  margin-top: 4vh;
+  color: #85836e;
+  text-shadow: 0 2px 14px #000;
+}
+
+@media (max-width: 900px) {
+  .authentic-backrooms .door-level { min-height: auto; padding-bottom: 13vh; }
+  .authentic-backrooms .route-choices { grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 10vh; }
+  .authentic-backrooms .service-route:nth-child(2),
+  .authentic-backrooms .service-route:nth-child(4),
+  .authentic-backrooms .service-route:nth-child(2):hover,
+  .authentic-backrooms .service-route:nth-child(4):hover { transform: none; }
+}
+
+@media (max-width: 540px) {
+  .authentic-backrooms .route-choices { grid-template-columns: 1fr; }
+  .authentic-backrooms .service-route { min-height: 210px; }
+  .authentic-backrooms .service-route h3 { font-size: 12vw; }
+}
