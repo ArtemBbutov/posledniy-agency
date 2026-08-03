@@ -16,7 +16,7 @@ function stopCurrentSequence() {
 function playSequence() {
   stopCurrentSequence();
 
-  const meme = new Audio("/meme-phrase.mp4");
+  const meme = new Audio("/meme-phrase-v2.mp4");
   const song = new Audio("/agency-intro.mp3");
   meme.preload = "auto";
   song.preload = "auto";
