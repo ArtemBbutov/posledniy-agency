@@ -1,55 +1,47 @@
 "use client";
 
-function playDoorSound() {
-  const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-  if (!AudioContextClass) return;
+let activeAudio: HTMLAudioElement | null = null;
+let stopTimer: number | null = null;
 
-  const context = new AudioContextClass();
-  const now = context.currentTime;
-  const master = context.createGain();
-  master.gain.setValueAtTime(0.0001, now);
-  master.gain.exponentialRampToValueAtTime(0.22, now + 0.025);
-  master.gain.exponentialRampToValueAtTime(0.0001, now + 0.72);
-  master.connect(context.destination);
-
-  const thud = context.createOscillator();
-  const thudGain = context.createGain();
-  thud.type = "sine";
-  thud.frequency.setValueAtTime(82, now);
-  thud.frequency.exponentialRampToValueAtTime(38, now + 0.32);
-  thudGain.gain.setValueAtTime(0.9, now);
-  thudGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
-  thud.connect(thudGain).connect(master);
-  thud.start(now);
-  thud.stop(now + 0.4);
-
-  const length = Math.floor(context.sampleRate * 0.65);
-  const buffer = context.createBuffer(1, length, context.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < length; i++) {
-    const decay = Math.pow(1 - i / length, 2.4);
-    data[i] = (Math.random() * 2 - 1) * decay;
+function stopCurrentSequence() {
+  if (stopTimer !== null) window.clearTimeout(stopTimer);
+  stopTimer = null;
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
   }
-  const scrape = context.createBufferSource();
-  const filter = context.createBiquadFilter();
-  const scrapeGain = context.createGain();
-  scrape.buffer = buffer;
-  filter.type = "bandpass";
-  filter.frequency.setValueAtTime(520, now);
-  filter.frequency.exponentialRampToValueAtTime(170, now + 0.62);
-  filter.Q.value = 1.1;
-  scrapeGain.gain.setValueAtTime(0.12, now);
-  scrapeGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
-  scrape.connect(filter).connect(scrapeGain).connect(master);
-  scrape.start(now);
-  scrape.stop(now + 0.66);
+  activeAudio = null;
+}
 
-  window.setTimeout(() => void context.close(), 900);
+function playSequence() {
+  stopCurrentSequence();
+
+  const meme = new Audio("/meme-phrase.mp4");
+  const song = new Audio("/agency-intro.mp3");
+  meme.preload = "auto";
+  song.preload = "auto";
+  activeAudio = meme;
+
+  const playSongIntro = () => {
+    activeAudio = song;
+    song.currentTime = 0;
+    void song.play().then(() => {
+      stopTimer = window.setTimeout(() => {
+        song.pause();
+        song.currentTime = 0;
+        activeAudio = null;
+        stopTimer = null;
+      }, 5000);
+    }).catch(() => undefined);
+  };
+
+  meme.addEventListener("ended", playSongIntro, { once: true });
+  void meme.play().catch(playSongIntro);
 }
 
 export function BackroomsAction() {
   const enterServices = () => {
-    playDoorSound();
+    playSequence();
     window.setTimeout(() => {
       document.querySelector("#floor-02")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 190);

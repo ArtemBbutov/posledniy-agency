@@ -23,14 +23,10 @@ html = html
 
 const staticInteractionScript = `<script>
 document.querySelector('.what-we-do')?.addEventListener('click',function(){
-  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
-  if(AudioContextClass){
-    const context=new AudioContextClass(),now=context.currentTime,master=context.createGain();
-    master.gain.setValueAtTime(.0001,now);master.gain.exponentialRampToValueAtTime(.22,now+.025);master.gain.exponentialRampToValueAtTime(.0001,now+.72);master.connect(context.destination);
-    const thud=context.createOscillator(),gain=context.createGain();thud.type='sine';thud.frequency.setValueAtTime(82,now);thud.frequency.exponentialRampToValueAtTime(38,now+.32);gain.gain.setValueAtTime(.9,now);gain.gain.exponentialRampToValueAtTime(.0001,now+.38);thud.connect(gain).connect(master);thud.start(now);thud.stop(now+.4);
-    const length=Math.floor(context.sampleRate*.65),buffer=context.createBuffer(1,length,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/length,2.4);
-    const scrape=context.createBufferSource(),filter=context.createBiquadFilter(),scrapeGain=context.createGain();scrape.buffer=buffer;filter.type='bandpass';filter.frequency.setValueAtTime(520,now);filter.frequency.exponentialRampToValueAtTime(170,now+.62);scrapeGain.gain.setValueAtTime(.12,now);scrapeGain.gain.exponentialRampToValueAtTime(.0001,now+.65);scrape.connect(filter).connect(scrapeGain).connect(master);scrape.start(now);scrape.stop(now+.66);setTimeout(()=>context.close(),900);
-  }
+  if(window.__agencyAudio){window.__agencyAudio.pause();window.__agencyAudio.currentTime=0}if(window.__agencyTimer)clearTimeout(window.__agencyTimer);
+  const meme=new Audio('public/meme-phrase.mp4'),song=new Audio('public/agency-intro.mp3');window.__agencyAudio=meme;
+  const playSong=()=>{window.__agencyAudio=song;song.currentTime=0;song.play().then(()=>{window.__agencyTimer=setTimeout(()=>{song.pause();song.currentTime=0;window.__agencyAudio=null},5000)}).catch(()=>{})};
+  meme.addEventListener('ended',playSong,{once:true});meme.play().catch(playSong);
   setTimeout(()=>document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'}),190);
 });
 </script>`;
