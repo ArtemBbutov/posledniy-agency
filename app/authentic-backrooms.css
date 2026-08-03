@@ -981,25 +981,25 @@
   padding: 17px 0;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(218,215,180,.55);
+  border: 0;
   color: #d8d4b2;
   font-size: clamp(17px, 1.8vw, 28px);
-  text-shadow: 0 0 13px rgba(218,222,187,.2);
-  box-shadow: 0 15px 34px -18px rgba(210,218,177,.6);
-  filter: drop-shadow(0 0 8px rgba(202,211,172,.12));
-  transition: letter-spacing .3s ease, border-color .3s ease, box-shadow .3s ease, filter .3s ease, color .3s ease;
+  text-shadow: 0 0 8px rgba(224,227,194,.42), 0 0 24px rgba(211,216,181,.18);
+  box-shadow: none;
+  filter: none;
+  transition: letter-spacing .3s ease, text-shadow .3s ease, color .3s ease;
 }
 
 .authentic-backrooms .price-cta:hover {
   letter-spacing: .02em;
-  border-color: #f0edcb;
   color: #f3f1d5;
-  box-shadow: 0 19px 46px -13px rgba(219,226,183,.9);
-  filter: drop-shadow(0 0 14px rgba(220,228,186,.38));
+  box-shadow: none;
+  filter: none;
+  text-shadow: 0 0 7px rgba(242,244,211,.78), 0 0 18px rgba(225,230,194,.58), 0 0 38px rgba(208,216,177,.28);
 }
 
 .authentic-backrooms .price-cta span {
-  text-shadow: 0 0 12px rgba(230,235,198,.55);
+  text-shadow: 0 0 7px rgba(236,240,204,.75), 0 0 19px rgba(218,225,187,.4);
 }
 
 @media (max-width: 900px) {
