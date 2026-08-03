@@ -374,3 +374,125 @@
 @media (prefers-reduced-motion: reduce) {
   .authentic-backrooms::before { animation: none; }
 }
+
+/* The final CTA is a deep passage, not a card or a square door. */
+.authentic-backrooms .exit-level {
+  min-height: 112svh;
+  padding: 12vh 4vw 24px;
+  justify-content: flex-start;
+  perspective: 1100px;
+}
+
+.authentic-backrooms .exit-light {
+  position: absolute;
+  top: 9vh;
+  left: 50%;
+  z-index: 6;
+  margin: 0;
+  transform: translateX(-50%) perspective(220px) rotateX(-8deg);
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  box-shadow: 0 0 45px rgba(158,174,137,.18), 0 15px 70px rgba(158,174,137,.1);
+}
+
+.authentic-backrooms .exit-door {
+  width: min(1120px, 94vw);
+  min-height: 82vh;
+  margin: auto;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  isolation: isolate;
+  color: #d4d0af;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.authentic-backrooms .exit-door::before {
+  content: "";
+  position: absolute;
+  inset: 2% 23% 0;
+  z-index: -1;
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(160,165,135,.14), transparent 38%),
+    linear-gradient(90deg, #070706, #15150f 48%, #050504);
+  border: 1px solid rgba(172,172,139,.2);
+  box-shadow:
+    inset 0 0 130px rgba(0,0,0,.95),
+    0 0 0 18px rgba(14,14,10,.72),
+    0 0 95px 30px rgba(0,0,0,.72);
+}
+
+.authentic-backrooms .exit-door::after {
+  content: "";
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  bottom: -11%;
+  height: 43%;
+  z-index: -2;
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(177,181,151,.16), rgba(129,132,108,.04) 58%, transparent);
+  filter: blur(8px);
+  transform: perspective(420px) rotateX(58deg);
+  transform-origin: top;
+}
+
+.authentic-backrooms .exit-copy {
+  width: min(680px, 74%);
+  height: auto;
+  min-height: 530px;
+  padding: 7vh 0 4vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 0 4px 28px #000;
+}
+
+.authentic-backrooms .exit-copy > p {
+  color: #888772;
+  letter-spacing: .18em;
+}
+
+.authentic-backrooms .exit-copy h2 {
+  margin: 8vh 0 4vh;
+  font-size: clamp(52px, 7.4vw, 108px);
+  line-height: .82;
+}
+
+.authentic-backrooms .exit-copy > span {
+  max-width: 470px;
+  color: #aaa68b;
+}
+
+.authentic-backrooms .exit-copy a {
+  width: auto;
+  margin-top: 7vh;
+  padding: 13px 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(211,209,174,.55);
+  font-size: clamp(11px, 1.15vw, 15px);
+  letter-spacing: .04em;
+  transition: color .25s ease, border-color .25s ease, letter-spacing .25s ease;
+}
+
+.authentic-backrooms .exit-copy a:hover,
+.authentic-backrooms .exit-copy a:focus-visible {
+  color: #f0edcc;
+  border-color: #f0edcc;
+  letter-spacing: .075em;
+  outline: none;
+}
+
+.authentic-backrooms .exit-door > i { display: none; }
+
+@media (max-width: 700px) {
+  .authentic-backrooms .exit-door { width: 100%; min-height: 76vh; }
+  .authentic-backrooms .exit-door::before { inset: 4% 7% 0; }
+  .authentic-backrooms .exit-door::after { left: 4%; right: 4%; }
+  .authentic-backrooms .exit-copy { width: 78%; min-height: 480px; }
+  .authentic-backrooms .exit-copy h2 { font-size: clamp(48px, 15vw, 76px); }
+  .authentic-backrooms .exit-copy a { font-size: 10px; }
+}
