@@ -21,6 +21,21 @@ html = html
   .replaceAll('href="https://posledniy-agency.s-eanwagner02532.chatgpt.site/favicon.svg"', 'href="public/favicon.svg"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/og-telegram.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/og-telegram.png"');
 
+const staticInteractionScript = `<script>
+document.querySelector('.what-we-do')?.addEventListener('click',function(){
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(AudioContextClass){
+    const context=new AudioContextClass(),now=context.currentTime,master=context.createGain();
+    master.gain.setValueAtTime(.0001,now);master.gain.exponentialRampToValueAtTime(.22,now+.025);master.gain.exponentialRampToValueAtTime(.0001,now+.72);master.connect(context.destination);
+    const thud=context.createOscillator(),gain=context.createGain();thud.type='sine';thud.frequency.setValueAtTime(82,now);thud.frequency.exponentialRampToValueAtTime(38,now+.32);gain.gain.setValueAtTime(.9,now);gain.gain.exponentialRampToValueAtTime(.0001,now+.38);thud.connect(gain).connect(master);thud.start(now);thud.stop(now+.4);
+    const length=Math.floor(context.sampleRate*.65),buffer=context.createBuffer(1,length,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<length;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/length,2.4);
+    const scrape=context.createBufferSource(),filter=context.createBiquadFilter(),scrapeGain=context.createGain();scrape.buffer=buffer;filter.type='bandpass';filter.frequency.setValueAtTime(520,now);filter.frequency.exponentialRampToValueAtTime(170,now+.62);scrapeGain.gain.setValueAtTime(.12,now);scrapeGain.gain.exponentialRampToValueAtTime(.0001,now+.65);scrape.connect(filter).connect(scrapeGain).connect(master);scrape.start(now);scrape.stop(now+.66);setTimeout(()=>context.close(),900);
+  }
+  setTimeout(()=>document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'}),190);
+});
+</script>`;
+html = html.replace("</body>", `${staticInteractionScript}</body>`);
+
 await rm("assets", { recursive: true, force: true });
 await mkdir("assets", { recursive: true });
 await cp("dist/client/assets", "assets", { recursive: true });

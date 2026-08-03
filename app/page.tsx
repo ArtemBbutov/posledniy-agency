@@ -1,3 +1,5 @@
+import { BackroomsAction } from "./backrooms-action";
+
 const doors = [
   { n: "01", title: "Канал с нуля", tag: "эксперт → медиа", text: "Позиционирование, оформление и контент-система, из которой не хочется выходить." },
   { n: "02", title: "Перезапуск", tag: "хаос → система", text: "Разбираем старый этаж, меняем маршрут и возвращаем каналу внимание аудитории." },
@@ -27,7 +29,7 @@ export default function Home() {
       <div className="br-hero-copy">
         <p>Telegram-каналы и запуски / Бутов × Федонко</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
-        <div className="br-hero-bottom"><p>Строим каналы, вокруг которых растут аудитория, доверие и продажи.</p><a href="#floor-01">Спуститься ниже <span>↓</span></a></div>
+        <div className="br-hero-bottom"><p>Строим каналы, вокруг которых растут аудитория, доверие и продажи.</p><div className="br-hero-actions"><BackroomsAction/><a href="#floor-01">Спуститься ниже <span>↓</span></a></div></div>
       </div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>

@@ -169,6 +169,51 @@
   .authentic-backrooms .exit-level { background-attachment: scroll; }
 }
 
+.authentic-backrooms .br-hero-actions {
+  display: grid;
+  gap: 9px;
+}
+
+.authentic-backrooms .what-we-do {
+  appearance: none;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #171712;
+  background: rgba(201, 201, 166, .92);
+  border: 1px solid rgba(230, 230, 199, .55);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.authentic-backrooms .what-we-do span {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
+.authentic-backrooms .what-we-do i {
+  font: 8px var(--font-geist-mono), monospace;
+  font-style: normal;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+.authentic-backrooms .what-we-do:hover,
+.authentic-backrooms .what-we-do:focus-visible {
+  background: #e0e0bd;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.28), 0 0 22px rgba(208,211,173,.12);
+  outline: none;
+}
+
+.authentic-backrooms .what-we-do:active { transform: translateY(1px); }
+
 @media (max-width: 520px) {
   .authentic-backrooms .br-hero-image { object-position: 58% center; }
   .authentic-backrooms .br-hero-shade { background: linear-gradient(0deg,rgba(3,3,2,.93),rgba(3,3,2,.2) 78%,rgba(3,3,2,.55)); }
