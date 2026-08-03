@@ -29,7 +29,7 @@ export default function Home() {
       <div className="br-hero-copy">
         <p>Telegram-каналы и запуски / Бутов × Федонко</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
-        <div className="br-hero-bottom"><p>Строим каналы, вокруг которых растут аудитория, доверие и интерес к продукту.</p><div className="br-hero-actions"><BackroomsAction/><a href="#floor-01">Спуститься ниже <span>↓</span></a></div></div>
+        <div className="br-hero-bottom"><p>Строим каналы, вокруг которых растут аудитория, доверие и интерес к продукту.</p><div className="br-hero-actions"><BackroomsAction/></div></div>
       </div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>

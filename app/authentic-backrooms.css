@@ -41,6 +41,8 @@
   filter: brightness(.68) saturate(.56) contrast(1.14);
   object-position: center center;
   transform: scale(1.015);
+  transform-origin: 62% 42%;
+  animation: hero-room-awake 1.65s both cubic-bezier(.2,.68,.22,1);
 }
 
 .authentic-backrooms .br-hero-shade {
@@ -69,7 +71,9 @@
     radial-gradient(circle at 76% 59%, rgba(17,17,12,.58) 0 1.3px, transparent 2.2px),
     radial-gradient(circle at 91% 34%, rgba(17,17,12,.66) 0 .9px, transparent 1.8px),
     repeating-linear-gradient(96deg, transparent 0 23px, rgba(26,25,18,.08) 24px, transparent 25px 49px),
-    linear-gradient(102deg, #cfccb0 0%, #dedabd 46%, #c5c2a6 100%);
+    radial-gradient(circle, rgba(22,21,15,.18) 0 .55px, transparent .9px),
+    linear-gradient(102deg, #b9b69a 0%, #e4e0c2 43%, #cbc7aa 72%, #a9a78b 100%);
+  background-size: auto, auto, auto, auto, auto, auto, auto, auto, 4px 4px, auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -82,11 +86,76 @@
     radial-gradient(circle at 67% 37%, rgba(15,15,10,.62) 0 1px, transparent 1.9px),
     radial-gradient(circle at 86% 72%, rgba(15,15,10,.56) 0 1.1px, transparent 2px),
     repeating-linear-gradient(88deg, transparent 0 28px, rgba(22,21,15,.09) 29px, transparent 30px 57px),
-    linear-gradient(100deg, #919071 0%, #aaa887 52%, #929172 100%);
+    radial-gradient(circle, rgba(18,18,12,.2) 0 .55px, transparent .9px),
+    linear-gradient(100deg, #77775d 0%, #aaa988 44%, #9a9878 72%, #74745a 100%);
+  background-size: auto, auto, auto, auto, auto, auto, 4px 4px, auto;
 }
 .authentic-backrooms .br-hero-bottom p { color: #b3b096; }
 .authentic-backrooms .br-hero-bottom a { background: rgba(7,7,5,.34); border-color: rgba(207,207,170,.28); backdrop-filter: blur(8px); }
 .authentic-backrooms .fluorescent { display: none; }
+
+/* The first screen behaves like a room whose old fluorescent tubes wake up:
+   the photograph finds focus first, then the title develops like imperfect ink. */
+.authentic-backrooms .br-status {
+  animation: hero-signal 1.2s .2s both steps(1, end);
+}
+.authentic-backrooms .br-hero-copy > p {
+  animation: hero-meta-develop .8s .42s both cubic-bezier(.2,.7,.2,1);
+}
+.authentic-backrooms .br-hero-copy h1 { animation: none; }
+.authentic-backrooms .br-hero h1 span,
+.authentic-backrooms .br-hero h1 em {
+  animation: hero-print-develop 1.05s .58s both cubic-bezier(.18,.76,.18,1);
+}
+.authentic-backrooms .br-hero h1 em { animation-delay: .76s; }
+.authentic-backrooms .br-hero-bottom {
+  animation: hero-copy-develop .85s 1s both cubic-bezier(.2,.7,.2,1);
+}
+.authentic-backrooms .br-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  inset: auto 0 -2px;
+  height: 17vh;
+  background: linear-gradient(180deg, transparent, rgba(2,2,1,.84) 72%, #080806 100%);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  mask-image: linear-gradient(180deg, transparent, #000 48%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 48%);
+}
+
+@keyframes hero-room-awake {
+  0% { filter: brightness(.12) saturate(.35) contrast(1.25) blur(8px); transform: scale(1.055); }
+  17% { filter: brightness(.12) saturate(.35) contrast(1.25) blur(8px); }
+  18% { filter: brightness(.77) saturate(.48) contrast(1.16) blur(3px); }
+  23% { filter: brightness(.29) saturate(.42) contrast(1.2) blur(4px); }
+  29% { filter: brightness(.72) saturate(.54) contrast(1.15) blur(1.5px); }
+  35% { filter: brightness(.52) saturate(.5) contrast(1.18) blur(2px); }
+  100% { filter: brightness(.68) saturate(.56) contrast(1.14) blur(0); transform: scale(1.015); }
+}
+@keyframes hero-signal {
+  0%, 27% { opacity: 0; }
+  28%, 36% { opacity: .35; }
+  37%, 48% { opacity: 0; }
+  49%, 100% { opacity: 1; }
+}
+@keyframes hero-meta-develop {
+  from { opacity: 0; letter-spacing: .19em; filter: blur(3px); }
+  to { opacity: 1; letter-spacing: .08em; filter: blur(0); }
+}
+@keyframes hero-print-develop {
+  0% { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateX(-10px); filter: blur(4px) brightness(1.5); }
+  62% { opacity: .86; clip-path: inset(0 0 0 0); filter: blur(1px) brightness(1.2); }
+  70% { opacity: .54; }
+  76% { opacity: 1; }
+  82% { opacity: .76; }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translateX(0); filter: blur(0) brightness(1); }
+}
+@keyframes hero-copy-develop {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); transform: translateY(10px); filter: blur(3px); }
+  to { opacity: 1; clip-path: inset(0); transform: translateY(0); filter: blur(0); }
+}
 
 /* Every content floor is a real photographed space, not a flat colored block. */
 .authentic-backrooms .br-room,
@@ -334,8 +403,8 @@
    threshold instead of meeting on a hard horizontal edge. */
 .authentic-backrooms .br-level:not(.br-hero) {
   box-shadow:
-    inset 0 150px 130px -86px rgba(2, 2, 1, .96),
-    inset 0 -150px 130px -86px rgba(2, 2, 1, .96);
+    inset 0 190px 165px -104px rgba(2, 2, 1, .97),
+    inset 0 -190px 165px -104px rgba(2, 2, 1, .97);
 }
 
 .authentic-backrooms .br-hero {
@@ -349,6 +418,20 @@
 .authentic-backrooms .br-level:not(.br-hero) > * {
   position: relative;
   z-index: 2;
+}
+
+.authentic-backrooms .br-level:not(.br-hero)::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  inset: -2px 0;
+  background: linear-gradient(180deg,
+    rgba(2,2,1,.9) 0%, transparent 15%, transparent 85%, rgba(2,2,1,.92) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 18%, transparent 82%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 18%, transparent 82%, #000 100%);
 }
 
 .authentic-backrooms .door-level,
@@ -402,7 +485,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .authentic-backrooms::before { animation: none; }
+  .authentic-backrooms::before,
+  .authentic-backrooms .br-hero-image,
+  .authentic-backrooms .br-status,
+  .authentic-backrooms .br-hero-copy > p,
+  .authentic-backrooms .br-hero h1 span,
+  .authentic-backrooms .br-hero h1 em,
+  .authentic-backrooms .br-hero-bottom { animation: none; }
 }
 
 /* The final CTA is a deep passage, not a card or a square door. */
