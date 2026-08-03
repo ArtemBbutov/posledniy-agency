@@ -73,7 +73,7 @@ export default function Home() {
 
     <section className="br-level exit-level" id="exit">
       <div className="exit-light">ВЫХОД</div>
-      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 05 / СВЯЗЬ</p><h2>Есть канал?<br/>Заходите.</h2><span>Расскажите о себе, канале и продукте. Если канала ещё нет — это тоже нормальная точка старта.</span><a href="mailto:hello@posledniy.agency">hello@posledniy.agency ↗</a></div><i/></div>
+      <div className="exit-door"><div className="exit-copy"><p>ЭТАЖ 05 / СВЯЗЬ</p><h2>Готовы зайти<br/>в проект?</h2><span>Напишите нам о канале, продукте или идее. Ответим лично и поймём, сможем ли быть полезны.</span><a href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить проект в Telegram ↗</a></div><i/></div>
       <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
     </section>
   </main>;
