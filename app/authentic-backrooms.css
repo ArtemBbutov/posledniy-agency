@@ -335,3 +335,42 @@
       inset 0 -110px 95px -65px rgba(2, 2, 1, .94);
   }
 }
+
+/* A dim fluorescent layer stays with the visitor across all floors. */
+.authentic-backrooms::before,
+.authentic-backrooms::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.authentic-backrooms::before {
+  z-index: 42;
+  background:
+    radial-gradient(ellipse 46% 18% at 64% -2%, rgba(220, 224, 198, .54), transparent 70%),
+    radial-gradient(ellipse 30% 13% at 17% 2%, rgba(190, 197, 171, .25), transparent 72%),
+    linear-gradient(102deg, transparent 0 43%, rgba(211, 215, 187, .045) 53%, transparent 66%);
+  mix-blend-mode: screen;
+  opacity: .16;
+  animation: backrooms-light 11s steps(1, end) infinite;
+}
+
+.authentic-backrooms::after {
+  z-index: 43;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.2), transparent 20% 76%, rgba(0,0,0,.28)),
+    linear-gradient(0deg, rgba(0,0,0,.28), transparent 19% 75%, rgba(0,0,0,.16));
+  box-shadow: inset 0 0 15vw 4vw rgba(0, 0, 0, .55);
+}
+
+@keyframes backrooms-light {
+  0%, 15%, 16.4%, 63%, 64.2%, 100% { opacity: .16; }
+  15.3%, 63.3% { opacity: .055; }
+  15.7% { opacity: .22; }
+  63.7% { opacity: .1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .authentic-backrooms::before { animation: none; }
+}
