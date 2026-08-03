@@ -47,3 +47,44 @@
 @media(prefers-reduced-motion:reduce){
   .hero .eyebrow,.hero-title h1 span,.hero-title h1 em,.hero-bottom,.room-card,.intro-copy,.section-heading,.services-intro,.principles>h2,.contact-grid,.direction-grid,.service-stack,.principle-grid,.direction-grid article h3,.service-stack article h3,.principle-grid article h3,section>.label{animation:none!important}
 }
+
+/* Агенство Нас#лия — лиминальные этажи */
+:root{--paper:#b7ad78;--bone:#948b5b;--red:#672d26;--black:#14140f;--line:rgba(32,31,20,.4)}
+body{background:#17170f;background-image:radial-gradient(rgba(255,245,184,.035) 1px,transparent 1px);background-size:4px 4px}
+.nav{background:#15150f;color:#d9cf9c;border-color:#49462e;position:relative;z-index:20}
+.wordmark b{color:#d8b94f;font-family:Georgia,serif;font-style:italic}
+.nav-contact{border-color:#827b50}.nav-contact:hover{background:#d1c477;color:#17170f}
+.hero{background:#15150f;position:relative}
+.hero:before{content:"ЭТАЖ 00";position:absolute;left:2.6vw;top:13%;font:9px var(--font-geist-mono),monospace;color:#827b50;letter-spacing:.22em;z-index:3}
+.hero-title{background-image:linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px}
+.hero-title h1 em{color:#d8c86c;text-transform:none;text-shadow:0 0 28px rgba(216,200,108,.1)}
+.hero-bottom p{color:#c9c49e}
+.button.light{border-color:#7d774d}.button.light:hover{background:#d4c879;color:#17170f}
+.room-card{border-color:#575132;background:#0c0c09}
+.room-card figcaption{color:#e2d69a;background:linear-gradient(to bottom,rgba(12,12,8,.88),transparent)}
+.room-card:after{box-shadow:inset 0 0 110px rgba(0,0,0,.48)}
+
+.floor-section{position:relative;overflow:hidden;border-top:4px solid #252419}
+.floor-section>*{position:relative;z-index:2}
+.floor-section:before{position:absolute;right:-.04em;top:-.24em;font:700 clamp(180px,34vw,520px)/1 Arial,sans-serif;letter-spacing:-.09em;color:rgba(33,32,21,.055);z-index:0;pointer-events:none}
+.floor-section:after{content:"";position:absolute;left:18%;right:18%;top:0;height:7px;background:#e8dfac;box-shadow:0 0 28px 8px rgba(232,223,172,.24);opacity:.72;z-index:1;pointer-events:none;animation:ballast 7s infinite}
+.floor-one:before{content:"01"}.floor-two:before{content:"02"}.floor-three:before{content:"03"}.floor-four:before{content:"04"}.floor-exit:before{content:"05"}
+@keyframes ballast{0%,3%,5%,100%{opacity:.72}4%{opacity:.28}72%{opacity:.72}73%{opacity:.56}}
+
+.intro{background:#b8ad72;background-image:repeating-linear-gradient(90deg,rgba(51,49,31,.045) 0,rgba(51,49,31,.045) 1px,transparent 1px,transparent 64px)}
+.ticker{background:#252419;color:#d8cf98;border-color:#252419}.ticker i{color:#a6533e}
+.directions{background:#a69d66;background-image:radial-gradient(rgba(47,45,28,.09) .8px,transparent .8px);background-size:5px 5px}
+.direction-grid{border-color:#3d3a25}.direction-grid article{border-color:#3d3a25;background:rgba(197,187,126,.12);transition:background .3s,color .3s,transform .3s}
+.direction-grid article:hover{background:#242319;color:#d9cf9c;transform:translateY(-2px)}
+.card-top i{color:#6b3128}
+.services{background:#777047;color:#161610;background-image:linear-gradient(115deg,rgba(255,255,255,.035),transparent 45%)}
+.service-stack article{border-color:#29281b}.service-stack article:last-child{border-color:#29281b}
+.principles{background:#373424;color:#d8cf9c;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 70px)}
+.principle-grid{border-color:#8d8659}.principle-grid article{border-color:rgba(216,207,156,.3)}
+.contact{background:#181812;color:#d8cf9c}.contact h2 em{color:#c6ad49}.contact-grid>div>p{color:#aaa57f}.button.dark{border-color:#817a4e}.button.dark:hover{background:#d4c879;color:#17170f}footer{border-color:#595537}
+.label{display:inline-flex;width:max-content;padding:7px 9px;border:1px solid currentColor;background:rgba(20,20,15,.07)}
+
+@media(max-width:800px){
+  .hero:before{top:10%;left:16px}.room-image{object-position:center}.floor-section:before{font-size:55vw;top:.02em}.floor-section:after{left:25%;right:25%}
+}
+@media(prefers-reduced-motion:reduce){.floor-section:after{animation:none}}
