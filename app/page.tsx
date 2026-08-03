@@ -47,13 +47,15 @@ export default function Home() {
 
     <section className="br-level door-level" id="floor-02">
       <div className="hall-ceiling"><i/><i/><i/><i/></div>
-      <header className="hall-heading"><p className="br-label">ЭТАЖ 02 / ВЫБЕРИТЕ ДВЕРЬ</p><h2>С какой точки<br/>вы входите?</h2></header>
+      <header className="hall-heading"><p className="br-label">ЭТАЖ 02 / ВЫБЕРИТЕ МАРШРУТ</p><h2>С какой точки<br/>вы входите?</h2></header>
+      <div className="route-lighting" aria-hidden="true">{doors.map((door)=><i key={door.n}/>)}</div>
+      <div className="route-projections" aria-hidden="true">{doors.map((door)=><span key={door.n}><b>{door.n}</b>{door.title}</span>)}</div>
       <div className="route-choices">
-        {doors.map((door)=><article className="service-route" key={door.n}>
+        {doors.map((door)=><article className="service-route" key={door.n} tabIndex={0} aria-label={`${door.n}. ${door.title}. ${door.text}`}>
           <div className="route-index"><span>{door.n}</span><i>{door.tag}</i></div><h3>{door.title}</h3><p>{door.text}</p><b aria-hidden="true">↗</b>
         </article>)}
       </div>
-      <p className="hall-note">Все двери ведут в одну систему. Отличается только точка входа.</p>
+      <p className="hall-note">Все маршруты ведут в одну систему. Отличается только точка входа.</p>
     </section>
 
     <section className="br-level corridor-level" id="floor-03">

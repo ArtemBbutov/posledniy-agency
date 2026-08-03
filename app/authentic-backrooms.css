@@ -677,3 +677,132 @@
   .authentic-backrooms .service-route { min-height: 210px; }
   .authentic-backrooms .service-route h3 { font-size: 12vw; }
 }
+
+/* The chosen service physically lights its route through the maze. */
+.authentic-backrooms .route-lighting {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.authentic-backrooms .route-lighting i {
+  position: absolute;
+  top: 20%;
+  width: 25%;
+  height: 58%;
+  opacity: .07;
+  filter: blur(17px);
+  clip-path: polygon(42% 0, 58% 0, 90% 100%, 10% 100%);
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(231,235,206,.72), transparent 33%),
+    linear-gradient(180deg, rgba(211,216,188,.3), rgba(177,183,157,.02) 72%);
+  transition: opacity .38s ease, filter .38s ease;
+}
+
+.authentic-backrooms .route-lighting i:nth-child(1) { left: 0; }
+.authentic-backrooms .route-lighting i:nth-child(2) { left: 25%; }
+.authentic-backrooms .route-lighting i:nth-child(3) { left: 50%; }
+.authentic-backrooms .route-lighting i:nth-child(4) { left: 75%; }
+
+.authentic-backrooms .route-projections {
+  position: absolute;
+  inset: 35% 0 auto;
+  z-index: 2;
+  height: 18%;
+  pointer-events: none;
+}
+
+.authentic-backrooms .route-projections span {
+  position: absolute;
+  width: 21%;
+  color: rgba(227,226,193,.74);
+  font-size: clamp(16px, 1.75vw, 31px);
+  line-height: .92;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(219,222,192,.18), 0 3px 24px #000;
+  opacity: 0;
+  transform: translateY(9px);
+  transition: opacity .28s ease, transform .36s ease;
+}
+
+.authentic-backrooms .route-projections span b {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(196,198,168,.62);
+  font: 9px var(--font-geist-mono), monospace;
+  font-weight: 400;
+  letter-spacing: .1em;
+}
+
+.authentic-backrooms .route-projections span:nth-child(1) { left: 5%; }
+.authentic-backrooms .route-projections span:nth-child(2) { left: 29%; top: 10%; }
+.authentic-backrooms .route-projections span:nth-child(3) { left: 54%; }
+.authentic-backrooms .route-projections span:nth-child(4) { left: 77%; top: 8%; }
+
+.authentic-backrooms .service-route::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -48px;
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(0deg, rgba(215,216,184,.48), transparent);
+  opacity: .25;
+  transform: rotate(10deg);
+  transform-origin: bottom;
+  transition: opacity .3s ease, height .3s ease;
+}
+
+.authentic-backrooms .door-level:has(.service-route:is(:hover,:focus)) .service-route:not(:is(:hover,:focus)) {
+  opacity: .28;
+}
+
+.authentic-backrooms .door-level:has(.service-route:is(:hover,:focus)) .route-lighting i {
+  opacity: .015;
+}
+
+.authentic-backrooms .service-route:is(:hover,:focus) {
+  outline: none;
+}
+
+.authentic-backrooms .service-route:is(:hover,:focus)::before {
+  height: 58px;
+  opacity: .8;
+}
+
+.authentic-backrooms .door-level:has(.service-route:nth-child(1):is(:hover,:focus)) .route-lighting i:nth-child(1),
+.authentic-backrooms .door-level:has(.service-route:nth-child(2):is(:hover,:focus)) .route-lighting i:nth-child(2),
+.authentic-backrooms .door-level:has(.service-route:nth-child(3):is(:hover,:focus)) .route-lighting i:nth-child(3),
+.authentic-backrooms .door-level:has(.service-route:nth-child(4):is(:hover,:focus)) .route-lighting i:nth-child(4) {
+  opacity: .72;
+  filter: blur(12px);
+  animation: route-switch-on .7s steps(1, end) both;
+}
+
+.authentic-backrooms .door-level:has(.service-route:nth-child(1):is(:hover,:focus)) .route-projections span:nth-child(1),
+.authentic-backrooms .door-level:has(.service-route:nth-child(2):is(:hover,:focus)) .route-projections span:nth-child(2),
+.authentic-backrooms .door-level:has(.service-route:nth-child(3):is(:hover,:focus)) .route-projections span:nth-child(3),
+.authentic-backrooms .door-level:has(.service-route:nth-child(4):is(:hover,:focus)) .route-projections span:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes route-switch-on {
+  0%, 13% { opacity: .08; }
+  7%, 20% { opacity: .78; }
+  28% { opacity: .24; }
+  40%, 100% { opacity: .72; }
+}
+
+@media (max-width: 900px) {
+  .authentic-backrooms .route-projections { display: none; }
+  .authentic-backrooms .route-lighting i { height: 45%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .authentic-backrooms .route-lighting i { animation: none!important; }
+}
