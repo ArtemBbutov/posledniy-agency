@@ -42,7 +42,9 @@
   object-position: center center;
   transform: scale(1.015);
   transform-origin: 62% 42%;
-  animation: hero-room-awake 1.65s both cubic-bezier(.2,.68,.22,1);
+  animation:
+    hero-room-awake 1.65s both cubic-bezier(.2,.68,.22,1),
+    hero-camera-drift 28s 1.65s ease-in-out infinite alternate;
 }
 
 .authentic-backrooms .br-hero-shade {
@@ -133,6 +135,10 @@
   29% { filter: brightness(.72) saturate(.54) contrast(1.15) blur(1.5px); }
   35% { filter: brightness(.52) saturate(.5) contrast(1.18) blur(2px); }
   100% { filter: brightness(.68) saturate(.56) contrast(1.14) blur(0); transform: scale(1.015); }
+}
+@keyframes hero-camera-drift {
+  from { transform: scale(1.015) translate3d(0,0,0); }
+  to { transform: scale(1.045) translate3d(-.65%,.35%,0); }
 }
 @keyframes hero-signal {
   0%, 27% { opacity: 0; }
@@ -449,6 +455,40 @@
   }
 }
 
+/* Long, almost imperceptible camera drift and a rare whole-room power dip. */
+.authentic-backrooms .br-room,
+.authentic-backrooms .door-level,
+.authentic-backrooms .corridor-level,
+.authentic-backrooms .utility-level,
+.authentic-backrooms .proof-level,
+.authentic-backrooms .price-level,
+.authentic-backrooms .exit-level {
+  animation:
+    floor-camera-drift 32s ease-in-out infinite alternate,
+    floor-light-failure 31s steps(1, end) infinite;
+}
+
+.authentic-backrooms .door-level,
+.authentic-backrooms .utility-level,
+.authentic-backrooms .price-level { animation-delay: -11s, -19s; }
+
+.authentic-backrooms .corridor-level,
+.authentic-backrooms .proof-level,
+.authentic-backrooms .exit-level { animation-delay: -23s, -7s; }
+
+@keyframes floor-camera-drift {
+  from { background-position-x: 49.25%; }
+  to { background-position-x: 50.75%; }
+}
+
+@keyframes floor-light-failure {
+  0%, 67%, 68%, 100% { filter: brightness(1); }
+  67.18% { filter: brightness(.77); }
+  67.34% { filter: brightness(1.03); }
+  67.5% { filter: brightness(.87); }
+  67.68% { filter: brightness(1); }
+}
+
 /* A dim fluorescent layer stays with the visitor across all floors. */
 .authentic-backrooms::before,
 .authentic-backrooms::after {
@@ -466,32 +506,49 @@
     linear-gradient(102deg, transparent 0 43%, rgba(211, 215, 187, .045) 53%, transparent 66%);
   mix-blend-mode: screen;
   opacity: .16;
-  animation: backrooms-light 11s steps(1, end) infinite;
+  animation: backrooms-light 27s steps(1, end) infinite;
 }
 
 .authentic-backrooms::after {
   z-index: 43;
   background:
+    radial-gradient(circle, rgba(225,222,187,.045) 0 .55px, transparent .9px),
     linear-gradient(90deg, rgba(0,0,0,.2), transparent 20% 76%, rgba(0,0,0,.28)),
     linear-gradient(0deg, rgba(0,0,0,.28), transparent 19% 75%, rgba(0,0,0,.16));
+  background-size: 4px 4px, auto, auto;
   box-shadow: inset 0 0 15vw 4vw rgba(0, 0, 0, .55);
+  animation: film-grain-drift 2.8s steps(2, end) infinite;
 }
 
 @keyframes backrooms-light {
-  0%, 15%, 16.4%, 63%, 64.2%, 100% { opacity: .16; }
-  15.3%, 63.3% { opacity: .055; }
-  15.7% { opacity: .22; }
-  63.7% { opacity: .1; }
+  0%, 71%, 72%, 100% { opacity: .16; }
+  71.18% { opacity: .045; }
+  71.34% { opacity: .23; }
+  71.5% { opacity: .075; }
+  71.7% { opacity: .16; }
+}
+
+@keyframes film-grain-drift {
+  from { background-position: 0 0, center, center; }
+  to { background-position: 2px -1px, center, center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .authentic-backrooms::before,
+  .authentic-backrooms::after,
   .authentic-backrooms .br-hero-image,
   .authentic-backrooms .br-status,
   .authentic-backrooms .br-hero-copy > p,
   .authentic-backrooms .br-hero h1 span,
   .authentic-backrooms .br-hero h1 em,
-  .authentic-backrooms .br-hero-bottom { animation: none; }
+  .authentic-backrooms .br-hero-bottom,
+  .authentic-backrooms .br-room,
+  .authentic-backrooms .door-level,
+  .authentic-backrooms .corridor-level,
+  .authentic-backrooms .utility-level,
+  .authentic-backrooms .proof-level,
+  .authentic-backrooms .price-level,
+  .authentic-backrooms .exit-level { animation: none; }
 }
 
 /* The final CTA is the whole room: no card and no tiny link target. */
