@@ -24,11 +24,7 @@ html = html
 
 const staticInteractionScript = `<script>
 document.querySelector('.what-we-do')?.addEventListener('click',function(){
-  if(window.__agencyAudio){window.__agencyAudio.pause();window.__agencyAudio.currentTime=0}if(window.__agencyTimer)clearTimeout(window.__agencyTimer);
-  const meme=new Audio('public/meme-phrase-v2.mp4'),song=new Audio('public/agency-intro.mp3');window.__agencyAudio=meme;
-  const playSong=()=>{window.__agencyAudio=song;song.currentTime=0;song.play().then(()=>{window.__agencyTimer=setTimeout(()=>{song.pause();song.currentTime=0;window.__agencyAudio=null},6000)}).catch(()=>{})};
-  meme.addEventListener('ended',playSong,{once:true});meme.play().catch(playSong);
-  setTimeout(()=>document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'}),120);
+  document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'});
 });
 </script>`;
 html = html.replace("</body>", `${staticInteractionScript}</body>`);
