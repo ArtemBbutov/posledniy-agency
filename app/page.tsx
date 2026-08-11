@@ -27,15 +27,14 @@ export default function Home() {
     <section className="br-hero br-level" aria-labelledby="hero-title">
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
-      <div className="br-status"><span>СЕКТОР TELEGRAM</span><span className="live-dot">ПРИЁМ ПРОЕКТОВ ОТКРЫТ</span></div>
-      <div className="br-hero-copy">
-        <p>Продюсерское агентство / Бутов × Федонко</p>
+      <div className="hero-interface"><span>СЕКТОР 00 / TELEGRAM</span><i>СИГНАЛ СТАБИЛЕН</i><span>БУТОВ × ФЕДОНКО</span></div>
+      <div className="hero-portal-mark" aria-hidden="true"><span>ВХОД</span><i/><small>00—01</small></div>
+      <div className="hero-story-copy">
+        <p>Продюсерское агентство Telegram-каналов</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
-        <div className="br-hero-bottom">
-          <div><p>Строим авторские Telegram-каналы, которые интересно читать и из которых естественно покупать.</p><ul className="hero-deliverables"><li>позиция</li><li>контент</li><li>аудитория</li><li>запуск</li></ul></div>
-          <a className="story-hero-cta" href="#reality"><span>Узнать, что мы забираем на себя</span><i>↓</i></a>
-        </div>
+        <div className="hero-offer"><strong>Превращаем экспертизу<br/>в медиа и продукт.</strong><p>Позиция, редакция, рост аудитории и запуски — одной командой, без потери голоса автора.</p></div>
       </div>
+      <div className="hero-action-row"><div><span>ПРИЁМ ПРОЕКТОВ</span><b>ОТКРЫТ</b></div><a href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a></div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
 
