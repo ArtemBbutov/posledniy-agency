@@ -1298,6 +1298,136 @@
   .authentic-backrooms .price-list strong { grid-column: 1; }
 }
 
+/* 2026 density pass: clearer sales structure, varied compositions and a compact brief. */
+.authentic-backrooms .br-room,
+.authentic-backrooms .door-level,
+.authentic-backrooms .corridor-level,
+.authentic-backrooms .proof-level,
+.authentic-backrooms .price-level { min-height: auto; }
+
+.authentic-backrooms .br-room,
+.authentic-backrooms .proof-level,
+.authentic-backrooms .price-level { padding-top: 10vh; padding-bottom: 10vh; }
+
+.authentic-backrooms .wall-message h2,
+.authentic-backrooms .hall-heading h2,
+.authentic-backrooms .route-heading h2,
+.authentic-backrooms .proof-heading h2,
+.authentic-backrooms .price-heading h2 { font-size: clamp(48px, 6.2vw, 96px); }
+
+.authentic-backrooms .br-hero-copy h1 { font-size: clamp(70px, 10.8vw, 168px); }
+.authentic-backrooms .br-hero-bottom { align-items: end; }
+.authentic-backrooms .br-hero-bottom > div:first-child { max-width: 720px; }
+.authentic-backrooms .hero-deliverables { margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.authentic-backrooms .hero-deliverables li { padding: 7px 11px; color: #aaa78a; border: 1px solid rgba(210,208,173,.24); border-radius: 999px; background: rgba(5,5,3,.34); font: 8px var(--font-geist-mono),monospace; letter-spacing: .08em; text-transform: uppercase; }
+
+.authentic-backrooms .floor-01 { grid-template-columns: minmax(300px,.75fr) minmax(460px,1.25fr); gap: 7vw; align-items: center; }
+.authentic-backrooms .wall-message { position: relative; inset: auto; width: auto; }
+.authentic-backrooms .wall-message h2 { margin-top: 5vh; }
+.authentic-backrooms .wall-message > p:last-of-type { max-width: 570px; font-size: 14px; }
+.authentic-backrooms .audience-facts { margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(210,208,173,.24); }
+.authentic-backrooms .audience-facts li { padding: 12px 0 12px 22px; position: relative; color: #a29f84; border-bottom: 1px solid rgba(210,208,173,.14); font-size: 12px; line-height: 1.35; }
+.authentic-backrooms .audience-facts li::before { content: '↳'; position: absolute; left: 0; color: #d1ceaa; }
+.authentic-backrooms .workspace-visual { width: 100%; margin: 0; position: relative; z-index: 3; overflow: hidden; border-radius: 2px 28px 2px 2px; box-shadow: 0 35px 80px rgba(0,0,0,.54); }
+.authentic-backrooms .workspace-visual img { width: 100%; height: min(62vh,620px); display: block; object-fit: cover; filter: brightness(.76) saturate(.72) contrast(1.08); }
+.authentic-backrooms .workspace-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 48%,rgba(2,2,1,.86)); pointer-events: none; }
+.authentic-backrooms .workspace-visual figcaption { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 24px; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.authentic-backrooms .workspace-visual figcaption span { color: #858269; font: 8px var(--font-geist-mono),monospace; letter-spacing: .1em; }
+.authentic-backrooms .workspace-visual figcaption strong { max-width: 390px; color: #d7d3ae; font-size: clamp(19px,2vw,30px); line-height: 1.05; font-weight: 400; text-align: right; }
+
+.authentic-backrooms .door-level { padding-bottom: 8vh; }
+.authentic-backrooms .route-choices { margin-top: clamp(210px,29vh,310px); }
+.authentic-backrooms .problem-result { width: min(980px,86vw); margin: 5vh auto 0; padding: 16px 0; position: relative; z-index: 7; display: grid; grid-template-columns: auto 1fr auto auto 1.4fr; gap: 18px; align-items: center; border-top: 1px solid rgba(210,208,173,.25); color: #aaa78b; }
+.authentic-backrooms .problem-result span { color: #77755f; font: 8px var(--font-geist-mono),monospace; letter-spacing: .1em; }
+.authentic-backrooms .problem-result p { margin: 0; font-size: 12px; line-height: 1.4; }
+.authentic-backrooms .problem-result i { color: #d3cfaa; font-style: normal; }
+
+.authentic-backrooms .corridor-level { padding-top: 8vh; padding-bottom: 8vh; }
+.authentic-backrooms .route-panel { min-height: auto; }
+.authentic-backrooms .route-panel ol li { min-height: 100px; }
+.authentic-backrooms .route-panel ol small { margin-top: 8px; display: block; color: #77755f; font: 8px var(--font-geist-mono),monospace; letter-spacing: .04em; text-transform: uppercase; }
+
+.authentic-backrooms .proof-heading { grid-template-columns: 1.1fr .9fr; }
+.authentic-backrooms .work-showcase { margin-top: 7vh; grid-template-columns: 1.2fr .8fr; grid-template-rows: repeat(2,minmax(250px,1fr)); }
+.authentic-backrooms .work-photo { min-width: 0; margin: 0; position: relative; overflow: hidden; background: #090907; border-radius: 2px 24px 2px 2px; box-shadow: 0 28px 70px rgba(0,0,0,.36); }
+.authentic-backrooms .work-photo-main { grid-row: 1 / 3; min-height: 610px; }
+.authentic-backrooms .work-photo img { width: 100%; height: 100%; display: block; object-fit: cover; filter: brightness(.7) saturate(.66) contrast(1.08); transition: transform 7s ease; }
+.authentic-backrooms .work-photo:hover img { transform: scale(1.025); }
+.authentic-backrooms .work-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 46%,rgba(2,2,1,.92)); }
+.authentic-backrooms .work-photo figcaption { position: absolute; z-index: 2; left: 25px; right: 25px; bottom: 24px; }
+.authentic-backrooms .work-photo figcaption span { color: #858269; font: 8px var(--font-geist-mono),monospace; letter-spacing: .1em; }
+.authentic-backrooms .work-photo figcaption strong { max-width: 560px; margin-top: 12px; display: block; color: #d4d0ac; font-size: clamp(25px,3vw,48px); line-height: .95; font-weight: 400; }
+.authentic-backrooms .work-photo figcaption p { max-width: 570px; margin: 14px 0 0; color: #99967d; font-size: 12px; line-height: 1.45; }
+.authentic-backrooms .compact-channel { grid-row: auto; min-height: 340px; }
+.authentic-backrooms .compact-channel .telegram-mock { width: 86%; margin: 24px auto; }
+.authentic-backrooms .compact-channel .post-mock { margin: 12px; padding: 14px; }
+.authentic-backrooms .work-screen { border-radius: 16px 2px 16px 2px; }
+.authentic-backrooms .editorial-screen { display: none; }
+.authentic-backrooms .launch-screen { min-height: 270px; }
+.authentic-backrooms .team-note { margin-top: 5vh; }
+
+.authentic-backrooms .price-heading { grid-template-columns: 1.05fr .95fr; }
+.authentic-backrooms .price-list { margin-top: 6vh; }
+.authentic-backrooms .price-list article { padding: 21px 0; }
+.authentic-backrooms .price-list h3 { font-size: clamp(24px,2.8vw,44px); }
+.authentic-backrooms .price-cta { margin-top: 4vh; }
+
+.authentic-backrooms .brief-level { min-height: auto; padding: 10vh 6vw 28px; display: grid; grid-template-columns: minmax(280px,.68fr) minmax(560px,1.32fr); column-gap: 7vw; align-items: start; }
+.authentic-backrooms .brief-heading { display: block; position: sticky; top: 90px; }
+.authentic-backrooms .brief-heading .br-label { display: block; }
+.authentic-backrooms .brief-heading h2 { margin: 5vh 0 0; font-size: clamp(48px,5.5vw,84px); line-height: .86; }
+.authentic-backrooms .brief-heading > p:last-child { margin: 28px 0 0; font-size: 13px; }
+.authentic-backrooms .project-brief { margin-top: 0; }
+.authentic-backrooms .brief-field { padding: 18px 0 21px; }
+.authentic-backrooms .brief-field legend { grid-template-columns: 46px 1fr; padding-bottom: 15px; }
+.authentic-backrooms .brief-field legend strong { font-size: clamp(17px,1.45vw,23px); }
+.authentic-backrooms .brief-options { grid-template-columns: 1fr 1fr; }
+.authentic-backrooms .brief-checks { grid-template-columns: repeat(2,1fr); }
+.authentic-backrooms .brief-options label { min-height: 56px; }
+.authentic-backrooms .brief-options label span { padding: 11px; font-size: 10px; }
+.authentic-backrooms .brief-field textarea { min-height: 105px; }
+.authentic-backrooms .brief-submit { padding: 4vh 0; grid-template-columns: 1fr; gap: 22px; }
+.authentic-backrooms .brief-submit button { min-height: 68px; }
+.authentic-backrooms .brief-level > footer { grid-column: 1 / -1; }
+
+@media (max-width: 900px) {
+  .authentic-backrooms .floor-01 { grid-template-columns: 1fr; gap: 42px; }
+  .authentic-backrooms .workspace-visual img { height: 54vw; min-height: 340px; }
+  .authentic-backrooms .problem-result { grid-template-columns: auto 1fr; }
+  .authentic-backrooms .problem-result i { display: none; }
+  .authentic-backrooms .work-showcase { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .authentic-backrooms .work-photo-main { grid-row: auto; min-height: 560px; }
+  .authentic-backrooms .brief-level { display: block; padding: 10vh 18px 100px; }
+  .authentic-backrooms .brief-heading { position: static; }
+  .authentic-backrooms .project-brief { margin-top: 7vh; }
+}
+
+@media (max-width: 600px) {
+  .authentic-backrooms .br-hero-copy h1 { font-size: clamp(58px,18vw,88px); }
+  .authentic-backrooms .br-room,
+  .authentic-backrooms .proof-level,
+  .authentic-backrooms .price-level { padding-top: 82px; padding-bottom: 72px; }
+  .authentic-backrooms .wall-message h2,
+  .authentic-backrooms .hall-heading h2,
+  .authentic-backrooms .route-heading h2,
+  .authentic-backrooms .proof-heading h2,
+  .authentic-backrooms .price-heading h2 { font-size: clamp(42px,13vw,62px); }
+  .authentic-backrooms .workspace-visual { border-radius: 2px 18px 2px 2px; }
+  .authentic-backrooms .workspace-visual img { height: 70vw; min-height: 300px; }
+  .authentic-backrooms .workspace-visual figcaption { left: 16px; right: 16px; bottom: 15px; display: block; }
+  .authentic-backrooms .workspace-visual figcaption strong { margin-top: 8px; display: block; text-align: left; }
+  .authentic-backrooms .route-choices { margin-top: 190px; }
+  .authentic-backrooms .problem-result { width: auto; margin: 26px 18px 0; }
+  .authentic-backrooms .work-showcase { margin-top: 6vh; display: grid; overflow: visible; }
+  .authentic-backrooms .work-photo-main,
+  .authentic-backrooms .work-screen { width: auto; min-height: 480px; }
+  .authentic-backrooms .work-photo figcaption strong { font-size: 29px; }
+  .authentic-backrooms .team-note { grid-template-columns: 1fr; gap: 12px; }
+  .authentic-backrooms .brief-options,
+  .authentic-backrooms .brief-checks { grid-template-columns: 1fr; }
+  .authentic-backrooms .brief-heading h2 { font-size: clamp(44px,13vw,64px); }
+}
+
 /* Keep diagonal arrows typographic on mobile instead of letting the OS replace them with emoji. */
 .authentic-backrooms .br-call span,
 .authentic-backrooms .service-route > b,

@@ -9,10 +9,10 @@ const doors = [
 ];
 
 const route = [
-  ["01", "Стратегия", "Автор, аудитория, позиционирование и точка назначения"],
-  ["02", "Редакция", "Голос канала, рубрики, тексты и визуальная система"],
-  ["03", "Рост", "Посевы, коллаборации, аналитика и новая аудитория"],
-  ["04", "Запуск", "Прогрев, оффер, воронка, продажи и следующий цикл"],
+  ["01", "Стратегия", "Автор, аудитория и позиционирование", "На выходе: карта канала и контент-углы"],
+  ["02", "Редакция", "Голос, рубрики, тексты и визуальная система", "На выходе: готовый ритм публикаций"],
+  ["03", "Рост", "Посевы, коллаборации и аналитика", "На выходе: понятный план привлечения"],
+  ["04", "Запуск", "Прогрев, оффер, воронка и следующий цикл", "На выходе: сценарий запуска и метрики"],
 ];
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
       <div className="br-hero-copy">
         <p>Telegram-продюсирование / Бутов × Федонко</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
-        <div className="br-hero-bottom"><p>Продюсируем Telegram-каналы для экспертов и авторов: от позиции и редакции до роста и запуска продукта.</p><div className="br-hero-actions"><BackroomsAction/></div></div>
+        <div className="br-hero-bottom"><div><p>Превращаем экспертизу в Telegram-медиа, которое регулярно выходит, растит доверие и приводит аудиторию к продукту.</p><ul className="hero-deliverables"><li>стратегия</li><li>редакция</li><li>рост</li><li>запуски</li></ul></div><div className="br-hero-actions"><BackroomsAction/></div></div>
       </div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
@@ -40,10 +40,11 @@ export default function Home() {
       <aside className="level-marker"><b>01</b><span>КОМУ ПОДХОДИМ</span></aside>
       <div className="wall-message">
         <p className="br-label">ЭТАЖ 01 / КОМУ МЫ НУЖНЫ</p>
-        <h2>Тем, кому нужен<br/>канал как медиа.</h2>
-        <p>Работаем с экспертами, авторами и небольшими командами, у которых есть знание или продукт, но нет устойчивой системы Telegram: позиции, редакции, роста и запусков.</p>
+        <h2>Есть экспертиза.<br/>Нужна система.</h2>
+        <p>Подходим экспертам, авторам и небольшим командам, у которых уже есть знание или продукт, но Telegram пока держится на вдохновении одного человека.</p>
+        <ul className="audience-facts"><li>Канал должен звучать как автор, а не как редакция</li><li>Контент должен выходить без ежедневного контроля</li><li>Аудитория должна понимать, зачем читать и что покупать</li></ul>
       </div>
-      <div className="observation-window"><span>ЭКСПЕРТЫ</span><span>АВТОРЫ</span><span>КОМАНДЫ</span><span>ПРОДУКТЫ</span></div>
+      <figure className="workspace-visual"><img src="/telegram-workspace-v1.png" alt="Редакционный стол Telegram-проекта в атмосфере Backrooms"/><figcaption><span>РАБОЧАЯ СЦЕНА / 01</span><strong>Вы даёте экспертизу.<br/>Мы держим производство.</strong></figcaption></figure>
     </section>
 
     <section className="br-level door-level" id="floor-02">
@@ -55,7 +56,7 @@ export default function Home() {
           <div className="route-index"><span>{door.n}</span><i>{door.tag}</i></div><h3>{door.title}</h3><p>{door.text}</p><b aria-hidden="true">↗︎</b>
         </article>)}
       </div>
-      <p className="hall-note">Можно войти с одной проблемой. На диагностике соберём маршрут под реальное состояние канала и продукта.</p>
+      <div className="problem-result"><span>ВХОД</span><p>«Надо что-то делать с Telegram»</p><i>→</i><span>ВЫХОД</span><p>Понятная роль канала, регулярная редакция и маршрут к продукту</p></div>
     </section>
 
     <section className="br-level corridor-level" id="floor-03">
@@ -63,21 +64,19 @@ export default function Home() {
       <div className="corridor-lights"><i/><i/><i/><i/><i/></div>
       <div className="route-panel">
         <div className="route-heading"><p className="br-label">ЭТАЖ 03 / КАК МЫ РАБОТАЕМ</p><h2>От диагностики<br/>до запуска.</h2><p>Не начинаем с пачки постов. Сначала определяем задачу и точку назначения, затем собираем редакцию, рост и продуктовый маршрут.</p></div>
-        <ol>{route.map(([n,title,text])=><li key={n}><span>{n}</span><div><h3>{title}</h3><p>{text}</p></div><i>→</i></li>)}</ol>
+        <ol>{route.map(([n,title,text,result])=><li key={n}><span>{n}</span><div><h3>{title}</h3><p>{text}</p><small>{result}</small></div><i>→</i></li>)}</ol>
       </div>
     </section>
 
     <section className="br-level proof-level" id="cases">
-      <header className="proof-heading"><p className="br-label">ЭТАЖ 04 / ЧТО МЫ СОБИРАЕМ</p><h2>Не обещания.<br/>Рабочая система.</h2><p>Вместо ещё одного списка услуг показываем рабочие поверхности, которые появляются внутри проекта.</p></header>
+      <header className="proof-heading"><p className="br-label">ЭТАЖ 04 / ЧТО ПОЛУЧАЕТ КЛИЕНТ</p><h2>Вот что остаётся<br/>после слов.</h2><p>Не абстрактное «ведение канала», а конкретные рабочие поверхности: голос автора, редакционный конвейер и маршрут запуска.</p></header>
       <div className="work-showcase">
-        <article className="work-screen channel-screen">
-          <div className="screen-bar"><span>01 / КАНАЛ</span><i>ПРЕВЬЮ РЕДАКЦИИ</i></div>
-          <div className="telegram-mock">
-            <header><b>АВТОРСКИЙ КАНАЛ</b><span>голос автора / система агентства</span></header>
-            <div className="post-mock"><small>09:40</small><strong>Текст, который хочется дочитать</strong><p>Не безликий экспертный блог, а узнаваемый голос, последовательность тем и понятная причина остаться.</p><i/></div>
-            <div className="post-mock compact"><small>12:15</small><strong>Рубрика / личный опыт</strong><i/></div>
-          </div>
-          <footer><strong>Канал и голос</strong><span>Позиция, упаковка, рубрики и первые материалы</span></footer>
+        <figure className="work-photo work-photo-main"><img src="/editorial-wall-v1.png" alt="Стена редакционного планирования запуска"/><figcaption><span>01 / РЕДАКЦИЯ</span><strong>Контент не придумывается заново каждое утро</strong><p>Карта тем, роли материалов, дедлайны и связь с продуктом собраны в один производственный маршрут.</p></figcaption></figure>
+
+        <article className="work-screen channel-screen compact-channel">
+          <div className="screen-bar"><span>02 / КАНАЛ</span><i>ПРЕВЬЮ</i></div>
+          <div className="telegram-mock"><header><b>ГОЛОС АВТОРА</b><span>система агентства</span></header><div className="post-mock"><small>09:40</small><strong>Текст, который хочется дочитать</strong><p>Узнаваемый голос, последовательность тем и причина остаться.</p><i/></div></div>
+          <footer><strong>Канал и голос</strong><span>Позиция, упаковка, рубрики</span></footer>
         </article>
 
         <article className="work-screen editorial-screen">
@@ -101,11 +100,11 @@ export default function Home() {
         </article>
       </div>
       <div className="team-note"><span>Проекты ведут лично</span><strong>Артём Бутов — стратегия и контент</strong><strong>Артём Федонко — продукт и запуск</strong></div>
-      <p className="proof-note">Это демонстрационные рабочие экраны, а не чужие результаты. Реальные материалы проекта показываем с разрешения клиента.</p>
+      <p className="proof-note">Это демонстрация состава работы, а не выдуманный кейс. Реальные цифры и материалы добавим только с разрешения клиента.</p>
     </section>
 
     <section className="br-level price-level" id="formats">
-      <header className="price-heading"><p className="br-label">ЭТАЖ 05 / ФОРМАТЫ И СТОИМОСТЬ</p><h2>Выберите<br/>глубину.</h2><p>Начинаем с задачи, а не с пакета услуг. Ниже — ориентиры, чтобы понимать порядок работы и бюджета до первого сообщения.</p></header>
+      <header className="price-heading"><p className="br-label">ЭТАЖ 05 / ФОРМАТЫ РАБОТЫ</p><h2>Можно начать<br/>с разной точки.</h2><p>Три понятных формата — от сборки фундамента до полного продюсерского управления. Итоговый состав фиксируем после диагностики.</p></header>
       <div className="price-list">
         <article><span>01 / РАЗОВО</span><div><h3>Стратегия и упаковка</h3><p>Диагностика, позиционирование, структура канала, рубрики и план запуска редакции.</p></div><strong>от 60 000 ₽</strong></article>
         <article><span>02 / ЕЖЕМЕСЯЧНО</span><div><h3>Продюсирование канала</h3><p>Стратегия, редакция, контент, рост, аналитика и управление процессом.</p></div><strong>от 120 000 ₽ / мес.</strong></article>
