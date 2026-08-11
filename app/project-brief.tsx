@@ -13,7 +13,6 @@ export function ProjectBrief() {
       project: "Проект",
       objective: "Цель",
       link: "Ссылка",
-      budget: "Бюджет",
       contact: "Контакт",
     };
     const grouped = new Map<string, string[]>();
@@ -46,42 +45,32 @@ export function ProjectBrief() {
       </div>
     </fieldset>
 
-    <fieldset className="brief-field">
-      <legend><span>02</span><strong>О чём проект и что уже есть?</strong></legend>
-      <textarea required name="project" rows={5} placeholder="Экспертиза, продукт, аудитория, команда — коротко и без презентации на 40 слайдов"/>
+    <fieldset className="brief-field brief-project">
+      <legend><span>02</span><strong>Пара слов о проекте</strong></legend>
+      <textarea required name="project" rows={3} placeholder="Чем занимаетесь и что уже есть в Telegram?"/>
     </fieldset>
 
     <fieldset className="brief-field">
-      <legend><span>03</span><strong>Что должно измениться?</strong></legend>
+      <legend><span>03</span><strong>Главная задача</strong></legend>
       <div className="brief-options brief-checks">
-        {["Запустить канал", "Вернуть рост", "Собрать редакцию", "Запустить продукт", "Снять операционку с автора"].map((option) => <label key={option}><input type="checkbox" name="objective" value={option}/><span>{option}</span></label>)}
+        {["Запустить канал", "Вернуть рост", "Подготовить запуск", "Передать канал команде"].map((option) => <label key={option}><input required type="radio" name="objective" value={option}/><span>{option}</span></label>)}
       </div>
     </fieldset>
 
-    <div className="brief-row">
+    <div className="brief-row brief-contact-row">
       <fieldset className="brief-field">
-        <legend><span>04</span><strong>Ссылка на канал или продукт</strong></legend>
+        <legend><span>04</span><strong>Канал, если есть</strong></legend>
         <input name="link" type="url" inputMode="url" placeholder="https://t.me/..."/>
       </fieldset>
-      <fieldset className="brief-field">
-        <legend><span>05</span><strong>Ориентир по бюджету</strong></legend>
-        <select name="budget" defaultValue="Нужно оценить">
-          <option>Нужно оценить</option>
-          <option>До 100 000 ₽</option>
-          <option>100 000–200 000 ₽</option>
-          <option>Больше 200 000 ₽</option>
-        </select>
+      <fieldset className="brief-field brief-contact">
+        <legend><span>05</span><strong>Ваш Telegram</strong></legend>
+        <input required name="contact" type="text" placeholder="Имя и @username"/>
       </fieldset>
     </div>
 
-    <fieldset className="brief-field brief-contact">
-      <legend><span>06</span><strong>Как с вами связаться?</strong></legend>
-      <input required name="contact" type="text" placeholder="Имя и @username в Telegram"/>
-    </fieldset>
-
     <div className="brief-submit">
-      <div><span>Следующий шаг</span><p>Пока отправка не подключена, кнопка соберёт ответы в готовый текст и скопирует его. Когда выберете Telegram — подключим отправку напрямую.</p></div>
-      <button type="submit"><span>{status === "idle" ? "Подготовить заявку" : status === "copied" ? "Анкета скопирована" : "Анкета готова"}</span><b aria-hidden="true">→</b></button>
+      <span>Займёт около минуты</span>
+      <button type="submit"><span>{status === "idle" ? "Собрать заявку" : status === "copied" ? "Заявка скопирована" : "Заявка готова"}</span><b aria-hidden="true">→</b></button>
     </div>
   </form>;
 }

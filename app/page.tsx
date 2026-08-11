@@ -32,7 +32,7 @@ export default function Home() {
       <div className="hero-story-copy">
         <p>Продюсерское агентство Telegram-каналов</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
-        <div className="hero-offer"><strong>Превращаем экспертизу<br/>в медиа и продукт.</strong><p>Позиция, редакция, рост аудитории и запуски — одной командой, без потери голоса автора.</p></div>
+        <div className="hero-offer"><strong>Ведём Telegram<br/>вместе с автором.</strong><p>Придумываем, пишем, выпускаем и растим канал. Автор сохраняет свой голос и не живёт в операционке.</p></div>
       </div>
       <div className="hero-action-row"><div><span>ПРИЁМ ПРОЕКТОВ</span><b>ОТКРЫТ</b></div><a href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a></div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
@@ -51,7 +51,7 @@ export default function Home() {
     </section>
 
     <section className="transformation" id="change">
-      <header><p className="br-label">02 / ЧТО МЕНЯЕТСЯ</p><h2>Не больше контента.<br/>Больше смысла в каждом выходе.</h2><p>Мы не продаём пачку постов. Перестраиваем сам способ, которым канал создаётся, растёт и приводит людей к продукту.</p></header>
+      <header><p className="br-label">02 / ЧТО МЕНЯЕТСЯ</p><h2>Канал выходит.<br/>Автор не живёт в редакции.</h2><p>Берём на себя ежедневную работу и связываем контент с задачами канала и продукта.</p></header>
       <div className="shift-table">
         <div className="shift-head"><span>СЕЙЧАС</span><i/><span>ПОСЛЕ СБОРКИ СИСТЕМЫ</span></div>
         {shifts.map(([before,after], index)=><article key={before}><b>{String(index+1).padStart(2,"0")}</b><p>{before}</p><i>→</i><strong>{after}</strong></article>)}
@@ -90,7 +90,7 @@ export default function Home() {
     </section>
 
     <section className="br-level brief-level" id="exit">
-      <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Покажите,<br/>что происходит.</h2><p>Ответьте на шесть коротких вопросов. Мы поймём контекст и предложим первый нормальный шаг — без созвона ради созвона.</p></header>
+      <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о канале.</h2><p>Пять коротких ответов. Посмотрим проект и предложим, с чего лучше начать.</p></header>
       <ProjectBrief/>
       <footer><span>Агенство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
     </section>
