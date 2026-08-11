@@ -29,7 +29,7 @@ export default function Home() {
       <div className="br-hero-shade" />
       <div className="hero-story-copy">
         <p>Продюсерское агентство Telegram-каналов</p>
-        <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
+        <h1 id="hero-title"><span>Агентство</span><em>Нас#лия</em></h1>
         <div className="hero-offer"><strong>Ведём Telegram<br/>вместе с автором.</strong><p>Придумываем, пишем, выпускаем и растим канал. Автор сохраняет свой голос и не живёт в операционке.</p></div>
         <ul className="hero-proof-line"><li><span>01</span><b>Только Telegram</b></li><li><span>02</span><b>Проекты ведём лично</b></li><li><span>03</span><b>От первого поста до запуска</b></li></ul>
         <a className="hero-main-cta" href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a>
