@@ -27,9 +27,20 @@ html = html
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/og-telegram.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/og-telegram.png"');
 
 const staticInteractionScript = `<script>
-document.querySelector('.what-we-do')?.addEventListener('click',function(){
-  document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'});
+document.documentElement.classList.add('motion-ready');
+const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene-notes article','.scene-conclusion','.transformation header > *','.shift-table article','.change-result','.work-story-copy > *','.work-story li','.system-map','.proof-strip article','.formats-story header > *','.format-lines article','.brief-heading > *','.project-brief > *'].join(','))];
+revealTargets.forEach((element,index)=>{element.classList.add('reveal-item');element.style.setProperty('--reveal-delay',Math.min(index%4,3)*70+'ms')});
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.13,rootMargin:'0px 0px -7%'});
+revealTargets.forEach(element=>revealObserver.observe(element));
+[...document.querySelectorAll('.shift-table article,.work-story li,.format-lines article')].forEach(element=>{
+  element.tabIndex=0;
+  const select=()=>{element.parentElement?.querySelectorAll('.is-selected').forEach(item=>item.classList.remove('is-selected'));element.classList.add('is-selected')};
+  element.addEventListener('click',select);
+  element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select()}});
 });
+const progress=document.querySelector('.scroll-progress');
+const updateProgress=()=>{const maximum=document.documentElement.scrollHeight-innerHeight;progress?.style.setProperty('--progress',String(maximum>0?scrollY/maximum:0))};
+updateProgress();addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);
 document.querySelector('.project-brief')?.addEventListener('submit',async function(event){
   event.preventDefault();
   const labels={entry:'Точка входа',project:'Проект',objective:'Цель',link:'Ссылка',budget:'Бюджет',contact:'Контакт'};

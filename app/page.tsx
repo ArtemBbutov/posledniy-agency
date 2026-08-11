@@ -1,4 +1,5 @@
 import { ProjectBrief } from "./project-brief";
+import { SiteInteractions } from "./site-interactions";
 
 const shifts = [
   ["Канал держится на вашем настроении", "Редакция работает по понятному ритму"],
@@ -16,6 +17,7 @@ const work = [
 
 export default function Home() {
   return <main id="top" className="backrooms-site authentic-backrooms story-site">
+    <SiteInteractions/>
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>TELEGRAM PRODUCTION</span></a>
       <nav aria-label="Навигация по разделам"><a href="#reality">СИТУАЦИЯ</a><a href="#change">РЕЗУЛЬТАТ</a><a href="#work">РАБОТА</a><a href="#exit">АНКЕТА</a></nav>
@@ -68,9 +70,9 @@ export default function Home() {
       <figure className="system-map">
         <img src="/editorial-wall-v1.png" alt="Редакционная карта Telegram-проекта"/>
         <figcaption><span>РАБОЧАЯ СИСТЕМА / ВИД ИЗНУТРИ</span><strong>Темы, дедлайны, продукт и продвижение видны в одной карте.</strong></figcaption>
-        <i className="map-point point-a"><b>01</b><small>контент-углы</small></i>
-        <i className="map-point point-b"><b>02</b><small>ритм редакции</small></i>
-        <i className="map-point point-c"><b>03</b><small>точки запуска</small></i>
+        <button className="map-point point-a" type="button"><b>01</b><small>контент-углы</small></button>
+        <button className="map-point point-b" type="button"><b>02</b><small>ритм редакции</small></button>
+        <button className="map-point point-c" type="button"><b>03</b><small>точки запуска</small></button>
       </figure>
     </section>
 
