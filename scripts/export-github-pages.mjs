@@ -26,6 +26,17 @@ const staticInteractionScript = `<script>
 document.querySelector('.what-we-do')?.addEventListener('click',function(){
   document.querySelector('#floor-02')?.scrollIntoView({behavior:'smooth',block:'start'});
 });
+document.querySelector('.project-brief')?.addEventListener('submit',async function(event){
+  event.preventDefault();
+  const labels={entry:'Точка входа',project:'Проект',objective:'Цель',link:'Ссылка',budget:'Бюджет',contact:'Контакт'};
+  const grouped=new Map();
+  for(const [key,value] of new FormData(this).entries())grouped.set(key,[...(grouped.get(key)||[]),String(value)]);
+  const lines=['АНКЕТА ПРОЕКТА / АГЕНСТВО НАС#ЛИЯ',''];
+  for(const [key,values] of grouped)lines.push((labels[key]||key)+': '+values.join(', '));
+  const button=this.querySelector('.brief-submit button span');
+  try{await navigator.clipboard.writeText(lines.join('\\n'));if(button)button.textContent='Анкета скопирована'}
+  catch{if(button)button.textContent='Анкета готова'}
+});
 </script>`;
 html = html.replace("</body>", `${staticInteractionScript}</body>`);
 

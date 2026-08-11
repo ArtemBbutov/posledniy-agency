@@ -1,4 +1,5 @@
 import { BackroomsAction } from "./backrooms-action";
+import { ProjectBrief } from "./project-brief";
 
 const doors = [
   { n: "01", title: "Нет канала", tag: "экспертиза → медиа", text: "Собираем позиционирование, оформление и контент-систему, с которой можно уверенно выйти в Telegram." },
@@ -18,8 +19,8 @@ export default function Home() {
   return <main id="top" className="backrooms-site authentic-backrooms">
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>СЕКТОР TELEGRAM</span></a>
-      <nav aria-label="Навигация по разделам"><a href="#floor-01">КОМУ</a><a href="#floor-02">ЗАДАЧА</a><a href="#floor-03">ПРОЦЕСС</a><a href="#exit">СВЯЗЬ</a></nav>
-      <a className="br-call" href="#exit">Войти в проект <span>↗︎</span></a>
+      <nav aria-label="Навигация по разделам"><a href="#floor-01">КОМУ</a><a href="#floor-02">ЗАДАЧА</a><a href="#floor-03">ПРОЦЕСС</a><a href="#exit">АНКЕТА</a></nav>
+      <a className="br-call" href="#exit">Заполнить анкету <span>↓</span></a>
     </header>
 
     <section className="br-hero br-level" aria-labelledby="hero-title">
@@ -67,14 +68,40 @@ export default function Home() {
     </section>
 
     <section className="br-level proof-level" id="cases">
-      <header className="proof-heading"><p className="br-label">ЭТАЖ 04 / ПРИМЕРЫ ЗАДАЧ</p><h2>Как это выглядит<br/>на практике.</h2><p>Показываем типовые сценарии работы, не выдавая их за готовые кейсы. Подтверждённые результаты и цифры добавим отдельно.</p></header>
-      <div className="proof-grid">
-        <article><span>01 / КАНАЛ С НУЛЯ</span><h3>Эксперт → самостоятельное медиа.</h3><p>Есть опыт и продукт, но нет ясной позиции и привычки вести канал. Собираем основу, с которой автор может регулярно выходить к аудитории.</p><ul><li>Позиционирование</li><li>Архитектура и рубрики</li><li>Первые 12–16 материалов</li></ul></article>
-        <article><span>02 / ПЕРЕЗАПУСК</span><h3>Тихий канал → редакционная система.</h3><p>Канал существует, но публикации случайны и не дают ощущения движения. Пересобираем голос, ритм, навигацию и план роста.</p><ul><li>Аудит канала</li><li>Новый редакционный ритм</li><li>План продвижения</li></ul></article>
-        <article><span>03 / ЗАПУСК ПРОДУКТА</span><h3>Аудитория → продуктовый маршрут.</h3><p>В канале есть внимание, но продукт появляется внезапно. Выстраиваем последовательность от интереса и доверия до предложения.</p><ul><li>Продукт и оффер</li><li>Контент-маршрут</li><li>Воронка и аналитика</li></ul></article>
+      <header className="proof-heading"><p className="br-label">ЭТАЖ 04 / ЧТО МЫ СОБИРАЕМ</p><h2>Не обещания.<br/>Рабочая система.</h2><p>Вместо ещё одного списка услуг показываем рабочие поверхности, которые появляются внутри проекта.</p></header>
+      <div className="work-showcase">
+        <article className="work-screen channel-screen">
+          <div className="screen-bar"><span>01 / КАНАЛ</span><i>ПРЕВЬЮ РЕДАКЦИИ</i></div>
+          <div className="telegram-mock">
+            <header><b>АВТОРСКИЙ КАНАЛ</b><span>голос автора / система агентства</span></header>
+            <div className="post-mock"><small>09:40</small><strong>Текст, который хочется дочитать</strong><p>Не безликий экспертный блог, а узнаваемый голос, последовательность тем и понятная причина остаться.</p><i/></div>
+            <div className="post-mock compact"><small>12:15</small><strong>Рубрика / личный опыт</strong><i/></div>
+          </div>
+          <footer><strong>Канал и голос</strong><span>Позиция, упаковка, рубрики и первые материалы</span></footer>
+        </article>
+
+        <article className="work-screen editorial-screen">
+          <div className="screen-bar"><span>02 / РЕДАКЦИЯ</span><i>РАБОЧИЙ РИТМ</i></div>
+          <div className="editorial-board">
+            <div><b>ИДЕИ</b><span>Личная история</span><span>Разбор рынка</span></div>
+            <div><b>В РАБОТЕ</b><span>Главный тезис</span><span className="active">Пост запуска</span></div>
+            <div><b>ГОТОВО</b><span>Кейс автора</span><span>Навигация</span></div>
+          </div>
+          <footer><strong>Редакционная система</strong><span>Темы не заканчиваются, публикации не зависят от настроения</span></footer>
+        </article>
+
+        <article className="work-screen launch-screen">
+          <div className="screen-bar"><span>03 / ЗАПУСК</span><i>КАРТА ДВИЖЕНИЯ</i></div>
+          <div className="launch-map">
+            <span><b>01</b><i>Интерес</i></span><span><b>02</b><i>Доверие</i></span><span><b>03</b><i>Проблема</i></span><span><b>04</b><i>Продукт</i></span>
+            <div className="launch-line"><i/><i/><i/><i/></div>
+            <p>Контент ведёт к предложению постепенно — без резкой смены голоса и рекламного вторжения.</p>
+          </div>
+          <footer><strong>Продуктовый маршрут</strong><span>Оффер, прогрев, воронка и точки аналитики</span></footer>
+        </article>
       </div>
       <div className="team-note"><span>Проекты ведут лично</span><strong>Артём Бутов — стратегия и контент</strong><strong>Артём Федонко — продукт и запуск</strong></div>
-      <p className="proof-note">На первом разговоре покажем рабочие материалы и разберём, какой из сценариев ближе вашей задаче.</p>
+      <p className="proof-note">Это демонстрационные рабочие экраны, а не чужие результаты. Реальные материалы проекта показываем с разрешения клиента.</p>
     </section>
 
     <section className="br-level price-level" id="formats">
@@ -84,20 +111,12 @@ export default function Home() {
         <article><span>02 / ЕЖЕМЕСЯЧНО</span><div><h3>Продюсирование канала</h3><p>Стратегия, редакция, контент, рост, аналитика и управление процессом.</p></div><strong>от 120 000 ₽ / мес.</strong></article>
         <article><span>03 / ПРОЕКТНО</span><div><h3>Запуск продукта</h3><p>Продукт, оффер, прогрев, воронка, продажи и разбор результатов.</p></div><strong>смета после диагностики</strong></article>
       </div>
-      <a className="price-cta" href="https://t.me/but0vv" target="_blank" rel="noreferrer">Обсудить подходящий формат <span>↗︎</span></a>
+      <a className="price-cta" href="#exit">Перейти к анкете проекта <span>↓</span></a>
     </section>
 
-    <section className="br-level exit-level" id="exit">
-      <div className="exit-light">ВЫХОД В TELEGRAM</div>
-      <a className="exit-door" href="https://t.me/but0vv" target="_blank" rel="noreferrer" aria-label="Написать Артёму Бутову в Telegram и обсудить проект">
-        <div className="exit-copy">
-          <p>ЭТАЖ 06 / ПРЯМАЯ СВЯЗЬ</p>
-          <h2><span>Есть канал.</span><span>Или только идея?</span></h2>
-          <span className="exit-lead">Расскажите о задаче в Telegram. Разберём вводные, предложим точку входа и честно скажем, подходим ли друг другу.</span>
-          <div className="exit-action"><span><strong>Написать в Telegram</strong><small>@but0vv · обсудить проект</small></span><b aria-hidden="true">↗︎</b></div>
-        </div>
-        <div className="exit-signal" aria-hidden="true"><span>↗︎</span><i>НАЖМИТЕ В ЛЮБОЙ ТОЧКЕ</i></div>
-      </a>
+    <section className="br-level brief-level" id="exit">
+      <header className="brief-heading"><p className="br-label">ЭТАЖ 06 / АНКЕТА ПРОЕКТА</p><h2>Покажите,<br/>с чем входите.</h2><p>Шесть коротких вопросов вместо созвона «познакомиться». По ответам поймём задачу, подходящий формат и следующий шаг.</p></header>
+      <ProjectBrief/>
       <footer><span>Агенство Нас#лия © 2026</span><span>Бутов × Федонко</span><a href="#top">На этаж 00 ↑</a></footer>
     </section>
   </main>;
