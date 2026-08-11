@@ -27,15 +27,13 @@ export default function Home() {
     <section className="br-hero br-level" aria-labelledby="hero-title">
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
-      <div className="hero-interface"><span>СЕКТОР 00 / TELEGRAM</span><i>СИГНАЛ СТАБИЛЕН</i><span>БУТОВ × ФЕДОНКО</span></div>
-      <div className="hero-portal-mark" aria-hidden="true"><span>ВХОД</span><i/><small>00—01</small></div>
       <div className="hero-story-copy">
         <p>Продюсерское агентство Telegram-каналов</p>
         <h1 id="hero-title"><span>Агенство</span><em>Нас#лия</em></h1>
         <div className="hero-offer"><strong>Ведём Telegram<br/>вместе с автором.</strong><p>Придумываем, пишем, выпускаем и растим канал. Автор сохраняет свой голос и не живёт в операционке.</p></div>
         <ul className="hero-proof-line"><li><span>01</span><b>Только Telegram</b></li><li><span>02</span><b>Проекты ведём лично</b></li><li><span>03</span><b>От первого поста до запуска</b></li></ul>
+        <a className="hero-main-cta" href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a>
       </div>
-      <div className="hero-action-row"><div><span>ПРИЁМ ПРОЕКТОВ</span><b>ОТКРЫТ</b></div><a href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a></div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
 

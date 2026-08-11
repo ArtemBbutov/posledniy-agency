@@ -2295,3 +2295,35 @@ html { scroll-behavior: smooth; }
   .story-site .hero-proof-line li,.story-site .hero-proof-line li + li { min-height: 34px; padding: 7px 0; border-right: 0; border-bottom: 1px solid rgba(213,209,170,.12); }
   .story-site .hero-proof-line b { font-size: 9px; }
 }
+
+/* Remove the global dot-matrix overlay: it made every glyph look damaged. */
+.story-site::before,.story-site::after { display: none !important; content: none !important; }
+.story-site .br-hero::before { display: none !important; }
+.story-site .hero-interface,.story-site .hero-portal-mark,.story-site .hero-action-row { display: none !important; }
+.story-site .br-hero-image { filter: brightness(.58) saturate(.68) contrast(1.06); }
+.story-site .hero-story-copy { top: 17%; bottom: 5.5%; width: min(800px,54vw); display: flex; flex-direction: column; }
+.story-site .hero-story-copy > p { margin-bottom: 6vh; }
+.story-site .hero-story-copy h1 span { font-size: clamp(68px,8.2vw,126px); }
+.story-site .hero-story-copy h1 em { font-size: clamp(62px,7vw,108px); }
+.story-site .hero-offer { width: min(650px,46vw); margin-top: 5vh; }
+.story-site .hero-proof-line { width: min(690px,49vw); margin-top: 3.5vh; }
+.story-site .hero-main-cta { width: min(440px,34vw); min-height: 60px; margin-top: auto; padding: 0 19px; display: flex; align-items: center; justify-content: space-between; color: #161610; background: #d0cda9; border-radius: 12px 2px 12px 2px; text-decoration: none; box-shadow: 0 18px 50px rgba(0,0,0,.3); transition: transform .35s cubic-bezier(.2,.8,.2,1),background .3s ease,box-shadow .35s ease; animation: heroEnter .85s .72s both; }
+.story-site .hero-main-cta span { font-size: clamp(14px,1.2vw,18px); }.story-site .hero-main-cta i { font: 19px var(--font-geist-mono),monospace; font-style: normal; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.story-site .hero-main-cta:hover,.story-site .hero-main-cta:focus-visible { transform: translateY(-4px); background: #e2deB7; box-shadow: 0 24px 60px rgba(0,0,0,.4),0 0 34px rgba(232,227,180,.15); outline: none; }
+.story-site .hero-main-cta:hover i,.story-site .hero-main-cta:focus-visible i { transform: translateY(4px); }
+
+@media (max-width: 900px) {
+  .story-site .hero-story-copy { width: 67vw; }
+  .story-site .hero-offer,.story-site .hero-proof-line { width: 61vw; }
+}
+
+@media (max-width: 600px) {
+  .story-site .hero-story-copy { top: 14%; bottom: 24px; width: calc(100vw - 36px); }
+  .story-site .hero-story-copy > p { margin-bottom: 7vh; }
+  .story-site .hero-story-copy h1 span { font-size: clamp(54px,17vw,78px); }
+  .story-site .hero-story-copy h1 em { font-size: clamp(51px,15.5vw,72px); }
+  .story-site .hero-offer,.story-site .hero-proof-line,.story-site .hero-main-cta { width: 100%; }
+  .story-site .hero-offer { margin-top: 4vh; }
+  .story-site .hero-proof-line { margin-top: 2.5vh; }
+  .story-site .hero-main-cta { min-height: 56px; }
+}
