@@ -59,24 +59,61 @@ export function SiteInteractions() {
     const nav = document.querySelector<HTMLElement>(".br-nav nav");
     const navHeader = nav?.closest<HTMLElement>(".br-nav");
     const navLiquid = nav?.querySelector<HTMLElement>(".nav-liquid");
+    const navLiquidCore = nav?.querySelector<HTMLElement>(".nav-liquid-core");
     const navLinks = Array.from(nav?.querySelectorAll<HTMLAnchorElement>('a[href^="#"]') ?? []);
     let activeNavLink = navLinks[0];
     let navIsPointed = false;
     let displayedNavLink: HTMLAnchorElement | undefined;
-    let liquidTimer = 0;
+    let liquidFrame = 0;
+    let liquidX = 0;
+    let liquidTargetX = 0;
+    let liquidVelocity = 0;
+    let liquidLastTime = 0;
+    let liquidPositioned = false;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const renderLiquid = () => {
+      if (!navLiquid) return;
+      navLiquid.style.transform = `translate3d(${liquidX}px,0,0)`;
+      const stretch = 1 + Math.min(Math.abs(liquidVelocity) / 900, .16);
+      navLiquidCore?.style.setProperty("transform", `scale3d(${stretch},${1 - (stretch - 1) * .28},1)`);
+    };
+    const stepLiquid = (time: number) => {
+      if (!liquidLastTime) liquidLastTime = time;
+      const delta = Math.min((time - liquidLastTime) / 1000, .032);
+      liquidLastTime = time;
+      const acceleration = (liquidTargetX - liquidX) * 100 - liquidVelocity * 10;
+      liquidVelocity += acceleration * delta;
+      liquidX += liquidVelocity * delta;
+      renderLiquid();
+      if (Math.abs(liquidTargetX - liquidX) < .08 && Math.abs(liquidVelocity) < .08) {
+        liquidX = liquidTargetX;
+        liquidVelocity = 0;
+        liquidLastTime = 0;
+        liquidFrame = 0;
+        renderLiquid();
+        return;
+      }
+      liquidFrame = requestAnimationFrame(stepLiquid);
+    };
+    const startLiquidSpring = () => {
+      if (!liquidFrame) {
+        liquidLastTime = 0;
+        liquidFrame = requestAnimationFrame(stepLiquid);
+      }
+    };
     const moveLiquid = (link?: HTMLAnchorElement) => {
       if (!navLiquid || !link) return;
       if (displayedNavLink === link) return;
       displayedNavLink = link;
-      navLiquid.style.transform = `translate3d(${link.offsetLeft - 5}px,0,0)`;
+      liquidTargetX = link.offsetLeft - 5;
       navLiquid.style.opacity = "1";
       navLinks.forEach((item) => item.toggleAttribute("aria-current", item === link));
-      if (!reduceMotion) {
-        window.clearTimeout(liquidTimer);
-        navLiquid.classList.add("is-moving");
-        liquidTimer = window.setTimeout(() => navLiquid.classList.remove("is-moving"), 180);
-      }
+      if (!liquidPositioned || reduceMotion) {
+        liquidX = liquidTargetX;
+        liquidVelocity = 0;
+        liquidPositioned = true;
+        renderLiquid();
+      } else startLiquidSpring();
     };
     const updateActiveNav = () => {
       const threshold = window.innerHeight * .42;
@@ -135,7 +172,7 @@ export function SiteInteractions() {
       navCleanups.forEach((cleanup) => cleanup());
       nav?.removeEventListener("pointerleave", resetPointedNav);
       nav?.removeEventListener("focusout", resetFocusedNav);
-      window.clearTimeout(liquidTimer);
+      cancelAnimationFrame(liquidFrame);
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateProgress);
       window.removeEventListener("scroll", updateActiveNav);
