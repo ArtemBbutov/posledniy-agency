@@ -27,11 +27,10 @@ export default function Home() {
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
       <div className="hero-story-copy">
-        <p className="hero-eyebrow">Продюсирование Telegram-каналов</p>
-        <h1 id="hero-title"><span>Канал растёт.</span><span>Вы не живёте в редакции.</span></h1>
-        <p className="hero-lead">Берём на себя стратегию, контент, выпуск и продвижение. Автор сохраняет свой голос и принимает ключевые решения.</p>
-        <ul className="hero-proof-line"><li>Стратегия</li><li>Редакция</li><li>Рост и запуски</li></ul>
-        <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a><a className="hero-secondary-cta" href="#exit">Обсудить канал →</a></div>
+        <p className="hero-eyebrow">Продюсерское агентство</p>
+        <h1 id="hero-title"><span>Telegram-каналы</span><span>под ключ</span></h1>
+        <p className="hero-lead">Стратегия, контент, выпуск, продвижение и запуски — одной командой. Автор сохраняет голос и не живёт в операционке.</p>
+        <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a></div>
       </div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
