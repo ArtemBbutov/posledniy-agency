@@ -35,7 +35,6 @@ export default function Home() {
       <div className="hero-story-copy">
         <p className="hero-eyebrow">Продюсерское агентство</p>
         <h1 id="hero-title"><span className="hero-title-line" data-text="Продюсирование">Продюсирование</span><span className="hero-title-line" data-text="телеграм-каналов">телеграм-каналов</span></h1>
-        <span className="hero-cobweb" aria-hidden="true"><i/><i/><b/></span>
         <p className="hero-lead">Стратегия, контент, выпуск, продвижение и запуски — одной командой. Автор сохраняет голос и не живёт в операционке.</p>
         <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a></div>
       </div>
