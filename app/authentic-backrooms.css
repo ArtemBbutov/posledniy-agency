@@ -2659,3 +2659,9 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   .story-site .hero-story-copy > .hero-eyebrow,.story-site .hero-story-copy h1 span,.story-site .hero-story-copy > .hero-lead,.story-site .hero-cta-row { animation: none; }
 }
+
+/* Navigation 04: equal geometry keeps the spring centered on every label. */
+@media (min-width: 601px) {
+  .story-site .br-nav nav a { width: 88px; min-width: 88px; padding-left: 10px; padding-right: 10px; }
+  .story-site .nav-liquid { width: 88px; }
+}
