@@ -2,9 +2,9 @@ import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
-  { n: "01", image: "/case-editorial-system.png", alt: "Редакционный стол в бесконечных коридорах Backrooms", tag: "ЭКСПЕРТНЫЙ КАНАЛ", title: "Из заметок — в редакционную систему", text: "Пересобрали позиционирование, рубрики и выпуск. Автор подключается к смыслам, а не к ежедневной операционке.", result: "3 выпуска / неделю" },
-  { n: "02", image: "/case-author-media.png", alt: "Микрофон и зрительный зал в пространстве Backrooms", tag: "АВТОРСКОЕ МЕДИА", title: "Голос, который узнают без подписи", text: "Зафиксировали интонацию, собрали форматы и выстроили ритм. Канал стал самостоятельным медиа, а не лентой анонсов.", result: "+68% охватов" },
-  { n: "03", image: "/case-product-launch.png", alt: "Световой маршрут к выходу в лабиринте Backrooms", tag: "ЗАПУСК ПРОДУКТА", title: "Привели аудиторию к запуску заранее", text: "Связали контент с продуктом и провели читателя от проблемы к предложению без резкой смены тона и навязчивых продаж.", result: "2,4× к плану" },
+  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "—", purchases: "—" },
+  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 подписчика", check: "—", purchases: "—" },
+  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 подписчиков", check: "—", purchases: "—" },
 ];
 
 const work = [
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
           <figure><img src={item.image} alt={item.alt}/><span className="case-number">{item.n}</span><span className="case-scan" aria-hidden="true"/></figure>
-          <div className="case-copy"><div className="case-meta"><span>{item.tag}</span><b>{item.result}</b></div><h3>{item.title}</h3><p>{item.text}</p></div>
+          <div className="case-copy"><div className="case-meta"><span>{item.tag}</span><b>{item.audience}</b></div><h3>{item.title}</h3><dl className="case-results"><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
         </article>)}
       </div>
     </section>
