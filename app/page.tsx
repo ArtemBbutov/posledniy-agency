@@ -26,11 +26,16 @@ export default function Home() {
     <section className="br-hero br-level" aria-labelledby="hero-title">
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
-      <div className="hero-atmosphere" aria-hidden="true"><i/><i/><i/></div>
+      <div className="hero-atmosphere" aria-hidden="true">
+        <span className="hero-ceiling-light"><i/><i/></span>
+        <span className="hero-fog hero-fog-far"/>
+        <span className="hero-fog hero-fog-near"/>
+        <span className="hero-dust"/>
+      </div>
       <div className="hero-story-copy">
         <p className="hero-eyebrow">Продюсерское агентство</p>
-        <h1 id="hero-title"><span>Продюси<b className="wall-glyph">р</b>ование</span><span>телег<b className="wall-glyph">р</b>ам-каналов</span></h1>
-        <span className="hero-cobweb" aria-hidden="true"><i/><i/></span>
+        <h1 id="hero-title"><span className="hero-title-line" data-text="Продюсирование">Продюсирование</span><span className="hero-title-line" data-text="телеграм-каналов">телеграм-каналов</span></h1>
+        <span className="hero-cobweb" aria-hidden="true"><i/><i/><b/></span>
         <p className="hero-lead">Стратегия, контент, выпуск, продвижение и запуски — одной командой. Автор сохраняет голос и не живёт в операционке.</p>
         <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a></div>
       </div>
