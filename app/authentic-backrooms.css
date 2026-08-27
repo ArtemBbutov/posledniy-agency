@@ -2664,4 +2664,5 @@ html { scroll-behavior: smooth; }
 @media (min-width: 601px) {
   .story-site .br-nav nav a { width: 88px; min-width: 88px; padding-left: 10px; padding-right: 10px; }
   .story-site .nav-liquid { width: 88px; }
+  .story-site section[id] { scroll-margin-top: 82px; }
 }

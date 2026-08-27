@@ -70,6 +70,8 @@ export function SiteInteractions() {
     let liquidVelocity = 0;
     let liquidLastTime = 0;
     let liquidPositioned = false;
+    let navScrollLock: HTMLAnchorElement | undefined;
+    let navScrollUnlockTimer = 0;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const renderLiquid = () => {
       if (!navLiquid) return;
@@ -116,6 +118,12 @@ export function SiteInteractions() {
       } else startLiquidSpring();
     };
     const updateActiveNav = () => {
+      if (navScrollLock) {
+        activeNavLink = navScrollLock;
+        navHeader?.classList.toggle("is-scrolled", window.scrollY > 72);
+        moveLiquid(navScrollLock);
+        return;
+      }
       const threshold = window.innerHeight * .42;
       const visible = navLinks.filter((link) => {
         const target = document.querySelector<HTMLElement>(link.hash);
@@ -131,10 +139,16 @@ export function SiteInteractions() {
         const target = document.querySelector<HTMLElement>(link.hash);
         if (!target) return;
         event.preventDefault();
+        navScrollLock = link;
         activeNavLink = link;
         moveLiquid(link);
         target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
         history.replaceState(null, "", link.hash);
+        window.clearTimeout(navScrollUnlockTimer);
+        navScrollUnlockTimer = window.setTimeout(() => {
+          navScrollLock = undefined;
+          updateActiveNav();
+        }, reduceMotion ? 80 : 1400);
       };
       link.addEventListener("pointerenter", enter);
       link.addEventListener("focus", enter);
@@ -151,6 +165,13 @@ export function SiteInteractions() {
     };
     nav?.addEventListener("pointerleave", resetPointedNav);
     nav?.addEventListener("focusout", resetFocusedNav);
+    const finishNavScroll = () => {
+      if (!navScrollLock) return;
+      window.clearTimeout(navScrollUnlockTimer);
+      navScrollLock = undefined;
+      updateActiveNav();
+    };
+    window.addEventListener("scrollend", finishNavScroll);
     let frame = 0;
     const updateProgress = () => {
       cancelAnimationFrame(frame);
@@ -172,6 +193,8 @@ export function SiteInteractions() {
       navCleanups.forEach((cleanup) => cleanup());
       nav?.removeEventListener("pointerleave", resetPointedNav);
       nav?.removeEventListener("focusout", resetFocusedNav);
+      window.removeEventListener("scrollend", finishNavScroll);
+      window.clearTimeout(navScrollUnlockTimer);
       cancelAnimationFrame(liquidFrame);
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateProgress);
