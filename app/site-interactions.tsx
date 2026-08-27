@@ -57,14 +57,18 @@ export function SiteInteractions() {
 
     const progress = document.querySelector<HTMLElement>(".scroll-progress");
     const nav = document.querySelector<HTMLElement>(".br-nav nav");
+    const navHeader = nav?.closest<HTMLElement>(".br-nav");
     const navLiquid = nav?.querySelector<HTMLElement>(".nav-liquid");
     const navLinks = Array.from(nav?.querySelectorAll<HTMLAnchorElement>('a[href^="#"]') ?? []);
     let activeNavLink = navLinks[0];
     let navIsPointed = false;
+    let displayedNavLink: HTMLAnchorElement | undefined;
     let liquidTimer = 0;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const moveLiquid = (link?: HTMLAnchorElement) => {
       if (!navLiquid || !link) return;
+      if (displayedNavLink === link) return;
+      displayedNavLink = link;
       navLiquid.style.transform = `translate3d(${link.offsetLeft - 5}px,0,0)`;
       navLiquid.style.opacity = "1";
       navLinks.forEach((item) => item.toggleAttribute("aria-current", item === link));
@@ -81,11 +85,11 @@ export function SiteInteractions() {
         return target && target.getBoundingClientRect().top <= threshold;
       });
       activeNavLink = visible.at(-1) ?? navLinks[0];
+      navHeader?.classList.toggle("is-scrolled", window.scrollY > 72);
       if (!navIsPointed) moveLiquid(activeNavLink);
     };
     const navCleanups = navLinks.map((link) => {
       const enter = () => { navIsPointed = true; moveLiquid(link); };
-      const leave = () => { navIsPointed = false; moveLiquid(activeNavLink); };
       const click = (event: MouseEvent) => {
         const target = document.querySelector<HTMLElement>(link.hash);
         if (!target) return;
@@ -97,17 +101,19 @@ export function SiteInteractions() {
       };
       link.addEventListener("pointerenter", enter);
       link.addEventListener("focus", enter);
-      link.addEventListener("pointerleave", leave);
-      link.addEventListener("blur", leave);
       link.addEventListener("click", click);
       return () => {
         link.removeEventListener("pointerenter", enter);
         link.removeEventListener("focus", enter);
-        link.removeEventListener("pointerleave", leave);
-        link.removeEventListener("blur", leave);
         link.removeEventListener("click", click);
       };
     });
+    const resetPointedNav = () => { navIsPointed = false; moveLiquid(activeNavLink); };
+    const resetFocusedNav = (event: FocusEvent) => {
+      if (!nav?.contains(event.relatedTarget as Node | null)) resetPointedNav();
+    };
+    nav?.addEventListener("pointerleave", resetPointedNav);
+    nav?.addEventListener("focusout", resetFocusedNav);
     let frame = 0;
     const updateProgress = () => {
       cancelAnimationFrame(frame);
@@ -127,6 +133,8 @@ export function SiteInteractions() {
       observer.disconnect();
       cleanups.forEach((cleanup) => cleanup());
       navCleanups.forEach((cleanup) => cleanup());
+      nav?.removeEventListener("pointerleave", resetPointedNav);
+      nav?.removeEventListener("focusout", resetFocusedNav);
       window.clearTimeout(liquidTimer);
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateProgress);
