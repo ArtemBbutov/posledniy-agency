@@ -2,9 +2,9 @@ import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
-  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "4 000 ₽", purchases: "—" },
-  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 участника", check: "4 990 ₽", purchases: "—" },
-  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 участников", check: "1 750 ₽", purchases: "—" },
+  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "4 000 ₽", purchases: "187" },
+  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 участника", check: "4 990 ₽", purchases: "134" },
+  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 участников", check: "1 750 ₽", purchases: "155" },
 ];
 
 const work = [
@@ -49,7 +49,7 @@ export default function Home() {
     </section>
 
     <section className="cases-section" id="change">
-      <header className="cases-heading"><p className="br-label">02 / КЕЙСЫ</p><h2>Выходы<br/>найдены.</h2><p>Три проекта, в которых контент перестал быть бесконечным коридором и начал вести к понятному результату.</p></header>
+      <header className="cases-heading"><h2>Кейсы</h2></header>
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
           <figure><img src={item.image} alt={item.alt}/><span className="case-number">{item.n}</span><span className="case-scan" aria-hidden="true"/></figure>

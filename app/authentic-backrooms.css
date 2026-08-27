@@ -1340,10 +1340,8 @@
 
 /* Case studies: three exits from the content maze. */
 .story-site .cases-section { padding: 12vh 6vw 11vh; background: radial-gradient(circle at 85% 0,rgba(154,149,94,.09),transparent 28%),#080807; }
-.story-site .cases-heading { display: grid; grid-template-columns: 1.18fr .82fr; column-gap: 8vw; align-items: end; }
-.story-site .cases-heading .br-label { grid-column: 1 / -1; }
-.story-site .cases-heading h2 { margin: 5vh 0 0; color: #cfccaa; font-size: clamp(50px,6.5vw,100px); line-height: .87; letter-spacing: -.045em; }
-.story-site .cases-heading > p:last-child { max-width: 520px; margin: 0 0 7px; color: #908d76; font-size: 14px; line-height: 1.55; }
+.story-site .cases-heading { padding-bottom: 20px; display: flex; align-items: baseline; border-bottom: 1px solid rgba(211,209,174,.3); }
+.story-site .cases-heading h2 { margin: 0; color: #cfccaa; font-size: clamp(38px,4vw,62px); line-height: 1; font-weight: 400; letter-spacing: -.04em; }
 .story-site .cases-grid { margin-top: 9vh; display: flex; flex-direction: column; gap: 28px; }
 .story-site .case-card { min-height: min(76vh,760px); position: relative; isolation: isolate; overflow: hidden; background: #11100c; }
 .story-site .case-card figure { margin: 0; position: absolute; z-index: -2; inset: 0; overflow: hidden; background: #17160f; }
@@ -1408,8 +1406,6 @@
 .story-site .format-lines strong { color: #b5b294; font-size: clamp(16px,1.5vw,23px); font-weight: 400; text-align: right; }
 
 @media (max-width: 900px) {
-  .story-site .cases-heading { grid-template-columns: 1fr; }
-  .story-site .cases-heading > p:last-child { margin-top: 28px; }
   .story-site .case-card { min-height: 660px; }
   .story-site .case-copy { width: min(620px,72%); }
   .story-site .story-scene { grid-template-columns: 1fr; }
@@ -1423,7 +1419,7 @@
 
 @media (max-width: 600px) {
   .story-site .cases-section { padding: 82px 18px 68px; }
-  .story-site .cases-heading h2 { font-size: clamp(43px,13vw,62px); }
+  .story-site .cases-heading h2 { font-size: 42px; }
   .story-site .cases-grid { margin-top: 52px; }
   .story-site .cases-grid { gap: 16px; }
   .story-site .case-card { min-height: 600px; }
