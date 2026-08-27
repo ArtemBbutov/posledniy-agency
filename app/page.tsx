@@ -27,11 +27,11 @@ export default function Home() {
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
       <div className="hero-story-copy">
-        <p>Продюсерское агентство Telegram-каналов</p>
-        <h1 id="hero-title"><span>Агентство</span><em>Нас#лия</em></h1>
-        <div className="hero-offer"><strong>Ведём Telegram<br/>вместе с автором.</strong><p>Придумываем, пишем, выпускаем и растим канал. Автор сохраняет свой голос и не живёт в операционке.</p></div>
-        <ul className="hero-proof-line"><li><span>01</span><b>Только Telegram</b></li><li><span>02</span><b>Проекты ведём лично</b></li><li><span>03</span><b>От первого поста до запуска</b></li></ul>
-        <a className="hero-main-cta" href="#reality"><span>Посмотреть, как мы работаем</span><i>↓</i></a>
+        <p className="hero-eyebrow">Продюсирование Telegram-каналов</p>
+        <h1 id="hero-title"><span>Канал растёт.</span><span>Вы не живёте в редакции.</span></h1>
+        <p className="hero-lead">Берём на себя стратегию, контент, выпуск и продвижение. Автор сохраняет свой голос и принимает ключевые решения.</p>
+        <ul className="hero-proof-line"><li>Стратегия</li><li>Редакция</li><li>Рост и запуски</li></ul>
+        <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a><a className="hero-secondary-cta" href="#exit">Обсудить канал →</a></div>
       </div>
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
