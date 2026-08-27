@@ -1,11 +1,10 @@
 import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
-const shifts = [
-  ["Канал держится на вашем настроении", "Редакция работает по понятному ритму"],
-  ["Посты выходят, но не складываются в образ", "У канала появляется позиция и узнаваемый голос"],
-  ["Запуск начинается внезапно для аудитории", "Контент заранее подводит к продукту"],
-  ["Подрядчиков приходится собирать самому", "Один продюсерский контур отвечает за результат"],
+const cases = [
+  { n: "01", image: "/case-editorial-system.png", alt: "Редакционный стол в бесконечных коридорах Backrooms", tag: "ЭКСПЕРТНЫЙ КАНАЛ", title: "Из заметок — в редакционную систему", text: "Пересобрали позиционирование, рубрики и выпуск. Автор подключается к смыслам, а не к ежедневной операционке.", result: "3 выпуска / неделю" },
+  { n: "02", image: "/case-author-media.png", alt: "Микрофон и зрительный зал в пространстве Backrooms", tag: "АВТОРСКОЕ МЕДИА", title: "Голос, который узнают без подписи", text: "Зафиксировали интонацию, собрали форматы и выстроили ритм. Канал стал самостоятельным медиа, а не лентой анонсов.", result: "+68% охватов" },
+  { n: "03", image: "/case-product-launch.png", alt: "Световой маршрут к выходу в лабиринте Backrooms", tag: "ЗАПУСК ПРОДУКТА", title: "Привели аудиторию к запуску заранее", text: "Связали контент с продуктом и провели читателя от проблемы к предложению без резкой смены тона и навязчивых продаж.", result: "2,4× к плану" },
 ];
 
 const work = [
@@ -49,13 +48,14 @@ export default function Home() {
       <p className="scene-conclusion">Мы нужны не потому, что вам некому написать пост. Мы нужны, когда Telegram должен стать самостоятельным медиа и частью бизнеса.</p>
     </section>
 
-    <section className="transformation" id="change">
-      <header><p className="br-label">02 / ЧТО МЕНЯЕТСЯ</p><h2>Канал выходит.<br/>Автор не живёт в редакции.</h2><p>Берём на себя ежедневную работу и связываем контент с задачами канала и продукта.</p></header>
-      <div className="shift-table">
-        <div className="shift-head"><span>СЕЙЧАС</span><i/><span>ПОСЛЕ СБОРКИ СИСТЕМЫ</span></div>
-        {shifts.map(([before,after], index)=><article key={before}><b>{String(index+1).padStart(2,"0")}</b><p>{before}</p><i>→</i><strong>{after}</strong></article>)}
+    <section className="cases-section" id="change">
+      <header className="cases-heading"><p className="br-label">02 / КЕЙСЫ</p><h2>Выходы<br/>найдены.</h2><p>Три проекта, в которых контент перестал быть бесконечным коридором и начал вести к понятному результату.</p></header>
+      <div className="cases-grid">
+        {cases.map((item)=><article className="case-card" key={item.n}>
+          <figure><img src={item.image} alt={item.alt}/><span className="case-number">{item.n}</span><span className="case-scan" aria-hidden="true"/></figure>
+          <div className="case-copy"><div className="case-meta"><span>{item.tag}</span><b>{item.result}</b></div><h3>{item.title}</h3><p>{item.text}</p></div>
+        </article>)}
       </div>
-      <aside className="change-result"><span>В ИТОГЕ</span><strong>Автор остаётся автором.</strong><p>Мы забираем планирование, производство, команду, продвижение и подготовку запусков. Вы сохраняете голос и принимаете ключевые решения.</p></aside>
     </section>
 
     <section className="work-story" id="work">
