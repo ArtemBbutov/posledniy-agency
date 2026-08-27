@@ -2695,6 +2695,11 @@ html { scroll-behavior: smooth; }
 .story-site .hero-title-line:first-child { transform: translateZ(42px) rotate(-.35deg) !important; }
 .story-site .hero-title-line:last-child { transform: translateZ(12px) rotate(.25deg) !important; }
 .story-site .hero-title-line:last-child::before { content: ''; width: 37%; height: 3px; position: absolute; left: 54%; bottom: 7%; opacity: .52; background: linear-gradient(90deg,transparent,rgba(43,41,27,.78) 14% 72%,transparent); filter: blur(.4px); transform: rotate(-1.4deg); }
+.story-site .hero-eyebrow { animation: heroMetaReveal .72s .12s cubic-bezier(.23,1,.32,1) both !important; }
+.story-site .hero-title-line:first-child { animation: heroTitleReveal 1.05s .24s cubic-bezier(.23,1,.32,1) both !important; }
+.story-site .hero-title-line:last-child { animation: heroTitleReveal 1.05s .38s cubic-bezier(.23,1,.32,1) both !important; }
+.story-site .hero-lead { animation: heroCopyReveal .82s .62s cubic-bezier(.23,1,.32,1) both !important; }
+.story-site .hero-cta-row { animation: heroActionReveal .72s .78s cubic-bezier(.23,1,.32,1) both !important; }
 @keyframes heroPowerFailure { 0%,42%,46%,79%,83%,100% { opacity: .22; } 43% { opacity: .38; } 43.35% { opacity: .07; } 43.72% { opacity: .32; } 44.1% { opacity: .1; } 44.65% { opacity: .27; } 80% { opacity: .08; } 80.4% { opacity: .31; } 81% { opacity: .14; } }
 @keyframes heroRoomBreath { from { opacity: .14; transform: translate3d(-.4%,0,0) scale(1); } to { opacity: .2; transform: translate3d(.45%,-.25%,0) scale(1.015); } }
 @keyframes heroLightTravel { from { opacity: .54; transform: translate3d(-50%,0,0) rotate(-.55deg) scaleX(.94); } to { opacity: .69; transform: translate3d(-50%,0,0) rotate(.55deg) scaleX(1.05); } }
@@ -2707,6 +2712,11 @@ html { scroll-behavior: smooth; }
 @keyframes heroDustDrift { from { transform: translate3d(-12px,4%,0); } to { transform: translate3d(22px,-8%,0); } }
 @keyframes heroDustNear { from { opacity: .34; transform: translate3d(14px,11%,0) scale(1.02); } to { opacity: .62; transform: translate3d(-26px,-13%,0) scale(1.08); } }
 @keyframes heroDustFar { from { opacity: .24; transform: translate3d(-18px,6%,0) scale(.97); } to { opacity: .44; transform: translate3d(19px,-9%,0) scale(1.03); } }
+@keyframes heroMetaReveal { from { opacity: 0; transform: translate3d(0,14px,22px); } to { opacity: 1; transform: translate3d(0,0,22px); } }
+@keyframes heroTitleReveal { from { opacity: 0; clip-path: inset(100% -5% 0 -5%); } to { opacity: 1; clip-path: inset(-10% -5% -10% -5%); } }
+@keyframes heroCopyReveal { from { opacity: 0; transform: translate3d(0,18px,22px); } to { opacity: 1; transform: translate3d(0,0,22px); } }
+@keyframes heroActionReveal { from { opacity: 0; transform: translate3d(0,16px,22px) scale(.97); } to { opacity: 1; transform: translate3d(0,0,22px) scale(1); } }
+@keyframes heroTextFade { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 900px) {
   .story-site .hero-fog-far { opacity: .19; }
@@ -2725,4 +2735,5 @@ html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
   .story-site .hero-atmosphere::before,.story-site .hero-atmosphere::after,.story-site .hero-ceiling-light,.story-site .hero-ceiling-light::before,.story-site .hero-ceiling-light::after,.story-site .hero-ceiling-light i,.story-site .hero-fog,.story-site .hero-dust,.story-site .hero-dust::before,.story-site .hero-dust::after { animation: none; }
+  .story-site .hero-eyebrow,.story-site .hero-title-line:first-child,.story-site .hero-title-line:last-child,.story-site .hero-lead,.story-site .hero-cta-row { animation: heroTextFade .2s ease both !important; }
 }
