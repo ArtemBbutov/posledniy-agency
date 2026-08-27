@@ -52,8 +52,8 @@ export default function Home() {
       <header className="cases-heading"><h2>Кейсы</h2></header>
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
-          <figure><img src={item.image} alt={item.alt}/><span className="case-number">{item.n}</span><span className="case-scan" aria-hidden="true"/></figure>
-          <div className="case-copy"><div className="case-meta"><span>{item.tag}</span><b>{item.audience}</b></div><h3>{item.title}</h3><dl className="case-results"><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
+          <figure><img src={item.image} alt={item.alt}/><span className="case-scan" aria-hidden="true"/></figure>
+          <div className="case-copy"><div className="case-identity"><span>Кейс {item.n}</span><h3>{item.title}</h3></div><dl className="case-results"><div><dt>Участники</dt><dd>{item.audience}</dd></div><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
         </article>)}
       </div>
     </section>
