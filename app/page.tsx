@@ -26,7 +26,6 @@ export default function Home() {
     <section className="br-hero br-level" aria-labelledby="hero-title">
       <img className="br-hero-image" src="/hero-backrooms-v2.png" alt="Тёмный бесконечный этаж Backrooms" />
       <div className="br-hero-shade" />
-      <div className="hero-light-corridor" aria-hidden="true"><i/><i/></div>
       <div className="hero-story-copy">
         <p className="hero-eyebrow">Продюсерское агентство</p>
         <h1 id="hero-title"><span>Продюсирование</span><span>телеграм-каналов</span></h1>
