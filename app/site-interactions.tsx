@@ -56,6 +56,58 @@ export function SiteInteractions() {
     });
 
     const progress = document.querySelector<HTMLElement>(".scroll-progress");
+    const nav = document.querySelector<HTMLElement>(".br-nav nav");
+    const navLiquid = nav?.querySelector<HTMLElement>(".nav-liquid");
+    const navLinks = Array.from(nav?.querySelectorAll<HTMLAnchorElement>('a[href^="#"]') ?? []);
+    let activeNavLink = navLinks[0];
+    let navIsPointed = false;
+    let liquidTimer = 0;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const moveLiquid = (link?: HTMLAnchorElement) => {
+      if (!navLiquid || !link) return;
+      navLiquid.style.transform = `translate3d(${link.offsetLeft - 5}px,0,0)`;
+      navLiquid.style.opacity = "1";
+      navLinks.forEach((item) => item.toggleAttribute("aria-current", item === link));
+      if (!reduceMotion) {
+        window.clearTimeout(liquidTimer);
+        navLiquid.classList.add("is-moving");
+        liquidTimer = window.setTimeout(() => navLiquid.classList.remove("is-moving"), 180);
+      }
+    };
+    const updateActiveNav = () => {
+      const threshold = window.innerHeight * .42;
+      const visible = navLinks.filter((link) => {
+        const target = document.querySelector<HTMLElement>(link.hash);
+        return target && target.getBoundingClientRect().top <= threshold;
+      });
+      activeNavLink = visible.at(-1) ?? navLinks[0];
+      if (!navIsPointed) moveLiquid(activeNavLink);
+    };
+    const navCleanups = navLinks.map((link) => {
+      const enter = () => { navIsPointed = true; moveLiquid(link); };
+      const leave = () => { navIsPointed = false; moveLiquid(activeNavLink); };
+      const click = (event: MouseEvent) => {
+        const target = document.querySelector<HTMLElement>(link.hash);
+        if (!target) return;
+        event.preventDefault();
+        activeNavLink = link;
+        moveLiquid(link);
+        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        history.replaceState(null, "", link.hash);
+      };
+      link.addEventListener("pointerenter", enter);
+      link.addEventListener("focus", enter);
+      link.addEventListener("pointerleave", leave);
+      link.addEventListener("blur", leave);
+      link.addEventListener("click", click);
+      return () => {
+        link.removeEventListener("pointerenter", enter);
+        link.removeEventListener("focus", enter);
+        link.removeEventListener("pointerleave", leave);
+        link.removeEventListener("blur", leave);
+        link.removeEventListener("click", click);
+      };
+    });
     let frame = 0;
     const updateProgress = () => {
       cancelAnimationFrame(frame);
@@ -65,15 +117,22 @@ export function SiteInteractions() {
       });
     };
     updateProgress();
+    updateActiveNav();
     window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("scroll", updateActiveNav, { passive: true });
     window.addEventListener("resize", updateProgress);
+    window.addEventListener("resize", updateActiveNav);
 
     return () => {
       observer.disconnect();
       cleanups.forEach((cleanup) => cleanup());
+      navCleanups.forEach((cleanup) => cleanup());
+      window.clearTimeout(liquidTimer);
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("scroll", updateActiveNav);
       window.removeEventListener("resize", updateProgress);
+      window.removeEventListener("resize", updateActiveNav);
       root.classList.remove("motion-ready");
     };
   }, []);

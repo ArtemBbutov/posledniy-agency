@@ -19,7 +19,7 @@ export default function Home() {
     <SiteInteractions/>
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>TELEGRAM PRODUCTION</span></a>
-      <nav aria-label="Навигация по разделам"><a href="#reality">СИТУАЦИЯ</a><a href="#change">РЕЗУЛЬТАТ</a><a href="#work">РАБОТА</a><a href="#exit">АНКЕТА</a></nav>
+      <nav aria-label="Навигация по разделам"><span className="nav-liquid" aria-hidden="true"/><a href="#reality">СИТУАЦИЯ</a><a href="#change">РЕЗУЛЬТАТ</a><a href="#work">РАБОТА</a><a href="#exit">АНКЕТА</a></nav>
       <a className="br-call" href="#exit">Обсудить канал <span>↓</span></a>
     </header>
 
