@@ -2,9 +2,9 @@ import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
-  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "4 000 ₽", purchases: "187" },
-  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 участника", check: "4 990 ₽", purchases: "134" },
-  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 участников", check: "1 750 ₽", purchases: "155" },
+  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", check: "4 000 ₽", purchases: "187" },
+  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", check: "4 990 ₽", purchases: "134" },
+  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", check: "1 750 ₽", purchases: "155" },
 ];
 
 const work = [
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
           <figure><img src={item.image} alt={item.alt}/><span className="case-scan" aria-hidden="true"/></figure>
-          <div className="case-copy"><div className="case-identity"><span>Кейс {item.n}</span><h3>{item.title}</h3></div><dl className="case-results"><div><dt>Участники</dt><dd>{item.audience}</dd></div><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
+          <div className="case-copy"><div className="case-identity"><span>Кейс {item.n}</span><h3>{item.title}</h3></div><dl className="case-results"><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
         </article>)}
       </div>
     </section>
