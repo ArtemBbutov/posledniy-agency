@@ -2,9 +2,9 @@ import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
-  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "—", purchases: "—" },
-  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 подписчика", check: "—", purchases: "—" },
-  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 подписчиков", check: "—", purchases: "—" },
+  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", audience: "187 участников", check: "4 000 ₽", purchases: "—" },
+  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", audience: "134 участника", check: "4 990 ₽", purchases: "—" },
+  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", audience: "155 участников", check: "1 750 ₽", purchases: "—" },
 ];
 
 const work = [
