@@ -31,6 +31,9 @@ html = html
   .replaceAll('src="/case-wake-up-backrooms.png"', 'src="public/case-wake-up-backrooms.png"')
   .replaceAll('src="/case-wake-up-empire-backrooms.png"', 'src="public/case-wake-up-empire-backrooms.png"')
   .replaceAll('src="/case-100k-backrooms.png"', 'src="public/case-100k-backrooms.png"')
+  .replaceAll('href="/case-wake-up-backrooms.png"', 'href="public/case-wake-up-backrooms.png"')
+  .replaceAll('href="/case-wake-up-empire-backrooms.png"', 'href="public/case-wake-up-empire-backrooms.png"')
+  .replaceAll('href="/case-100k-backrooms.png"', 'href="public/case-100k-backrooms.png"')
   .replaceAll('href="/telegram-workspace-v1.png"', 'href="public/telegram-workspace-v1.png"')
   .replaceAll('href="/editorial-wall-v1.png"', 'href="public/editorial-wall-v1.png"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/hero-backrooms.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/hero-backrooms.png"')
@@ -80,4 +83,5 @@ for (const file of await readdir("assets")) {
     .replaceAll("url(/backrooms-four-routes.png)", "url(../public/backrooms-four-routes.png)");
   await writeFile(path, css, "utf8");
 }
+html = html.replaceAll(/url\(C:\/Users\/1wrar\/OneDrive\/Desktop\/nasyl agency\/\.vinext\/fonts\/([^/]+)\/([^/]+\.woff2)\)/g, "url(assets/_vinext_fonts/$1/$2)");
 await writeFile("index.html", html, "utf8");
