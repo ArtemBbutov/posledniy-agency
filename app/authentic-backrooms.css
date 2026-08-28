@@ -1353,11 +1353,12 @@
 .story-site .case-number::after { content: ''; width: 72px; height: 1px; background: rgba(230,225,184,.45); }
 .story-site .case-card:nth-child(even) .case-number { left: auto; right: 32px; flex-direction: row-reverse; }
 .story-site .case-scan { position: absolute; z-index: 2; inset: 0; opacity: .18; background: repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(240,235,194,.1) 4px); pointer-events: none; }
-.story-site .case-copy { width: min(920px,76%); min-height: 0; padding: 19px 22px 20px; position: absolute; left: 24px; bottom: 24px; display: grid; grid-template-columns: minmax(220px,.9fr) minmax(420px,1.35fr); align-items: end; gap: 38px; background: rgba(8,8,7,.72); backdrop-filter: blur(10px); }
+.story-site .case-copy { width: min(1040px,86%); min-height: 0; padding: 22px 24px 24px; position: absolute; left: 24px; bottom: 24px; display: grid; grid-template-columns: minmax(220px,.72fr) minmax(460px,1.45fr); align-items: end; gap: 42px; background: rgba(8,8,7,.78); backdrop-filter: blur(12px); }
 .story-site .case-card:nth-child(even) .case-copy { left: auto; right: 24px; }
 .story-site .case-identity span { display: block; margin-bottom: 9px; color: #85826c; font: 8px var(--font-geist-mono),monospace; letter-spacing: .1em; text-transform: uppercase; }
 .story-site .case-copy h3 { margin: 0; color: #e0dcb7; font-size: clamp(28px,2.4vw,38px); line-height: 1; font-weight: 400; text-shadow: 0 3px 20px rgba(0,0,0,.65); }
-.story-site .case-copy p { max-width: 390px; margin: 0; color: #8f8c74; font-size: 13px; line-height: 1.55; }
+.story-site .case-details { min-width: 0; }
+.story-site .case-copy .case-description { max-width: 680px; margin: 0 0 22px; color: #b8b497; font-size: 14px; line-height: 1.55; }
 .story-site .case-results { margin: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
 .story-site .case-results div { min-width: 0; padding: 0 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
 .story-site .case-results div + div { padding-left: 14px; border-left: 1px solid rgba(211,209,174,.2); }
@@ -1406,7 +1407,7 @@
 
 @media (max-width: 900px) {
   .story-site .case-card { min-height: 660px; }
-  .story-site .case-copy { width: calc(100% - 48px); grid-template-columns: .85fr 1.5fr; gap: 24px; }
+  .story-site .case-copy { width: calc(100% - 48px); grid-template-columns: .7fr 1.5fr; gap: 28px; }
   .story-site .story-scene { grid-template-columns: 1fr; }
   .story-site .scene-notes { grid-column: 1; grid-row: 2; margin-top: 16vh; }
   .story-site .transformation header,.story-site .work-story,.story-site .formats-story header { grid-template-columns: 1fr; }
@@ -1421,10 +1422,11 @@
   .story-site .cases-heading h2 { font-size: 42px; }
   .story-site .cases-grid { margin-top: 52px; }
   .story-site .cases-grid { gap: 16px; }
-  .story-site .case-card { min-height: 600px; }
+  .story-site .case-card { min-height: 680px; }
   .story-site .case-card figure::after,.story-site .case-card:nth-child(even) figure::after { background: linear-gradient(0deg,rgba(5,5,4,.96) 0%,rgba(5,5,4,.6) 48%,transparent 76%); }
-  .story-site .case-copy,.story-site .case-card:nth-child(even) .case-copy { width: calc(100% - 24px); padding: 17px 15px 18px; left: 12px; right: auto; bottom: 12px; grid-template-columns: 1fr; gap: 18px; background: rgba(8,8,7,.82); backdrop-filter: blur(8px); }
+  .story-site .case-copy,.story-site .case-card:nth-child(even) .case-copy { width: calc(100% - 24px); padding: 18px 16px 20px; left: 12px; right: auto; bottom: 12px; grid-template-columns: 1fr; gap: 16px; background: rgba(8,8,7,.88); backdrop-filter: blur(8px); }
   .story-site .case-copy h3 { font-size: clamp(26px,8vw,36px); }
+  .story-site .case-copy .case-description { margin-bottom: 18px; font-size: 13px; line-height: 1.5; }
   .story-site .case-results dt { font-size: 7px; }
   .story-site .case-results dd { font-size: clamp(15px,4.4vw,19px); white-space: normal; }
   .story-site .case-number,.story-site .case-card:nth-child(even) .case-number { top: 18px; left: 18px; right: auto; flex-direction: row; }

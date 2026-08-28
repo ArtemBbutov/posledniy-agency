@@ -2,9 +2,36 @@ import { ProjectBrief } from "./project-brief";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
-  { n: "01", image: "/case-wake-up-backrooms.png", alt: "Проект WAKE UP на терминале в пространстве Backrooms", tag: "ЗАКРЫТОЕ СООБЩЕСТВО", title: "WAKE UP", check: "4 000 ₽", purchases: "187" },
-  { n: "02", image: "/case-wake-up-empire-backrooms.png", alt: "Проект Wake Up Empire 2.0 в архиве Backrooms", tag: "TELEGRAM-КАНАЛ", title: "Wake Up Empire 2.0", check: "4 990 ₽", purchases: "134" },
-  { n: "03", image: "/case-100k-backrooms.png", alt: "Проект 100.000₽ с нуля на развилке Backrooms", tag: "МАРАФОН", title: "100.000₽ с нуля", check: "1 750 ₽", purchases: "155" },
+  {
+    n: "01",
+    image: "/case-wake-up-backrooms.png",
+    alt: "Проект WAKE UP на терминале в пространстве Backrooms",
+    title: "WAKE UP",
+    duration: "7 дней",
+    check: "4 000 ₽",
+    participants: "180+",
+    description: "За неделю мы соединили несколько воронок и частично автоматизировали запуск. В продукт вошли более 180 человек со средним чеком около 4 000 ₽.",
+  },
+  {
+    n: "02",
+    image: "/case-wake-up-empire-backrooms.png",
+    alt: "Проект Wake Up Empire в архиве Backrooms",
+    title: "WAKE UP EMPIRE",
+    duration: "5 дней",
+    check: "от 4 990 ₽",
+    participants: "80+",
+    description: "За пять дней мы привлекли более 80 платных подписчиков. Основой запуска стали сильный прогрев и технически продуманный сайт.",
+  },
+  {
+    n: "03",
+    image: "/case-100k-backrooms.png",
+    alt: "Проект 100 000 ₽ с нуля на развилке Backrooms",
+    title: "100 000 ₽ С НУЛЯ",
+    duration: "3 дня",
+    check: "1 750 ₽",
+    participants: "150+",
+    description: "Быстрый запуск был рассчитан на широкий охват, а не на высокий чек. Продукт стал первым шагом к групповой работе стоимостью более 60 000 ₽.",
+  },
 ];
 
 const work = [
@@ -45,7 +72,7 @@ export default function Home() {
   return <main id="top" className="backrooms-site authentic-backrooms story-site">
     <SiteInteractions/>
     <header className="br-nav">
-      <a className="br-logo" href="#top"><b>А#</b><span>АГЕНСТВО НАС#ЛИЯ<br/>TELEGRAM PRODUCTION</span></a>
+      <a className="br-logo" href="#top"><b>А#</b><span>АГЕНТСТВО НАС#ЛИЯ<br/>TELEGRAM PRODUCTION</span></a>
       <nav aria-label="Навигация по разделам"><span className="nav-liquid" aria-hidden="true"><i className="nav-liquid-core"/></span><a href="#reality">СИТУАЦИЯ</a><a href="#change">РЕЗУЛЬТАТ</a><a href="#work">РАБОТА</a><a href="#exit">АНКЕТА</a></nav>
       <a className="br-call" href="#exit">Обсудить канал <span>↓</span></a>
     </header>
@@ -86,7 +113,10 @@ export default function Home() {
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
           <figure><img src={item.image} alt={item.alt}/><span className="case-scan" aria-hidden="true"/></figure>
-          <div className="case-copy"><div className="case-identity"><span>Кейс {item.n}</span><h3>{item.title}</h3></div><dl className="case-results"><div><dt>Средний чек</dt><dd>{item.check}</dd></div><div><dt>Покупки</dt><dd>{item.purchases}</dd></div></dl></div>
+          <div className="case-copy">
+            <div className="case-identity"><span>Кейс {item.n}</span><h3>{item.title}</h3></div>
+            <div className="case-details"><p className="case-description">{item.description}</p><dl className="case-results"><div><dt>Длительность</dt><dd>{item.duration}</dd></div><div><dt>Участники</dt><dd>{item.participants}</dd></div><div><dt>Средний чек</dt><dd>{item.check}</dd></div></dl></div>
+          </div>
         </article>)}
       </div>
     </section>
@@ -127,7 +157,7 @@ export default function Home() {
     <section className="br-level brief-level" id="exit">
       <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о канале.</h2><p>Пять коротких ответов. Посмотрим проект и предложим, с чего лучше начать.</p></header>
       <ProjectBrief/>
-      <footer><span>Агенство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
+      <footer><span>Агентство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
     </section>
   </main>;
 }

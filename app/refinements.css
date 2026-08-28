@@ -48,7 +48,7 @@
   .hero .eyebrow,.hero-title h1 span,.hero-title h1 em,.hero-bottom,.room-card,.intro-copy,.section-heading,.services-intro,.principles>h2,.contact-grid,.direction-grid,.service-stack,.principle-grid,.direction-grid article h3,.service-stack article h3,.principle-grid article h3,section>.label{animation:none!important}
 }
 
-/* Агенство Нас#лия — лиминальные этажи */
+/* Агентство Нас#лия — лиминальные этажи */
 :root{--paper:#b7ad78;--bone:#948b5b;--red:#672d26;--black:#14140f;--line:rgba(32,31,20,.4)}
 body{background:#17170f;background-image:radial-gradient(rgba(255,245,184,.035) 1px,transparent 1px);background-size:4px 4px}
 .nav{background:#15150f;color:#d9cf9c;border-color:#49462e;position:relative;z-index:20}

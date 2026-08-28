@@ -21,7 +21,7 @@ export function ProjectBrief() {
       values.push(String(value));
       grouped.set(key, values);
     }
-    const message = ["АНКЕТА ПРОЕКТА / АГЕНСТВО НАС#ЛИЯ", ""];
+    const message = ["АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ", ""];
     for (const [key, values] of grouped) message.push(`${labels[key] ?? key}: ${values.join(", ")}`);
 
     try {
