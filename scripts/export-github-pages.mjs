@@ -1,7 +1,16 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 
 const source = process.argv[2] ?? "http://127.0.0.1:4174/";
-const response = await fetch(source);
+const response = source === "--dist"
+  ? await (async () => {
+      const { default: worker } = await import(new URL("../dist/server/index.js", import.meta.url));
+      return worker.fetch(
+        new Request("http://localhost/"),
+        { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+        { waitUntil() {}, passThroughOnException() {} },
+      );
+    })()
+  : await fetch(source);
 if (!response.ok) throw new Error(`Unable to render site: ${response.status}`);
 
 let html = await response.text();
@@ -19,6 +28,9 @@ html = html
   .replaceAll('src="/hero-backrooms-v2.png"', 'src="public/hero-backrooms-v2.png"')
   .replaceAll('src="/telegram-workspace-v1.png"', 'src="public/telegram-workspace-v1.png"')
   .replaceAll('src="/editorial-wall-v1.png"', 'src="public/editorial-wall-v1.png"')
+  .replaceAll('src="/case-wake-up-backrooms.png"', 'src="public/case-wake-up-backrooms.png"')
+  .replaceAll('src="/case-wake-up-empire-backrooms.png"', 'src="public/case-wake-up-empire-backrooms.png"')
+  .replaceAll('src="/case-100k-backrooms.png"', 'src="public/case-100k-backrooms.png"')
   .replaceAll('href="/telegram-workspace-v1.png"', 'href="public/telegram-workspace-v1.png"')
   .replaceAll('href="/editorial-wall-v1.png"', 'href="public/editorial-wall-v1.png"')
   .replaceAll('content="https://posledniy-agency.s-eanwagner02532.chatgpt.site/hero-backrooms.png"', 'content="https://artembbutov.github.io/posledniy-agency/public/hero-backrooms.png"')
@@ -32,7 +44,7 @@ const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene
 revealTargets.forEach((element,index)=>{element.classList.add('reveal-item');element.style.setProperty('--reveal-delay',Math.min(index%4,3)*70+'ms')});
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.13,rootMargin:'0px 0px -7%'});
 revealTargets.forEach(element=>revealObserver.observe(element));
-[...document.querySelectorAll('.shift-table article,.work-story li,.format-lines article')].forEach(element=>{
+[...document.querySelectorAll('.shift-table article,.work-story li')].forEach(element=>{
   element.tabIndex=0;
   const select=()=>{element.parentElement?.querySelectorAll('.is-selected').forEach(item=>item.classList.remove('is-selected'));element.classList.add('is-selected')};
   element.addEventListener('click',select);

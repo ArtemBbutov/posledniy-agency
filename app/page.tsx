@@ -14,6 +14,33 @@ const work = [
   { n: "04", title: "Связываем канал с продуктом", text: "Готовим предложение и прогрев так, чтобы продажа продолжала разговор, а не ломала его." },
 ];
 
+const formats = [
+  {
+    n: "01",
+    cadence: "Разовая работа",
+    title: "Стратегия и запуск редакции",
+    description: "Для нового канала или перезапуска существующего.",
+    result: "Позиционирование, контент-система и готовый ритм публикаций.",
+    price: "от 60 тыс.",
+  },
+  {
+    n: "02",
+    cadence: "Ежемесячно",
+    title: "Полное продюсирование",
+    description: "Редакция, рост и управление каналом одной командой.",
+    result: "Канал растёт и выпускается без ежедневного участия автора.",
+    price: "от 120 тыс. / месяц",
+  },
+  {
+    n: "03",
+    cadence: "Проектная работа",
+    title: "Запуск продукта через Telegram",
+    description: "От предложения и контента до запуска и аналитики.",
+    result: "Оффер, прогрев и продажи собраны в один управляемый сценарий.",
+    price: "после диагностики",
+  },
+];
+
 export default function Home() {
   return <main id="top" className="backrooms-site authentic-backrooms story-site">
     <SiteInteractions/>
@@ -86,11 +113,14 @@ export default function Home() {
     </section>
 
     <section className="formats-story" id="formats">
-      <header><p className="br-label">05 / КАК МОЖНО НАЧАТЬ</p><h2>Сначала задача.<br/>Потом формат.</h2><p>Не заставляем выбирать тариф вслепую. Определяем, что сейчас сильнее всего мешает каналу, и собираем подходящий объём работы.</p></header>
+      <header><p className="br-label">05 / КАК МОЖНО НАЧАТЬ</p><h2>Не тарифы.<br/>Решения.</h2><p>Сначала определяем задачу канала. Затем собираем под неё команду, процесс и объём работы — без лишних услуг.</p></header>
       <div className="format-lines">
-        <article><span>РАЗОВО</span><div><h3>Стратегия и запуск редакции</h3><p>Для нового канала или перезапуска существующего.</p></div><strong>от 60 000 ₽</strong></article>
-        <article><span>ЕЖЕМЕСЯЧНО</span><div><h3>Полное продюсирование</h3><p>Редакция, рост и управление каналом одной командой.</p></div><strong>от 120 000 ₽ / мес.</strong></article>
-        <article><span>ПРОЕКТНО</span><div><h3>Запуск продукта через Telegram</h3><p>От предложения и контента до запуска и аналитики.</p></div><strong>после диагностики</strong></article>
+        {formats.map((format) => <article key={format.n}>
+          <div className="format-index"><span>{format.n}</span><small>{format.cadence}</small></div>
+          <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
+          <div className="format-result"><span>Результат</span><p>{format.result}</p></div>
+          <div className="format-meta"><p><span>Стоимость</span><strong>{format.price}</strong></p><a href="#exit" aria-label={`Обсудить формат «${format.title}»`}><span>Обсудить</span><i aria-hidden="true">↘</i></a></div>
+        </article>)}
       </div>
     </section>
 

@@ -30,7 +30,7 @@ html = html.replace(/<nav aria-label="Навигация по разделам">
 html = html.replace(/<section class="br-hero br-level"[\s\S]*?<\/section><section class="story-scene"/, `${hero}<section class="story-scene"`);
 html = html.replace(/<section class="(?:transformation|cases-section)" id="change">[\s\S]*?<\/section><section class="work-story"/, `${cases}<section class="work-story"`);
 html = html.replace("'.transformation header > *','.shift-table article','.change-result'", "'.cases-heading > *','.case-card'");
-html = html.replace("'.shift-table article,.work-story li,.format-lines article'", "'.case-card,.work-story li,.format-lines article'");
+html = html.replace("'.shift-table article,.work-story li,.format-lines article'", "'.case-card,.work-story li'");
 html = html.replace(/const navRoot=document\.querySelector\('\.br-nav nav'\);[\s\S]*?addEventListener\('resize',updateActiveNav\);\n/, `${navMotion}\n`);
 if (!html.includes("const navLiquid=")) html = html.replace("const progress=document.querySelector('.scroll-progress');", `${navMotion}\nconst progress=document.querySelector('.scroll-progress');`);
 

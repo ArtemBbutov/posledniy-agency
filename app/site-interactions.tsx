@@ -39,7 +39,7 @@ export function SiteInteractions() {
     }, { threshold: 0.13, rootMargin: "0px 0px -7%" });
     revealTargets.forEach((element) => observer.observe(element));
 
-    const selectable = Array.from(document.querySelectorAll<HTMLElement>(".shift-table article, .work-story li, .format-lines article"));
+    const selectable = Array.from(document.querySelectorAll<HTMLElement>(".shift-table article, .work-story li"));
     const select = (element: HTMLElement) => {
       element.parentElement?.querySelectorAll(".is-selected").forEach((item) => item.classList.remove("is-selected"));
       element.classList.add("is-selected");
