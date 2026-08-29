@@ -99,13 +99,13 @@ export default function Home() {
     <section className="story-scene" id="reality">
       <img src="/telegram-workspace-v1.png" alt="Рабочее место автора Telegram-канала"/>
       <div className="scene-shade"/>
-      <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Канал снова<br/>остался на вечер.</h2></header>
+      <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Канал есть.<br/>Времени на него — нет.</h2></header>
       <div className="scene-notes">
-        <article><span>18:40</span><strong>Нужно придумать, о чём писать завтра</strong><p>Контент каждый раз начинается с пустого листа.</p></article>
-        <article><span>21:15</span><strong>Редактор ждёт комментарий</strong><p>Без автора производство останавливается.</p></article>
-        <article><span>ЗАПУСК</span><strong>Продукт готов, аудитория — нет</strong><p>Продажу приходится резко вставлять между обычными постами.</p></article>
+        <article><span>18:40</span><strong>Пост снова переносится на завтра</strong><p>Днём — клиенты и команда. До канала руки доходят только вечером.</p></article>
+        <article><span>21:15</span><strong>Всё ждёт вашего ответа</strong><p>Пока вы не согласуете тему и текст, редактор не может двигаться дальше.</p></article>
+        <article><span>ЗАПУСК</span><strong>Продавать нужно уже через неделю</strong><p>Продукт готов, а аудиторию начинают готовить в последний момент.</p></article>
       </div>
-      <p className="scene-conclusion">Мы нужны не потому, что вам некому написать пост. Мы нужны, когда Telegram должен стать самостоятельным медиа и частью бизнеса.</p>
+      <p className="scene-conclusion">Мы забираем канал на себя: вместе выбираем темы, сами готовим и выпускаем посты, следим за ростом и заранее готовим аудиторию к запуску.</p>
     </section>
 
     <section className="cases-section" id="change">
