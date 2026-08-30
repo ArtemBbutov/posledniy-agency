@@ -44,27 +44,27 @@ const work = [
 const formats = [
   {
     n: "01",
-    cadence: "Разовая работа",
-    title: "Стратегия и запуск редакции",
-    description: "Для нового канала или перезапуска существующего.",
-    result: "Позиционирование, контент-система и готовый ритм публикаций.",
-    price: "от 60 тыс.",
-  },
-  {
-    n: "02",
     cadence: "Ежемесячно",
     title: "Полное продюсирование",
-    description: "Редакция, рост и управление каналом одной командой.",
-    result: "Канал растёт и выпускается без ежедневного участия автора.",
+    description: "Развиваем канал как медиа и продюсируем запуски продуктов.",
+    result: ["Широкая аудитория", "Контент выходит по системе", "Запуск в Telegram — от 500 000 ₽", "Готовая база для следующих запусков"],
     price: "от 120 тыс. / месяц",
   },
   {
-    n: "03",
+    n: "02",
     cadence: "Проектная работа",
     title: "Запуск продукта через Telegram",
-    description: "От предложения и контента до запуска и аналитики.",
-    result: "Оффер, прогрев и продажи собраны в один управляемый сценарий.",
+    description: "Прогрев, посты и вся операционная работа — на нас.",
+    result: ["Запуск в Telegram — от 500 000 ₽", "Готовый к продаже продукт", "Канал продолжает работать после запуска"],
     price: "после диагностики",
+  },
+  {
+    n: "03",
+    cadence: "Бесплатно",
+    title: "Консультация",
+    description: "Разберём канал и дадим три конкретных совета по монетизации контента.",
+    result: ["Понимание потенциала канала", "Три идеи для монетизации", "Понятные условия дальнейшей работы"],
+    price: "бесплатно",
   },
 ];
 
@@ -143,12 +143,12 @@ export default function Home() {
     </section>
 
     <section className="formats-story" id="formats">
-      <header><p className="br-label">05 / КАК МОЖНО НАЧАТЬ</p><h2>Не тарифы.<br/>Решения.</h2><p>Сначала определяем задачу канала. Затем собираем под неё команду, процесс и объём работы — без лишних услуг.</p></header>
+      <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Спектр<br/>услуг.</h2><p>Два формата работы под ключ и бесплатная консультация, с которой можно начать знакомство.</p></header>
       <div className="format-lines">
         {formats.map((format) => <article key={format.n}>
           <div className="format-index"><span>{format.n}</span><small>{format.cadence}</small></div>
           <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
-          <div className="format-result"><span>Результат</span><p>{format.result}</p></div>
+          <div className="format-result"><span>Что получите</span><ul>{format.result.map((item)=><li key={item}>{item}</li>)}</ul></div>
           <div className="format-meta"><p><span>Стоимость</span><strong>{format.price}</strong></p><a href="#exit" aria-label={`Обсудить формат «${format.title}»`}><span>Обсудить</span><i aria-hidden="true">↘</i></a></div>
         </article>)}
       </div>
