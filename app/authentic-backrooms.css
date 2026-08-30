@@ -3946,26 +3946,59 @@ html { scroll-behavior: smooth; }
   .story-site .format-result li { line-height: 1.42; }
 }
 
-/* Door entrances hold the card geometry while the content fades into view. */
-.motion-ready .story-site .format-lines article.appearance-item {
-  opacity: 0;
+/* Service doors enter once, then switch to fast, interruptible hover feedback. */
+.story-site .format-lines article {
   transition:
-    opacity 520ms var(--ease-out) var(--appearance-delay,0ms),
+    transform 220ms var(--ease-out),
     border-color 180ms ease,
     box-shadow 220ms ease;
 }
-.motion-ready .story-site .format-lines article.appearance-item.is-visible { opacity: 1; }
+.story-site .format-lines article > :not(.format-door-motion) {
+  transition:
+    transform 220ms var(--ease-out),
+    color 180ms ease;
+}
+.motion-ready .story-site .format-lines article.appearance-item {
+  opacity: 0;
+  transform: translate3d(0,18px,0) !important;
+  transition:
+    opacity 520ms var(--ease-out) var(--appearance-delay,0ms),
+    transform 520ms var(--ease-out) var(--appearance-delay,0ms),
+    border-color 180ms ease,
+    box-shadow 220ms ease;
+}
+.motion-ready .story-site .format-lines article.appearance-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0,0,0) !important;
+}
 .motion-ready .story-site .format-lines article.appearance-item > :not(.format-door-motion) {
   opacity: 0;
-  transition: opacity 420ms var(--ease-out) calc(var(--appearance-delay,0ms) + 90ms),color 180ms ease;
+  transform: translate3d(0,8px,0) !important;
+  transition:
+    opacity 420ms var(--ease-out) calc(var(--appearance-delay,0ms) + 90ms),
+    transform 420ms var(--ease-out) calc(var(--appearance-delay,0ms) + 90ms),
+    color 180ms ease;
 }
-.motion-ready .story-site .format-lines article.appearance-item.is-visible > :not(.format-door-motion) { opacity: 1; }
+.motion-ready .story-site .format-lines article.appearance-item.is-visible > :not(.format-door-motion) {
+  opacity: 1;
+  transform: translate3d(0,0,0) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-ready .story-site .format-lines article.appearance-item.is-visible:hover,
+  .story-site .format-lines article:not(.appearance-item):hover {
+    transform: translate3d(0,-5px,0) !important;
+  }
+  .story-site .format-lines article:hover > :not(.format-door-motion) {
+    transform: translate3d(4px,0,0) !important;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .motion-ready .story-site .format-lines article.appearance-item,
   .motion-ready .story-site .format-lines article.appearance-item > :not(.format-door-motion) {
     opacity: 1;
-    transform: none;
+    transform: none !important;
     transition: opacity 180ms ease;
   }
 }
@@ -3990,6 +4023,22 @@ html { scroll-behavior: smooth; }
   background: #c9dfa8;
   box-shadow: 0 0 34px rgba(185,220,143,.34);
   font-weight: 700;
+}
+.story-site .format-lines article.format-featured::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 38px 0 0;
+  display: block;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(211,236,174,.16),transparent 34%),
+    linear-gradient(180deg,rgba(219,238,190,.04),transparent 48%);
+  border: 1px solid rgba(218,237,188,.22);
+  box-shadow: inset 0 0 44px rgba(190,220,151,.08);
+  opacity: .62;
+  transform: none;
+  transition: opacity 220ms ease,box-shadow 220ms ease;
 }
 .story-site .format-featured .format-door-motion {
   background:
@@ -4051,6 +4100,10 @@ html { scroll-behavior: smooth; }
       0 0 54px rgba(180,213,140,.24),
       inset 0 0 0 1px rgba(232,244,208,.2);
   }
+  .story-site .format-lines article.format-featured:hover::after {
+    opacity: .9;
+    box-shadow: inset 0 0 58px rgba(197,228,159,.13);
+  }
   .story-site .format-featured .format-meta > a:hover {
     color: #0b0f08;
     background: #e2f1c7;
@@ -4063,6 +4116,15 @@ html { scroll-behavior: smooth; }
     width: 100%;
     grid-column: 1 / -1;
     justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-site .format-lines article,
+  .story-site .format-lines article > :not(.format-door-motion),
+  .story-site .format-lines article:hover > :not(.format-door-motion) {
+    transform: none !important;
+    transition: opacity 180ms ease,border-color 180ms ease,box-shadow 180ms ease;
   }
 }
 

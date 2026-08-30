@@ -49,7 +49,7 @@ const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{i
 revealTargets.forEach(element=>revealObserver.observe(element));
 const appearanceTargets=[...document.querySelectorAll('.format-lines article')];
 appearanceTargets.forEach((element,index)=>{element.classList.add('appearance-item');element.style.setProperty('--appearance-delay',Math.min(index%3,2)*70+'ms')});
-const appearanceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');appearanceObserver.unobserve(entry.target)}}),{threshold:.16,rootMargin:'0px 0px -8%'});
+const appearanceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const element=entry.target;const delay=parseInt(element.style.getPropertyValue('--appearance-delay'),10)||0;element.classList.add('is-visible');setTimeout(()=>element.classList.remove('appearance-item'),delay+560);appearanceObserver.unobserve(element)}}),{threshold:.16,rootMargin:'0px 0px -8%'});
 appearanceTargets.forEach(element=>appearanceObserver.observe(element));
 [...document.querySelectorAll('.shift-table article,.work-story li')].forEach(element=>{
   element.tabIndex=0;
@@ -89,3 +89,4 @@ for (const file of await readdir("assets")) {
 }
 html = html.replaceAll(/url\(C:\/Users\/1wrar\/OneDrive\/Desktop\/nasyl agency\/\.vinext\/fonts\/([^/]+)\/([^/]+\.woff2)\)/g, "url(assets/_vinext_fonts/$1/$2)");
 await writeFile("index.html", html, "utf8");
+

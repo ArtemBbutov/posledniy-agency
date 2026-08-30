@@ -45,10 +45,14 @@ export function SiteInteractions() {
       element.classList.add("appearance-item");
       element.style.setProperty("--appearance-delay", `${Math.min(index % 3, 2) * 70}ms`);
     });
+    const appearanceTimers: number[] = [];
     const appearanceObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          (entry.target as HTMLElement).classList.add("is-visible");
+          const element = entry.target as HTMLElement;
+          const delay = Number.parseInt(element.style.getPropertyValue("--appearance-delay"), 10) || 0;
+          element.classList.add("is-visible");
+          appearanceTimers.push(window.setTimeout(() => element.classList.remove("appearance-item"), delay + 560));
           appearanceObserver.unobserve(entry.target);
         }
       });
@@ -206,6 +210,7 @@ export function SiteInteractions() {
     return () => {
       observer.disconnect();
       appearanceObserver.disconnect();
+      appearanceTimers.forEach((timer) => window.clearTimeout(timer));
       cleanups.forEach((cleanup) => cleanup());
       navCleanups.forEach((cleanup) => cleanup());
       nav?.removeEventListener("pointerleave", resetPointedNav);
@@ -224,3 +229,4 @@ export function SiteInteractions() {
 
   return <div className="scroll-progress" aria-hidden="true"/>;
 }
+
