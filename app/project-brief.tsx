@@ -37,29 +37,29 @@ export function ProjectBrief() {
       <legend><span>01</span><strong>С какой точки вы входите?</strong></legend>
       <div className="brief-options">
         {[
-          "Канала ещё нет",
-          "Канал есть, но не растёт",
-          "Готовим запуск продукта",
-          "Нужно продюсирование целиком",
+          "Есть экспертиза, продукта ещё нет",
+          "Продукт есть, запусков ещё не было",
+          "Уже запускали, но результат не устраивает",
+          "Нужна продюсерская команда целиком",
         ].map((option) => <label key={option}><input required type="radio" name="entry" value={option}/><span>{option}</span></label>)}
       </div>
     </fieldset>
 
     <fieldset className="brief-field brief-project">
       <legend><span>02</span><strong>Пара слов о проекте</strong></legend>
-      <textarea required name="project" rows={3} placeholder="Чем занимаетесь и что уже есть в Telegram?"/>
+      <textarea required name="project" rows={3} placeholder="В чём ваша экспертиза, какой продукт и аудитория уже есть?"/>
     </fieldset>
 
     <fieldset className="brief-field">
       <legend><span>03</span><strong>Главная задача</strong></legend>
       <div className="brief-options brief-checks">
-        {["Запустить канал", "Вернуть рост", "Подготовить запуск", "Передать канал команде"].map((option) => <label key={option}><input required type="radio" name="objective" value={option}/><span>{option}</span></label>)}
+        {["Собрать продукт с нуля", "Запустить готовый продукт", "Увеличить продажи", "Передать запуск продюсерской команде"].map((option) => <label key={option}><input required type="radio" name="objective" value={option}/><span>{option}</span></label>)}
       </div>
     </fieldset>
 
     <div className="brief-row brief-contact-row">
       <fieldset className="brief-field">
-        <legend><span>04</span><strong>Канал, если есть</strong></legend>
+        <legend><span>04</span><strong>Канал или продукт, если есть</strong></legend>
         <input name="link" type="url" inputMode="url" placeholder="https://t.me/..."/>
       </fieldset>
       <fieldset className="brief-field brief-contact">
