@@ -43,7 +43,7 @@ html = html
 
 const staticInteractionScript = `<script>
 document.documentElement.classList.add('motion-ready');
-const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene-notes article','.scene-conclusion','.transformation header > *','.shift-table article','.change-result','.work-story-copy > *','.work-story li','.system-map','.proof-strip article','.formats-story header > *','.format-lines article','.brief-heading > *','.project-brief > *'].join(','))];
+const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene-notes article','.scene-conclusion','.transformation header > *','.shift-table article','.change-result','.work-story-copy > *','.work-story li','.system-map','.proof-strip article','.formats-story header > *','.brief-heading > *','.project-brief > *'].join(','))];
 revealTargets.forEach((element,index)=>{element.classList.add('reveal-item');element.style.setProperty('--reveal-delay',Math.min(index%4,3)*70+'ms')});
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.13,rootMargin:'0px 0px -7%'});
 revealTargets.forEach(element=>revealObserver.observe(element));

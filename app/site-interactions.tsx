@@ -19,7 +19,6 @@ export function SiteInteractions() {
       ".system-map",
       ".proof-strip article",
       ".formats-story header > *",
-      ".format-lines article",
       ".brief-heading > *",
       ".project-brief > *",
     ].join(",")));

@@ -3804,3 +3804,66 @@ html { scroll-behavior: smooth; }
   }
   .story-site .format-lines article:hover .format-door-motion { clip-path: inset(0 2% 0 0); }
 }
+
+/* Door stability: cards never participate in transform-based hover or reveal motion. */
+.story-site .format-lines article,
+.story-site .format-lines article:hover,
+.story-site .format-lines article:focus-visible,
+.story-site .format-lines article.is-selected,
+.story-site .format-lines article:nth-child(2),
+.story-site .format-lines article:nth-child(2):hover,
+.story-site .format-lines article:nth-child(2):focus-visible,
+.story-site .format-lines article:nth-child(2).is-selected,
+.story-site .format-lines article:nth-child(3),
+.story-site .format-lines article:nth-child(3):hover,
+.story-site .format-lines article:nth-child(3):focus-visible,
+.story-site .format-lines article:nth-child(3).is-selected {
+  --door-y: 0px;
+  padding: 62px clamp(20px,2vw,28px) 24px !important;
+  transform: none !important;
+}
+.story-site .format-lines article:nth-child(2) { margin-top: 28px; }
+.story-site .format-lines article:nth-child(3) { margin-top: 56px; }
+.story-site .format-lines article > :not(.format-door-motion),
+.story-site .format-lines article:hover > :not(.format-door-motion),
+.story-site .format-lines article:focus-visible > :not(.format-door-motion),
+.story-site .format-lines article.is-selected > :not(.format-door-motion) {
+  transform: none !important;
+  transition: color 180ms ease;
+}
+.story-site .format-door-motion {
+  clip-path: none;
+  transition: transform 260ms cubic-bezier(.77,0,.175,1),opacity 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .story-site .format-lines article:hover .format-door-motion {
+    clip-path: none;
+    transform: translate3d(-6px,0,0) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .story-site .format-lines article:nth-child(2),
+  .story-site .format-lines article:nth-child(3) { margin-top: 0; }
+}
+
+@media (max-width: 700px) {
+  .story-site .format-lines article,
+  .story-site .format-lines article:hover,
+  .story-site .format-lines article:focus-visible,
+  .story-site .format-lines article.is-selected,
+  .story-site .format-lines article:nth-child(2),
+  .story-site .format-lines article:nth-child(2):hover,
+  .story-site .format-lines article:nth-child(3),
+  .story-site .format-lines article:nth-child(3):hover {
+    padding: 58px 18px 18px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-site .format-lines article:hover .format-door-motion {
+    clip-path: none;
+    transform: none !important;
+  }
+}
