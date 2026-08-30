@@ -10,7 +10,7 @@ const cases = [
     duration: "7 дней",
     check: "4 000 ₽",
     participants: "180+",
-    description: "За неделю собрали связку из нескольких воронок и частично автоматизировали продажи. В первый поток вошли более 180 участников со средним чеком около 4 000 ₽.",
+    description: "За неделю мы соединили несколько воронок и частично автоматизировали запуск. В продукт вошли более 180 человек со средним чеком около 4 000 ₽.",
   },
   {
     n: "02",
@@ -20,7 +20,7 @@ const cases = [
     duration: "5 дней",
     check: "от 4 990 ₽",
     participants: "80+",
-    description: "За пять дней привлекли более 80 платных участников. Продажи собрали через последовательный прогрев и технически продуманный сайт.",
+    description: "За пять дней мы привлекли более 80 платных подписчиков. Основой запуска стали сильный прогрев и технически продуманный сайт.",
   },
   {
     n: "03",
@@ -30,15 +30,15 @@ const cases = [
     duration: "3 дня",
     check: "1 750 ₽",
     participants: "150+",
-    description: "За три дня привлекли более 150 участников в доступный продукт. Он стал первой ступенью к групповой работе стоимостью более 60 000 ₽.",
+    description: "Быстрый запуск был рассчитан на широкий охват, а не на высокий чек. Продукт стал первым шагом к групповой работе стоимостью более 60 000 ₽.",
   },
 ];
 
 const work = [
-  { n: "01", title: "Находим сильную идею продукта", text: "Изучаем аудиторию и вашу экспертизу, выбираем проблему, за решение которой люди готовы платить." },
-  { n: "02", title: "Собираем продукт и оффер", text: "Проектируем результат, формат, программу, стоимость и предложение, которое легко понять и захотеть." },
-  { n: "03", title: "Готовим аудиторию к покупке", text: "Выстраиваем контент, прогрев, воронку и точки касания — от первого интереса до заявки." },
-  { n: "04", title: "Проводим запуск и докручиваем", text: "Управляем командой, выпуском и продажами, следим за цифрами и сохраняем рабочую систему для следующего запуска." },
+  { n: "01", title: "Решаем, о чём будет канал", text: "Находим главную тему и объясняем, почему людям будет интересно читать именно вас." },
+  { n: "02", title: "Пишем и выпускаем посты", text: "Узнаём, как вы говорите, придумываем темы, пишем тексты и публикуем их вовремя." },
+  { n: "03", title: "Находим ваших читателей", text: "Рассказываем о канале там, где уже есть нужные вам люди, и смотрим, кто приходит." },
+  { n: "04", title: "Помогаем продавать через канал", text: "Рассказываем о вашем продукте так, чтобы читателю было понятно, зачем он ему нужен и как его купить." },
 ];
 
 const formats = [
@@ -47,8 +47,8 @@ const formats = [
     route: "LEVEL 01 / MEDIA",
     cadence: "Ежемесячно",
     title: "Полное продюсирование",
-    description: "Становимся продюсерской командой проекта: развиваем Telegram-медиа и регулярно запускаем продукты.",
-    result: ["Продукт и позиционирование", "Контент и прогрев под продажи", "Запуск в Telegram — от 500 000 ₽", "Система повторных запусков"],
+    description: "Развиваем канал как медиа и продюсируем запуски продуктов.",
+    result: ["Широкая аудитория", "Контент выходит по системе", "Запуск в Telegram — от 500 000 ₽", "Готовая база для следующих запусков"],
     price: "от 120 тыс. / месяц",
   },
   {
@@ -56,8 +56,8 @@ const formats = [
     route: "LEVEL 02 / LAUNCH",
     cadence: "Проектная работа",
     title: "Запуск продукта через Telegram",
-    description: "Собираем и проводим один запуск: от идеи и оффера до прогрева, воронки и продаж.",
-    result: ["Готовый к продаже продукт", "Прогрев и воронка под ключ", "Запуск в Telegram — от 500 000 ₽", "План улучшений по итогам продаж"],
+    description: "Прогрев, посты и вся операционная работа — на нас.",
+    result: ["Запуск в Telegram — от 500 000 ₽", "Готовый к продаже продукт", "Канал продолжает работать после запуска"],
     price: "после диагностики",
   },
   {
@@ -65,8 +65,8 @@ const formats = [
     route: "EXIT / DIAGNOSTICS",
     cadence: "Бесплатно",
     title: "Бесплатная консультация",
-    description: "За 30 минут разберём вашу точку А, продукт и аудиторию — и покажем, на чём можно собрать запуск.",
-    result: ["Что и кому запускать", "Где сейчас теряются продажи", "Три ближайших шага", "Понятный формат дальнейшей работы"],
+    description: "Разберём канал и дадим три конкретных совета по монетизации контента.",
+    result: ["Понимание потенциала канала", "Три идеи для монетизации", "Понятные условия дальнейшей работы"],
     price: "0 ₽",
     featured: true,
   },
@@ -78,7 +78,7 @@ export default function Home() {
     <header className="br-nav">
       <a className="br-logo" href="#top"><b>А#</b><span>АГЕНТСТВО НАС#ЛИЯ<br/>TELEGRAM PRODUCTION</span></a>
       <nav aria-label="Навигация по разделам"><span className="nav-liquid" aria-hidden="true"><i className="nav-liquid-core"/></span><a href="#reality">СИТУАЦИЯ</a><a href="#change">РЕЗУЛЬТАТ</a><a href="#work">РАБОТА</a><a href="#exit">АНКЕТА</a></nav>
-      <a className="br-call" href="#exit">Обсудить запуск <span>↓</span></a>
+      <a className="br-call" href="#exit">Обсудить канал <span>↓</span></a>
     </header>
 
     <section className="br-hero br-level" aria-labelledby="hero-title">
@@ -91,9 +91,9 @@ export default function Home() {
         <span className="hero-dust"/>
       </div>
       <div className="hero-story-copy">
-        <p className="hero-eyebrow">Продюсерское агентство Telegram-продуктов</p>
-        <h1 id="hero-title"><span className="hero-title-line" data-text="Запуски">Запуски</span><span className="hero-title-line" data-text="в Telegram">в Telegram</span></h1>
-        <p className="hero-lead">Превращаем вашу экспертизу и аудиторию в продукт и продажи. Собираем стратегию, оффер, прогрев, воронку и сам запуск — одной командой.</p>
+        <p className="hero-eyebrow">Продюсерское агентство</p>
+        <h1 id="hero-title"><span className="hero-title-line" data-text="Продюсирование">Продюсирование</span><span className="hero-title-line" data-text="телеграм-каналов">телеграм-каналов</span></h1>
+        <p className="hero-lead">Стратегия, контент, выпуск, продвижение и запуски — одной командой. Автор сохраняет голос и не живёт в операционке.</p>
         <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a></div>
       </div>
       <img className="hero-foreground" src="/hero-backrooms-v2.png" alt="" aria-hidden="true" />
@@ -103,13 +103,13 @@ export default function Home() {
     <section className="story-scene" id="reality">
       <img src="/telegram-workspace-v1.png" alt="Рабочее место автора Telegram-канала"/>
       <div className="scene-shade"/>
-      <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Экспертиза есть.<br/>Запускать — некому.</h2></header>
+      <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Канал есть.<br/>Времени на него — нет.</h2></header>
       <div className="scene-notes">
-        <article><span>ИДЕЯ</span><strong>Продукт хочется запустить, но неясно какой</strong><p>Экспертизы много, а понятного результата, формата и предложения для аудитории пока нет.</p></article>
-        <article><span>КОНТЕНТ</span><strong>Канал живёт отдельно от продаж</strong><p>Посты выходят, но не ведут читателя к продукту и не формируют спрос до старта.</p></article>
-        <article><span>ЗАПУСК</span><strong>Вся операционка остаётся на вас</strong><p>Нужно одновременно создавать продукт, писать прогрев, управлять командой и следить за продажами.</p></article>
+        <article><span>18:40</span><strong>Пост снова переносится на завтра</strong><p>Днём — клиенты и команда. До канала руки доходят только вечером.</p></article>
+        <article><span>21:15</span><strong>Всё ждёт вашего ответа</strong><p>Пока вы не согласуете тему и текст, редактор не может двигаться дальше.</p></article>
+        <article><span>ЗАПУСК</span><strong>Продавать нужно уже через неделю</strong><p>Продукт готов, а аудиторию начинают готовить в последний момент.</p></article>
       </div>
-      <p className="scene-conclusion">Мы входим как продюсерская команда: превращаем экспертизу в продукт, собираем стратегию запуска, готовим аудиторию и ведём проект до продаж.</p>
+      <p className="scene-conclusion">Мы забираем канал на себя: вместе выбираем темы, сами готовим и выпускаем посты, следим за ростом и заранее готовим аудиторию к запуску.</p>
     </section>
 
     <section className="cases-section" id="change">
@@ -127,27 +127,27 @@ export default function Home() {
 
     <section className="work-story" id="work">
       <div className="work-story-copy">
-        <p className="br-label">03 / КАК МЫ СОБИРАЕМ ЗАПУСК</p>
-        <h2>Берём запуск<br/>под ключ.</h2>
-        <p className="work-intro">Вы даёте экспертизу и участвуете в ключевых решениях. Мы превращаем её в продукт, ведём проект от идеи до продаж и собираем систему для следующих запусков.</p>
+        <p className="br-label">03 / КАК МЫ ВЕДЁМ КАНАЛ</p>
+        <h2>Берём ваш канал<br/>на себя.</h2>
+        <p className="work-intro">Вы рассказываете нам о себе и своей цели. Дальше мы придумываем темы, пишем посты, находим читателей и помогаем продавать.</p>
         <ol>{work.map((item)=><li key={item.n}><span>{item.n}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}</ol>
       </div>
       <figure className="system-map">
-        <img src="/editorial-wall-v1.png" alt="Карта запуска Telegram-продукта"/>
-        <figcaption><span>СИСТЕМА ЗАПУСКА / ВИД ИЗНУТРИ</span><strong>Продукт, контент, дедлайны, продажи и цифры собраны в одной карте.</strong></figcaption>
-        <button className="map-point point-a" type="button"><b>01</b><small>оффер продукта</small></button>
-        <button className="map-point point-b" type="button"><b>02</b><small>сценарий прогрева</small></button>
-        <button className="map-point point-c" type="button"><b>03</b><small>точки продаж</small></button>
+        <img src="/editorial-wall-v1.png" alt="Редакционная карта Telegram-проекта"/>
+        <figcaption><span>РАБОЧАЯ СИСТЕМА / ВИД ИЗНУТРИ</span><strong>Темы, дедлайны, продукт и продвижение видны в одной карте.</strong></figcaption>
+        <button className="map-point point-a" type="button"><b>01</b><small>контент-углы</small></button>
+        <button className="map-point point-b" type="button"><b>02</b><small>ритм редакции</small></button>
+        <button className="map-point point-c" type="button"><b>03</b><small>точки запуска</small></button>
       </figure>
     </section>
 
     <section className="proof-strip">
       <p className="br-label">04 / ЧТО ВЫ ПОЛУЧАЕТЕ</p>
-      <div><article><span>01</span><strong>Продукт с ясным результатом</strong><p>Понятно, для кого он, какую задачу решает и за что платит клиент.</p></article><article><span>02</span><strong>Стратегия запуска</strong><p>Цели, экономика, этапы, сроки и ответственность команды.</p></article><article><span>03</span><strong>Прогрев и воронка</strong><p>Контент и точки касания, которые последовательно ведут к покупке.</p></article><article><span>04</span><strong>Управление продажами</strong><p>Запуск, аналитика и решения, которые усиливают следующий цикл.</p></article></div>
+      <div><article><span>01</span><strong>Позиция канала</strong><p>Кому, о чём и почему именно вас читать.</p></article><article><span>02</span><strong>Редакция под ключ</strong><p>Темы, тексты, визуал, выпуск и контроль качества.</p></article><article><span>03</span><strong>Система роста</strong><p>Посевы, партнёрства, аналитика и корректировки.</p></article><article><span>04</span><strong>Запуски продуктов</strong><p>Оффер, прогрев, путь к покупке и разбор цикла.</p></article></div>
     </section>
 
     <section className="formats-story" id="formats">
-      <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три сценария: стать вашей продюсерской командой, собрать один запуск под ключ или бесплатно определить лучшую точку входа.</p></header>
+      <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
         {formats.map((format) => <article className={format.featured ? "format-featured" : undefined} key={format.n} data-route={format.route}>
           <span className="format-door-motion" aria-hidden="true"><i /></span>
@@ -160,7 +160,7 @@ export default function Home() {
     </section>
 
     <section className="br-level brief-level" id="exit">
-      <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о проекте.</h2><p>Пять коротких ответов. Разберём вашу точку А и предложим следующий шаг к запуску.</p></header>
+      <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о канале.</h2><p>Пять коротких ответов. Посмотрим проект и предложим, с чего лучше начать.</p></header>
       <ProjectBrief/>
       <footer><span>Агентство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
     </section>
