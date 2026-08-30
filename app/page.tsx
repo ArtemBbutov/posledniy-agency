@@ -149,6 +149,7 @@ export default function Home() {
       <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
         {formats.map((format) => <article key={format.n} data-route={format.route}>
+          <span className="format-door-motion" aria-hidden="true"><i /></span>
           <div className="format-index"><span>{format.n}</span><small>{format.cadence}</small></div>
           <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
           <div className="format-result"><span>Что получите</span><ul>{format.result.map((item)=><li key={item}>{item}</li>)}</ul></div>
