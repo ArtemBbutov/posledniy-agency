@@ -125,8 +125,82 @@ appearanceTargets.forEach(element=>appearanceObserver.observe(element));
   element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select()}});
 });
 const progress=document.querySelector('.scroll-progress');
+const nav=document.querySelector('.br-nav nav');
+const navHeader=nav?.closest('.br-nav');
+const navLiquid=nav?.querySelector('.nav-liquid');
+const navLiquidCore=nav?.querySelector('.nav-liquid-core');
+const navLinks=[...(nav?.querySelectorAll('a[href^="#"]')||[])];
+let activeNavLink=navLinks[0];
+let navIsPointed=false;
+let displayedNavLink;
+let liquidFrame=0;
+let liquidX=0;
+let liquidTargetX=0;
+let liquidVelocity=0;
+let liquidLastTime=0;
+let liquidPositioned=false;
+let navScrollLock;
+let navScrollUnlockTimer=0;
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const renderLiquid=()=>{
+  if(!navLiquid)return;
+  navLiquid.style.transform='translate3d('+liquidX+'px,0,0)';
+  const stretch=1+Math.min(Math.abs(liquidVelocity)/900,.16);
+  if(navLiquidCore)navLiquidCore.style.transform='scale3d('+stretch+','+(1-(stretch-1)*.28)+',1)';
+};
+const stepLiquid=time=>{
+  if(!liquidLastTime)liquidLastTime=time;
+  const delta=Math.min((time-liquidLastTime)/1000,.032);
+  liquidLastTime=time;
+  const acceleration=(liquidTargetX-liquidX)*100-liquidVelocity*10;
+  liquidVelocity+=acceleration*delta;
+  liquidX+=liquidVelocity*delta;
+  renderLiquid();
+  if(Math.abs(liquidTargetX-liquidX)<.08&&Math.abs(liquidVelocity)<.08){
+    liquidX=liquidTargetX;liquidVelocity=0;liquidLastTime=0;liquidFrame=0;renderLiquid();return;
+  }
+  liquidFrame=requestAnimationFrame(stepLiquid);
+};
+const startLiquidSpring=()=>{if(!liquidFrame){liquidLastTime=0;liquidFrame=requestAnimationFrame(stepLiquid)}};
+const moveLiquid=link=>{
+  if(!navLiquid||!link||displayedNavLink===link)return;
+  displayedNavLink=link;
+  liquidTargetX=link.offsetLeft-5;
+  navLiquid.style.opacity='1';
+  navLinks.forEach(item=>item.toggleAttribute('aria-current',item===link));
+  if(!liquidPositioned||reduceMotion){liquidX=liquidTargetX;liquidVelocity=0;liquidPositioned=true;renderLiquid()}
+  else startLiquidSpring();
+};
+const updateActiveNav=()=>{
+  if(navScrollLock){activeNavLink=navScrollLock;navHeader?.classList.toggle('is-scrolled',scrollY>72);moveLiquid(navScrollLock);return}
+  const threshold=innerHeight*.42;
+  const visible=navLinks.filter(link=>{const target=document.querySelector(link.hash);return target&&target.getBoundingClientRect().top<=threshold});
+  activeNavLink=visible.at(-1)||navLinks[0];
+  navHeader?.classList.toggle('is-scrolled',scrollY>72);
+  if(!navIsPointed)moveLiquid(activeNavLink);
+};
+navLinks.forEach(link=>{
+  const enter=()=>{navIsPointed=true;moveLiquid(link)};
+  link.addEventListener('pointerenter',enter);
+  link.addEventListener('focus',enter);
+  link.addEventListener('click',event=>{
+    const target=document.querySelector(link.hash);
+    if(!target)return;
+    event.preventDefault();navScrollLock=link;activeNavLink=link;moveLiquid(link);
+    target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+    history.replaceState(null,'',link.hash);
+    clearTimeout(navScrollUnlockTimer);
+    navScrollUnlockTimer=setTimeout(()=>{navScrollLock=undefined;updateActiveNav()},reduceMotion?80:1400);
+  });
+});
+const resetPointedNav=()=>{navIsPointed=false;moveLiquid(activeNavLink)};
+nav?.addEventListener('pointerleave',resetPointedNav);
+nav?.addEventListener('focusout',event=>{if(!(event.relatedTarget instanceof Node)||!nav.contains(event.relatedTarget))resetPointedNav()});
+addEventListener('scrollend',()=>{if(navScrollLock){clearTimeout(navScrollUnlockTimer);navScrollLock=undefined;updateActiveNav()}});
 const updateProgress=()=>{const maximum=document.documentElement.scrollHeight-innerHeight;progress?.style.setProperty('--progress',String(maximum>0?scrollY/maximum:0))};
-updateProgress();addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress);
+updateProgress();updateActiveNav();
+addEventListener('scroll',updateProgress,{passive:true});addEventListener('scroll',updateActiveNav,{passive:true});
+addEventListener('resize',updateProgress);addEventListener('resize',updateActiveNav);
 document.querySelector('.project-brief')?.addEventListener('submit',async function(event){
   event.preventDefault();
   const labels={entry:'Точка входа',project:'Проект',objective:'Цель',link:'Ссылка',budget:'Бюджет',contact:'Контакт'};
