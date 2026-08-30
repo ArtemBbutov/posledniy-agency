@@ -3935,6 +3935,17 @@ html { scroll-behavior: smooth; }
   .story-site .format-meta { grid-column: 1; }
 }
 
+/* Align the service copy and result lists on one shared reading grid. */
+@media (min-width: 981px) {
+  .story-site .format-lines article:nth-child(2),
+  .story-site .format-lines article:nth-child(3) { margin-top: 0; }
+  .story-site .format-product { min-height: 142px; }
+  .story-site .format-result { width: 100%; box-sizing: border-box; }
+  .story-site .format-result > span { display: block; }
+  .story-site .format-result ul { align-content: start; }
+  .story-site .format-result li { line-height: 1.42; }
+}
+
 /* Door entrances hold the card geometry while the content fades into view. */
 .motion-ready .story-site .format-lines article.appearance-item {
   opacity: 0;
