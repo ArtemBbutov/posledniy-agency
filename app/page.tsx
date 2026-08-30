@@ -150,7 +150,7 @@ export default function Home() {
       <div className="format-lines">
         {formats.map((format) => <article key={format.n} data-route={format.route}>
           <span className="format-door-motion" aria-hidden="true"><i /></span>
-          <div className="format-index"><span>{format.n}</span><small>{format.cadence}</small></div>
+          <div className="format-index"><small>{format.cadence}</small></div>
           <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
           <div className="format-result"><span>Что получите</span><ul>{format.result.map((item)=><li key={item}>{item}</li>)}</ul></div>
           <div className="format-meta"><p><span>Стоимость</span><strong>{format.price}</strong></p><a href="#exit" aria-label={`Обсудить формат «${format.title}»`}><span>Обсудить</span><i aria-hidden="true">↘</i></a></div>

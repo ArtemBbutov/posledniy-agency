@@ -3867,3 +3867,68 @@ html { scroll-behavior: smooth; }
     transform: none !important;
   }
 }
+
+/* Numberless doors: cadence remains as quiet metadata without an empty number column. */
+.story-site .format-index {
+  min-height: 24px;
+  margin-bottom: 22px;
+  padding: 0 20px 11px 0;
+  display: block;
+}
+.story-site .format-index small {
+  max-width: none;
+  display: block;
+  text-align: left;
+}
+.story-site .format-door-motion,
+.story-site .format-door-motion > i {
+  transition-duration: 260ms;
+}
+
+@media (max-width: 980px) {
+  .story-site .format-lines article,
+  .story-site .format-lines article:hover,
+  .story-site .format-lines article:focus-visible,
+  .story-site .format-lines article.is-selected,
+  .story-site .format-lines article:nth-child(2),
+  .story-site .format-lines article:nth-child(2):hover,
+  .story-site .format-lines article:nth-child(3),
+  .story-site .format-lines article:nth-child(3):hover {
+    grid-template-columns: minmax(0,1fr) minmax(220px,.85fr);
+  }
+  .story-site .format-index {
+    grid-column: 1 / -1;
+    min-height: 0;
+    margin: 0;
+    padding: 0 0 12px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(211,209,174,.14);
+  }
+  .story-site .format-product { grid-column: 1; }
+  .story-site .format-result { grid-column: 2; }
+  .story-site .format-meta { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+  .story-site .format-lines article,
+  .story-site .format-lines article:hover,
+  .story-site .format-lines article:focus-visible,
+  .story-site .format-lines article.is-selected,
+  .story-site .format-lines article:nth-child(2),
+  .story-site .format-lines article:nth-child(2):hover,
+  .story-site .format-lines article:nth-child(3),
+  .story-site .format-lines article:nth-child(3):hover {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .story-site .format-index {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .story-site .format-index small {
+    writing-mode: horizontal-tb;
+    transform: none !important;
+  }
+  .story-site .format-product,
+  .story-site .format-result,
+  .story-site .format-meta { grid-column: 1; }
+}
