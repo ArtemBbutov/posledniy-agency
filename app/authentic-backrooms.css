@@ -4,6 +4,8 @@
   --wall-lit: #aaa263;
   --tube: #d6dabd;
   --paper: #d3cfad;
+  --ease-out: cubic-bezier(.23,1,.32,1);
+  --ease-in-out: cubic-bezier(.77,0,.175,1);
 }
 
 .authentic-backrooms {
@@ -3931,4 +3933,54 @@ html { scroll-behavior: smooth; }
   .story-site .format-product,
   .story-site .format-result,
   .story-site .format-meta { grid-column: 1; }
+}
+
+/* Section entrances: doors hold their geometry; case imagery reveals like surveillance footage. */
+.motion-ready .story-site .format-lines article.appearance-item {
+  opacity: 0;
+  transition:
+    opacity 520ms var(--ease-out) var(--appearance-delay,0ms),
+    border-color 180ms ease,
+    box-shadow 220ms ease;
+}
+.motion-ready .story-site .format-lines article.appearance-item.is-visible { opacity: 1; }
+.motion-ready .story-site .format-lines article.appearance-item > :not(.format-door-motion) {
+  opacity: 0;
+  transition: opacity 420ms var(--ease-out) calc(var(--appearance-delay,0ms) + 90ms),color 180ms ease;
+}
+.motion-ready .story-site .format-lines article.appearance-item.is-visible > :not(.format-door-motion) { opacity: 1; }
+
+.motion-ready .story-site .case-card.appearance-item figure {
+  opacity: .22;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path 720ms var(--ease-in-out) var(--appearance-delay,0ms),
+    opacity 420ms var(--ease-out) var(--appearance-delay,0ms);
+}
+.motion-ready .story-site .case-card.appearance-item.is-visible figure {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+.motion-ready .story-site .case-card.appearance-item .case-copy {
+  opacity: 0;
+  transform: translate3d(0,12px,0);
+  transition:
+    opacity 420ms var(--ease-out) calc(var(--appearance-delay,0ms) + 210ms),
+    transform 520ms var(--ease-out) calc(var(--appearance-delay,0ms) + 210ms);
+}
+.motion-ready .story-site .case-card.appearance-item.is-visible .case-copy {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .story-site .format-lines article.appearance-item,
+  .motion-ready .story-site .format-lines article.appearance-item > :not(.format-door-motion),
+  .motion-ready .story-site .case-card.appearance-item figure,
+  .motion-ready .story-site .case-card.appearance-item .case-copy {
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    transition: opacity 180ms ease;
+  }
 }

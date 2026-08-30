@@ -38,6 +38,23 @@ export function SiteInteractions() {
     }, { threshold: 0.13, rootMargin: "0px 0px -7%" });
     revealTargets.forEach((element) => observer.observe(element));
 
+    const appearanceTargets = Array.from(document.querySelectorAll<HTMLElement>(
+      ".format-lines article, .case-card",
+    ));
+    appearanceTargets.forEach((element, index) => {
+      element.classList.add("appearance-item");
+      element.style.setProperty("--appearance-delay", `${Math.min(index % 3, 2) * 70}ms`);
+    });
+    const appearanceObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add("is-visible");
+          appearanceObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -8%" });
+    appearanceTargets.forEach((element) => appearanceObserver.observe(element));
+
     const selectable = Array.from(document.querySelectorAll<HTMLElement>(".shift-table article, .work-story li"));
     const select = (element: HTMLElement) => {
       element.parentElement?.querySelectorAll(".is-selected").forEach((item) => item.classList.remove("is-selected"));
@@ -188,6 +205,7 @@ export function SiteInteractions() {
 
     return () => {
       observer.disconnect();
+      appearanceObserver.disconnect();
       cleanups.forEach((cleanup) => cleanup());
       navCleanups.forEach((cleanup) => cleanup());
       nav?.removeEventListener("pointerleave", resetPointedNav);

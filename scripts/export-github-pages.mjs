@@ -47,6 +47,10 @@ const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene
 revealTargets.forEach((element,index)=>{element.classList.add('reveal-item');element.style.setProperty('--reveal-delay',Math.min(index%4,3)*70+'ms')});
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.13,rootMargin:'0px 0px -7%'});
 revealTargets.forEach(element=>revealObserver.observe(element));
+const appearanceTargets=[...document.querySelectorAll('.format-lines article,.case-card')];
+appearanceTargets.forEach((element,index)=>{element.classList.add('appearance-item');element.style.setProperty('--appearance-delay',Math.min(index%3,2)*70+'ms')});
+const appearanceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');appearanceObserver.unobserve(entry.target)}}),{threshold:.16,rootMargin:'0px 0px -8%'});
+appearanceTargets.forEach(element=>appearanceObserver.observe(element));
 [...document.querySelectorAll('.shift-table article,.work-story li')].forEach(element=>{
   element.tabIndex=0;
   const select=()=>{element.parentElement?.querySelectorAll('.is-selected').forEach(item=>item.classList.remove('is-selected'));element.classList.add('is-selected')};
