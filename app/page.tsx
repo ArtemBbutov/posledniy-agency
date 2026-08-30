@@ -44,6 +44,7 @@ const work = [
 const formats = [
   {
     n: "01",
+    route: "LEVEL 01 / MEDIA",
     cadence: "Ежемесячно",
     title: "Полное продюсирование",
     description: "Развиваем канал как медиа и продюсируем запуски продуктов.",
@@ -52,6 +53,7 @@ const formats = [
   },
   {
     n: "02",
+    route: "LEVEL 02 / LAUNCH",
     cadence: "Проектная работа",
     title: "Запуск продукта через Telegram",
     description: "Прогрев, посты и вся операционная работа — на нас.",
@@ -60,6 +62,7 @@ const formats = [
   },
   {
     n: "03",
+    route: "EXIT / DIAGNOSTICS",
     cadence: "Бесплатно",
     title: "Консультация",
     description: "Разберём канал и дадим три конкретных совета по монетизации контента.",
@@ -143,9 +146,9 @@ export default function Home() {
     </section>
 
     <section className="formats-story" id="formats">
-      <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Спектр<br/>услуг.</h2><p>Два формата работы под ключ и бесплатная консультация, с которой можно начать знакомство.</p></header>
+      <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
-        {formats.map((format) => <article key={format.n}>
+        {formats.map((format) => <article key={format.n} data-route={format.route}>
           <div className="format-index"><span>{format.n}</span><small>{format.cadence}</small></div>
           <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
           <div className="format-result"><span>Что получите</span><ul>{format.result.map((item)=><li key={item}>{item}</li>)}</ul></div>
