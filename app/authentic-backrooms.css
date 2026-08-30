@@ -3969,3 +3969,100 @@ html { scroll-behavior: smooth; }
     transition: opacity 180ms ease;
   }
 }
+
+/* The free consultation is the clearest exit from the three service doors. */
+.story-site .format-lines article.format-featured,
+.story-site .format-lines article.format-featured:hover,
+.story-site .format-lines article.format-featured:focus-visible,
+.story-site .format-lines article.format-featured.is-selected {
+  background:
+    linear-gradient(145deg,rgba(207,232,168,.16),transparent 38%),
+    linear-gradient(180deg,rgba(20,26,16,.98),rgba(8,11,7,.98));
+  border-color: rgba(201,225,166,.8);
+  box-shadow:
+    0 34px 88px rgba(0,0,0,.52),
+    0 0 42px rgba(180,213,140,.15),
+    inset 0 0 0 1px rgba(224,240,194,.16);
+}
+.story-site .format-lines article.format-featured::before {
+  content: "БЕСПЛАТНО / КОНСУЛЬТАЦИЯ";
+  color: #10150d;
+  background: #c9dfa8;
+  box-shadow: 0 0 34px rgba(185,220,143,.34);
+  font-weight: 700;
+}
+.story-site .format-featured .format-door-motion {
+  background:
+    linear-gradient(145deg,rgba(207,232,168,.15),transparent 36%),
+    linear-gradient(180deg,rgba(20,26,16,.97),rgba(8,11,7,.97));
+  border-right-color: rgba(201,225,166,.28);
+}
+.story-site .format-featured .format-door-motion > i {
+  background: linear-gradient(180deg,#bcd496,#62764d);
+  border-color: rgba(226,241,200,.54);
+  box-shadow: -8px 0 24px rgba(183,218,141,.22);
+}
+.story-site .format-featured .format-index {
+  border-color: rgba(201,225,166,.26);
+}
+.story-site .format-featured .format-index small {
+  width: fit-content;
+  padding: 7px 10px 6px;
+  color: #15200f;
+  background: #c9dfa8;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.story-site .format-lines .format-featured h3 { color: #eef6dd; }
+.story-site .format-lines .format-featured .format-product p,
+.story-site .format-lines .format-featured .format-result li { color: #c2ceae; }
+.story-site .format-featured .format-meta strong {
+  color: #dff0c3;
+  font-size: clamp(25px,2.2vw,34px);
+  font-weight: 600;
+}
+.story-site .format-featured .format-meta > a {
+  width: auto;
+  min-height: 50px;
+  padding: 0 15px;
+  gap: 12px;
+  color: #11170d;
+  background: #c9dfa8;
+  border-color: #dfefc4;
+  font-weight: 650;
+}
+.story-site .format-featured .format-meta > a span {
+  width: auto;
+  height: auto;
+  position: static;
+  overflow: visible;
+  clip: auto;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.story-site .format-featured .format-meta > a i { font-size: 16px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .story-site .format-lines article.format-featured:hover {
+    border-color: #d7ecb7;
+    box-shadow:
+      0 38px 94px rgba(0,0,0,.56),
+      0 0 54px rgba(180,213,140,.24),
+      inset 0 0 0 1px rgba(232,244,208,.2);
+  }
+  .story-site .format-featured .format-meta > a:hover {
+    color: #0b0f08;
+    background: #e2f1c7;
+    border-color: #edf8d9;
+  }
+}
+
+@media (max-width: 700px) {
+  .story-site .format-featured .format-meta > a {
+    width: 100%;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+  }
+}
+

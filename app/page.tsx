@@ -64,10 +64,11 @@ const formats = [
     n: "03",
     route: "EXIT / DIAGNOSTICS",
     cadence: "Бесплатно",
-    title: "Консультация",
+    title: "Бесплатная консультация",
     description: "Разберём канал и дадим три конкретных совета по монетизации контента.",
     result: ["Понимание потенциала канала", "Три идеи для монетизации", "Понятные условия дальнейшей работы"],
-    price: "бесплатно",
+    price: "0 ₽",
+    featured: true,
   },
 ];
 
@@ -148,12 +149,12 @@ export default function Home() {
     <section className="formats-story" id="formats">
       <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
-        {formats.map((format) => <article key={format.n} data-route={format.route}>
+        {formats.map((format) => <article className={format.featured ? "format-featured" : undefined} key={format.n} data-route={format.route}>
           <span className="format-door-motion" aria-hidden="true"><i /></span>
           <div className="format-index"><small>{format.cadence}</small></div>
           <div className="format-product"><h3>{format.title}</h3><p>{format.description}</p></div>
           <div className="format-result"><span>Что получите</span><ul>{format.result.map((item)=><li key={item}>{item}</li>)}</ul></div>
-          <div className="format-meta"><p><span>Стоимость</span><strong>{format.price}</strong></p><a href="#exit" aria-label={`Обсудить формат «${format.title}»`}><span>Обсудить</span><i aria-hidden="true">↘</i></a></div>
+          <div className="format-meta"><p><span>Стоимость</span><strong>{format.price}</strong></p><a href="#exit" aria-label={format.featured ? "Записаться на бесплатную консультацию" : `Обсудить формат «${format.title}»`}><span>{format.featured ? "Записаться бесплатно" : "Обсудить"}</span><i aria-hidden="true">↘</i></a></div>
         </article>)}
       </div>
     </section>
@@ -165,3 +166,4 @@ export default function Home() {
     </section>
   </main>;
 }
+
