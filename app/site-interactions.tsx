@@ -39,7 +39,7 @@ export function SiteInteractions() {
     revealTargets.forEach((element) => observer.observe(element));
 
     const appearanceTargets = Array.from(document.querySelectorAll<HTMLElement>(
-      ".format-lines article, .case-card",
+      ".format-lines article",
     ));
     appearanceTargets.forEach((element, index) => {
       element.classList.add("appearance-item");
