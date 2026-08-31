@@ -51,6 +51,24 @@ const appearanceTargets=[...document.querySelectorAll('.format-lines article')];
 appearanceTargets.forEach((element,index)=>{element.classList.add('appearance-item');element.style.setProperty('--appearance-delay',Math.min(index%3,2)*70+'ms')});
 const appearanceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const element=entry.target;const delay=parseInt(element.style.getPropertyValue('--appearance-delay'),10)||0;element.classList.add('is-visible');setTimeout(()=>element.classList.remove('appearance-item'),delay+560);appearanceObserver.unobserve(element)}}),{threshold:.16,rootMargin:'0px 0px -8%'});
 appearanceTargets.forEach(element=>appearanceObserver.observe(element));
+const caseCarousel=document.querySelector('.case-carousel');
+const caseTrack=caseCarousel?.querySelector('.case-track');
+const caseSlides=[...(caseCarousel?.querySelectorAll('[data-case-slide]')||[])];
+const caseDots=[...(caseCarousel?.querySelectorAll('[data-case-index]')||[])];
+const caseCurrent=caseCarousel?.querySelector('[data-case-current]');
+let activeCase=0;
+const showCase=nextIndex=>{
+  if(!caseTrack||caseSlides.length===0)return;
+  activeCase=(nextIndex+caseSlides.length)%caseSlides.length;
+  caseTrack.style.transform='translate3d(-'+activeCase*100+'%,0,0)';
+  caseSlides.forEach((slide,index)=>{const isActive=index===activeCase;slide.dataset.active=String(isActive);slide.toggleAttribute('aria-hidden',!isActive)});
+  caseDots.forEach((dot,index)=>dot.toggleAttribute('aria-current',index===activeCase));
+  if(caseCurrent)caseCurrent.textContent=String(activeCase+1).padStart(2,'0');
+};
+caseCarousel?.querySelector('.case-arrow-prev')?.addEventListener('click',()=>showCase(activeCase-1));
+caseCarousel?.querySelector('.case-arrow-next')?.addEventListener('click',()=>showCase(activeCase+1));
+caseDots.forEach((dot,index)=>dot.addEventListener('click',()=>showCase(index)));
+caseCarousel?.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();showCase(activeCase-1)}if(event.key==='ArrowRight'){event.preventDefault();showCase(activeCase+1)}});
 [...document.querySelectorAll('.shift-table article,.work-story li')].forEach(element=>{
   element.tabIndex=0;
   const select=()=>{element.parentElement?.querySelectorAll('.is-selected').forEach(item=>item.classList.remove('is-selected'));element.classList.add('is-selected')};

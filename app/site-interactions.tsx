@@ -62,6 +62,41 @@ export function SiteInteractions() {
     }, { threshold: 0.16, rootMargin: "0px 0px -8%" });
     appearanceTargets.forEach((element) => appearanceObserver.observe(element));
 
+    const caseCarousel = document.querySelector<HTMLElement>(".case-carousel");
+    const caseTrack = caseCarousel?.querySelector<HTMLElement>(".case-track");
+    const caseSlides = Array.from(caseCarousel?.querySelectorAll<HTMLElement>("[data-case-slide]") ?? []);
+    const caseDots = Array.from(caseCarousel?.querySelectorAll<HTMLButtonElement>("[data-case-index]") ?? []);
+    const caseCurrent = caseCarousel?.querySelector<HTMLElement>("[data-case-current]");
+    const casePrevious = caseCarousel?.querySelector<HTMLButtonElement>(".case-arrow-prev");
+    const caseNext = caseCarousel?.querySelector<HTMLButtonElement>(".case-arrow-next");
+    let activeCase = 0;
+    const showCase = (nextIndex: number) => {
+      if (!caseTrack || caseSlides.length === 0) return;
+      activeCase = (nextIndex + caseSlides.length) % caseSlides.length;
+      caseTrack.style.transform = `translate3d(-${activeCase * 100}%,0,0)`;
+      caseSlides.forEach((slide, index) => {
+        const isActive = index === activeCase;
+        slide.dataset.active = String(isActive);
+        slide.toggleAttribute("aria-hidden", !isActive);
+      });
+      caseDots.forEach((dot, index) => dot.toggleAttribute("aria-current", index === activeCase));
+      if (caseCurrent) caseCurrent.textContent = String(activeCase + 1).padStart(2, "0");
+    };
+    const showPreviousCase = () => showCase(activeCase - 1);
+    const showNextCase = () => showCase(activeCase + 1);
+    const caseDotCleanups = caseDots.map((dot, index) => {
+      const click = () => showCase(index);
+      dot.addEventListener("click", click);
+      return () => dot.removeEventListener("click", click);
+    });
+    const caseKeydown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") { event.preventDefault(); showPreviousCase(); }
+      if (event.key === "ArrowRight") { event.preventDefault(); showNextCase(); }
+    };
+    casePrevious?.addEventListener("click", showPreviousCase);
+    caseNext?.addEventListener("click", showNextCase);
+    caseCarousel?.addEventListener("keydown", caseKeydown);
+
     const selectable = Array.from(document.querySelectorAll<HTMLElement>(".shift-table article, .work-story li"));
     const select = (element: HTMLElement) => {
       element.parentElement?.querySelectorAll(".is-selected").forEach((item) => item.classList.remove("is-selected"));
@@ -238,6 +273,10 @@ export function SiteInteractions() {
       observer.disconnect();
       appearanceObserver.disconnect();
       appearanceTimers.forEach((timer) => window.clearTimeout(timer));
+      caseDotCleanups.forEach((cleanup) => cleanup());
+      casePrevious?.removeEventListener("click", showPreviousCase);
+      caseNext?.removeEventListener("click", showNextCase);
+      caseCarousel?.removeEventListener("keydown", caseKeydown);
       window.clearTimeout(ambientEventTimer);
       window.clearTimeout(ambientResetTimer);
       cleanups.forEach((cleanup) => cleanup());
