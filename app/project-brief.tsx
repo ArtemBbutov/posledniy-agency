@@ -1,76 +1,212 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+
+type BriefStep = {
+  key: string;
+  label: string;
+  question: string;
+  hint: string;
+  options: Array<{ label: string; value?: string; other?: boolean }>;
+};
+
+const briefSteps: BriefStep[] = [
+  {
+    key: "task",
+    label: "Задача",
+    question: "Что хотите получить от Telegram?",
+    hint: "Выберите сценарий, который ближе всего к вашей ситуации.",
+    options: [
+      { label: "Запустить продукт в Telegram" },
+      { label: "Передать канал под ключ" },
+      { label: "Вырастить аудиторию и продажи" },
+      { label: "Начать с бесплатной консультации" },
+    ],
+  },
+  {
+    key: "stage",
+    label: "Стадия",
+    question: "Сколько людей уже читают канал?",
+    hint: "Если каналов несколько — укажите основной.",
+    options: [
+      { label: "Канала ещё нет" },
+      { label: "До 1 000 подписчиков" },
+      { label: "1–5 тысяч" },
+      { label: "5–20 тысяч" },
+      { label: "Больше 20 тысяч" },
+    ],
+  },
+  {
+    key: "niche",
+    label: "Ниша",
+    question: "В какой нише работаете?",
+    hint: "Нам важно понять продукт и будущую аудиторию.",
+    options: [
+      { label: "Образование / экспертность" },
+      { label: "Бизнес / консалтинг" },
+      { label: "Блог / медиа" },
+      { label: "Агентство / услуги" },
+      { label: "Другое", other: true },
+    ],
+  },
+  {
+    key: "product",
+    label: "Продукт",
+    question: "На какой стадии продукт?",
+    hint: "Не страшно, если пока есть только идея — это тоже точка входа.",
+    options: [
+      { label: "Уже продаём" },
+      { label: "Продукт есть, запусков не было" },
+      { label: "Сейчас собираем продукт" },
+      { label: "Пока только идея" },
+    ],
+  },
+  {
+    key: "result",
+    label: "Результат",
+    question: "Какой результат сейчас главный?",
+    hint: "Выберите один приоритет — остальное обсудим на созвоне.",
+    options: [
+      { label: "Запуск от 500 000 ₽" },
+      { label: "Системные продажи из канала" },
+      { label: "Рост сильной аудитории" },
+      { label: "Полностью снять операционку" },
+      { label: "Другое", other: true },
+    ],
+  },
+  {
+    key: "budget",
+    label: "Масштаб",
+    question: "Какой бюджет готовы вложить?",
+    hint: "Это помогает сразу предложить реалистичный формат работы.",
+    options: [
+      { label: "До 100 000 ₽" },
+      { label: "100–300 тысяч ₽" },
+      { label: "300–500 тысяч ₽" },
+      { label: "От 500 000 ₽" },
+      { label: "Сначала нужна оценка" },
+    ],
+  },
+];
+
+const fieldLabels: Record<string, string> = {
+  task: "Задача",
+  stage: "Аудитория",
+  niche: "Ниша",
+  product: "Стадия продукта",
+  result: "Главный результат",
+  budget: "Бюджет",
+};
 
 export function ProjectBrief() {
-  const [status, setStatus] = useState<"idle" | "copied" | "ready">("idle");
+  const [current, setCurrent] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [otherOpen, setOtherOpen] = useState<Record<string, boolean>>({});
+  const [otherValues, setOtherValues] = useState<Record<string, string>>({});
+  const [name, setName] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [complete, setComplete] = useState(false);
+  const advanceTimer = useRef<number | null>(null);
+  const totalSteps = briefSteps.length + 1;
 
-  const prepareBrief = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const labels: Record<string, string> = {
-      entry: "Точка входа",
-      project: "Проект",
-      objective: "Цель",
-      link: "Ссылка",
-      contact: "Контакт",
-    };
-    const grouped = new Map<string, string[]>();
-    for (const [key, value] of data.entries()) {
-      const values = grouped.get(key) ?? [];
-      values.push(String(value));
-      grouped.set(key, values);
-    }
-    const message = ["АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ", ""];
-    for (const [key, values] of grouped) message.push(`${labels[key] ?? key}: ${values.join(", ")}`);
+  useEffect(() => () => {
+    if (advanceTimer.current) window.clearTimeout(advanceTimer.current);
+  }, []);
 
-    try {
-      await navigator.clipboard.writeText(message.join("\n"));
-      setStatus("copied");
-    } catch {
-      setStatus("ready");
-    }
+  const goTo = (step: number) => {
+    if (advanceTimer.current) window.clearTimeout(advanceTimer.current);
+    setCurrent(Math.max(0, Math.min(totalSteps - 1, step)));
   };
 
-  return <form className="project-brief" onSubmit={prepareBrief}>
-    <fieldset className="brief-field brief-entry">
-      <legend><span>01</span><strong>С какой точки вы входите?</strong></legend>
-      <div className="brief-options">
-        {[
-          "Канала ещё нет",
-          "Канал есть, но не растёт",
-          "Готовим запуск продукта",
-          "Нужно продюсирование целиком",
-        ].map((option) => <label key={option}><input required type="radio" name="entry" value={option}/><span>{option}</span></label>)}
-      </div>
-    </fieldset>
+  const selectAnswer = (stepIndex: number, step: BriefStep, option: BriefStep["options"][number]) => {
+    if (advanceTimer.current) window.clearTimeout(advanceTimer.current);
+    if (option.other) {
+      setOtherOpen((state) => ({ ...state, [step.key]: true }));
+      setAnswers((state) => ({ ...state, [step.key]: "" }));
+      return;
+    }
+    setOtherOpen((state) => ({ ...state, [step.key]: false }));
+    setAnswers((state) => ({ ...state, [step.key]: option.value ?? option.label }));
+    advanceTimer.current = window.setTimeout(() => goTo(stepIndex + 1), 180);
+  };
 
-    <fieldset className="brief-field brief-project">
-      <legend><span>02</span><strong>Пара слов о проекте</strong></legend>
-      <textarea required name="project" rows={3} placeholder="Чем занимаетесь и что уже есть в Telegram?"/>
-    </fieldset>
+  const confirmOther = (stepIndex: number, step: BriefStep) => {
+    const value = otherValues[step.key]?.trim();
+    if (!value || value.length < 2) return;
+    setAnswers((state) => ({ ...state, [step.key]: `Другое: ${value}` }));
+    goTo(stepIndex + 1);
+  };
 
-    <fieldset className="brief-field">
-      <legend><span>03</span><strong>Главная задача</strong></legend>
-      <div className="brief-options brief-checks">
-        {["Запустить канал", "Вернуть рост", "Подготовить запуск", "Передать канал команде"].map((option) => <label key={option}><input required type="radio" name="objective" value={option}/><span>{option}</span></label>)}
-      </div>
-    </fieldset>
+  const cleanTelegram = (value: string) => value
+    .replace(/^\s*(https?:\/\/)?(www\.)?t\.me\//i, "")
+    .replace(/[@\s]/g, "")
+    .replace(/[^A-Za-z0-9_]/g, "")
+    .slice(0, 32);
 
-    <div className="brief-row brief-contact-row">
-      <fieldset className="brief-field">
-        <legend><span>04</span><strong>Канал, если есть</strong></legend>
-        <input name="link" type="url" inputMode="url" placeholder="https://t.me/..."/>
-      </fieldset>
-      <fieldset className="brief-field brief-contact">
-        <legend><span>05</span><strong>Ваш Telegram</strong></legend>
-        <input required name="contact" type="text" placeholder="Имя и @username"/>
-      </fieldset>
+  const submitBrief = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const cleanName = name.trim();
+    const cleanContact = cleanTelegram(telegram);
+    if (cleanName.length < 2 || cleanContact.length < 4) return;
+
+    const payload = { ...answers, name: cleanName, telegram: `@${cleanContact}` };
+    window.dispatchEvent(new CustomEvent("agency:brief-submit", { detail: payload }));
+    const message = [
+      "АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ",
+      "",
+      ...briefSteps.map((step) => `${fieldLabels[step.key]}: ${answers[step.key] ?? "—"}`),
+      `Имя: ${cleanName}`,
+      `Telegram: @${cleanContact}`,
+    ].join("\n");
+    try { await navigator.clipboard.writeText(message); } catch { /* Bot endpoint will replace this handoff. */ }
+    setComplete(true);
+  };
+
+  return <form className="project-brief brief-quiz" data-complete={complete ? "true" : "false"} onSubmit={submitBrief}>
+    <div className="brief-progress" aria-label={`Шаг ${current + 1} из ${totalSteps}`}>
+      <div className="brief-progress-copy"><span>АНКЕТА / {String(current + 1).padStart(2, "0")}</span><b>{current + 1} из {totalSteps}</b></div>
+      <div className="brief-progress-rail" aria-hidden="true"><i style={{ transform: `scaleX(${(current + 1) / totalSteps})` }}/></div>
+      <div className="brief-progress-dots" aria-hidden="true">{Array.from({ length: totalSteps }, (_, index) => <i key={index} data-done={index <= current ? "true" : "false"}/>)}</div>
     </div>
 
-    <div className="brief-submit">
-      <span>Займёт около минуты</span>
-      <button type="submit"><span>{status === "idle" ? "Собрать заявку" : status === "copied" ? "Заявка скопирована" : "Заявка готова"}</span><b aria-hidden="true">→</b></button>
+    <div className="brief-stage">
+      {briefSteps.map((step, stepIndex) => {
+        const isActive = current === stepIndex && !complete;
+        const isOther = Boolean(otherOpen[step.key]);
+        return <fieldset className="brief-step" key={step.key} data-active={isActive ? "true" : "false"} data-position={stepIndex < current ? "before" : stepIndex > current ? "after" : "current"} aria-hidden={!isActive}>
+          <legend>{step.label}</legend>
+          <div className="brief-question"><h3>{step.question}</h3><p>{step.hint}</p></div>
+          <div className="brief-choice-grid">
+            {step.options.map((option, optionIndex) => {
+              const selected = option.other ? isOther : answers[step.key] === (option.value ?? option.label);
+              return <button type="button" key={option.label} data-answer data-key={step.key} data-value={option.value ?? option.label} data-other={option.other ? "true" : undefined} aria-pressed={selected} onClick={() => selectAnswer(stepIndex, step, option)}><span>{String(optionIndex + 1).padStart(2, "0")}</span><b>{option.label}</b><i aria-hidden="true">↗</i></button>;
+            })}
+          </div>
+          <div className="brief-other" data-visible={isOther ? "true" : "false"}>
+            <label htmlFor={`brief-${step.key}-other`}>Напишите свой вариант</label>
+            <div><input id={`brief-${step.key}-other`} type="text" value={otherValues[step.key] ?? ""} onChange={(event) => setOtherValues((state) => ({ ...state, [step.key]: event.target.value }))} onKeyDown={(event) => { if (event.key === "Enter") { event.preventDefault(); confirmOther(stepIndex, step); } }} placeholder="Коротко, своими словами" tabIndex={isActive && isOther ? 0 : -1}/><button type="button" onClick={() => confirmOther(stepIndex, step)} disabled={(otherValues[step.key]?.trim().length ?? 0) < 2} aria-label="Подтвердить свой вариант">→</button></div>
+          </div>
+        </fieldset>;
+      })}
+
+      <fieldset className="brief-step brief-contact-step" data-active={current === briefSteps.length && !complete ? "true" : "false"} data-position={current < briefSteps.length ? "after" : "current"} aria-hidden={current !== briefSteps.length || complete}>
+        <legend>Контакт</legend>
+        <div className="brief-question"><h3>Куда прислать разбор?</h3><p>Только имя и Telegram — без телефона и длинных комментариев.</p></div>
+        <div className="brief-contact-fields">
+          <label><span>Как вас зовут</span><input type="text" autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Имя" tabIndex={current === briefSteps.length ? 0 : -1}/></label>
+          <label><span>Telegram</span><div className="brief-telegram-input"><i>@</i><input type="text" autoCapitalize="off" autoCorrect="off" spellCheck="false" value={telegram} onChange={(event) => setTelegram(cleanTelegram(event.target.value))} placeholder="username" tabIndex={current === briefSteps.length ? 0 : -1}/></div></label>
+        </div>
+        <button className="brief-finish" type="submit" disabled={name.trim().length < 2 || cleanTelegram(telegram).length < 4}><span>Завершить анкету</span><i aria-hidden="true">→</i></button>
+      </fieldset>
+
+      <section className="brief-success" data-active={complete ? "true" : "false"} aria-live="polite" aria-hidden={!complete}>
+        <span>07 / ГОТОВО</span><h3>Спасибо.<br/>Контекст собран.</h3><p>Теперь разговор начнётся не с общих вопросов, а с конкретного сценария для вашего проекта.</p><a href="#top">Вернуться наверх <i>↑</i></a>
+      </section>
+    </div>
+
+    <div className="brief-navigation" data-hidden={complete ? "true" : "false"}>
+      <button type="button" onClick={() => goTo(current - 1)} disabled={current === 0} aria-label="Вернуться к предыдущему вопросу"><i aria-hidden="true">←</i><span>Назад</span></button>
+      <p>{current < briefSteps.length ? "Ответ сохранится автоматически" : "Проверьте контакт перед отправкой"}</p>
     </div>
   </form>;
 }

@@ -181,7 +181,7 @@ export default function Home() {
 
     <section className="br-level brief-level" id="exit">
       <SectionMood tone="brief"/>
-      <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о канале.</h2><p>Пять коротких ответов. Посмотрим проект и предложим, с чего лучше начать.</p></header>
+      <header className="brief-heading"><p className="br-label">06 / КОРОТКАЯ АНКЕТА</p><h2>Поймём задачу<br/>за минуту.</h2><p>Без длинных полей: выбирайте подходящие ответы, а мы соберём контекст для предметного разговора.</p></header>
       <ProjectBrief/>
       <footer><span>Агентство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
     </section>

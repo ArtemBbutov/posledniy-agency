@@ -168,17 +168,89 @@ const updateProgress=()=>{const maximum=document.documentElement.scrollHeight-in
 updateProgress();updateActiveNav();
 addEventListener('scroll',updateProgress,{passive:true});addEventListener('scroll',updateActiveNav,{passive:true});
 addEventListener('resize',updateProgress);addEventListener('resize',updateActiveNav);
-document.querySelector('.project-brief')?.addEventListener('submit',async function(event){
-  event.preventDefault();
-  const labels={entry:'Точка входа',project:'Проект',objective:'Цель',link:'Ссылка',budget:'Бюджет',contact:'Контакт'};
-  const grouped=new Map();
-  for(const [key,value] of new FormData(this).entries())grouped.set(key,[...(grouped.get(key)||[]),String(value)]);
-  const lines=['АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ',''];
-  for(const [key,values] of grouped)lines.push((labels[key]||key)+': '+values.join(', '));
-  const button=this.querySelector('.brief-submit button span');
-  try{await navigator.clipboard.writeText(lines.join('\\n'));if(button)button.textContent='Анкета скопирована'}
-  catch{if(button)button.textContent='Анкета готова'}
-});
+const brief=document.querySelector('.brief-quiz');
+if(brief){
+  const briefSteps=[...brief.querySelectorAll('.brief-step')];
+  const briefAnswers={};
+  const briefProgressCopy=brief.querySelector('.brief-progress-copy');
+  const briefProgressRail=brief.querySelector('.brief-progress-rail i');
+  const briefProgressDots=[...brief.querySelectorAll('.brief-progress-dots i')];
+  const briefBack=brief.querySelector('.brief-navigation button');
+  const briefNavigation=brief.querySelector('.brief-navigation');
+  const briefSuccess=brief.querySelector('.brief-success');
+  const briefName=brief.querySelector('.brief-contact-fields > label:first-child input');
+  const briefTelegram=brief.querySelector('.brief-telegram-input input');
+  const briefFinish=brief.querySelector('.brief-finish');
+  let briefCurrent=0;
+  let briefTimer=0;
+  const cleanTelegram=value=>value.replace(/^\\s*(https?:\\/\\/)?(www\\.)?t\\.me\\//i,'').replace(/[@\\s]/g,'').replace(/[^A-Za-z0-9_]/g,'').slice(0,32);
+  const updateBriefContact=()=>{
+    if(briefTelegram)briefTelegram.value=cleanTelegram(briefTelegram.value);
+    if(briefFinish)briefFinish.disabled=!briefName||!briefTelegram||briefName.value.trim().length<2||briefTelegram.value.length<4;
+  };
+  const showBrief=next=>{
+    clearTimeout(briefTimer);
+    briefCurrent=Math.max(0,Math.min(briefSteps.length-1,next));
+    briefSteps.forEach((step,index)=>{
+      const active=index===briefCurrent;
+      step.dataset.active=String(active);
+      step.dataset.position=index<briefCurrent?'before':index>briefCurrent?'after':'current';
+      step.toggleAttribute('aria-hidden',!active);
+      step.querySelectorAll('input,button').forEach(control=>{if(!control.closest('.brief-other')||control.closest('.brief-other')?.dataset.visible==='true')control.tabIndex=active?0:-1});
+    });
+    if(briefProgressCopy){const label=briefProgressCopy.querySelector('span');const count=briefProgressCopy.querySelector('b');if(label)label.textContent='АНКЕТА / '+String(briefCurrent+1).padStart(2,'0');if(count)count.textContent=briefCurrent+1+' из '+briefSteps.length}
+    if(briefProgressRail)briefProgressRail.style.transform='scaleX('+((briefCurrent+1)/briefSteps.length)+')';
+    briefProgressDots.forEach((dot,index)=>dot.dataset.done=String(index<=briefCurrent));
+    if(briefBack)briefBack.disabled=briefCurrent===0;
+    if(briefNavigation){const note=briefNavigation.querySelector('p');if(note)note.textContent=briefCurrent<briefSteps.length-1?'Ответ сохранится автоматически':'Проверьте контакт перед отправкой'}
+    if(briefCurrent===briefSteps.length-1)briefName?.focus();
+  };
+  brief.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{
+    const step=button.closest('.brief-step');
+    const stepIndex=briefSteps.indexOf(step);
+    const key=button.dataset.key;
+    step.querySelectorAll('[data-answer]').forEach(item=>item.setAttribute('aria-pressed','false'));
+    button.setAttribute('aria-pressed','true');
+    const other=step.querySelector('.brief-other');
+    if(button.dataset.other==='true'){
+      if(other){other.dataset.visible='true';const input=other.querySelector('input');input.tabIndex=0;input.focus()}
+      briefAnswers[key]='';
+      return;
+    }
+    if(other){other.dataset.visible='false';other.querySelectorAll('input,button').forEach(control=>control.tabIndex=-1)}
+    briefAnswers[key]=button.dataset.value||button.textContent.trim();
+    briefTimer=setTimeout(()=>showBrief(stepIndex+1),180);
+  }));
+  brief.querySelectorAll('.brief-other').forEach(other=>{
+    const input=other.querySelector('input');
+    const confirm=other.querySelector('button');
+    const step=other.closest('.brief-step');
+    const otherAnswer=step.querySelector('[data-other="true"]');
+    const validate=()=>{confirm.disabled=input.value.trim().length<2};
+    const commit=()=>{if(confirm.disabled)return;briefAnswers[otherAnswer.dataset.key]='Другое: '+input.value.trim();showBrief(briefSteps.indexOf(step)+1)};
+    input.addEventListener('input',validate);
+    input.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();commit()}});
+    confirm.addEventListener('click',commit);
+  });
+  briefBack?.addEventListener('click',()=>showBrief(briefCurrent-1));
+  briefName?.addEventListener('input',updateBriefContact);
+  briefTelegram?.addEventListener('input',updateBriefContact);
+  brief.addEventListener('submit',async event=>{
+    event.preventDefault();
+    updateBriefContact();
+    if(briefFinish?.disabled)return;
+    const labels={task:'Задача',stage:'Аудитория',niche:'Ниша',product:'Стадия продукта',result:'Главный результат',budget:'Бюджет'};
+    const payload={...briefAnswers,name:briefName.value.trim(),telegram:'@'+briefTelegram.value};
+    dispatchEvent(new CustomEvent('agency:brief-submit',{detail:payload}));
+    const lines=['АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ','',...Object.entries(labels).map(([key,label])=>label+': '+(briefAnswers[key]||'—')),'Имя: '+payload.name,'Telegram: '+payload.telegram];
+    try{await navigator.clipboard.writeText(lines.join('\\n'))}catch{}
+    brief.dataset.complete='true';
+    briefSteps.forEach(step=>{step.dataset.active='false';step.setAttribute('aria-hidden','true')});
+    if(briefSuccess){briefSuccess.dataset.active='true';briefSuccess.removeAttribute('aria-hidden')}
+    if(briefNavigation)briefNavigation.dataset.hidden='true';
+  });
+  showBrief(0);
+}
 </script>`;
 html = html.replace("</body>", `${staticInteractionScript}</body>`);
 
