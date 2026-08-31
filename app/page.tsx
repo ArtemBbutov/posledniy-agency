@@ -141,11 +141,6 @@ export default function Home() {
       </figure>
     </section>
 
-    <section className="proof-strip">
-      <p className="br-label">04 / ЧТО ВЫ ПОЛУЧАЕТЕ</p>
-      <div><article><span>01</span><strong>Позиция канала</strong><p>Кому, о чём и почему именно вас читать.</p></article><article><span>02</span><strong>Редакция под ключ</strong><p>Темы, тексты, визуал, выпуск и контроль качества.</p></article><article><span>03</span><strong>Система роста</strong><p>Посевы, партнёрства, аналитика и корректировки.</p></article><article><span>04</span><strong>Запуски продуктов</strong><p>Оффер, прогрев, путь к покупке и разбор цикла.</p></article></div>
-    </section>
-
     <section className="formats-story" id="formats">
       <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
