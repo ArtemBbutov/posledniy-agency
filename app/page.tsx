@@ -72,6 +72,17 @@ const formats = [
   },
 ];
 
+function SectionMood({ tone }: { tone: "situation" | "cases" | "work" | "services" | "brief" }) {
+  return <>
+    <span className={`section-bridge bridge-${tone}`} aria-hidden="true"/>
+    <div className={`section-atmosphere atmosphere-${tone}`} aria-hidden="true">
+      <span className="section-light-source"/>
+      <span className="section-light-pool"/>
+      <span className="section-motes"/>
+    </div>
+  </>;
+}
+
 export default function Home() {
   return <main id="top" className="backrooms-site authentic-backrooms story-site">
     <SiteInteractions/>
@@ -101,6 +112,7 @@ export default function Home() {
     </section>
 
     <section className="story-scene" id="reality">
+      <SectionMood tone="situation"/>
       <img src="/telegram-workspace-v1.png" alt="Рабочее место автора Telegram-канала"/>
       <div className="scene-shade"/>
       <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Канал есть.<br/>Времени на него — нет.</h2></header>
@@ -113,6 +125,7 @@ export default function Home() {
     </section>
 
     <section className="cases-section" id="change">
+      <SectionMood tone="cases"/>
       <header className="cases-heading"><h2>Кейсы</h2></header>
       <div className="cases-grid">
         {cases.map((item)=><article className="case-card" key={item.n}>
@@ -126,6 +139,7 @@ export default function Home() {
     </section>
 
     <section className="work-story" id="work">
+      <SectionMood tone="work"/>
       <div className="work-story-copy">
         <p className="br-label">03 / КАК МЫ ВЕДЁМ КАНАЛ</p>
         <h2>Берём ваш канал<br/>на себя.</h2>
@@ -142,6 +156,7 @@ export default function Home() {
     </section>
 
     <section className="formats-story" id="formats">
+      <SectionMood tone="services"/>
       <header><p className="br-label">05 / С ЧЕМ МОЖЕМ ПОМОЧЬ</p><h2>Выберите<br/>дверь.</h2><p>Три двери — три сценария работы. За первой мы берём канал целиком, за второй собираем запуск, третья ведёт на бесплатную консультацию.</p></header>
       <div className="format-lines">
         {formats.map((format) => <article className={format.featured ? "format-featured" : undefined} key={format.n} data-route={format.route}>
@@ -155,6 +170,7 @@ export default function Home() {
     </section>
 
     <section className="br-level brief-level" id="exit">
+      <SectionMood tone="brief"/>
       <header className="brief-heading"><p className="br-label">06 / НАЧАТЬ РАЗГОВОР</p><h2>Расскажите<br/>о канале.</h2><p>Пять коротких ответов. Посмотрим проект и предложим, с чего лучше начать.</p></header>
       <ProjectBrief/>
       <footer><span>Агентство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>

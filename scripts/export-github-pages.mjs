@@ -58,7 +58,7 @@ appearanceTargets.forEach(element=>appearanceObserver.observe(element));
   element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select()}});
 });
 const progress=document.querySelector('.scroll-progress');
-const ambient=document.querySelector('.site-ambient');
+const sectionLights=[...document.querySelectorAll('.section-atmosphere')];
 const nav=document.querySelector('.br-nav nav');
 const navHeader=nav?.closest('.br-nav');
 const navLiquid=nav?.querySelector('.nav-liquid');
@@ -77,12 +77,15 @@ let navScrollLock;
 let navScrollUnlockTimer=0;
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scheduleAmbientEvent=()=>{
-  if(reduceMotion||!ambient)return;
+  if(reduceMotion||sectionLights.length===0)return;
   setTimeout(()=>{
     if(!document.hidden){
+      const visibleLights=sectionLights.filter(light=>{const bounds=light.getBoundingClientRect();return bounds.bottom>innerHeight*.12&&bounds.top<innerHeight*.88});
+      const target=visibleLights[Math.floor(Math.random()*visibleLights.length)];
+      if(!target){scheduleAmbientEvent();return}
       const eventClass=Math.random()<.78?'is-light-failure':'is-light-surge';
-      ambient.classList.remove('is-light-failure','is-light-surge');void ambient.offsetWidth;ambient.classList.add(eventClass);
-      setTimeout(()=>ambient.classList.remove(eventClass),eventClass==='is-light-failure'?520:680);
+      target.classList.remove('is-light-failure','is-light-surge');void target.offsetWidth;target.classList.add(eventClass);
+      setTimeout(()=>target.classList.remove(eventClass),eventClass==='is-light-failure'?520:680);
     }
     scheduleAmbientEvent();
   },5200+Math.random()*9200);

@@ -79,19 +79,25 @@ export function SiteInteractions() {
     });
 
     const progress = document.querySelector<HTMLElement>(".scroll-progress");
-    const ambient = document.querySelector<HTMLElement>(".site-ambient");
+    const sectionLights = Array.from(document.querySelectorAll<HTMLElement>(".section-atmosphere"));
     let ambientEventTimer = 0;
     let ambientResetTimer = 0;
     const scheduleAmbientEvent = () => {
-      if (reduceMotion || !ambient) return;
+      if (reduceMotion || sectionLights.length === 0) return;
       ambientEventTimer = window.setTimeout(() => {
         if (!document.hidden) {
+          const visibleLights = sectionLights.filter((light) => {
+            const bounds = light.getBoundingClientRect();
+            return bounds.bottom > window.innerHeight * .12 && bounds.top < window.innerHeight * .88;
+          });
+          const target = visibleLights[Math.floor(Math.random() * visibleLights.length)];
+          if (!target) { scheduleAmbientEvent(); return; }
           const eventClass = Math.random() < .78 ? "is-light-failure" : "is-light-surge";
-          ambient.classList.remove("is-light-failure", "is-light-surge");
-          void ambient.offsetWidth;
-          ambient.classList.add(eventClass);
+          target.classList.remove("is-light-failure", "is-light-surge");
+          void target.offsetWidth;
+          target.classList.add(eventClass);
           ambientResetTimer = window.setTimeout(() => {
-            ambient.classList.remove(eventClass);
+            target.classList.remove(eventClass);
           }, eventClass === "is-light-failure" ? 520 : 680);
         }
         scheduleAmbientEvent();
@@ -256,7 +262,6 @@ export function SiteInteractions() {
       <div className="site-ambient" aria-hidden="true">
         <span className="ambient-light ambient-light-a"/>
         <span className="ambient-light ambient-light-b"/>
-        <span className="ambient-sweep"/>
         <span className="ambient-dust"/>
       </div>
     </>

@@ -3374,6 +3374,172 @@ html { scroll-behavior: smooth; }
   }
 }
 
+/* Seamless floors: every section owns its light and softly overlaps the previous one. */
+.story-site > section + section { margin-top: -1px; }
+.story-site .story-scene,
+.story-site .cases-section,
+.story-site .work-story,
+.story-site .formats-story,
+.story-site .brief-level { isolation: isolate; }
+
+.story-site .section-bridge {
+  position: absolute;
+  z-index: 1;
+  top: -110px;
+  right: 0;
+  left: 0;
+  height: 260px;
+  display: block;
+  pointer-events: none;
+}
+.story-site .bridge-situation {
+  background: linear-gradient(180deg,transparent 0%,rgba(9,9,7,.88) 39%,#090907 56%,transparent 100%);
+}
+.story-site .bridge-cases {
+  background: linear-gradient(180deg,transparent 0%,rgba(8,8,7,.94) 39%,#080807 57%,transparent 100%);
+}
+.story-site .bridge-work {
+  background: linear-gradient(180deg,transparent 0%,rgba(8,8,7,.96) 40%,#080807 57%,transparent 100%);
+}
+.story-site .bridge-services {
+  height: 300px;
+  top: -130px;
+  background: linear-gradient(180deg,transparent 0%,rgba(7,7,6,.96) 35%,#070706 54%,rgba(7,7,6,.76) 73%,transparent 100%);
+}
+.story-site .bridge-brief {
+  background: linear-gradient(180deg,transparent 0%,rgba(5,5,4,.92) 38%,#050504 56%,transparent 100%);
+}
+
+.story-site .section-atmosphere {
+  --light-x: 50%;
+  --light-rgb: 232,227,181;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.story-site .section-atmosphere > span {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  will-change: transform,opacity;
+}
+.story-site .section-light-source {
+  width: clamp(180px,24vw,380px);
+  height: 4px;
+  top: clamp(34px,6vh,76px);
+  left: var(--light-x);
+  border-radius: 50%;
+  background: rgba(var(--light-rgb),.9);
+  box-shadow:
+    0 0 8px rgba(var(--light-rgb),.76),
+    0 0 28px rgba(var(--light-rgb),.42),
+    0 0 82px rgba(var(--light-rgb),.24);
+  opacity: .72;
+  transform: translate3d(-50%,0,0) scaleX(.96);
+  animation: section-lamp-breathe 8.8s var(--ease-in-out) infinite alternate;
+}
+.story-site .section-light-pool {
+  width: min(84vw,1180px);
+  height: min(82vh,820px);
+  top: clamp(36px,6vh,76px);
+  left: var(--light-x);
+  background: radial-gradient(ellipse at 50% 0%,rgba(var(--light-rgb),.3) 0%,rgba(var(--light-rgb),.14) 19%,rgba(var(--light-rgb),.055) 42%,transparent 70%);
+  mix-blend-mode: screen;
+  opacity: .76;
+  transform: translate3d(-50%,0,0) scale(.98);
+  transform-origin: 50% 0;
+  animation: section-light-breathe 12s var(--ease-in-out) -3s infinite alternate;
+}
+.story-site .section-motes {
+  width: 106%;
+  height: 108%;
+  inset: -4% -3%;
+  opacity: .2;
+  background-image:
+    radial-gradient(circle,rgba(var(--light-rgb),.56) 0 1px,transparent 1.4px),
+    radial-gradient(circle,rgba(var(--light-rgb),.32) 0 .75px,transparent 1.1px);
+  background-position: 13px 31px,71px 19px;
+  background-size: 211px 173px,137px 229px;
+  -webkit-mask-image: radial-gradient(ellipse at var(--light-x) 24%,#000 0%,rgba(0,0,0,.72) 36%,transparent 72%);
+  mask-image: radial-gradient(ellipse at var(--light-x) 24%,#000 0%,rgba(0,0,0,.72) 36%,transparent 72%);
+  transform: translate3d(0,1.5%,0);
+  animation: section-motes-drift 24s linear infinite alternate;
+}
+
+.story-site .atmosphere-situation { --light-x: 67%; --light-rgb: 228,222,174; }
+.story-site .atmosphere-cases { --light-x: 79%; --light-rgb: 221,216,166; }
+.story-site .atmosphere-work { --light-x: 63%; --light-rgb: 212,219,173; }
+.story-site .atmosphere-services { --light-x: 54%; --light-rgb: 232,226,176; }
+.story-site .atmosphere-brief { --light-x: 72%; --light-rgb: 201,218,170; }
+.story-site .atmosphere-cases .section-light-pool { animation-duration: 14s; animation-delay: -8s; }
+.story-site .atmosphere-work .section-light-pool { animation-duration: 10.5s; animation-delay: -5s; }
+.story-site .atmosphere-services .section-light-pool { width: min(96vw,1360px); opacity: .88; animation-duration: 13.5s; }
+.story-site .atmosphere-brief .section-light-pool { opacity: .7; animation-duration: 15s; }
+
+.story-site .section-atmosphere.is-light-failure { animation: section-light-failure 520ms steps(1,end) both; }
+.story-site .section-atmosphere.is-light-surge { animation: section-light-surge 680ms var(--ease-out) both; }
+
+.story-site .story-scene > header,
+.story-site .story-scene > .scene-notes,
+.story-site .story-scene > .scene-conclusion,
+.story-site .cases-section > .cases-heading,
+.story-site .cases-section > .cases-grid,
+.story-site .work-story > .work-story-copy,
+.story-site .work-story > .system-map,
+.story-site .formats-story > header,
+.story-site .formats-story > .format-lines,
+.story-site .brief-level > .brief-heading,
+.story-site .brief-level > .project-brief,
+.story-site .brief-level > footer { position: relative; z-index: 2; }
+
+@keyframes section-lamp-breathe {
+  from { opacity: .58; transform: translate3d(-50%,0,0) scaleX(.94); }
+  to { opacity: .88; transform: translate3d(-50%,0,0) scaleX(1.03); }
+}
+@keyframes section-light-breathe {
+  from { opacity: .58; transform: translate3d(-50%,0,0) scale(.97); }
+  to { opacity: .84; transform: translate3d(-50%,0,0) scale(1.035); }
+}
+@keyframes section-motes-drift {
+  from { opacity: .14; transform: translate3d(-.5%,1.5%,0); }
+  to { opacity: .24; transform: translate3d(.7%,-2%,0); }
+}
+@keyframes section-light-failure {
+  0%,100% { opacity: 1; }
+  10% { opacity: .14; }
+  18% { opacity: .82; }
+  25% { opacity: .24; }
+  34% { opacity: .72; }
+  43% { opacity: .18; }
+  54% { opacity: .94; }
+  68% { opacity: .38; }
+  78% { opacity: 1; }
+}
+@keyframes section-light-surge {
+  0%,100% { opacity: 1; }
+  18% { opacity: .72; }
+  34% { opacity: 1; }
+  52% { opacity: .8; }
+  68% { opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .story-site .section-bridge { top: -76px; height: 190px; }
+  .story-site .bridge-services { top: -92px; height: 220px; }
+  .story-site .section-light-source { width: clamp(150px,48vw,260px); top: 36px; opacity: .58; }
+  .story-site .section-light-pool { width: 125vw; height: 64vh; top: 38px; opacity: .62; }
+  .story-site .section-motes { opacity: .12; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-site .section-atmosphere > span { animation: none !important; }
+  .story-site .section-light-source { opacity: .68; transform: translate3d(-50%,0,0); }
+  .story-site .section-light-pool { opacity: .64; transform: translate3d(-50%,0,0); }
+  .story-site .section-motes { opacity: .1; transform: none; }
+}
+
 /* Living environment: one restrained light system shared by every floor. */
 .story-site .site-ambient {
   position: fixed;
@@ -3414,16 +3580,6 @@ html { scroll-behavior: smooth; }
   transform: translate3d(0,0,0) rotate(9deg);
   animation: ambient-drift-b 31s var(--ease-in-out) -11s infinite alternate;
 }
-.story-site .ambient-sweep {
-  width: 16vw;
-  height: 145vh;
-  top: -22vh;
-  left: 19vw;
-  opacity: .055;
-  background: linear-gradient(90deg,transparent,rgba(240,235,191,.75),transparent);
-  transform: translate3d(-34vw,0,0) rotate(13deg);
-  animation: ambient-sweep 34s linear -8s infinite;
-}
 .story-site .ambient-dust {
   width: 108%;
   height: 112%;
@@ -3438,8 +3594,6 @@ html { scroll-behavior: smooth; }
   transform: translate3d(0,0,0);
   animation: ambient-dust-drift 29s linear infinite alternate;
 }
-.story-site .site-ambient.is-light-failure { animation: ambient-light-failure 520ms steps(1,end) both; }
-.story-site .site-ambient.is-light-surge { animation: ambient-light-surge 680ms var(--ease-out) both; }
 
 @keyframes ambient-drift-a {
   from { transform: translate3d(-3vw,-2vh,0) rotate(-8deg) scale(.96); opacity: .09; }
@@ -3448,13 +3602,6 @@ html { scroll-behavior: smooth; }
 @keyframes ambient-drift-b {
   from { transform: translate3d(4vw,5vh,0) rotate(9deg) scale(.98); opacity: .08; }
   to { transform: translate3d(-12vw,-16vh,0) rotate(3deg) scale(1.1); opacity: .14; }
-}
-@keyframes ambient-sweep {
-  0%,16% { transform: translate3d(-34vw,0,0) rotate(13deg); opacity: 0; }
-  24% { opacity: .055; }
-  50% { opacity: .035; }
-  74% { opacity: .06; }
-  84%,100% { transform: translate3d(112vw,0,0) rotate(13deg); opacity: 0; }
 }
 @keyframes ambient-dust-drift {
   from { transform: translate3d(-1.5vw,2vh,0); opacity: .08; }
@@ -3538,7 +3685,6 @@ html { scroll-behavior: smooth; }
   .story-site .site-ambient { opacity: .56; }
   .story-site .ambient-light-a { width: 105vw; left: -42vw; }
   .story-site .ambient-light-b { width: 92vw; right: -42vw; }
-  .story-site .ambient-sweep { width: 28vw; }
 }
 
 @media (prefers-reduced-motion: reduce) {
