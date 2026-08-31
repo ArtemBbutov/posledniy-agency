@@ -115,13 +115,14 @@ export default function Home() {
       <SectionMood tone="situation"/>
       <img src="/telegram-workspace-v1.png" alt="Рабочее место автора Telegram-канала"/>
       <div className="scene-shade"/>
-      <header><p className="br-label">01 / УЗНАЁТЕ СЕБЯ?</p><h2>Канал есть.<br/>Времени на него — нет.</h2></header>
+      <header><p className="br-label">01 / ПРОВЕРЬТЕ СЕБЯ</p><h2>Вы всё ещё тащите канал на себе.</h2><p className="scene-intro">Стоит вам выключиться на один день — контент, команда и продажи останавливаются вместе с вами.</p></header>
       <div className="scene-notes">
-        <article><span>18:40</span><strong>Пост снова переносится на завтра</strong><p>Днём — клиенты и команда. До канала руки доходят только вечером.</p></article>
-        <article><span>21:15</span><strong>Всё ждёт вашего ответа</strong><p>Пока вы не согласуете тему и текст, редактор не может двигаться дальше.</p></article>
-        <article><span>ЗАПУСК</span><strong>Продавать нужно уже через неделю</strong><p>Продукт готов, а аудиторию начинают готовить в последний момент.</p></article>
+        <div className="scene-notes-head"><span>ТРИ СИМПТОМА</span><b>Отметьте, сколько совпало</b></div>
+        <article><span>01</span><div><small>КОНТЕНТ</small><strong>Посты выходят, только когда вы находите силы</strong><p>Канал держится не на системе, а на вашем свободном вечере.</p></div><i aria-hidden="true">+</i></article>
+        <article><span>02</span><div><small>КОМАНДА</small><strong>Без вашего ответа никто не двигается</strong><p>Темы, тексты и публикации каждый раз ждут личного согласования.</p></div><i aria-hidden="true">+</i></article>
+        <article><span>03</span><div><small>ЗАПУСК</small><strong>К продажам снова готовитесь в последний момент</strong><p>Прогрев сжимается до недели, и запуск не успевает набрать силу.</p></div><i aria-hidden="true">+</i></article>
       </div>
-      <p className="scene-conclusion">Мы забираем канал на себя: вместе выбираем темы, сами готовим и выпускаем посты, следим за ростом и заранее готовим аудиторию к запуску.</p>
+      <div className="scene-conclusion"><div><span>СОВПАЛО ДВА ИЛИ БОЛЬШЕ?</span><strong>Проблема не в дисциплине. Каналу нужна система и команда.</strong><p>На бесплатной консультации разберём, где вы теряете время и деньги, и дадим три конкретных шага для вашего проекта.</p></div><a href="#exit"><span>Разобрать канал бесплатно</span><i aria-hidden="true">→</i></a></div>
     </section>
 
     <section className="cases-section" id="change">

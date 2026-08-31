@@ -173,7 +173,6 @@ export function ProjectBrief() {
     <div className="brief-progress" aria-label={`Шаг ${current + 1} из ${totalSteps}`}>
       <div className="brief-progress-copy"><span>АНКЕТА / {String(current + 1).padStart(2, "0")}</span><b>{current + 1} из {totalSteps}</b></div>
       <div className="brief-progress-rail" aria-hidden="true"><i style={{ transform: `scaleX(${(current + 1) / totalSteps})` }}/></div>
-      <div className="brief-progress-dots" aria-hidden="true">{Array.from({ length: totalSteps }, (_, index) => <i key={index} data-done={index <= current ? "true" : "false"}/>)}</div>
     </div>
 
     <div className="brief-stage">

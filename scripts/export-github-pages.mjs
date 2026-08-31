@@ -174,7 +174,6 @@ if(brief){
   const briefAnswers={};
   const briefProgressCopy=brief.querySelector('.brief-progress-copy');
   const briefProgressRail=brief.querySelector('.brief-progress-rail i');
-  const briefProgressDots=[...brief.querySelectorAll('.brief-progress-dots i')];
   const briefBack=brief.querySelector('.brief-navigation button');
   const briefNavigation=brief.querySelector('.brief-navigation');
   const briefSuccess=brief.querySelector('.brief-success');
@@ -200,7 +199,6 @@ if(brief){
     });
     if(briefProgressCopy){const label=briefProgressCopy.querySelector('span');const count=briefProgressCopy.querySelector('b');if(label)label.textContent='АНКЕТА / '+String(briefCurrent+1).padStart(2,'0');if(count)count.textContent=briefCurrent+1+' из '+briefSteps.length}
     if(briefProgressRail)briefProgressRail.style.transform='scaleX('+((briefCurrent+1)/briefSteps.length)+')';
-    briefProgressDots.forEach((dot,index)=>dot.dataset.done=String(index<=briefCurrent));
     if(briefBack)briefBack.disabled=briefCurrent===0;
     if(briefNavigation)briefNavigation.dataset.first=String(briefCurrent===0);
     if(briefCurrent===briefSteps.length-1)briefName?.focus();
