@@ -43,7 +43,7 @@ html = html
 
 const staticInteractionScript = `<script>
 document.documentElement.classList.add('motion-ready');
-const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene-notes article','.scene-conclusion','.transformation header > *','.shift-table article','.change-result','.work-story-copy > *','.work-story li','.system-map','.proof-strip article','.formats-story header > *','.brief-heading > *','.project-brief > *'].join(','))];
+const revealTargets=[...document.querySelectorAll(['.story-scene header','.scene-notes article','.scene-conclusion','.cases-heading','.case-card','.transformation header > *','.shift-table article','.change-result','.work-story-copy > *','.work-story li','.system-map','.formats-story header > *','.brief-heading > *','.project-brief > *','.brief-level > footer'].join(','))];
 revealTargets.forEach((element,index)=>{element.classList.add('reveal-item');element.style.setProperty('--reveal-delay',Math.min(index%4,3)*70+'ms')});
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.13,rootMargin:'0px 0px -7%'});
 revealTargets.forEach(element=>revealObserver.observe(element));
@@ -58,6 +58,7 @@ appearanceTargets.forEach(element=>appearanceObserver.observe(element));
   element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select()}});
 });
 const progress=document.querySelector('.scroll-progress');
+const ambient=document.querySelector('.site-ambient');
 const nav=document.querySelector('.br-nav nav');
 const navHeader=nav?.closest('.br-nav');
 const navLiquid=nav?.querySelector('.nav-liquid');
@@ -75,6 +76,18 @@ let liquidPositioned=false;
 let navScrollLock;
 let navScrollUnlockTimer=0;
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scheduleAmbientEvent=()=>{
+  if(reduceMotion||!ambient)return;
+  setTimeout(()=>{
+    if(!document.hidden){
+      const eventClass=Math.random()<.78?'is-light-failure':'is-light-surge';
+      ambient.classList.remove('is-light-failure','is-light-surge');void ambient.offsetWidth;ambient.classList.add(eventClass);
+      setTimeout(()=>ambient.classList.remove(eventClass),eventClass==='is-light-failure'?520:680);
+    }
+    scheduleAmbientEvent();
+  },5200+Math.random()*9200);
+};
+scheduleAmbientEvent();
 const renderLiquid=()=>{
   if(!navLiquid)return;
   navLiquid.style.transform='translate3d('+liquidX+'px,0,0)';

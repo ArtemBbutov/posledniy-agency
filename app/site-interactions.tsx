@@ -5,22 +5,25 @@ import { useEffect } from "react";
 export function SiteInteractions() {
   useEffect(() => {
     const root = document.documentElement;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     root.classList.add("motion-ready");
 
     const revealTargets = Array.from(document.querySelectorAll<HTMLElement>([
       ".story-scene header",
       ".scene-notes article",
       ".scene-conclusion",
+      ".cases-heading",
+      ".case-card",
       ".transformation header > *",
       ".shift-table article",
       ".change-result",
       ".work-story-copy > *",
       ".work-story li",
       ".system-map",
-      ".proof-strip article",
       ".formats-story header > *",
       ".brief-heading > *",
       ".project-brief > *",
+      ".brief-level > footer",
     ].join(",")));
 
     revealTargets.forEach((element, index) => {
@@ -76,6 +79,25 @@ export function SiteInteractions() {
     });
 
     const progress = document.querySelector<HTMLElement>(".scroll-progress");
+    const ambient = document.querySelector<HTMLElement>(".site-ambient");
+    let ambientEventTimer = 0;
+    let ambientResetTimer = 0;
+    const scheduleAmbientEvent = () => {
+      if (reduceMotion || !ambient) return;
+      ambientEventTimer = window.setTimeout(() => {
+        if (!document.hidden) {
+          const eventClass = Math.random() < .78 ? "is-light-failure" : "is-light-surge";
+          ambient.classList.remove("is-light-failure", "is-light-surge");
+          void ambient.offsetWidth;
+          ambient.classList.add(eventClass);
+          ambientResetTimer = window.setTimeout(() => {
+            ambient.classList.remove(eventClass);
+          }, eventClass === "is-light-failure" ? 520 : 680);
+        }
+        scheduleAmbientEvent();
+      }, 5200 + Math.random() * 9200);
+    };
+    scheduleAmbientEvent();
     const nav = document.querySelector<HTMLElement>(".br-nav nav");
     const navHeader = nav?.closest<HTMLElement>(".br-nav");
     const navLiquid = nav?.querySelector<HTMLElement>(".nav-liquid");
@@ -92,7 +114,6 @@ export function SiteInteractions() {
     let liquidPositioned = false;
     let navScrollLock: HTMLAnchorElement | undefined;
     let navScrollUnlockTimer = 0;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const renderLiquid = () => {
       if (!navLiquid) return;
       navLiquid.style.transform = `translate3d(${liquidX}px,0,0)`;
@@ -211,6 +232,8 @@ export function SiteInteractions() {
       observer.disconnect();
       appearanceObserver.disconnect();
       appearanceTimers.forEach((timer) => window.clearTimeout(timer));
+      window.clearTimeout(ambientEventTimer);
+      window.clearTimeout(ambientResetTimer);
       cleanups.forEach((cleanup) => cleanup());
       navCleanups.forEach((cleanup) => cleanup());
       nav?.removeEventListener("pointerleave", resetPointedNav);
@@ -227,6 +250,15 @@ export function SiteInteractions() {
     };
   }, []);
 
-  return <div className="scroll-progress" aria-hidden="true"/>;
+  return (
+    <>
+      <div className="scroll-progress" aria-hidden="true"/>
+      <div className="site-ambient" aria-hidden="true">
+        <span className="ambient-light ambient-light-a"/>
+        <span className="ambient-light ambient-light-b"/>
+        <span className="ambient-sweep"/>
+        <span className="ambient-dust"/>
+      </div>
+    </>
+  );
 }
-
