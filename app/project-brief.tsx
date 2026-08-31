@@ -169,7 +169,7 @@ export function ProjectBrief() {
     setComplete(true);
   };
 
-  return <form className="project-brief brief-quiz" data-complete={complete ? "true" : "false"} onSubmit={submitBrief}>
+  return <form id="brief-quiz" className="project-brief brief-quiz" data-complete={complete ? "true" : "false"} onSubmit={submitBrief}>
     <div className="brief-progress" aria-label={`Шаг ${current + 1} из ${totalSteps}`}>
       <div className="brief-progress-copy"><span>АНКЕТА / {String(current + 1).padStart(2, "0")}</span><b>{current + 1} из {totalSteps}</b></div>
       <div className="brief-progress-rail" aria-hidden="true"><i style={{ transform: `scaleX(${(current + 1) / totalSteps})` }}/></div>

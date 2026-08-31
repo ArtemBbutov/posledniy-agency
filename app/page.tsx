@@ -117,12 +117,12 @@ export default function Home() {
       <div className="scene-shade"/>
       <header><p className="br-label">01 / ПРОВЕРЬТЕ СЕБЯ</p><h2>Вы всё ещё тащите канал на себе.</h2><p className="scene-intro">Стоит вам выключиться на один день — контент, команда и продажи останавливаются вместе с вами.</p></header>
       <div className="scene-notes">
-        <div className="scene-notes-head"><span>ТРИ СИМПТОМА</span><b>Отметьте, сколько совпало</b></div>
+        <div className="scene-notes-head"><span><i aria-hidden="true">!</i><b>3 симптома</b></span><p>Если совпало два — канал уже зависит от вас</p></div>
         <article><span>01</span><div><small>КОНТЕНТ</small><strong>Посты выходят, только когда вы находите силы</strong><p>Канал держится не на системе, а на вашем свободном вечере.</p></div><i aria-hidden="true">+</i></article>
         <article><span>02</span><div><small>КОМАНДА</small><strong>Без вашего ответа никто не двигается</strong><p>Темы, тексты и публикации каждый раз ждут личного согласования.</p></div><i aria-hidden="true">+</i></article>
         <article><span>03</span><div><small>ЗАПУСК</small><strong>К продажам снова готовитесь в последний момент</strong><p>Прогрев сжимается до недели, и запуск не успевает набрать силу.</p></div><i aria-hidden="true">+</i></article>
       </div>
-      <div className="scene-conclusion"><div><span>СОВПАЛО ДВА ИЛИ БОЛЬШЕ?</span><strong>Проблема не в дисциплине. Каналу нужна система и команда.</strong><p>На бесплатной консультации разберём, где вы теряете время и деньги, и дадим три конкретных шага для вашего проекта.</p></div><a href="#exit"><span>Разобрать канал бесплатно</span><i aria-hidden="true">→</i></a></div>
+      <div className="scene-conclusion"><div><span>СОВПАЛО ДВА ИЛИ БОЛЬШЕ?</span><strong>Проблема не в дисциплине. Каналу нужна система и команда.</strong><p>На бесплатной консультации разберём, где вы теряете время и деньги, и дадим три конкретных шага для вашего проекта.</p></div><a href="#brief-quiz"><span>Разобрать канал бесплатно</span><i aria-hidden="true">→</i></a></div>
     </section>
 
     <section className="cases-section" id="change">
