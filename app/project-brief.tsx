@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 
 type BriefStep = {
   key: string;
+  tone: string;
   label: string;
   question: string;
   hint: string;
@@ -13,6 +14,7 @@ type BriefStep = {
 const briefSteps: BriefStep[] = [
   {
     key: "task",
+    tone: "signal",
     label: "Задача",
     question: "Что хотите получить от Telegram?",
     hint: "Выберите сценарий, который ближе всего к вашей ситуации.",
@@ -25,6 +27,7 @@ const briefSteps: BriefStep[] = [
   },
   {
     key: "stage",
+    tone: "audience",
     label: "Стадия",
     question: "Сколько людей уже читают канал?",
     hint: "Если каналов несколько — укажите основной.",
@@ -38,6 +41,7 @@ const briefSteps: BriefStep[] = [
   },
   {
     key: "niche",
+    tone: "spectrum",
     label: "Ниша",
     question: "В какой нише работаете?",
     hint: "Нам важно понять продукт и будущую аудиторию.",
@@ -51,6 +55,7 @@ const briefSteps: BriefStep[] = [
   },
   {
     key: "product",
+    tone: "blueprint",
     label: "Продукт",
     question: "На какой стадии продукт?",
     hint: "Не страшно, если пока есть только идея — это тоже точка входа.",
@@ -63,6 +68,7 @@ const briefSteps: BriefStep[] = [
   },
   {
     key: "result",
+    tone: "target",
     label: "Результат",
     question: "Какой результат сейчас главный?",
     hint: "Выберите один приоритет — остальное обсудим на созвоне.",
@@ -76,6 +82,7 @@ const briefSteps: BriefStep[] = [
   },
   {
     key: "budget",
+    tone: "scale",
     label: "Масштаб",
     question: "Какой бюджет готовы вложить?",
     hint: "Это помогает сразу предложить реалистичный формат работы.",
@@ -173,8 +180,8 @@ export function ProjectBrief() {
       {briefSteps.map((step, stepIndex) => {
         const isActive = current === stepIndex && !complete;
         const isOther = Boolean(otherOpen[step.key]);
-        return <fieldset className="brief-step" key={step.key} data-active={isActive ? "true" : "false"} data-position={stepIndex < current ? "before" : stepIndex > current ? "after" : "current"} aria-hidden={!isActive}>
-          <legend>{step.label}</legend>
+        return <fieldset className="brief-step" key={step.key} data-step={String(stepIndex + 1).padStart(2, "0")} data-tone={step.tone} data-active={isActive ? "true" : "false"} data-position={stepIndex < current ? "before" : stepIndex > current ? "after" : "current"} aria-hidden={!isActive}>
+          <legend><span>{String(stepIndex + 1).padStart(2, "0")}</span>{step.label}</legend>
           <div className="brief-question"><h3>{step.question}</h3><p>{step.hint}</p></div>
           <div className="brief-choice-grid">
             {step.options.map((option, optionIndex) => {
@@ -189,8 +196,8 @@ export function ProjectBrief() {
         </fieldset>;
       })}
 
-      <fieldset className="brief-step brief-contact-step" data-active={current === briefSteps.length && !complete ? "true" : "false"} data-position={current < briefSteps.length ? "after" : "current"} aria-hidden={current !== briefSteps.length || complete}>
-        <legend>Контакт</legend>
+      <fieldset className="brief-step brief-contact-step" data-step="07" data-tone="contact" data-active={current === briefSteps.length && !complete ? "true" : "false"} data-position={current < briefSteps.length ? "after" : "current"} aria-hidden={current !== briefSteps.length || complete}>
+        <legend><span>07</span>Контакт</legend>
         <div className="brief-question"><h3>Куда прислать разбор?</h3><p>Только имя и Telegram — без телефона и длинных комментариев.</p></div>
         <div className="brief-contact-fields">
           <label><span>Как вас зовут</span><input type="text" autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Имя" tabIndex={current === briefSteps.length ? 0 : -1}/></label>
@@ -204,9 +211,8 @@ export function ProjectBrief() {
       </section>
     </div>
 
-    <div className="brief-navigation" data-hidden={complete ? "true" : "false"}>
+    <div className="brief-navigation" data-hidden={complete ? "true" : "false"} data-first={current === 0 ? "true" : "false"}>
       <button type="button" onClick={() => goTo(current - 1)} disabled={current === 0} aria-label="Вернуться к предыдущему вопросу"><i aria-hidden="true">←</i><span>Назад</span></button>
-      <p>{current < briefSteps.length ? "Ответ сохранится автоматически" : "Проверьте контакт перед отправкой"}</p>
     </div>
   </form>;
 }

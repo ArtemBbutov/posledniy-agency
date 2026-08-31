@@ -202,7 +202,7 @@ if(brief){
     if(briefProgressRail)briefProgressRail.style.transform='scaleX('+((briefCurrent+1)/briefSteps.length)+')';
     briefProgressDots.forEach((dot,index)=>dot.dataset.done=String(index<=briefCurrent));
     if(briefBack)briefBack.disabled=briefCurrent===0;
-    if(briefNavigation){const note=briefNavigation.querySelector('p');if(note)note.textContent=briefCurrent<briefSteps.length-1?'Ответ сохранится автоматически':'Проверьте контакт перед отправкой'}
+    if(briefNavigation)briefNavigation.dataset.first=String(briefCurrent===0);
     if(briefCurrent===briefSteps.length-1)briefName?.focus();
   };
   brief.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{
