@@ -5540,18 +5540,37 @@ html { scroll-behavior: smooth; }
     #0b0b08;
 }
 .story-site .creator-avatar::before {
-  content: 'PHOTO';
+  content: '';
   position: absolute;
-  top: 9px;
-  left: 9px;
-  color: #696653;
-  font: 7px/1 var(--font-geist-mono),monospace;
-  letter-spacing: .12em;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background: repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.5) 4px);
+}
+.story-site .creator-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: saturate(.78) contrast(1.05) brightness(.9);
 }
 .story-site .creator-avatar span {
+  position: absolute;
+  z-index: 2;
+  right: 7px;
+  bottom: 7px;
+  min-width: 24px;
+  height: 19px;
+  display: grid;
+  place-items: center;
   color: #b8b491;
-  font: 28px/1 var(--font-geist-mono),monospace;
-  letter-spacing: -.05em;
+  border: 1px solid rgba(226,220,178,.27);
+  border-radius: 5px 1px;
+  background: rgba(5,5,4,.62);
+  font: 8px/1 var(--font-geist-mono),monospace;
+  letter-spacing: .04em;
 }
 .story-site .creator-person small {
   color: #716e5a;
