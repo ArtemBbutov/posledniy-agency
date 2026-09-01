@@ -55,6 +55,7 @@ const caseCarousel=document.querySelector('.case-carousel');
 const caseTrack=caseCarousel?.querySelector('.case-track');
 const caseSlides=[...(caseCarousel?.querySelectorAll('[data-case-slide]')||[])];
 const caseDots=[...(caseCarousel?.querySelectorAll('[data-case-index]')||[])];
+const caseIndicator=caseCarousel?.querySelector('.case-pagination-active');
 const caseCurrent=caseCarousel?.querySelector('[data-case-current]');
 let activeCase=0;
 const showCase=nextIndex=>{
@@ -63,6 +64,7 @@ const showCase=nextIndex=>{
   caseTrack.style.transform='translate3d(-'+activeCase*100+'%,0,0)';
   caseSlides.forEach((slide,index)=>{const isActive=index===activeCase;slide.dataset.active=String(isActive);slide.toggleAttribute('aria-hidden',!isActive)});
   caseDots.forEach((dot,index)=>dot.toggleAttribute('aria-current',index===activeCase));
+  if(caseIndicator)caseIndicator.style.transform='translate3d('+activeCase*32+'px,0,0)';
   if(caseCurrent)caseCurrent.textContent=String(activeCase+1).padStart(2,'0');
 };
 caseCarousel?.querySelector('.case-arrow-prev')?.addEventListener('click',()=>showCase(activeCase-1));

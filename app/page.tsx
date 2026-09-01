@@ -143,6 +143,7 @@ export default function Home() {
         <button className="case-arrow case-arrow-prev" type="button" aria-label="Предыдущий кейс"><i aria-hidden="true"/></button>
         <button className="case-arrow case-arrow-next" type="button" aria-label="Следующий кейс"><i aria-hidden="true"/></button>
         <div className="case-pagination" aria-label="Выбор кейса">
+          <span className="case-pagination-active" aria-hidden="true"><i/></span>
           {cases.map((item,index)=><button type="button" key={item.n} data-case-index={index} aria-label={`Показать кейс ${item.title}`} aria-current={index === 0 ? "true" : undefined}><i/></button>)}
         </div>
         <p className="case-counter" aria-live="polite"><span data-case-current>01</span><i>/</i><span>{String(cases.length).padStart(2,"0")}</span></p>
