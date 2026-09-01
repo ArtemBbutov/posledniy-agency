@@ -175,11 +175,11 @@ export default function Home() {
       <div className="creators-people">
         <article className="creator-person">
           <div className="creator-avatar"><img src="/creator-artem-butov-backrooms.png" alt="Артём Бутов в пространстве Backrooms" width="2556" height="3840" loading="lazy" decoding="async"/><span aria-hidden="true">01</span></div>
-          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p>Создатель проекта</p></div>
+          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p>Сооснователь агентства</p></div>
         </article>
         <article className="creator-person">
           <div className="creator-avatar"><img src="/creator-artem-fedonko-backrooms.png" alt="Артём Федонко в пространстве Backrooms" width="3073" height="3840" loading="lazy" decoding="async"/><span aria-hidden="true">02</span></div>
-          <div><small>CREATOR / 02</small><h3>Артём Федонко</h3><p>Создатель проекта</p></div>
+          <div><small>CREATOR / 02</small><h3>Артём Федонко</h3><p>Сооснователь агентства</p></div>
         </article>
       </div>
     </section>
