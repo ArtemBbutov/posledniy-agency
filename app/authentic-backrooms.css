@@ -4556,19 +4556,6 @@ html { scroll-behavior: smooth; }
   background: transparent;
   border: 0;
 }
-.story-site .case-pagination button i {
-  width: 5px;
-  height: 5px;
-  display: block;
-  background: #8d8a73;
-  border-radius: 999px;
-  opacity: .66;
-  transition: opacity 160ms ease,background-color 160ms ease,transform 160ms var(--ease-out);
-}
-.story-site .case-pagination button[aria-current="true"] i {
-  opacity: .18;
-  transform: scale(.72);
-}
 .story-site .case-pagination-active {
   position: absolute;
   z-index: 1;
@@ -4612,11 +4599,6 @@ html { scroll-behavior: smooth; }
     border-color: rgba(235,230,190,.72);
     transform: translate3d(0,-50%,0) scale(1.05);
   }
-  .story-site .case-pagination button:not([aria-current="true"]):hover i {
-    background: #d5d1a8;
-    opacity: 1;
-    transform: scale(1.3);
-  }
 }
 
 @media (max-width: 700px) {
@@ -4633,7 +4615,6 @@ html { scroll-behavior: smooth; }
   .story-site .case-carousel .case-track { transition-duration: 1ms; }
   .story-site .case-arrow,
   .story-site .case-arrow:hover { transform: translate3d(0,-50%,0); }
-  .story-site .case-pagination button i { transition: opacity 180ms ease,background-color 180ms ease; }
   .story-site .case-pagination-active { transition: none; }
 }
 
