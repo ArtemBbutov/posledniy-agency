@@ -72,7 +72,7 @@ const formats = [
   },
 ];
 
-function SectionMood({ tone }: { tone: "situation" | "cases" | "work" | "services" | "brief" }) {
+function SectionMood({ tone }: { tone: "situation" | "cases" | "work" | "creators" | "services" | "brief" }) {
   return <>
     <span className={`section-bridge bridge-${tone}`} aria-hidden="true"/>
     <div className={`section-atmosphere atmosphere-${tone}`} aria-hidden="true">
@@ -165,6 +165,36 @@ export default function Home() {
         <button className="map-point point-b" type="button"><b>02</b><small>ритм редакции</small></button>
         <button className="map-point point-c" type="button"><b>03</b><small>точки запуска</small></button>
       </figure>
+    </section>
+
+    <section className="creators-section" id="creators" aria-labelledby="creators-title">
+      <SectionMood tone="creators"/>
+      <header className="creators-heading">
+        <div>
+          <p className="br-label">04 / ЛЮДИ ЗА ПРОЕКТОМ</p>
+          <h2 id="creators-title"><span>THE</span> CREATORS</h2>
+        </div>
+        <p>Два человека за идеей, системой и характером агентства. Скоро здесь появятся наши портреты — как личные дела из архива Backrooms.</p>
+      </header>
+      <div className="creators-grid">
+        <article className="creator-card" data-creator="01">
+          <div className="creator-portrait" role="img" aria-label="Место для будущей фотографии Артёма Бутова">
+            <span className="creator-photo-status">PORTRAIT / PENDING</span>
+            <div className="creator-placeholder" aria-hidden="true"><b>01</b><span>PHOTO<br/>ARCHIVE</span></div>
+            <i aria-hidden="true">A#–01</i>
+          </div>
+          <div className="creator-info"><div><span>CREATOR / 01</span><span>FILE: OPEN</span></div><h3>Артём Бутов</h3><p>Создатель проекта</p></div>
+        </article>
+        <article className="creator-card" data-creator="02">
+          <div className="creator-portrait" role="img" aria-label="Место для будущей фотографии Артёма Федонко">
+            <span className="creator-photo-status">PORTRAIT / PENDING</span>
+            <div className="creator-placeholder" aria-hidden="true"><b>02</b><span>PHOTO<br/>ARCHIVE</span></div>
+            <i aria-hidden="true">A#–02</i>
+          </div>
+          <div className="creator-info"><div><span>CREATOR / 02</span><span>FILE: OPEN</span></div><h3>Артём Федонко</h3><p>Создатель проекта</p></div>
+        </article>
+      </div>
+      <div className="creators-footnote"><span>AGENCY PERSONNEL ARCHIVE</span><p>Фотографии будут добавлены следующим обновлением.</p><i aria-hidden="true">04 / 06</i></div>
     </section>
 
     <section className="formats-story" id="formats">
