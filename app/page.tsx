@@ -1,4 +1,6 @@
 import { ProjectBrief } from "./project-brief";
+import { AgencyIntro } from "./agency-intro";
+import { AgencyFaq } from "./agency-faq";
 import { SiteInteractions } from "./site-interactions";
 
 const cases = [
@@ -105,11 +107,13 @@ export default function Home() {
         <p className="hero-eyebrow">Продюсерское агентство</p>
         <h1 id="hero-title"><span className="hero-title-line" data-text="Продюсирование">Продюсирование</span><span className="hero-title-line" data-text="телеграм-каналов">телеграм-каналов</span></h1>
         <p className="hero-lead">Стратегия, контент, выпуск, продвижение и запуски — одной командой. Автор сохраняет голос и не живёт в операционке.</p>
-        <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a></div>
+        <div className="hero-cta-row"><a className="hero-main-cta" href="#change"><span>Посмотреть кейсы</span><i>↓</i></a><a className="hero-intro-link" href="#intro">Об агентстве за минуту ↘</a></div>
       </div>
       <img className="hero-foreground" src="/hero-backrooms-v2.png" alt="" aria-hidden="true" />
       <div className="fluorescent f-one"/><div className="fluorescent f-two"/>
     </section>
+
+    <AgencyIntro/>
 
     <section className="story-scene" id="reality">
       <SectionMood tone="situation"/>
@@ -198,9 +202,11 @@ export default function Home() {
       </div>
     </section>
 
+    <AgencyFaq/>
+
     <section className="br-level brief-level" id="exit">
       <SectionMood tone="brief"/>
-      <header className="brief-heading"><p className="br-label">06 / КОРОТКАЯ АНКЕТА</p><h2>Поймём задачу<br/>за минуту.</h2><p>Без длинных полей: выбирайте подходящие ответы, а мы соберём контекст для предметного разговора.</p></header>
+      <header className="brief-heading"><p className="br-label">07 / КОРОТКАЯ АНКЕТА</p><h2>Поймём задачу<br/>за минуту.</h2><p>Без длинных полей: выбирайте подходящие ответы, а мы соберём контекст для предметного разговора.</p></header>
       <ProjectBrief/>
       <footer><span>Агентство Нас#лия © 2026</span><span>Артём Бутов × Артём Федонко</span><a href="#top">Наверх ↑</a></footer>
     </section>

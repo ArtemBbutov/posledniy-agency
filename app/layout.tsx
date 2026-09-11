@@ -4,6 +4,7 @@ import "./globals.css";
 import "./refinements.css";
 import "./backrooms.css";
 import "./authentic-backrooms.css";
+import "./agency-additions.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin", "cyrillic"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin", "cyrillic"] });

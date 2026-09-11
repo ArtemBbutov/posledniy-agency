@@ -4268,13 +4268,32 @@ html { scroll-behavior: smooth; }
 
 /* Align the service copy and result lists on one shared reading grid. */
 @media (min-width: 981px) {
+  .story-site .format-lines { align-items: stretch; }
+  .story-site .format-lines article,
+  .story-site .format-lines article:hover,
+  .story-site .format-lines article:focus-visible,
+  .story-site .format-lines article.is-selected {
+    min-height: 500px;
+  }
   .story-site .format-lines article:nth-child(2),
   .story-site .format-lines article:nth-child(3) { margin-top: 0; }
   .story-site .format-product { min-height: 142px; }
-  .story-site .format-result { width: 100%; box-sizing: border-box; }
+  .story-site .format-result {
+    width: 100%;
+    min-height: 146px;
+    margin-top: 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex: 1 0 146px;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
   .story-site .format-result > span { display: block; }
   .story-site .format-result ul { align-content: start; }
   .story-site .format-result li { line-height: 1.42; }
+  .story-site .format-meta { margin-top: 0; }
 }
 
 /* Service doors enter once, then switch to fast, interruptible hover feedback. */
@@ -4711,6 +4730,7 @@ html { scroll-behavior: smooth; }
   transform: translate3d(18px,0,0);
   transition: opacity 240ms var(--ease-out),transform 240ms var(--ease-out),visibility 0s linear 240ms;
 }
+.story-site .brief-step { padding-top: 42px; }
 .story-site .brief-step[data-tone="signal"] { --brief-step-rgb: 225,215,159; }
 .story-site .brief-step[data-tone="audience"] { --brief-step-rgb: 171,190,151; }
 .story-site .brief-step[data-tone="spectrum"] { --brief-step-rgb: 214,176,117; }
@@ -4734,7 +4754,7 @@ html { scroll-behavior: smooth; }
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 30px;
+  top: 41px;
   width: 3px;
   height: 58px;
   background: rgba(var(--brief-step-rgb),.84);
@@ -4915,8 +4935,9 @@ html { scroll-behavior: smooth; }
   .story-site .brief-stage { min-height: 600px; }
   .story-site .brief-step,
   .story-site .brief-success { padding: 25px 16px 20px; }
+  .story-site .brief-step { padding: 33px 16px 20px; }
   .story-site .brief-step::before { right: 13px; top: 18px; font-size: 94px; }
-  .story-site .brief-step::after { top: 25px; height: 50px; }
+  .story-site .brief-step::after { top: 32px; height: 50px; }
   .story-site .brief-question { margin-top: 16px; display: block; }
   .story-site .brief-question h3 { font-size: clamp(27px,8vw,35px); }
   .story-site .brief-question p { margin-top: 11px; max-width: 390px; }

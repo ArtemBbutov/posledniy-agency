@@ -1,0 +1,50 @@
+.story-site .hero-cta-row { gap: 24px; flex-wrap: wrap; }
+.story-site .hero-intro-link { color: #e0dac0; font-size: 14px; text-decoration: underline; text-underline-offset: 6px; }
+.agency-intro, .agency-faq { position: relative; isolation: isolate; display: grid; grid-template-columns: .85fr 1.35fr; gap: clamp(32px, 7vw, 112px); padding: 100px max(24px, 6vw); background: #090907; color: #ebe7d3; scroll-margin-top: 100px; }
+.agency-intro { align-items: center; background: radial-gradient(ellipse at 75% 35%, #302e1d 0, #11110c 38%, #090907 72%); }
+.agency-intro h2, .agency-faq h2 { margin: 18px 0 24px; font-size: clamp(32px, 4vw, 60px); line-height: 1.08; font-weight: 500; letter-spacing: -.045em; }
+.agency-intro-copy > p:not(.br-label), .agency-faq header > p:not(.br-label) { max-width: 390px; font-size: 16px; line-height: 1.7; color: #bcb8a5; }
+.agency-intro-copy > a, .agency-faq a { display: inline-block; margin-top: 24px; color: #e0d69c; font-size: 14px; text-decoration: underline; text-underline-offset: 6px; }
+.intro-frame { min-width: 0; margin: 0; padding: clamp(12px, 2vw, 24px); border: 1px solid #68634b; border-top-color: #a49a70; border-radius: 3px; background: linear-gradient(130deg, #454232, #25251d 40%, #353327); box-shadow: 0 30px 65px #000b, inset 0 1px 0 #b9ae6f55, 0 -12px 48px #c9ba6420; }
+.intro-frame-label, .intro-frame figcaption { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-geist-mono), monospace; font-size: 12px; letter-spacing: .08em; color: #c5bea2; }
+.intro-frame-label { margin-bottom: 14px; }
+.intro-frame figcaption { margin-top: 14px; letter-spacing: .02em; }
+.intro-screen { aspect-ratio: 16 / 9; background: #080907; border: 2px solid #12130e; box-shadow: 0 0 0 1px #6e685144; overflow: hidden; }
+.intro-screen video, .intro-placeholder { display: block; width: 100%; height: 100%; }
+.intro-screen video { object-fit: contain; }
+.intro-placeholder { position: relative; display: grid; place-items: center; text-align: center; padding: 20px; }
+.intro-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .24; filter: saturate(.5); }
+.intro-placeholder > div { position: relative; }
+.intro-status { display: inline-block; border: 1px solid #b2a97170; padding: 5px 10px; margin-bottom: 16px; color: #d5c886; font: 12px var(--font-geist-mono), monospace; letter-spacing: .16em; }
+.intro-placeholder strong { display: block; font-size: clamp(23px, 3vw, 40px); font-weight: 500; line-height: 1.12; }
+.intro-placeholder p { font-size: 14px; line-height: 1.5; margin: 14px 0 0; color: #c1bca6; }
+.agency-faq { border-top: 1px solid #827b442b; background: radial-gradient(ellipse at 0 20%, #27261970, transparent 48%), #090907; }
+.faq-entries { min-width: 0; border-top: 1px solid #655f42; }
+.faq-entry { border-bottom: 1px solid #635f423f; }
+.faq-entry summary { display: flex; align-items: center; gap: 18px; min-height: 90px; padding: 24px 6px; list-style: none; cursor: pointer; }
+.faq-entry summary::-webkit-details-marker { display: none; }
+.faq-number { font: 12px var(--font-geist-mono), monospace; color: #a69b6a; }
+.faq-entry h3 { flex: 1; margin: 0; font-size: 18px; font-weight: 450; line-height: 1.45; }
+.faq-toggle { position: relative; width: 20px; height: 20px; flex: 0 0 20px; }
+.faq-toggle::before, .faq-toggle::after { content: ''; position: absolute; background: #c7ba80; top: 9px; left: 3px; width: 14px; height: 1px; }
+.faq-toggle::after { transform: rotate(90deg); }
+.faq-entry[open] .faq-toggle::after { transform: rotate(0); }
+.faq-entry[open] summary { color: #e7d993; }
+.faq-answer { padding: 0 40px 28px; }
+.faq-answer p { margin: 0; color: #c3bfae; font-size: 16px; line-height: 1.75; }
+.faq-entry summary:hover { color: #e7d993; }
+.agency-intro a:focus-visible, .hero-intro-link:focus-visible, .agency-faq a:focus-visible, .faq-entry summary:focus-visible { outline: 2px solid #e1cf83; outline-offset: 6px; }
+@media (max-width: 760px) {
+  .agency-intro, .agency-faq { grid-template-columns: 1fr; gap: 36px; padding: 64px 22px; }
+  .agency-intro-copy > p:not(.br-label), .agency-faq header > p:not(.br-label) { max-width: none; }
+  .story-site .hero-cta-row { gap: 18px; }
+  .faq-answer { padding-left: 6px; padding-right: 6px; }
+  .faq-entry summary { gap: 12px; }
+}
+@media (max-width: 400px) {
+  .intro-frame-label, .intro-frame figcaption { font-size: 12px; letter-spacing: 0; }
+  .intro-frame-label span:last-child { display: none; }
+  .intro-status { margin-bottom: 8px; }
+  .intro-placeholder { padding: 12px; }
+  .intro-placeholder p { margin-top: 8px; }
+}
