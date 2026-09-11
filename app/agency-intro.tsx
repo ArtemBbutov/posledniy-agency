@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-// Set to the supplied video URL when the agency film is ready.
-const INTRO_VIDEO_SRC = "";
+const INTRO_VIDEO_SRC = "/agency-intro.mp4";
 
 export function AgencyIntro({ src = INTRO_VIDEO_SRC }: { src?: string }) {
   const [failed, setFailed] = useState(false);
@@ -15,7 +14,7 @@ export function AgencyIntro({ src = INTRO_VIDEO_SRC }: { src?: string }) {
       <a href="#faq">Как устроена работа ↘</a>
     </div>
     <figure className="intro-frame">
-      <div className="intro-frame-label"><span>АГЕНТСТВО НАС#ЛИЯ</span><span>01 MIN / INTRO</span></div>
+      <div className="intro-frame-label"><span>АГЕНТСТВО НАС#ЛИЯ</span><span>01:03 / INTRO</span></div>
       <div className="intro-screen">
         {src && !failed ? <video key={src} controls playsInline preload="metadata" poster="/hero-backrooms-v2.png" aria-label="Знакомство с агентством" onError={() => setFailed(true)} src={src}/> : <div className="intro-placeholder">
           <img src="/hero-backrooms-v2.png" alt="" loading="lazy"/>

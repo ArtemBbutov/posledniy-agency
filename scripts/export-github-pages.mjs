@@ -26,6 +26,8 @@ html = html
   .replaceAll('src="/hero-backrooms.png"', 'src="public/hero-backrooms.png"')
   .replaceAll('href="/hero-backrooms-v2.png"', 'href="public/hero-backrooms-v2.png"')
   .replaceAll('src="/hero-backrooms-v2.png"', 'src="public/hero-backrooms-v2.png"')
+  .replaceAll('poster="/hero-backrooms-v2.png"', 'poster="public/hero-backrooms-v2.png"')
+  .replaceAll('src="/agency-intro.mp4"', 'src="public/agency-intro.mp4"')
   .replaceAll('src="/telegram-workspace-v1.png"', 'src="public/telegram-workspace-v1.png"')
   .replaceAll('src="/editorial-wall-v1.png"', 'src="public/editorial-wall-v1.png"')
   .replaceAll('src="/case-wake-up-backrooms.png"', 'src="public/case-wake-up-backrooms.png"')
