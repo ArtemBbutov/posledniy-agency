@@ -18,6 +18,7 @@ html = html
   .replace(/<script[\s\S]*?<\/script>/g, "")
   .replace(/<link rel="modulepreload"[^>]*>/g, "")
   .replaceAll('href="/assets/', 'href="assets/')
+  .replaceAll('data-endpoint="/api/brief"', 'data-endpoint="https://posledniy-agency.butovartemm.chatgpt.site/api/brief"')
   .replaceAll('href="/hero-room-v2.png"', 'href="public/hero-room-v2.png"')
   .replaceAll('src="/hero-room-v2.png"', 'src="public/hero-room-v2.png"')
   .replaceAll('href="/hero-room-v3.png"', 'href="public/hero-room-v3.png"')
@@ -188,12 +189,14 @@ if(brief){
   const briefName=brief.querySelector('.brief-contact-fields > label:first-child input');
   const briefTelegram=brief.querySelector('.brief-telegram-input input');
   const briefFinish=brief.querySelector('.brief-finish');
+  let briefSending=false;
+  const briefError=brief.querySelector(".brief-submit-error");
   let briefCurrent=0;
   let briefTimer=0;
   const cleanTelegram=value=>value.replace(/^\\s*(https?:\\/\\/)?(www\\.)?t\\.me\\//i,'').replace(/[@\\s]/g,'').replace(/[^A-Za-z0-9_]/g,'').slice(0,32);
   const updateBriefContact=()=>{
     if(briefTelegram)briefTelegram.value=cleanTelegram(briefTelegram.value);
-    if(briefFinish)briefFinish.disabled=!briefName||!briefTelegram||briefName.value.trim().length<2||briefTelegram.value.length<4;
+    if(briefFinish)briefFinish.disabled=briefSending||!briefName||!briefTelegram||briefName.value.trim().length<2||briefTelegram.value.length<4;
   };
   const showBrief=next=>{
     clearTimeout(briefTimer);
@@ -245,11 +248,16 @@ if(brief){
     event.preventDefault();
     updateBriefContact();
     if(briefFinish?.disabled)return;
-    const labels={task:'Задача',stage:'Аудитория',niche:'Ниша',product:'Стадия продукта',result:'Главный результат',budget:'Бюджет'};
-    const payload={...briefAnswers,name:briefName.value.trim(),telegram:'@'+briefTelegram.value};
-    dispatchEvent(new CustomEvent('agency:brief-submit',{detail:payload}));
-    const lines=['АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ','',...Object.entries(labels).map(([key,label])=>label+': '+(briefAnswers[key]||'—')),'Имя: '+payload.name,'Telegram: '+payload.telegram];
-    try{await navigator.clipboard.writeText(lines.join('\\n'))}catch{}
+    if(briefSending)return;
+    const payload={...briefAnswers,name:briefName.value.trim(),telegram:'@'+briefTelegram.value,website:brief.querySelector('[name="website"]').value};
+    briefSending=true;
+    if(briefError)briefError.textContent='';
+    briefFinish.disabled=true;
+    briefFinish.querySelector('span').textContent='Отправляем…';
+    if(briefBack)briefBack.disabled=true;
+    try { await deliverBrief(brief.dataset.endpoint,payload); }
+    catch(error){if(briefError)briefError.textContent=error.message;return;}
+    finally{briefSending=false;updateBriefContact();briefFinish.querySelector('span').textContent='Отправить заявку';if(briefBack)briefBack.disabled=briefCurrent===0;}
     brief.dataset.complete='true';
     briefSteps.forEach(step=>{step.dataset.active='false';step.setAttribute('aria-hidden','true')});
     if(briefSuccess){briefSuccess.dataset.active='true';briefSuccess.removeAttribute('aria-hidden')}
@@ -258,8 +266,9 @@ if(brief){
   showBrief(0);
 }
 </script>`;
+const delivery = (await readFile("app/brief-delivery.js", "utf8")).replace("export async function", "async function");
 const faqMotion = (await readFile("app/faq-motion.js", "utf8")).replace("export function", "function");
-html = html.replace("</body>", `${staticInteractionScript}<script>${faqMotion}\nattachFaqMotion();</script></body>`);
+html = html.replace("</body>", `${staticInteractionScript}<script>${delivery}\n${faqMotion}\nattachFaqMotion();</script></body>`);
 
 await rm("assets", { recursive: true, force: true });
 await mkdir("assets", { recursive: true });

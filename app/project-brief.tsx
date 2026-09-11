@@ -2,6 +2,8 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 
+import { deliverBrief } from "./brief-delivery";
+
 type BriefStep = {
   key: string;
   tone: string;
@@ -113,6 +115,9 @@ export function ProjectBrief() {
   const [name, setName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [complete, setComplete] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const sendingRef = useRef(false);
   const advanceTimer = useRef<number | null>(null);
   const totalSteps = briefSteps.length + 1;
 
@@ -156,20 +161,23 @@ export function ProjectBrief() {
     const cleanContact = cleanTelegram(telegram);
     if (cleanName.length < 2 || cleanContact.length < 4) return;
 
-    const payload = { ...answers, name: cleanName, telegram: `@${cleanContact}` };
-    window.dispatchEvent(new CustomEvent("agency:brief-submit", { detail: payload }));
-    const message = [
-      "АНКЕТА ПРОЕКТА / АГЕНТСТВО НАС#ЛИЯ",
-      "",
-      ...briefSteps.map((step) => `${fieldLabels[step.key]}: ${answers[step.key] ?? "—"}`),
-      `Имя: ${cleanName}`,
-      `Telegram: @${cleanContact}`,
-    ].join("\n");
-    try { await navigator.clipboard.writeText(message); } catch { /* Bot endpoint will replace this handoff. */ }
-    setComplete(true);
+    if (sendingRef.current) return;
+    if (briefSteps.some(step => !answers[step.key]?.trim())) { setError("Ответьте на все вопросы анкеты."); return; }
+    const form = event.currentTarget;
+    const website = (new FormData(form).get("website") ?? "").toString();
+    const payload = { ...answers, name: cleanName, telegram: `@${cleanContact}`, website };
+    sendingRef.current = true;
+    setSending(true);
+    setError("");
+    try {
+      await deliverBrief(form.dataset.endpoint || "/api/brief", payload);
+      setComplete(true);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Не удалось отправить анкету. Попробуйте позже.");
+    } finally { sendingRef.current = false; setSending(false); }
   };
 
-  return <form id="brief-quiz" className="project-brief brief-quiz" data-complete={complete ? "true" : "false"} onSubmit={submitBrief}>
+  return <form id="brief-quiz" className="project-brief brief-quiz" data-endpoint="/api/brief" aria-busy={sending} data-complete={complete ? "true" : "false"} onSubmit={submitBrief}>
     <div className="brief-progress" aria-label={`Шаг ${current + 1} из ${totalSteps}`}>
       <div className="brief-progress-copy"><span>АНКЕТА / {String(current + 1).padStart(2, "0")}</span><b>{current + 1} из {totalSteps}</b></div>
       <div className="brief-progress-rail" aria-hidden="true"><i style={{ transform: `scaleX(${(current + 1) / totalSteps})` }}/></div>
@@ -202,16 +210,18 @@ export function ProjectBrief() {
           <label><span>Как вас зовут</span><input type="text" autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} placeholder="Имя" tabIndex={current === briefSteps.length ? 0 : -1}/></label>
           <label><span>Telegram</span><div className="brief-telegram-input"><i>@</i><input type="text" autoCapitalize="off" autoCorrect="off" spellCheck="false" value={telegram} onChange={(event) => setTelegram(cleanTelegram(event.target.value))} placeholder="username" tabIndex={current === briefSteps.length ? 0 : -1}/></div></label>
         </div>
-        <button className="brief-finish" type="submit" disabled={name.trim().length < 2 || cleanTelegram(telegram).length < 4}><span>Завершить анкету</span><i aria-hidden="true">→</i></button>
+        <div className="brief-honeypot" aria-hidden="true"><label>Ваш сайт<input name="website" type="text" tabIndex={-1} autoComplete="off"/></label></div>
+        <p className="brief-submit-error" role="alert">{error}</p>
+        <button className="brief-finish" type="submit" disabled={sending || name.trim().length < 2 || cleanTelegram(telegram).length < 4}><span>{sending ? "Отправляем…" : "Отправить заявку"}</span><i aria-hidden="true">→</i></button>
       </fieldset>
 
       <section className="brief-success" data-active={complete ? "true" : "false"} aria-live="polite" aria-hidden={!complete}>
-        <span>07 / ГОТОВО</span><h3>Спасибо.<br/>Контекст собран.</h3><p>Теперь разговор начнётся не с общих вопросов, а с конкретного сценария для вашего проекта.</p><a href="#top">Вернуться наверх <i>↑</i></a>
+        <span>07 / ГОТОВО</span><h3>Заявка<br/>отправлена.</h3><p>Команда получила ответы. Напишем вам в Telegram, чтобы обсудить проект.</p><a href="#top">Вернуться наверх <i>↑</i></a>
       </section>
     </div>
 
     <div className="brief-navigation" data-hidden={complete ? "true" : "false"} data-first={current === 0 ? "true" : "false"}>
-      <button type="button" onClick={() => goTo(current - 1)} disabled={current === 0} aria-label="Вернуться к предыдущему вопросу"><i aria-hidden="true">←</i><span>Назад</span></button>
+      <button type="button" onClick={() => goTo(current - 1)} disabled={current === 0 || sending} aria-label="Вернуться к предыдущему вопросу"><i aria-hidden="true">←</i><span>Назад</span></button>
     </div>
   </form>;
 }
