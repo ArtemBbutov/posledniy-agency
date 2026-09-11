@@ -174,16 +174,16 @@ export default function Home() {
     <section className="creators-strip" id="creators" aria-labelledby="creators-title">
       <header className="creators-strip-heading">
         <p className="br-label">04 / ЛЮДИ ЗА ПРОЕКТОМ</p>
-        <div><h2 id="creators-title">THE CREATORS</h2><p>2 основателя. Лично отвечаем за стратегию, контент и запуски.</p></div>
+        <div><h2 id="creators-title">THE CREATORS</h2><p>Два Артёма. От первого поста до собранной команды.</p></div>
       </header>
       <div className="creators-people">
         <article className="creator-person">
           <div className="creator-avatar"><img src="/creator-artem-butov-backrooms.png" alt="Артём Бутов в пространстве Backrooms" width="2556" height="3840" loading="lazy" decoding="async"/><span aria-hidden="true">01</span></div>
-          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p>Основатель агентства</p></div>
+          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p className="creator-role">Продюсирование и продукт</p><p className="creator-bio">Создаёт сайты и контент для Telegram. Выстраивает путь от интереса к посту до покупки продукта.</p></div>
         </article>
         <article className="creator-person">
           <div className="creator-avatar"><img src="/creator-artem-fedonko-backrooms.png" alt="Артём Федонко в пространстве Backrooms" width="3073" height="3840" loading="lazy" decoding="async"/><span aria-hidden="true">02</span></div>
-          <div><small>CREATOR / 02</small><h3>Артём Федонко</h3><p>Основатель агентства</p></div>
+          <div><small>CREATOR / 02</small><h3>Артём Федонко</h3><p className="creator-role">Клиенты и команда</p><p className="creator-bio">Находит клиентов, ведёт переговоры и закрывает сделки. Собирает команду и координирует работу продажников.</p></div>
         </article>
       </div>
     </section>

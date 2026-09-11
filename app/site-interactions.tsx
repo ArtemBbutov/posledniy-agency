@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { attachFaqMotion } from "./faq-motion";
 
 export function SiteInteractions() {
   useEffect(() => {
+    const cleanupFaq = attachFaqMotion();
     const root = document.documentElement;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     root.classList.add("motion-ready");
@@ -274,6 +276,7 @@ export function SiteInteractions() {
     window.addEventListener("resize", updateActiveNav);
 
     return () => {
+      cleanupFaq();
       observer.disconnect();
       appearanceObserver.disconnect();
       appearanceTimers.forEach((timer) => window.clearTimeout(timer));

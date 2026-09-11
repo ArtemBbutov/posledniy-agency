@@ -256,7 +256,8 @@ if(brief){
   showBrief(0);
 }
 </script>`;
-html = html.replace("</body>", `${staticInteractionScript}</body>`);
+const faqMotion = (await readFile("app/faq-motion.js", "utf8")).replace("export function", "function");
+html = html.replace("</body>", `${staticInteractionScript}<script>${faqMotion}\nattachFaqMotion();</script></body>`);
 
 await rm("assets", { recursive: true, force: true });
 await mkdir("assets", { recursive: true });
