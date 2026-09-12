@@ -163,7 +163,11 @@ navLinks.forEach(link=>{
     const target=document.querySelector(link.hash);
     if(!target)return;
     event.preventDefault();navScrollLock=link;activeNavLink=link;moveLiquid(link);
-    target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+    const sectionTop=scrollY+target.getBoundingClientRect().top;
+    const contentInset=parseFloat(getComputedStyle(target).paddingTop)||0;
+    const menuBottom=nav?.getBoundingClientRect().bottom??60;
+    const destination=Math.max(0,sectionTop+contentInset-menuBottom-16);
+    window.scrollTo({top:destination,behavior:reduceMotion?'instant':'smooth'});
     history.replaceState(null,'',link.hash);
     clearTimeout(navScrollUnlockTimer);
     navScrollUnlockTimer=setTimeout(()=>{navScrollLock=undefined;updateActiveNav()},reduceMotion?80:1400);

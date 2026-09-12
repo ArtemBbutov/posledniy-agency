@@ -230,7 +230,11 @@ export function SiteInteractions() {
         navScrollLock = link;
         activeNavLink = link;
         moveLiquid(link);
-        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        const sectionTop = window.scrollY + target.getBoundingClientRect().top;
+        const contentInset = parseFloat(getComputedStyle(target).paddingTop) || 0;
+        const menuBottom = nav?.getBoundingClientRect().bottom ?? 60;
+        const destination = Math.max(0, sectionTop + contentInset - menuBottom - 16);
+        window.scrollTo({ top: destination, behavior: reduceMotion ? "instant" : "smooth" });
         history.replaceState(null, "", link.hash);
         window.clearTimeout(navScrollUnlockTimer);
         navScrollUnlockTimer = window.setTimeout(() => {
