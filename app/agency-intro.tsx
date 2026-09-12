@@ -16,7 +16,7 @@ export function AgencyIntro({ src = INTRO_VIDEO_SRC }: { src?: string }) {
     <figure className="intro-frame">
       <div className="intro-frame-label"><span>АГЕНТСТВО НАС#ЛИЯ</span><span>01:03 / INTRO</span></div>
       <div className="intro-screen">
-        {src && !failed ? <video key={src} controls playsInline preload="metadata" poster="/hero-backrooms-v2.png" aria-label="Знакомство с агентством" onError={() => setFailed(true)} src={src}/> : <div className="intro-placeholder">
+        {src && !failed ? <video key={src} controls playsInline preload="metadata" poster="/agency-intro-poster.jpg" aria-label="Знакомство с агентством" onError={() => setFailed(true)} src={src}/> : <div className="intro-placeholder">
           <img src="/hero-backrooms-v2.png" alt="" loading="lazy"/>
           <div><span className="intro-status">{failed ? "ВИДЕО НЕДОСТУПНО" : "СКОРО"}</span><strong>Два Артёма.<br/>Один подход.</strong><p>{failed ? "Не удалось загрузить ролик. Попробуйте обновить страницу." : "Наш подход — в минутном видео."}</p></div>
         </div>}

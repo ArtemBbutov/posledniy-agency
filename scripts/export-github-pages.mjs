@@ -27,7 +27,7 @@ html = html
   .replaceAll('src="/hero-backrooms.png"', 'src="public/hero-backrooms.png"')
   .replaceAll('href="/hero-backrooms-v2.png"', 'href="public/hero-backrooms-v2.png"')
   .replaceAll('src="/hero-backrooms-v2.png"', 'src="public/hero-backrooms-v2.png"')
-  .replaceAll('poster="/hero-backrooms-v2.png"', 'poster="public/hero-backrooms-v2.png"')
+  .replaceAll('poster="/agency-intro-poster.jpg"', 'poster="public/agency-intro-poster.jpg"')
   .replaceAll('src="/agency-intro.mp4"', 'src="public/agency-intro.mp4"')
   .replaceAll('src="/telegram-workspace-v1.png"', 'src="public/telegram-workspace-v1.png"')
   .replaceAll('src="/editorial-wall-v1.png"', 'src="public/editorial-wall-v1.png"')
@@ -228,7 +228,7 @@ if(brief){
     }
     if(other){other.dataset.visible='false';other.querySelectorAll('input,button').forEach(control=>control.tabIndex=-1)}
     briefAnswers[key]=button.dataset.value||button.textContent.trim();
-    briefTimer=setTimeout(()=>showBrief(stepIndex+1),180);
+    briefTimer=setTimeout(()=>showBrief(stepIndex+1),300);
   }));
   brief.querySelectorAll('.brief-other').forEach(other=>{
     const input=other.querySelector('input');

@@ -109,3 +109,37 @@
 .brief-submit-error { color: #e9b6a2; font-size: 14px; line-height: 1.5; max-width: 500px; }
 .brief-submit-error:empty { display: none; }
 .project-brief[aria-busy="true"] .brief-finish { cursor: wait; }
+
+/* Give the selected answer time to register, then ease into the next question. */
+.story-site .brief-step,
+.story-site .brief-success {
+  transition: opacity 300ms ease, transform 480ms cubic-bezier(.22,1,.36,1), visibility 0s linear 480ms;
+}
+.story-site .brief-step[data-active="true"],
+.story-site .brief-success[data-active="true"] {
+  transition-delay: 100ms, 80ms, 0s;
+}
+.story-site .brief-step .brief-question,
+.story-site .brief-step .brief-choice-grid,
+.story-site .brief-step .brief-contact-fields {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 220ms ease, transform 420ms cubic-bezier(.22,1,.36,1);
+}
+.story-site .brief-step[data-active="true"] .brief-question,
+.story-site .brief-step[data-active="true"] .brief-choice-grid,
+.story-site .brief-step[data-active="true"] .brief-contact-fields {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 140ms;
+}
+.story-site .brief-step[data-active="true"] .brief-choice-grid,
+.story-site .brief-step[data-active="true"] .brief-contact-fields { transition-delay: 200ms; }
+@media (prefers-reduced-motion: reduce) {
+  .story-site .brief-step,
+  .story-site .brief-success,
+  .story-site .brief-step[data-position="before"],
+  .story-site .brief-step .brief-question,
+  .story-site .brief-step .brief-choice-grid,
+  .story-site .brief-step .brief-contact-fields { transform: none; transition: none; }
+}

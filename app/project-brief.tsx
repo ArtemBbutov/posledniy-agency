@@ -139,7 +139,7 @@ export function ProjectBrief() {
     }
     setOtherOpen((state) => ({ ...state, [step.key]: false }));
     setAnswers((state) => ({ ...state, [step.key]: option.value ?? option.label }));
-    advanceTimer.current = window.setTimeout(() => goTo(stepIndex + 1), 180);
+    advanceTimer.current = window.setTimeout(() => goTo(stepIndex + 1), 300);
   };
 
   const confirmOther = (stepIndex: number, step: BriefStep) => {
