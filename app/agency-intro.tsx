@@ -9,8 +9,8 @@ export function AgencyIntro({ src = INTRO_VIDEO_SRC }: { src?: string }) {
   return <section className="agency-intro" id="intro" aria-labelledby="intro-title">
     <div className="agency-intro-copy">
       <p className="br-label">00 / ЗНАКОМСТВО</p>
-      <h2 id="intro-title">За кадром<br/>вашего канала.</h2>
-      <p>Посты, сайт, запуск. Показываем, как собираем их в одну систему.</p>
+      <h2 id="intro-title">Познакомимся?</h2>
+      <p>Короткое видео от нашей команды.</p>
       <a href="#faq">Как устроена работа ↘</a>
     </div>
     <figure className="intro-frame">
