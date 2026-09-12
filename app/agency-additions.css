@@ -167,3 +167,5 @@
   .story-site .nav-liquid { display: none; }
   .story-site .br-nav nav a[aria-current] { background: rgba(238,234,204,.16); border-radius: 99px; }
 }
+
+.story-site .creator-person.creator-person-no-photo { grid-template-columns: minmax(0, 1fr); }
