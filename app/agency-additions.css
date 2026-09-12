@@ -169,3 +169,5 @@
 }
 
 .story-site .creator-person.creator-person-no-photo { grid-template-columns: minmax(0, 1fr); }
+
+.story-site .creator-channel { display: inline-block; margin-top: 16px; color: #d8d3aa; font-size: 14px; line-height: 1.5; text-underline-offset: 5px; }
