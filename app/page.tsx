@@ -174,7 +174,7 @@ export default function Home() {
     <section className="creators-strip" id="creators" aria-labelledby="creators-title">
       <header className="creators-strip-heading">
         <p className="br-label">04 / ЛЮДИ ЗА ПРОЕКТОМ</p>
-        <div><h2 id="creators-title">THE CREATORS</h2><p>Два Артёма. От первого поста до собранной команды.</p></div>
+        <div><h2 id="creators-title">THE CREATORS</h2></div>
       </header>
       <div className="creators-people">
         <article className="creator-person">
