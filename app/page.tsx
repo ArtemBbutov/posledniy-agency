@@ -179,7 +179,7 @@ export default function Home() {
       <div className="creators-people">
         <article className="creator-person"><div className="creator-avatar"><img src="/creator-artem-butov-v2.jpg" alt="Артём Бутов в стиле Backrooms" width="1122" height="1402" loading="lazy" decoding="async"/><span aria-hidden="true">01</span></div>
           
-          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p className="creator-role">Продюсирование и продукт</p><p className="creator-bio">Создаёт сайты и контент для Telegram. Выстраивает путь от интереса к посту до покупки продукта.</p></div>
+          <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p className="creator-role">Продюсирование и продукт</p><p className="creator-bio">Создаёт сайты и контент для Telegram. Выстраивает путь от интереса к посту до покупки продукта.</p><a className="creator-channel" href="https://t.me/lfbutov" target="_blank" rel="noopener noreferrer">Telegram-блог · @lfbutov ↗</a></div>
         </article>
         <article className="creator-person">
           <div className="creator-avatar"><img src="/creator-artem-fedonko-v2.jpg" alt="Артём Федонко в пространстве Backrooms" width="1122" height="1402" loading="lazy" decoding="async"/><span aria-hidden="true">02</span></div>
