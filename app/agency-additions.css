@@ -149,3 +149,21 @@
 .story-site #change,
 .story-site #work,
 .story-site #exit { scroll-margin-top: 0; }
+
+/* Full section navigation, with horizontal scrolling on compact screens. */
+.story-site #intro, .story-site #creators, .story-site #formats, .story-site #faq { scroll-margin-top: 0; }
+.story-site .br-nav nav { max-width: calc(100vw - 32px); }
+.story-site .br-nav nav a { flex-shrink: 0; }
+@media (min-width: 601px) and (max-width: 1200px) {
+  .story-site .br-nav .br-logo, .story-site .br-nav .br-call { display: none; }
+  .story-site .br-nav { display: flex; justify-content: center; }
+  .story-site .br-nav nav { overflow-x: auto; }
+}
+@media (max-width: 600px) {
+  .story-site .br-nav { position: fixed; inset: 8px 8px auto; height: 52px; padding: 4px; display: flex; }
+  .story-site .br-nav .br-logo, .story-site .br-nav .br-call { display: none; }
+  .story-site .br-nav nav { display: flex; position: relative; inset: auto; transform: none; width: 100%; gap: 2px; overflow-x: auto; white-space: nowrap; padding: 4px; }
+  .story-site .br-nav nav a { display: block; width: auto; min-width: 74px; padding: 10px 9px; font-size: 10px; text-align: center; }
+  .story-site .nav-liquid { display: none; }
+  .story-site .br-nav nav a[aria-current] { background: rgba(238,234,204,.16); border-radius: 99px; }
+}
