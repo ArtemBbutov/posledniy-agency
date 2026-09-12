@@ -182,7 +182,7 @@ export default function Home() {
           <div><small>CREATOR / 01</small><h3>Артём Бутов</h3><p className="creator-role">Продюсирование и продукт</p><p className="creator-bio">Создаёт сайты и контент для Telegram. Выстраивает путь от интереса к посту до покупки продукта.</p></div>
         </article>
         <article className="creator-person">
-          <div className="creator-avatar"><img src="/creator-artem-fedonko-backrooms.png" alt="Артём Федонко в пространстве Backrooms" width="3073" height="3840" loading="lazy" decoding="async"/><span aria-hidden="true">02</span></div>
+          <div className="creator-avatar"><img src="/creator-artem-fedonko-v2.jpg" alt="Артём Федонко в пространстве Backrooms" width="1122" height="1402" loading="lazy" decoding="async"/><span aria-hidden="true">02</span></div>
           <div><small>CREATOR / 02</small><h3>Артём Федонко</h3><p className="creator-role">Клиенты и команда</p><p className="creator-bio">Находит клиентов, ведёт переговоры и закрывает сделки. Собирает команду и координирует работу продажников.</p><p className="creator-bio">Аудитория — более 15 000 человек. Большой опыт запусков с общей прибылью более $50 000.</p><a className="creator-channel" href="https://t.me/+soEcPH8C9oRlNTZi" target="_blank" rel="noopener noreferrer">Telegram-канал · 4 тыс. подписчиков ↗</a></div>
         </article>
       </div>

@@ -29,6 +29,7 @@ html = html
   .replaceAll('src="/hero-backrooms-v2.png"', 'src="public/hero-backrooms-v2.png"')
   .replaceAll('poster="/agency-intro-poster.jpg"', 'poster="public/agency-intro-poster.jpg"')
   .replaceAll('src="/agency-intro.mp4"', 'src="public/agency-intro.mp4"')
+  .replaceAll('src="/creator-artem-fedonko-v2.jpg"', 'src="public/creator-artem-fedonko-v2.jpg"')
   .replaceAll('src="/creator-artem-butov-v2.jpg"', 'src="public/creator-artem-butov-v2.jpg"')
   .replaceAll('src="/telegram-workspace-v1.png"', 'src="public/telegram-workspace-v1.png"')
   .replaceAll('src="/editorial-wall-v1.png"', 'src="public/editorial-wall-v1.png"')
