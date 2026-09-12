@@ -143,3 +143,9 @@
   .story-site .brief-step .brief-choice-grid,
   .story-site .brief-step .brief-contact-fields { transform: none; transition: none; }
 }
+
+/* Section padding already clears the navigation; do not add a second gap. */
+.story-site #reality,
+.story-site #change,
+.story-site #work,
+.story-site #exit { scroll-margin-top: 0; }
