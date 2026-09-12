@@ -9,7 +9,7 @@ import urllib.request
 
 root = Path(__file__).resolve().parent.parent
 print('Подключение заявок агентства к Telegram')
-print('Создайте бота через @BotFather → /newbot. Добавьте его в группу команды.')
+print('Создайте бота через @BotFather → /newbot. Добавьте его в группу или в администраторы канала с правом публикации.')
 token = getpass.getpass('Вставьте токен бота (ввод скрыт): ').strip()
 if not re.fullmatch(r'\d+:[A-Za-z0-9_-]+', token):
     raise SystemExit('Формат токена неверный. Запустите помощник ещё раз.')
@@ -28,27 +28,27 @@ def api(method):
 
 bot = api('getMe')
 print('Бот найден: @' + bot['username'])
-input('Напишите в группе /setup@' + bot['username'] + ', затем нажмите Enter здесь: ')
+input('Напишите в группе или опубликуйте в канале /setup@' + bot['username'] + ', затем нажмите Enter здесь: ')
 updates = api('getUpdates')
 groups = {}
 for update in updates:
-    message = update.get('message', {})
+    message = update.get('message') or update.get('channel_post', {})
     chat = message.get('chat', {})
     text = message.get('text', '')
-    if chat.get('type') in ('group', 'supergroup') and text.split(' ')[0] in ('/setup', '/setup@' + bot['username']):
-        groups[str(chat['id'])] = chat.get('title', 'Группа без названия')
+    if chat.get('type') in ('group', 'supergroup', 'channel') and text.split(' ')[0] in ('/setup', '/setup@' + bot['username']):
+        groups[str(chat['id'])] = chat.get('title', 'Чат без названия')
 if not groups:
-    raise SystemExit('Команда /setup в группе не найдена. Добавьте бота, отправьте команду заново и перезапустите помощник.')
+    raise SystemExit('Публикация /setup не найдена. Проверьте права бота, отправьте команду заново в нужный канал или группу и перезапустите помощник.')
 items = list(groups.items())
 for index, (_, title) in enumerate(items, 1):
     print(str(index) + '. ' + title)
 try:
-    selection = int(input('Номер группы для заявок: ')) - 1
+    selection = int(input('Номер канала или группы для заявок: ')) - 1
     if selection < 0: raise ValueError()
     chat_id, title = items[selection]
 except (ValueError, IndexError):
-    raise SystemExit('Группа не выбрана. Ничего не сохранено.')
-if input('Сохранить подключение к группе «' + title + '»? Введите да: ').strip().lower() != 'да':
+    raise SystemExit('Канал или группа не выбраны. Ничего не сохранено.')
+if input('Сохранить получение заявок в «' + title + '»? Введите да: ').strip().lower() != 'да':
     raise SystemExit('Отменено. Ничего не сохранено.')
 path = root / '.env.local'
 existing = path.read_text() if path.exists() else ''
