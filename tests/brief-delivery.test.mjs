@@ -41,3 +41,13 @@ test('client requires HTTP success AND explicit server confirmation',async()=>{
  globalThis.fetch=async()=>Response.json({ok:true});await deliverBrief('/api/brief',data);
  }finally{globalThis.fetch=original;}
 });
+
+test('custom domain HTTP and HTTPS preflights are permitted', async () => {
+ for (const origin of ['http://nasilprod.online', 'https://nasilprod.online', 'http://www.nasilprod.online', 'https://www.nasilprod.online']) {
+  const response = await handleBrief(request({}, {origin}));
+  assert.equal(response.headers.get('access-control-allow-origin'), origin);
+  const preflight = await handleBrief(new Request('https://posledniy-agency.butovartemm.chatgpt.site/api/brief', {method: 'OPTIONS', headers: {origin}}));
+  assert.equal(preflight.status, 204);
+  assert.equal(preflight.headers.get('access-control-allow-origin'), origin);
+ }
+});

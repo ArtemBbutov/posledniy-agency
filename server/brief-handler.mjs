@@ -1,6 +1,6 @@
 const labels = { task: 'Задача', stage: 'Аудитория', niche: 'Ниша', product: 'Стадия продукта', result: 'Главный результат', budget: 'Бюджет' };
 const visits = new Map();
-const allowed = new Set(['https://artembbutov.github.io', 'https://posledniy-agency.butovartemm.chatgpt.site']);
+const allowed = new Set(['http://nasilprod.online', 'https://nasilprod.online', 'http://www.nasilprod.online', 'https://www.nasilprod.online', 'https://artembbutov.github.io', 'https://posledniy-agency.butovartemm.chatgpt.site']);
 
 export async function handleBrief(request, env = {}, send = fetch) {
   const origin = request.headers.get('origin');
